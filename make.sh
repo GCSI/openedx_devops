@@ -23,13 +23,13 @@ cookiecutter --checkout $GITHUB_BRANCH \
              ci_deploy_install_mfe_service=Y \
              ci_deploy_install_notes_service=Y \
              ci_deploy_install_ecommerce_service=N \
-             global_platform_name=prod \
+             global_platform_name=codlp \
              global_platform_region=global \
              global_aws_region=eu-west-2 \
              global_account_id=824885811700 \
              global_root_domain=global-communications-academy.com \
              global_aws_route53_hosted_zone_id=Z05411113IEXO5BMWUR66 \
-             environment_name=live \
+             environment_name=staging \
              environment_subdomain=staging \
              eks_worker_group_instance_type=t3.xlarge \
              eks_worker_group_min_size=0 \
