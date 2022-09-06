@@ -95,29 +95,6 @@ resource "kubernetes_secret" "discovery" {
   }
 }
 
-resource "random_password" "mysql_ecommerce" {
-  length           = 16
-  special          = true
-  override_special = "_%@"
-  keepers = {
-    version = "1"
-  }
-}
-
-resource "kubernetes_secret" "ecommerce" {
-  metadata {
-    name      = "mysql-ecommerce"
-    namespace = var.environment_namespace
-  }
-
-  data = {
-    ECOMMERCE_MYSQL_DATABASE = substr("${var.db_prefix}_ecom", -64, -1)
-    ECOMMERCE_MYSQL_USERNAME = substr("${var.db_prefix}_ecom", -32, -1)
-    ECOMMERCE_MYSQL_PASSWORD = random_password.mysql_ecommerce.result
-    MYSQL_HOST               = data.kubernetes_secret.mysql_root.data.MYSQL_HOST
-    MYSQL_PORT               = data.kubernetes_secret.mysql_root.data.MYSQL_PORT
-  }
-}
 
 resource "random_password" "mysql_notes" {
   length           = 16
