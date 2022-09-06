@@ -18,7 +18,7 @@ cookiecutter --checkout $GITHUB_BRANCH \
              --no-input \
              $GITHUB_REPO \
              ci_deploy_install_credentials_server=N \
-             ci_deploy_install_license_manager=N \
+             ci_deploy_install_license_manager=Y \
              ci_deploy_install_discovery_service=Y \
              ci_deploy_install_mfe_service=Y \
              ci_deploy_install_notes_service=Y \
@@ -44,4 +44,6 @@ cookiecutter --checkout $GITHUB_BRANCH \
              redis_node_type=cache.t2.small \
              stack_add_bastion=Y \
              stack_add_remote_mongodb=Y \
+             mongodb_instance_type=t3.medium \
+             mongodb_allocated_storage=10 \
              

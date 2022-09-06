@@ -21,7 +21,7 @@ jobs:
 
       SUBDOMAIN: staging
       DOMAIN_NAME: global-communications-academy.com
-      SITE_NAME: prod
+      SITE_NAME: codlp
       AWS_REGION: eu-west-2
 
     steps:
