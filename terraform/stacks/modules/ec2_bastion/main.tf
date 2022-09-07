@@ -272,10 +272,10 @@ resource "aws_security_group" "sg_bastion" {
 
 # Create a static IP address and a DNS record to
 # add to the root domain.
-resource "aws_eip" "elasticip" {
-  instance = aws_instance.bastion.id
-  tags     = var.tags
-}
+# resource "aws_eip" "elasticip" {
+#   instance = aws_instance.bastion.id
+#   tags     = var.tags
+# }
 
 resource "aws_route53_record" "bastion" {
   zone_id = data.aws_route53_zone.stack.id
@@ -284,7 +284,7 @@ resource "aws_route53_record" "bastion" {
   ttl     = "600"
 
 
-  records = [aws_eip.elasticip.public_ip]
+  records = [aws_instance.bastion.public_ip]
 }
 
 # private ssh key for public access to the bastion.
