@@ -308,7 +308,7 @@ resource "kubernetes_secret" "ssh_secret" {
 
 # mcdaniel aug-2022: switch from DNS host name
 # to EC2 public ip address bc of occasional delays
-# in updates to Route53 DNS entries.
+# in updates to Route53 DNS
   data = {
     HOST            = aws_instance.bastion.public_ip
     USER            = "ubuntu"
