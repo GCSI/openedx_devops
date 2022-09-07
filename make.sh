@@ -28,7 +28,7 @@ cookiecutter --checkout $GITHUB_BRANCH \
              global_aws_region=eu-west-2 \
              global_account_id=824885811700 \
              global_root_domain=global-communications-academy.com \
-             global_aws_route53_hosted_zone_id=Z05411113IEXO5BMWUR66 \
+             global_aws_route53_hosted_zone_id=Z06272372FLKF1XJYWWUT \
              environment_name=staging \
              environment_subdomain=staging \
              eks_worker_group_instance_type=t3.xlarge \
