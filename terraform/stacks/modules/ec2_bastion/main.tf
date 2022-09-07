@@ -306,8 +306,11 @@ resource "kubernetes_secret" "ssh_secret" {
     namespace = var.stack_namespace
   }
 
+# mcdaniel aug-2022: switch from DNS host name
+# to EC2 public ip address bc of occasional delays
+# in updates to Route53 DNS entries.
   data = {
-    HOST            = aws_route53_record.bastion.name
+    HOST            = aws_instance.bastion.public_ip
     USER            = "ubuntu"
     PRIVATE_KEY_PEM = tls_private_key.bastion.private_key_pem
   }
@@ -388,5 +391,6 @@ data "template_file" "help_text" {
   vars = {
     stack_namespace = var.stack_namespace
     root_domain     = var.root_domain
+    aws_region      = var.aws_region
   }
 }
