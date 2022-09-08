@@ -1,4 +1,24 @@
 ---
+# custom GCAS parameters
+# ----------------------
+#
+# used in 
+#   gcsi_edxapi/management/commands/gcasbootstrap.py
+#   gcsi_edxapi/management/commands/create_gcas_oauth_application_client_confg.py
+EDX_DOMAIN_NAME: "staging.global-communications-academy.com"
+#
+# used in gcsi_edxapi and gcsi_grades 
+GCAS_BASE_URL: https://platform.staging.global-communications-academy.com
+#
+# used in gcsi_grades
+BOOKING_AUTH_BASE_URL: https://platform.staging.global-communications-academy.com/
+#
+#GCAS_CLIENT_ID: lbUdStCkVl1ngLBgUQ9ghcsQihu7HScmRWe2Umkx
+#GCAS_CLIENT_SECRET: d01g6qlQ16HUAGqjTRj597DoAB6SGyBNCbKbMFKRTVvn2GSSTLOFVdgbpw0Ybld5YTsHGbwyRuGIEWanNV6obY2dy2QrM3ucEnvpKlGs52H21BbYU9Il5sRYY4xGjeva
+#GCSI_BOOKING_SYSTEM_USER_API_KEY: KBPUsOFCIzcXwBOCyVwCNptqIdDG7z02QtgFQuYH
+GCSI_BOOKING_SYSTEM_USER_API_USER: gcas-api-user
+# ----------------------
+#
 CORS_ORIGIN_ALLOW_ALL: true
 CORS_ORIGIN_WHITELIST:
 - https://global-communications-academy.com
@@ -20,6 +40,14 @@ ENTERPRISE_SUPPORT_URL: https://global-communications-academy.com/support/
 ENTERPRISE_TAGLINE: "codlp"
 FACEBOOK_API_VERSION: v12.0
 FEATURES:
+  # mcdaniel aug-2022: to setup our own url from plugin.
+  # -----------------------------------------------------
+  ENABLE_DJANGO_ADMIN_SITE: true
+  ENABLE_CHANGE_USER_PASSWORD_ADMIN: true
+  ENABLE_SYSADMIN_DASHBOARD: false
+  COURSES_ARE_BROWSABLE: false
+  ENABLE_SERVICE_STATUS: true
+  # -----------------------------------------------------
   ENABLE_CHANGE_USER_PASSWORD_ADMIN: true
   CERTIFICATES_HTML_VIEW: true
   PREVIEW_LMS_BASE: "staging.tmp.global-communications-academy.com/"
