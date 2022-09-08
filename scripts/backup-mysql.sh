@@ -12,8 +12,8 @@
 #---------------------------------------------------------
 
 #------------------------------ SUPER IMPORTANT!!!!!!!! -- initialize these variables
-MYSQL_HOST="codlp-platform-mysql-staging.cueotjvguuws.eu-west-2.rds.amazonaws.com"
-MYSQL_PWD="seW4oCkGsd"
+MYSQL_HOST=""
+MYSQL_PWD=""
 MONGODB_PWD=""
 
 S3_BUCKET="mcdaniel-migration"
