@@ -19,10 +19,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - "grafana.staging.global-communications-academy.com"
+    - "grafana.tmp.staging.global-communications-academy.com"
     secretName: wild-openedx-staging-tls
   rules:
-  - host: grafana.staging.global-communications-academy.com
+  - host: grafana.tmp.staging.global-communications-academy.com
     http:
       paths:
       - path: /
