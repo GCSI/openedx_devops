@@ -187,7 +187,7 @@ jobs:
           namespace: ${{ env.NAMESPACE }}
 
       - name: Configure MongoDB
-        uses: openedx-actions/tutor-k8s-configure-mongodb@v1.0.0
+        uses: openedx-actions/tutor-k8s-configure-mongodb@v1.0.1
         with:
           namespace: ${{ env.NAMESPACE }}
           remote-server: "true"
