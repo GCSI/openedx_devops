@@ -27,11 +27,11 @@ metadata:
 spec:
   tls:
   - hosts:
-    - "tmp.staging.global-communications-academy.com"
-    - "*.tmp.staging.global-communications-academy.com"
+    - "staging.tmp.global-communications-academy.com"
+    - "*.staging.tmp.global-communications-academy.com"
     secretName: wild-openedx-live-tls
   rules:
-  - host: tmp.staging.global-communications-academy.com
+  - host: staging.tmp.global-communications-academy.com
     http:
       paths:
       - path: /
@@ -41,7 +41,7 @@ spec:
             name: lms
             port:
               number: 8000
-  - host: studio.tmp.staging.global-communications-academy.com
+  - host: studio.staging.tmp.global-communications-academy.com
     http:
       paths:
       - path: /
@@ -51,7 +51,7 @@ spec:
             name: cms
             port:
               number: 8000
-  - host: discovery.tmp.staging.global-communications-academy.com
+  - host: discovery.staging.tmp.global-communications-academy.com
     http:
       paths:
       - path: /
@@ -62,7 +62,7 @@ spec:
             port:
               number: 8000
 
-  - host: notes.tmp.staging.global-communications-academy.com
+  - host: notes.staging.tmp.global-communications-academy.com
     http:
       paths:
       - path: /
@@ -73,7 +73,7 @@ spec:
             port:
               number: 8120
 
-  - host: apps.tmp.staging.global-communications-academy.com
+  - host: apps.staging.tmp.global-communications-academy.com
     http:
       paths:
       - path: /
@@ -84,7 +84,7 @@ spec:
             port:
               number: 8002
 
-  - host: subscriptions.tmp.staging.global-communications-academy.com
+  - host: subscriptions.staging.tmp.global-communications-academy.com
     http:
       paths:
       - path: /
