@@ -25,4 +25,4 @@ spec:
           # for the environment domain.
           route53:
             region: eu-west-2
-            hostedZoneID: Z06272372FLKF1XJYWWUT
+            hostedZoneID: Z064875321HWHFIU4D76W
