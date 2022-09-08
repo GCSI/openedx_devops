@@ -21,6 +21,12 @@ provider "kubernetes" {
   token                  = data.aws_eks_cluster_auth.eks.token
 }
 
+provider "kubectl" {
+  host                   = data.aws_eks_cluster.eks.endpoint
+  cluster_ca_certificate = base64decode(data.aws_eks_cluster.eks.certificate_authority.0.data)
+  token                  = data.aws_eks_cluster_auth.eks.token
+}
+
 
 # Retrieve the mysql_root connection parameters from the shared resource namespace.
 # we'll refer to this data for the HOST and PORT assignments on all other MySQL

@@ -24,3 +24,6 @@ variable "environment_namespace" {
   type = string
 }
 
+variable "openedx_environment_namespace" {
+  type = string  
+}
