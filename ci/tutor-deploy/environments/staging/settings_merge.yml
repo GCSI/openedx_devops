@@ -117,8 +117,9 @@ SOCIAL_MEDIA_FOOTER_URLS:
   twitter: https://twitter.com/
   facebook: https://www.facebook.com/
 SUPPORT_SITE_LINK: https://global-communications-academy.com/support/
-TIME_ZONE: America/New_York
+TIME_ZONE: Europe/London
 THIRD_PARTY_AUTH_BACKENDS:
+- gcsi_edxapi.booking.BookingOAuth2
 - social_core.backends.google.GoogleOAuth2
 - social_core.backends.facebook.FacebookOAuth2
 WIKI_ENABLED: false
