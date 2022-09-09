@@ -16,6 +16,6 @@ spec:
   issuerRef:
     kind: ClusterIssuer
     name: letsencrypt
-  commonName: staging.tmp.global-communications-academy.com
+  commonName: staging.global-communications-academy.com
   dnsNames:
-    - "*.staging.tmp.global-communications-academy.com"
+    - "*.staging.global-communications-academy.com"

@@ -22,7 +22,7 @@ NUMBER_OF_BACKUPS_TO_RETAIN="10"      # Note: this only regards local storage (i
 #   
 #    MYSQL_HOST=codlp-global-live.cueotjvguuws.eu-west-2.rds.amazonaws.com
 #    MYSQL_PORT=3306
-#    MYSQL_ROOT_PASSWORD=***...***
+#    MYSQL_ROOT_PASSWORD=******
 #    MYSQL_ROOT_USERNAME=root
 #
 #------------------------------------------------------------------------------

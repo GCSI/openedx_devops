@@ -16,6 +16,7 @@ jobs:
     env:
       # common settings
       # --------------------------------------------
+      DEBUG_MODE: false
       AWS_REGION: eu-west-2
 
       # environment settings
@@ -27,24 +28,30 @@ jobs:
 
       # feature flags for optional tutor modules
       # --------------------------------------------
-      DEBUG_MODE: false
-      ENABLE_S3: true
-      ENABLE_BACKUP: false
-      ENABLE_CREDENTIALS: false
-      
-      ENABLE_DISCOVERY: true
-      ENABLE_ECOMMERCE: false
       ENABLE_FORUM: true
       ENABLE_MFE: true
       ENABLE_NOTES: true
+      ENABLE_S3: true
+
+      # other optional features that codlp doesn't use
+      # --------------------------------------------
+      ENABLE_DISCOVERY: false
+      ENABLE_ECOMMERCE: false
+      ENABLE_BACKUP: false
       ENABLE_XQUEUE: false
+      ENABLE_CREDENTIALS: false
       ENABLE_LICENSE_MANAGER: false
       
-
+    # deployment workflow begins here
+    # --------------------------------------------
     steps:
+      # checkout github repos: this repo, plus, all Gihubs Actions repos in this workflow
       - name: Checkout
         uses: actions/checkout@v3.0.2
 
+      # AWS helper Github Actions. creates a session token that's usable by all other
+      # aws-actions. Prevents us from having to explicitly provide authentication credentials
+      # to each of these individually.
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1.7.0
         with:
@@ -52,6 +59,8 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
 
+      # Open edX Github Actions init procedure. Provides reliable initializations of
+      # kubectl, aws-cli and tutor
       - name: Initialize environment
         uses: openedx-actions/tutor-k8s-init@v1.0.4
         with:
@@ -60,6 +69,8 @@ jobs:
           aws-region: ${{ env.AWS_REGION }}
           tutor-version: "14.0.5"
 
+      # Setup a connection to our AWS Elastic Container Registry so that we can pull
+      # containers that we created with the build workflows in this Cookiecutter.
       - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1

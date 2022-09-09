@@ -5,13 +5,13 @@
 # used in 
 #   gcsi_edxapi/management/commands/gcasbootstrap.py
 #   gcsi_edxapi/management/commands/create_gcas_oauth_application_client_confg.py
-EDX_DOMAIN_NAME: "staging.tmp.global-communications-academy.com"
+EDX_DOMAIN_NAME: "staging.global-communications-academy.com"
 #
 # used in gcsi_edxapi and gcsi_grades 
-GCAS_BASE_URL: https://platform.staging.tmp.global-communications-academy.com
+GCAS_BASE_URL: https://platform.staging.global-communications-academy.com
 #
 # used in gcsi_grades
-BOOKING_AUTH_BASE_URL: https://platform.staging.tmp.global-communications-academy.com/
+BOOKING_AUTH_BASE_URL: https://platform.staging.global-communications-academy.com/
 #
 #GCAS_CLIENT_ID: lbUdStCkVl1ngLBgUQ9ghcsQihu7HScmRWe2Umkx
 #GCAS_CLIENT_SECRET: d01g6qlQ16HUAGqjTRj597DoAB6SGyBNCbKbMFKRTVvn2GSSTLOFVdgbpw0Ybld5YTsHGbwyRuGIEWanNV6obY2dy2QrM3ucEnvpKlGs52H21BbYU9Il5sRYY4xGjeva
@@ -22,9 +22,9 @@ GCSI_BOOKING_SYSTEM_USER_API_USER: gcas-api-user
 CORS_ORIGIN_ALLOW_ALL: true
 CORS_ORIGIN_WHITELIST:
 - https://global-communications-academy.com
-- https://staging.tmp.global-communications-academy.com
-- https://studio.staging.tmp.global-communications-academy.com
-CROSS_DOMAIN_CSRF_COOKIE_DOMAIN: "staging.tmp.global-communications-academy.com"
+- https://staging.global-communications-academy.com
+- https://studio.staging.global-communications-academy.com
+CROSS_DOMAIN_CSRF_COOKIE_DOMAIN: "staging.global-communications-academy.com"
 CROSS_DOMAIN_CSRF_COOKIE_NAME: native-csrf-cookie
 CSRF_COOKIE_SECURE: true
 CSRF_TRUSTED_ORIGINS: []
@@ -35,7 +35,7 @@ AWS_SES_REGION_ENDPOINT: email.eu-west-2.amazonaws.com
 AWS_SES_REGION_NAME: "eu-west-2"
 CREDIT_HELP_LINK_URL: https://global-communications-academy.com/support/
 DEFAULT_MOBILE_AVAILABLE: false
-DEFAULT_EMAIL_LOGO_URL: https://cdn.staging.tmp.global-communications-academy.com
+DEFAULT_EMAIL_LOGO_URL: https://cdn.staging.global-communications-academy.com
 ENTERPRISE_SUPPORT_URL: https://global-communications-academy.com/support/
 ENTERPRISE_TAGLINE: "codlp"
 FACEBOOK_API_VERSION: v12.0
@@ -50,7 +50,7 @@ FEATURES:
   # -----------------------------------------------------
   ENABLE_CHANGE_USER_PASSWORD_ADMIN: true
   CERTIFICATES_HTML_VIEW: true
-  PREVIEW_LMS_BASE: "staging.tmp.global-communications-academy.com/"
+  PREVIEW_LMS_BASE: "staging.global-communications-academy.com/"
   ENABLE_COURSEWARE_INDEX: true
   ENABLE_CSMH_EXTENDED: false
   ENABLE_LEARNER_RECORDS: true
@@ -90,7 +90,7 @@ FEATURES:
 ID_VERIFICATION_SUPPORT_LINK: https://global-communications-academy.com/support/
 LANGUAGE_CODE: en
 LANGUAGE_COOKIE: openedx-language-preference
-LOGO_URL_PNG: "https://cdn.staging.tmp.global-communications-academy.com"
+LOGO_URL_PNG: "https://cdn.staging.global-communications-academy.com"
 PLATFORM_DESCRIPTION: "Your School"
 PLATFORM_FACEBOOK_ACCOUNT: http://www.facebook.com/
 PLATFORM_NAME: "codlp"
@@ -106,12 +106,12 @@ REGISTRATION_EXTRA_FIELDS:
   mailing_address: hidden
   terms_of_service: hidden
   year_of_birth: hidden
-SESSION_COOKIE_DOMAIN: "staging.tmp.global-communications-academy.com"
+SESSION_COOKIE_DOMAIN: "staging.global-communications-academy.com"
 SESSION_COOKIE_NAME: sessionid
 SESSION_COOKIE_SECURE: true
 SOCIAL_AUTH_REDIRECT_IS_HTTPS: true
 SOCIAL_AUTH_RAISE_EXCEPTIONS: false
-SOCIAL_AUTH_BACKEND_ERROR_URL: https://staging.tmp.global-communications-academy.com/oauth-error
+SOCIAL_AUTH_BACKEND_ERROR_URL: https://staging.global-communications-academy.com/oauth-error
 SOCIAL_MEDIA_FOOTER_URLS:
   linkedin: https://www.linkedin.com/
   twitter: https://twitter.com/
