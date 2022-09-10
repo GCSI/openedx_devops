@@ -51,15 +51,15 @@ locals {
   # see: https://aws.amazon.com/ec2/instance-types/
   #----------------------------------------------------------------------------
   kubernetes_version = "1.22"
-  eks_worker_group_instance_type = "t3.xlarge"
+  eks_worker_group_instance_type = "t3.large"
   eks_worker_group_min_size = 0
   eks_worker_group_max_size = 1
   eks_worker_group_desired_size = 0
 
-  eks_karpenter_group_instance_type = "t3.xlarge"
-  eks_karpenter_group_min_size = 2
-  eks_karpenter_group_max_size =  10
-  eks_karpenter_group_desired_size =  2
+  eks_karpenter_group_instance_type = "t3.large"
+  eks_karpenter_group_min_size = 3
+  eks_karpenter_group_max_size =  3
+  eks_karpenter_group_desired_size =  3
 
   tags = {
     Stack = local.stack
