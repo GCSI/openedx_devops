@@ -103,6 +103,9 @@ REGISTRATION_EXTRA_FIELDS:
   mailing_address: hidden
   terms_of_service: hidden
   year_of_birth: hidden
+REST_FRAMEWORK:
+  DEFAULT_THROTTLE_RATES:
+    user: "1000/minute"
 SESSION_COOKIE_DOMAIN: "staging.global-communications-academy.com"
 SESSION_COOKIE_NAME: sessionid
 SESSION_COOKIE_SECURE: true
