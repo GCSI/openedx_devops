@@ -113,7 +113,7 @@ SOCIAL_MEDIA_FOOTER_URLS:
   linkedin: https://www.linkedin.com/
   twitter: https://twitter.com/
   facebook: https://www.facebook.com/
-SUPPORT_SITE_LINK: https://global-communications-academy.com/support/
+SUPPORT_SITE_LINK: https://staging.global-communications-academy.com/help/
 TIME_ZONE: Europe/London
 THIRD_PARTY_AUTH_BACKENDS:
 - gcsi_edxapi.booking.BookingOAuth2
