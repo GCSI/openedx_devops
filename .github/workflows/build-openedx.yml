@@ -61,27 +61,37 @@ jobs:
       # note that `repository-token` is optional and is only needed for
       # private repositories
       #------------------------------------------------------------------------
-      - name: Add an edx plugin
+      - name: Add an GCSI custom openedx plugin
         uses: openedx-actions/tutor-plugin-build-openedx-add-requirement@v1.0.0
         with:
-          repository: openedx-plugin-example
-          repository-organization: lpm0073
-          repository-ref: main
-          # UN-COMMENT THIS IF YOUR REPO IS PRIVATE.
-          #----------------------------------------------
-          repository-token: ${{ secrets.PAT }}
-          #----------------------------------------------
-
-      - name: Add an Xblock
-        uses: openedx-actions/tutor-plugin-build-openedx-add-requirement@v1.0.0
-        with:
-          repository: edx-ora2
-          repository-organization: openedx
+          repository: gcsi-digital-learning-openedx
+          repository-organization: GCSI
           repository-ref: master
-          # UN-COMMENT THIS IF YOUR REPO IS PRIVATE.
-          #----------------------------------------------
           repository-token: ${{ secrets.PAT }}
-          #----------------------------------------------
+
+      - name: Add Xblock - edx-sga
+        uses: openedx-actions/tutor-plugin-build-openedx-add-requirement@v1.0.0
+        with:
+          repository: edx-sga
+          repository-organization: mitodl
+          repository-ref: master
+          repository-token: ${{ secrets.PAT }}
+
+      - name: Add Xblock - xblock-in-video-quiz
+        uses: openedx-actions/tutor-plugin-build-openedx-add-requirement@v1.0.0
+        with:
+          repository: xblock-in-video-quiz
+          repository-organization: Stanford-Online
+          repository-ref: master
+          repository-token: ${{ secrets.PAT }}
+
+      - name: Add Xblock - xblock-activetable
+        uses: openedx-actions/tutor-plugin-build-openedx-add-requirement@v1.0.0
+        with:
+          repository: xblock-activetable
+          repository-organization: open-craft
+          repository-ref: master
+          repository-token: ${{ secrets.PAT }}
 
       #------------------------------------------------------------------------
       # Build and upload the Docker container
