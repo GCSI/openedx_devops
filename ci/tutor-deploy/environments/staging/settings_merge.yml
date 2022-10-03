@@ -90,7 +90,7 @@ LANGUAGE_COOKIE: openedx-language-preference
 LOGO_URL_PNG: "https://cdn.staging.global-communications-academy.com"
 PLATFORM_DESCRIPTION: "Your School"
 PLATFORM_FACEBOOK_ACCOUNT: http://www.facebook.com/
-PLATFORM_NAME: "codlp"
+PLATFORM_NAME: "GCA Courses"
 PLATFORM_TWITTER_ACCOUNT: ''
 REGISTRATION_EXTRA_FIELDS:
   city: hidden
