@@ -16,8 +16,8 @@ jobs:
     env:
       AWS_REGION: eu-west-2
 
-      CUSTOM_THEME_REPOSITORY: edx-theme-example
-      CUSTOM_THEME_REPOSITORY_ORGANIZATION: lpm0073
+      CUSTOM_THEME_REPOSITORY: gcsi-openedx-theme
+      CUSTOM_THEME_REPOSITORY_ORGANIZATION: GCSI
       CUSTOM_THEME_REPOSITORY_REF: main
 
     steps:
