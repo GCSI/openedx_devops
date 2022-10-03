@@ -8,13 +8,13 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: cms
-  maxReplicas: 25
+  maxReplicas: 5
   minReplicas: 2
   behavior:
     scaleDown:
       policies:
       - type: Pods
-        value: 5
+        value: 1
         periodSeconds: 300
       - type: Percent
         value: 20
