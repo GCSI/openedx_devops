@@ -45,6 +45,8 @@ FEATURES:
   COURSES_ARE_BROWSABLE: false
   ENABLE_SERVICE_STATUS: true
   # -----------------------------------------------------
+  # mcdaniel nov-2022: to remove the Help link from the authenticated header menu
+  ENABLE_HELP_LINK: false
   ENABLE_CHANGE_USER_PASSWORD_ADMIN: true
   CERTIFICATES_HTML_VIEW: true
   PREVIEW_LMS_BASE: "staging.global-communications-academy.com/"
