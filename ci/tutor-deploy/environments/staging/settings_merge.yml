@@ -1,6 +1,4 @@
 ---
-ADDL_INSTALLED_APPS:
-- edx_sga
 # custom GCAS parameters
 # ----------------------
 #
