@@ -69,13 +69,14 @@ jobs:
           repository-ref: master
           repository-token: ${{ secrets.PAT }}
 
-      - name: Add Xblock - edx-sga
-        uses: openedx-actions/tutor-plugin-build-openedx-add-requirement@v1.0.0
-        with:
-          repository: edx-sga
-          repository-organization: mitodl
-          repository-ref: master
-          repository-token: ${{ secrets.PAT }}
+      # mcdaniel nov-2022: this is already included in edx-platform base.txt
+      #- name: Add Xblock - edx-sga
+      #  uses: openedx-actions/tutor-plugin-build-openedx-add-requirement@v1.0.0
+      #  with:
+      #    repository: edx-sga
+      #    repository-organization: mitodl
+      #    repository-ref: master
+      #    repository-token: ${{ secrets.PAT }}
 
       - name: Add Xblock - xblock-in-video-quiz
         uses: openedx-actions/tutor-plugin-build-openedx-add-requirement@v1.0.0
