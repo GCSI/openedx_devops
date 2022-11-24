@@ -1,8 +1,6 @@
 ---
 ADDL_INSTALLED_APPS:
-- edx-sga
-- xblock-in-video-quiz
-- xblock-activetable
+- edx_sga
 # custom GCAS parameters
 # ----------------------
 #
@@ -41,6 +39,10 @@ ENTERPRISE_SUPPORT_URL: https://global-communications-academy.com/support/
 ENTERPRISE_TAGLINE: "codlp"
 FACEBOOK_API_VERSION: v12.0
 FEATURES:
+  # mcdaniel nov-2022
+  # for edx-sga
+  # -----------------------------------------------------
+  ALLOW_ALL_ADVANCED_COMPONENTS: true
   # mcdaniel aug-2022: to setup our own url from plugin.
   # -----------------------------------------------------
   ENABLE_DJANGO_ADMIN_SITE: true
