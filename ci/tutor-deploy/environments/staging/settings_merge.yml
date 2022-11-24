@@ -1,4 +1,8 @@
 ---
+ADDL_INSTALLED_APPS:
+- edx-sga
+- xblock-in-video-quiz
+- xblock-activetable
 # custom GCAS parameters
 # ----------------------
 #
