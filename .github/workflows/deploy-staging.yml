@@ -151,7 +151,7 @@ jobs:
           namespace: ${{ env.NAMESPACE }}
 
       - name: Enable tutor plugin - Notes
-        uses: openedx-actions/tutor-plugin-enable-notes@v1.0.0
+        uses: openedx-actions/tutor-plugin-enable-notes@v1.0.1
         if: ${{ env.ENABLE_NOTES == 'true' }}
         with:
           namespace: ${{ env.NAMESPACE }}

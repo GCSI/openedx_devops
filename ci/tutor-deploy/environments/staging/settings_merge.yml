@@ -37,6 +37,12 @@ ENTERPRISE_SUPPORT_URL: https://global-communications-academy.com/support/
 ENTERPRISE_TAGLINE: "codlp"
 FACEBOOK_API_VERSION: v12.0
 FEATURES:
+  # -----------------------------------------------------
+  # mcdaniel nov-2022
+  # trouble shoot notes service
+  # - https://discuss.overhang.io/t/how-to-create-a-new-database-for-notes/57/4
+  ACTIVATE_NOTES: true
+  # -----------------------------------------------------
   # mcdaniel nov-2022
   # for edx-sga
   # -----------------------------------------------------
