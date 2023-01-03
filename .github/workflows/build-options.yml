@@ -39,6 +39,8 @@ jobs:
 
       - name: Initialize environment
         uses: openedx-actions/tutor-k8s-init@v1.0.4
+        with: 
+          tutor-version: v14.2.3
 
       - name: Build Backup
         if: ${{ env.ENABLE_BACKUP == 'true' }}
