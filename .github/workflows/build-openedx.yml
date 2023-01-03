@@ -62,24 +62,15 @@ jobs:
       # private repositories
       #------------------------------------------------------------------------
       - name: Add an GCSI custom openedx plugin
-        uses: openedx-actions/tutor-plugin-build-openedx-add-requirement@v1.0.0
+        uses: openedx-actions/tutor-plugin-build-openedx-add-requirement@v1.0.4
         with:
           repository: gcsi-digital-learning-openedx
           repository-organization: GCSI
           repository-ref: master
           repository-token: ${{ secrets.PAT }}
 
-      # mcdaniel nov-2022: this is already included in edx-platform base.txt
-      #- name: Add Xblock - edx-sga
-      #  uses: openedx-actions/tutor-plugin-build-openedx-add-requirement@v1.0.0
-      #  with:
-      #    repository: edx-sga
-      #    repository-organization: mitodl
-      #    repository-ref: master
-      #    repository-token: ${{ secrets.PAT }}
-
       - name: Add Xblock - xblock-in-video-quiz
-        uses: openedx-actions/tutor-plugin-build-openedx-add-requirement@v1.0.0
+        uses: openedx-actions/tutor-plugin-build-openedx-add-requirement@v1.0.4
         with:
           repository: xblock-in-video-quiz
           repository-organization: Stanford-Online
@@ -87,10 +78,18 @@ jobs:
           repository-token: ${{ secrets.PAT }}
 
       - name: Add Xblock - xblock-activetable
-        uses: openedx-actions/tutor-plugin-build-openedx-add-requirement@v1.0.0
+        uses: openedx-actions/tutor-plugin-build-openedx-add-requirement@v1.0.4
         with:
           repository: xblock-activetable
           repository-organization: open-craft
+          repository-ref: master
+          repository-token: ${{ secrets.PAT }}
+
+      - name: Add xblock-free-text-response
+        uses: openedx-actions/tutor-plugin-build-openedx-add-requirement@v1.0.4
+        with:
+          repository: xblock-free-text-response
+          repository-organization: openedx
           repository-ref: master
           repository-token: ${{ secrets.PAT }}
 
