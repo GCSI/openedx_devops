@@ -52,7 +52,7 @@ jobs:
 
       - name: Build MFE
         if: ${{ env.ENABLE_MFE == 'true' }}
-        uses: openedx-actions/tutor-plugin-build-mfe@v0.1.5
+        uses: openedx-actions/tutor-plugin-build-mfe@v0.1.6
         with:
           subdomain: ${SUBDOMAIN}
           domain-name: ${DOMAIN_NAME}
