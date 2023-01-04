@@ -30,11 +30,11 @@ jobs:
       # --------------------------------------------
       ENABLE_FORUM: true
       ENABLE_MFE: true
-      ENABLE_NOTES: true
       ENABLE_S3: true
 
       # other optional features that codlp doesn't use
       # --------------------------------------------
+      ENABLE_NOTES: false
       ENABLE_DISCOVERY: false
       ENABLE_ECOMMERCE: false
       ENABLE_BACKUP: false
@@ -67,7 +67,7 @@ jobs:
           eks-namespace: ${{ env.NAMESPACE }}
           eks-cluster-name: ${{ env.EKS_CLUSTER_NAME }}
           aws-region: ${{ env.AWS_REGION }}
-          tutor-version: "14.0.5"
+          tutor-version: v14.2.3
 
       # Setup a connection to our AWS Elastic Container Registry so that we can pull
       # containers that we created with the build workflows in this Cookiecutter.
@@ -222,16 +222,13 @@ jobs:
       # ---------------------------------------------------------------------------------
       # Add your custom configuration tasks here ....
       # ---------------------------------------------------------------------------------
-      - name: Disable LMS courseware micro front-end app
-        uses: openedx-actions/tutor-plugin-configure-courseware-mfe@v0.0.2
-        with:
-          enabled: 'false'
 
-      - name: Configure 3rd Party Authentication
+      # see https://github.com/overhangio/tutor-mfe
+      # Disabling individual MFEs
+      - name: disable MFE_AUTHN_MFE_APP
         shell: bash
         run:  |-
-          tutor config save --set OPENEDX_FACEBOOK_APP_ID="${{ inputs.facebook-app-id }}" \
-                            --set OPENEDX_FACEBOOK_APP_SECRET="${{ inputs.facebook-app-secret }}"
+          tutor config save --set MFE_AUTHN_MFE_APP=null
 
       - name: Dump tutor config
         uses: openedx-actions/tutor-print-dump@v1.0.0
