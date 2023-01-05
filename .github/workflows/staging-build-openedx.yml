@@ -5,7 +5,7 @@
 # usage: top-level workflow. Initiated manually from Github Actions console page
 #        Builds all Docker containers.
 #------------------------------------------------------------------------------
-name: Build openedx container
+name: Staging Build openedx container
 
 on:
   workflow_dispatch:
@@ -21,7 +21,7 @@ jobs:
       CUSTOM_THEME_REPOSITORY_REF: main
 
     steps:
-      - uses: actions/checkout@v3.0.2
+      - uses: actions/checkout@v3.2.0
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1.7.0
@@ -99,4 +99,4 @@ jobs:
       # Build and upload the Docker container
       #------------------------------------------------------------------------
       - name: Build openedx
-        uses: openedx-actions/tutor-plugin-build-openedx@v1.0.0
+        uses: openedx-actions/tutor-plugin-build-openedx@v1.0.2
