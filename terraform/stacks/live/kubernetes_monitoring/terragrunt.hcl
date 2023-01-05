@@ -18,7 +18,7 @@ locals {
   tags = merge(
     local.stack_vars.locals.tags,
     local.global_vars.locals.tags,
-    { Name = "${local.namespace}-eks" }
+    { Name = "${local.stack_namespace}-eks" }
   )
 }
 
@@ -77,8 +77,10 @@ include {
 inputs = {
   namespace = local.namespace
   stack_namespace = local.stack_namespace
-  karpenter_node_group_iam_role_name = dependency.kubernetes.outputs.karpenter_node_group_iam_role_name
-  karpenter_node_group_iam_role_arn = dependency.kubernetes.outputs.karpenter_node_group_iam_role_arn
+  #karpenter_node_group_iam_role_name = dependency.kubernetes.outputs.karpenter_node_group_iam_role_name
+  #karpenter_node_group_iam_role_arn = dependency.kubernetes.outputs.karpenter_node_group_iam_role_arn
+  karpenter_node_group_iam_role_name = "blah"
+  karpenter_node_group_iam_role_arn = "blah"
   oidc_provider_arn = dependency.kubernetes.outputs.oidc_provider_arn
   tags = local.tags
 }
