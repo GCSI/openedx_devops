@@ -5,7 +5,7 @@
 # usage: top-level workflow. Initiated manually from Github Actions console page
 #        Deploys a Tutor-created openedx Docker image to the Kubernetes cluster.
 #------------------------------------------------------------------------------
-name: Deploy codlp staging
+name: Staging Deploy codlp staging
 
 on:
   workflow_dispatch:
@@ -28,20 +28,20 @@ jobs:
 
       # feature flags for optional tutor modules
       # --------------------------------------------
-      ENABLE_S3: true
-      ENABLE_BACKUP: false
-      ENABLE_CREDENTIALS: false
-      
-      ENABLE_DISCOVERY: true
-      ENABLE_ECOMMERCE: false
-      ENABLE_FORUM: false
+      ENABLE_FORUM: true
       ENABLE_MFE: true
-      ENABLE_NOTES: false
+      ENABLE_S3: true
+      ENABLE_NOTES: true
+
+      # other optional features that codlp doesn't use
+      # --------------------------------------------
+      ENABLE_DISCOVERY: false
+      ENABLE_ECOMMERCE: false
+      ENABLE_BACKUP: false
       ENABLE_XQUEUE: false
-      
+      ENABLE_CREDENTIALS: false
       ENABLE_LICENSE_MANAGER: false
       
-
     # deployment workflow begins here
     # --------------------------------------------
     steps:
@@ -49,9 +49,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3.2.0
 
-      # AWS helper method. creates a session token that's usable by all other
+      # AWS helper Github Actions. creates a session token that's usable by all other
       # aws-actions. Prevents us from having to explicitly provide authentication credentials
-      # to each aws-actions method individually.
+      # to each of these individually.
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1.7.0
         with:
@@ -67,7 +67,7 @@ jobs:
           eks-namespace: ${{ env.NAMESPACE }}
           eks-cluster-name: ${{ env.EKS_CLUSTER_NAME }}
           aws-region: ${{ env.AWS_REGION }}
-          tutor-version: "14.2.3"
+          tutor-version: v14.2.3
 
       # Setup a connection to our AWS Elastic Container Registry so that we can pull
       # containers that we created with the build workflows in this Cookiecutter.
@@ -131,16 +131,18 @@ jobs:
           namespace: ${{ env.NAMESPACE }}
 
       - name: Enable tutor plugin - MFE
-        uses: openedx-actions/tutor-plugin-enable-mfe@v0.0.1
         if: ${{ env.ENABLE_MFE == 'true' }}
-        with:
-          aws-ecr-uri: ${AWS_ECR_REPOSITORY_MFE}
+        shell: bash
+        run:  |-
+          pip install tutor-mfe
+          tutor plugins enable mfe
+          tutor config save --set MFE_AUTHN_MFE_APP=null
+
 
       - name: Enable tutor plugin - Credentials
-        uses: openedx-actions/tutor-plugin-enable-credentials@v1.0.0
+        uses: openedx-actions/tutor-plugin-enable-credentials@v0.0.6
         if: ${{ env.ENABLE_CREDENTIALS == 'true' }}
         with:
-          version: latest
           namespace: ${{ env.NAMESPACE }}
           aws-ecr-uri: ${AWS_ECR_REPOSITORY_CREDENTIALS}
           common-logo-url: https://www.edx.org/images/logos/edx-logo-elm.svg
@@ -174,7 +176,6 @@ jobs:
         uses: openedx-actions/tutor-enable-plugin-license-manager@v0.0.3
         if: ${{ env.ENABLE_LICENSE_MANAGER == 'true' }}
         with:
-          namespace: ${{ env.NAMESPACE }}
           aws-ecr-uri: ${AWS_ECR_REPOSITORY_LICENSE_MANAGER}
           host: subscriptions.staging.global-communications-academy.com
           lms_host: staging.global-communications-academy.com
@@ -185,8 +186,8 @@ jobs:
       - name: Configure SMTP
         uses: openedx-actions/tutor-k8s-configure-smtp@v1.0.0
         with:
-          aws-ses-iam-key: ${{ secrets.AWS_SES_IAM_KEY }}
-          aws-ses-iam-secret: ${{ secrets.AWS_SES_IAM_SECRET }}
+          aws-ses-iam-key: ${{ secrets.aws-ses-iam-key }}
+          aws-ses-iam-secret: ${{ secrets.aws-ses-iam-secret }}
           aws-region: ${{ env.AWS_REGION }}
 
       - name: Configure Redis
@@ -224,21 +225,13 @@ jobs:
       # ---------------------------------------------------------------------------------
       # Add your custom configuration tasks here ....
       # ---------------------------------------------------------------------------------
-      - name: Disable Caddy web proxy service
+
+      # see https://github.com/overhangio/tutor-mfe
+      # Disabling individual MFEs
+      - name: disable MFE_AUTHN_MFE_APP
         shell: bash
         run:  |-
-          tutor config save --set ENABLE_WEB_PROXY=false
-
-      - name: Disable LMS courseware micro front-end app
-        uses: openedx-actions/tutor-plugin-configure-courseware-mfe@v0.0.2
-        with:
-          enabled: 'false'
-
-      - name: Configure 3rd Party Authentication
-        shell: bash
-        run:  |-
-          tutor config save --set OPENEDX_FACEBOOK_APP_ID="${{ inputs.facebook-app-id }}" \
-                            --set OPENEDX_FACEBOOK_APP_SECRET="${{ inputs.facebook-app-secret }}"
+          tutor config save --set MFE_AUTHN_MFE_APP=null
 
       - name: Dump tutor config
         uses: openedx-actions/tutor-print-dump@v1.0.0
@@ -258,7 +251,7 @@ jobs:
       - name: Set theme
         shell: bash
         run:  |-
-          tutor k8s do settheme edx-theme
+          tutor k8s do settheme gcsi-openedx-theme
 
       - name: Create admin user
         uses: openedx-actions/tutor-k8s-configure-edx-admin@v1.0.1
