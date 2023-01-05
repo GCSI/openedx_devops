@@ -10,11 +10,12 @@
 #
 # reference:  https://github.com/edx/edx-documentation/blob/master/en_us/install_operations/source/platform_releases/ginkgo.rst
 #
-# mongo 'mongodb://${MONGODB_HOST}:27017' 
+# mongo 'mongodb://${MONGODB_HOST}:27017'
 #---------------------------------------------------------
 
-MONGODB_HOST="mongodb:27017"
-S3_BUCKET="mcdaniel-migration"
+
+MONGODB_HOST="mongodb.global-communications-academy.com:27017"
+S3_BUCKET="codlp-global-staging-storage"
 
 BACKUPS_DIRECTORY="/home/ubuntu/backups/"
 WORKING_DIRECTORY="/home/ubuntu/backup-tmp/"
