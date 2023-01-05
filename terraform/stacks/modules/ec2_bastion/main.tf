@@ -20,8 +20,7 @@ resource "aws_instance" "bastion" {
 
   vpc_security_group_ids = [
     resource.aws_security_group.sg_bastion.id,
-    data.aws_security_group.stack-namespace-node.id,
-    data.aws_security_group.k8s_nodes_idle-eks-node-group.id
+    data.aws_security_group.stack-namespace-node.id
   ]
 
   root_block_device {
@@ -226,21 +225,12 @@ resource "random_integer" "subnet_id" {
   max = 2
 }
 
-data "aws_security_group" "k8s_nodes_idle-eks-node-group" {
-
-  tags = {
-    Name = "k8s_nodes_idle-eks-node-group"
-  }
-
-}
-
 data "aws_security_group" "stack-namespace-node" {
-
   tags = {
     Name = "${var.stack_namespace}-node"
   }
-
 }
+
 
 # create a dedicated security group for the bastion that
 # only allows public ssh access.
@@ -272,10 +262,10 @@ resource "aws_security_group" "sg_bastion" {
 
 # Create a static IP address and a DNS record to
 # add to the root domain.
-# resource "aws_eip" "elasticip" {
-#   instance = aws_instance.bastion.id
-#   tags     = var.tags
-# }
+resource "aws_eip" "elasticip" {
+  instance = aws_instance.bastion.id
+  tags     = var.tags
+}
 
 resource "aws_route53_record" "bastion" {
   zone_id = data.aws_route53_zone.stack.id
@@ -284,7 +274,7 @@ resource "aws_route53_record" "bastion" {
   ttl     = "600"
 
 
-  records = [aws_instance.bastion.public_ip]
+  records = [aws_eip.elasticip.public_ip]
 }
 
 # private ssh key for public access to the bastion.
@@ -306,9 +296,9 @@ resource "kubernetes_secret" "ssh_secret" {
     namespace = var.stack_namespace
   }
 
-# mcdaniel aug-2022: switch from DNS host name
-# to EC2 public ip address bc of occasional delays
-# in updates to Route53 DNS
+  # mcdaniel aug-2022: switch from DNS host name
+  # to EC2 public ip address bc of occasional delays
+  # in updates to Route53 DNS
   data = {
     HOST            = aws_instance.bastion.public_ip
     USER            = "ubuntu"
