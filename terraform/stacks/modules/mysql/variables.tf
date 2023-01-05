@@ -8,7 +8,7 @@
 #------------------------------------------------------------------------------
 
 variable "root_domain" {
-  type        = string
+  type = string
 }
 variable "allocated_storage" {
   description = "The allocated storage in gigabytes"
