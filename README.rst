@@ -51,14 +51,13 @@ production installation of Open edX that will automatically scale up, reliably s
 
 **NEW IN VERSION 1.03: an optional fully-configured remote MongoDB server running on an EC2 instance. Set cookiecutter.stack_add_remote_mongodb=Y to choose this option.**
 
+**NEW IN VERSION 1.05: Kubernetes upgrade to 1.24, plus a new adminstrative server with all of the preinstalled software that you'll need to administer your Open edX platform. Set cookiecutter.stack_add_bastion=Y to choose this option.**
+
 The Terraform scripts in this repo provide a 1-click means of creating / updating / destroying the following for each environment:
 
 - LMS at https://staging.global-communications-academy.com
 - CMS at https://studio.staging.global-communications-academy.com
 - CDN at https://cdn.staging.global-communications-academy.com linked to a public read-only S3 bucket named staging-codlp-global-storage
-- Grafana at https://grafana.staging.global-communications-academy.com/login
-  - user: admin
-  - pwd: prom-operator
 - public ssh access via a t2.micro Ubuntu 20.04 LTS bastion EC2 instance at bastion.staging.global-communications-academy.com
 - daily data backups archived into a private S3 bucket named staging-codlp-global-mongodb-backup
 
@@ -88,57 +87,45 @@ This repository was generated using `Cookiecutter <https://cookiecutter.readthed
   * - `Redis Cache <https://redis.io/>`_
     - 6.x
   * - `Tutor Docker-based Open edX Installer <https://docs.tutor.overhang.io/>`_
-    - latest stable
+    - 14.2.3
   * - `Tutor Plugin: Object storage for Open edX with S3 <https://github.com/hastexo/tutor-contrib-s3>`_
-    - v1.0.0
-  * - `Tutor Plugin: Backup & Restore <https://github.com/hastexo/tutor-contrib-backup>`_
-    - v1.0.0
-  * - `Tutor Plugin: Credentials Application <https://github.com/lpm0073/tutor-contrib-credentials>`_
-    - v13.0.2
+    - v1.0.1
   * - `Tutor Plugin: Discovery Service <https://github.com/overhangio/tutor-discovery>`_
     - latest stable
   * - `Tutor Plugin: Micro Front-end Service <https://github.com/overhangio/tutor-mfe>`_
     - latest stable
-  * - `Tutor Plugin: Ecommerce Service <https://github.com/overhangio/tutor-ecommerce>`_
-    - latest stable
-  * - `Tutor Plugin: Xqueue Service <https://github.com/overhangio/tutor-xqueue>`_
-    - latest stable
-  * - `Tutor Plugin: Notes Service <https://github.com/overhangio/tutor-notes>`_
-    - latest stable
-  * - `Tutor Plugin: Discussion Forum Service <https://github.com/overhangio/tutor-forum>`_
-    - latest stable
   * - `Tutor Plugin: Android Application <https://github.com/overhangio/tutor-android>`_
     - latest stable
   * - `Kubernetes Cluster <https://kubernetes.io/>`_
-    - 1.22
+    - 1.24
   * - `Terraform <https://www.terraform.io/>`_
-    - ~> 1.2
+    - ~> 1.3
   * - `terraform-aws-modules/acm <https://registry.terraform.io/modules/terraform-aws-modules/acm/aws/latest>`_
-    - ~> 3.4
+    - ~> 4.3
   * - `terraform-aws-modules/cloudfront <https://registry.terraform.io/modules/terraform-aws-modules/cloudfront/aws/latest>`_
-    - ~> 2.9
+    - ~> 3.1
   * - `terraform-aws-modules/eks <https://registry.terraform.io/modules/terraform-aws-modules/eks/aws/latest>`_
-    - ~> 18.27
+    - ~> 19.4
   * - `terraform-aws-modules/iam <https://registry.terraform.io/modules/terraform-aws-modules/iam/aws/latest>`_
-    - ~> 5.2
+    - ~> 5.9
   * - `terraform-aws-modules/rds <https://registry.terraform.io/modules/terraform-aws-modules/rds/aws/latest>`_
-    - ~> 5.0
+    - ~> 5.2
   * - `terraform-aws-modules/s3-bucket <https://registry.terraform.io/modules/terraform-aws-modules/s3-bucket/aws/latest>`_
-    - ~> 3.3
+    - ~> 3.6
   * - `terraform-aws-modules/security-group <https://registry.terraform.io/modules/terraform-aws-modules/security-group/aws/latest>`_
-    - ~> 4.9
+    - ~> 4.16
   * - `terraform-aws-modules/vpc <https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws/latest>`_
-    - ~> 3.14
+    - ~> 3.18
   * - Terraform `Helm cert-manager <https://charts.jetstack.io>`_
-    - ~> 1.8
+    - 1.9
   * - Terraform `Kubernetes Provider <https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs>`_
-    - ~> 2.12
+    - ~> 2.16
   * - Terraform `AWS Provider <https://registry.terraform.io/providers/hashicorp/aws/latest/docs>`_
-    - ~> 4.25
+    - ~> 4.48
   * - Terraform `Local Provider <https://registry.terraform.io/providers/hashicorp/local/latest/docs>`_
     - ~> 2.2
   * - Terraform `Random Provider <https://registry.terraform.io/providers/hashicorp/random/latest/docs>`_
-    - ~> 3.3
+    - ~> 3.4
 
 
 Important Considerations
@@ -175,7 +162,7 @@ Set your `global parameters <terraform/environments/global.hcl>`_
   locals {
     platform_name    = "codlp"
     platform_region  = "global"
-    root_domain      = "global-communications-academy.com.ai"
+    root_domain      = "global-communications-academy.com"
     aws_region       = "eu-west-2"
     account_id       = "824885811700"
   }
@@ -258,7 +245,19 @@ Specifically with regard to MySQL, several 3rd party analytics tools provide out
   :width: 700
   :alt: Connecting to MySQL Workbench
 
-V. Add more Kubernetes admins
+V. Manage your new Kubernetes cluster
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Installs four of the most popular web applications:
+
+- `k9s <https://k9scli.io/>`_, preinstalled in the optional EC2 Bastion server. K9s is an amazing retro styled, ascii-based UI for viewing and monitoring all aspects of your Kubernetes cluster. It looks and runs great from any ssh-connected terminal window.
+- `Kubernetes Dashboard <https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/>`_ at https://dashboard.k8s.global-communications-academy.com. Written by the same team that maintain Kubernetes, Kubernetes Dashboard provides an elegant web UI for monitoring and administering your kubernetes cluster.
+- `Kubeapps <https://kubeapps.dev/>`_ at https://kubeapps.k8s.global-communications-academy.com. Maintained by VMWare Bitnami, Kubeapps is the easiest way to install popular open source software packages from MySQL and MongoDB to Wordpress and Drupal.
+- `Grafana <https://grafana.com/>`_ at https://grafana.k8s.global-communications-academy.com/login. Provides an elegant web UI to view time series data gathered by prometheus and metrics-server.
+  - user: admin
+  - pwd: prom-operator
+
+VI. Add more Kubernetes admins
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 By default your AWS IAM user account will be the only user who can view, interact with and manage your new Kubernetes cluster. Other IAM users with admin permissions will still need to be explicitly added to the list of Kluster admins.
