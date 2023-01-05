@@ -63,7 +63,7 @@ resource "aws_security_group" "all_worker_mgmt" {
 
 module "eks" {
   source                          = "terraform-aws-modules/eks/aws"
-  version                         = "~> 18.27"
+  version                         = "~> 19.4"
   cluster_name                    = var.namespace
   cluster_version                 = var.kubernetes_cluster_version
   cluster_endpoint_private_access = true
@@ -79,6 +79,15 @@ module "eks" {
     # security group that Karpenter should utilize with the following tag
     { "karpenter.sh/discovery" = var.namespace }
   )
+
+  cluster_addons = {
+    coredns    = {}
+    kube-proxy = {}
+    aws-ebs-csi-driver = {
+      service_account_role_arn = aws_iam_role.AmazonEKS_EBS_CSI_DriverRole.arn
+      addon_version            = "v1.14.0-eksbuild.1"
+    }
+  }
 
   node_security_group_additional_rules = {
     ingress_self_all = {
@@ -111,43 +120,7 @@ module "eks" {
     }
   }
 
-  eks_managed_node_group_defaults = {
-    iam_role_additional_policies = [
-      "arn:${local.partition}:iam::aws:policy/AmazonSSMManagedInstanceCore"
-    ]
-  }
-
   eks_managed_node_groups = {
-    # -------------------------------------------------------------------------
-    # 1.) Static node group, configured for extended platform idle states.
-    # -------------------------------------------------------------------------
-    # This group ensures that one node exists in every
-    # aws availability zone at all times, which is important for ensuring that
-    # there is a matching node for all existing k8s Persistent Volume Claims.
-    # The EC2 instance type for this group should be small. the Cookiecutter
-    # EC2 default instance type is t3.medium.
-    #
-    # Cost optimizing the EC2 instance type for this group is a great idea.
-    # For example, you might consider purchasing EC2 Reserved instances
-    # for these nodes as this will reduce your EC2 costs by around 40%.
-    # https://aws.amazon.com/ec2/pricing/reserved-instances/
-
-    k8s_nodes_idle = {
-      capacity_type     = "SPOT"
-      enable_monitoring = false
-      min_size          = var.eks_worker_group_min_size
-      max_size          = var.eks_worker_group_max_size
-      desired_size      = var.eks_worker_group_desired_size
-      instance_types    = [var.eks_worker_group_instance_type]
-      tags = merge(
-        var.tags,
-        { Name = "eks-${var.shared_resource_identifier}-node-idle" }
-      )
-    }
-
-    # -------------------------------------------------------------------------
-    # 2.) Dynamic node group, for scaling.
-    # -------------------------------------------------------------------------
     # This node group is managed by Karpenter. There must be at least
     # node in this group at all times in order for Karpenter to monitor
     # load and act on metrics data. Karpenter's bin packing algorithms
@@ -163,7 +136,16 @@ module "eks" {
       desired_size      = var.eks_karpenter_group_desired_size
       min_size          = var.eks_karpenter_group_min_size
       max_size          = var.eks_karpenter_group_max_size
-      instance_types    = ["${var.eks_karpenter_group_instance_type}"]
+
+      iam_role_additional_policies = {
+        # Required by Karpenter
+        AmazonSSMManagedInstanceCore = "arn:${local.partition}:iam::aws:policy/AmazonSSMManagedInstanceCore"
+
+        # Required by EBS CSI Add-on
+        AmazonEBSCSIDriverPolicy = data.aws_iam_policy.AmazonEBSCSIDriverPolicy.arn
+      }
+
+      instance_types = ["${var.eks_karpenter_group_instance_type}"]
       tags = merge(
         var.tags,
         { Name = "eks-${var.shared_resource_identifier}-karpenter" }

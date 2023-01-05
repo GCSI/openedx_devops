@@ -26,9 +26,9 @@ output "cluster_endpoint" {
   value       = module.eks.cluster_endpoint
 }
 
-output "cluster_id" {
+output "cluster_name" {
   description = "The name/id of the EKS cluster. Will block on cluster creation until the cluster is really ready"
-  value       = module.eks.cluster_id
+  value       = module.eks.cluster_name
 }
 
 output "cluster_oidc_issuer_url" {
@@ -156,7 +156,13 @@ output "fargate_profiles" {
 ################################################################################
 # EKS Managed Node Group
 ################################################################################
+output "karpenter_node_group_iam_role_name" {
+  value = module.eks.eks_managed_node_groups["karpenter"].iam_role_name
+}
 
+output "karpenter_node_group_iam_role_arn" {
+  value = module.eks.eks_managed_node_groups["karpenter"].iam_role_arn
+}
 output "eks_managed_node_groups" {
   description = "Map of attribute maps for all EKS managed node groups created"
   value       = module.eks.eks_managed_node_groups
