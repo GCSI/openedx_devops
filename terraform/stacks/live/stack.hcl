@@ -50,8 +50,8 @@ locals {
   #
   # see: https://aws.amazon.com/ec2/instance-types/
   #----------------------------------------------------------------------------
-  kubernetes_version = "1.22"
-  eks_worker_group_instance_type = "t3.large"
+  kubernetes_version = "1.24"
+  eks_worker_group_instance_type = "t3.xlarge"
   eks_worker_group_min_size = 0
   eks_worker_group_max_size = 1
   eks_worker_group_desired_size = 0
