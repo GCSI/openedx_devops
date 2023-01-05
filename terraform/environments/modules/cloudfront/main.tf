@@ -41,6 +41,7 @@ data "aws_acm_certificate" "environment_domain" {
   statuses   = ["ISSUED"]
   provider   = aws.us-east-1
   depends_on = [module.acm_environment_domain]
+  
 }
 
 data "aws_s3_bucket" "environment_domain" {
@@ -64,7 +65,7 @@ resource "aws_route53_record" "cdn_environment_domain" {
 
 module "cdn_environment_domain" {
   source  = "terraform-aws-modules/cloudfront/aws"
-  version = "~> 2.9"
+  version = "~> 3.1"
 
   aliases = [local.cdn_name]
 
