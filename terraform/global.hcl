@@ -11,6 +11,7 @@ locals {
   platform_name              = "codlp"
   platform_region            = "global"
   shared_resource_identifier = "live"
+  shared_resource_namespace  = "codlp-global-live"
   root_domain                = "global-communications-academy.com"
   admin_domain               = "k8s.global-communications-academy.com"
   aws_region                 = "eu-west-2"

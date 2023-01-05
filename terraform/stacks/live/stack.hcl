@@ -26,7 +26,7 @@ locals {
 
   # Bastion EC2 instance sizing
   bastion_instance_type    = "t3.micro"
-  bastion_allocated_storage = 20
+  bastion_allocated_storage = 50
   
 
   #----------------------------------------------------------------------------
@@ -58,7 +58,7 @@ locals {
 
   eks_karpenter_group_instance_type = "t3.large"
   eks_karpenter_group_min_size = 3
-  eks_karpenter_group_max_size =  3
+  eks_karpenter_group_max_size =  10
   eks_karpenter_group_desired_size =  3
 
   tags = {
