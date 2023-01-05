@@ -12,6 +12,7 @@ locals {
   platform_region            = "global"
   shared_resource_identifier = "live"
   root_domain                = "global-communications-academy.com"
+  admin_domain               = "k8s.global-communications-academy.com"
   aws_region                 = "eu-west-2"
   account_id                 = "824885811700"
 
