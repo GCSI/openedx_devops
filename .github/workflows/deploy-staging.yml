@@ -159,10 +159,17 @@ jobs:
           namespace: ${{ env.NAMESPACE }}
 
       - name: Enable tutor plugin - Notes
-        uses: openedx-actions/tutor-plugin-enable-notes@v1.0.2
+        #uses: openedx-actions/tutor-plugin-enable-notes@v1.0.2
         if: ${{ env.ENABLE_NOTES == 'true' }}
-        with:
-          namespace: ${{ env.NAMESPACE }}
+        #with:
+        #  namespace: ${{ env.NAMESPACE }}
+        shell: bash
+        run:  |-
+          pip list
+          pip install tutor-notes==14.0.1
+          tutor plugins enable notes
+          pip list
+
 
       - name: Enable tutor plugin - Ecommerce
         uses: openedx-actions/tutor-plugin-enable-ecommerce@v1.0.2
