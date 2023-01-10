@@ -181,8 +181,14 @@ jobs:
           enabled-payment-processors: '["stripe", "paypal"]'
 
       - name: Enable tutor plugin - Forum
-        uses: openedx-actions/tutor-plugin-enable-forum@v1.0.0
+        $uses: openedx-actions/tutor-plugin-enable-forum@v1.0.0
         if: ${{ env.ENABLE_FORUM == 'true' }}
+        shell: bash
+        run:  |-
+          pip list
+          pip install tutor-forum==14.0.0
+          tutor plugins enable forum
+          pip list
 
       - name: Enable tutor plugin - License Manager
         uses: openedx-actions/tutor-enable-plugin-license-manager@v0.0.3
