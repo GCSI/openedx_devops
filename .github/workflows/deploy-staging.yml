@@ -181,7 +181,7 @@ jobs:
           enabled-payment-processors: '["stripe", "paypal"]'
 
       - name: Enable tutor plugin - Forum
-        $uses: openedx-actions/tutor-plugin-enable-forum@v1.0.0
+        #uses: openedx-actions/tutor-plugin-enable-forum@v1.0.0
         if: ${{ env.ENABLE_FORUM == 'true' }}
         shell: bash
         run:  |-
