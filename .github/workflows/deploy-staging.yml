@@ -269,7 +269,8 @@ jobs:
       - name: Set theme
         shell: bash
         run:  |-
-          tutor k8s do settheme gcsi-openedx-theme
+          #tutor k8s do settheme gcsi-openedx-theme
+          tutor k8s settheme gcsi-openedx-theme
 
       - name: Create admin user
         uses: openedx-actions/tutor-k8s-configure-edx-admin@v1.0.1
