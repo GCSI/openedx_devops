@@ -140,7 +140,9 @@ jobs:
           pip list
           pip install tutor-mfe==14.0.2
           tutor plugins enable mfe
-          tutor config save --set MFE_AUTHN_MFE_APP=null
+          tutor config save --set MFE_DOCKER_IMAGE=${AWS_ECR_REPOSITORY_MFE} \
+                            --set MFE_ENABLE_HTTPS=true          
+                            --set MFE_AUTHN_MFE_APP=null
           pip list
 
 
