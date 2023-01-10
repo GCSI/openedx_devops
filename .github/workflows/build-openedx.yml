@@ -36,7 +36,7 @@ jobs:
       - name: Initialize environment
         uses: openedx-actions/tutor-k8s-init@v1.0.4
         with: 
-          tutor-version: v14.2.3
+          tutor-version: "14.0.5"
 
       #------------------------------------------------------------------------
       # Add a custom theme here.
