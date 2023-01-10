@@ -244,12 +244,16 @@ jobs:
       # Add your custom configuration tasks here ....
       # ---------------------------------------------------------------------------------
 
-      # see https://github.com/overhangio/tutor-mfe
-      # Disabling individual MFEs
-      - name: disable MFE_AUTHN_MFE_APP
+      # see: https://github.com/overhangio/tutor-mfe
+      - name: Disable all MFEs
         shell: bash
-        run:  |-
-          tutor config save --set MFE_AUTHN_MFE_APP=null
+        run: |-
+          tutor config save --set MFE_ACCOUNT_MFE_APP=null \
+                            --set MFE_GRADEBOOK_MFE_APP=null \
+                            --set MFE_PROFILE_MFE_APP=null \
+                            --set MFE_COURSE_AUTHORING_MFE_APP=null \
+                            --set MFE_DISCUSSIONS_MFE_APP=null \
+                            --set MFE_AUTHN_MFE_APP=null \
 
       - name: Dump tutor config
         uses: openedx-actions/tutor-print-dump@v1.0.0
