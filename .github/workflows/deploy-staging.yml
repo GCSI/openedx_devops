@@ -137,9 +137,11 @@ jobs:
         #  aws-ecr-uri: ${AWS_ECR_REPOSITORY_MFE}
         shell: bash
         run:  |-
-          pip install tutor-mfe
+          pip list
+          pip install tutor-mfe==14.0.5
           tutor plugins enable mfe
           tutor config save --set MFE_AUTHN_MFE_APP=null
+          pip list
 
 
       - name: Enable tutor plugin - Credentials
