@@ -72,6 +72,15 @@ module "eks" {
   vpc_id                          = var.vpc_id
   subnet_ids                      = var.private_subnet_ids
   create_cloudwatch_log_group     = false
+
+  cluster_addons = {
+    coredns = {}
+    kube-proxy = {}
+    aws-ebs-csi-driver = {
+      service_account_role_arn = aws_iam_role.AmazonEKS_EBS_CSI_DriverRole.arn
+    }
+  }
+
   tags = merge(
     var.tags,
     # Tag node group resources for Karpenter auto-discovery
