@@ -55,7 +55,8 @@ resource "random_password" "mongodb_openedx" {
   }
 }
 
-
+# not currently using authentication for mongodb, which
+# is the same default treatment as with tutor.
 resource "kubernetes_secret" "openedx" {
   metadata {
     name      = "mongodb-openedx"

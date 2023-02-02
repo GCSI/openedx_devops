@@ -7,7 +7,6 @@
 # usage: Add DNS records and tls certs to environment aws_region for ALB.
 # Also add certs to us-east-1 for Cloudfront distributions.
 #------------------------------------------------------------------------------
-
 #------------------------------------------------------------------------------
 # SSL/TLS certs issued in the AWS region for ALB
 #------------------------------------------------------------------------------
@@ -22,7 +21,7 @@ provider "aws" {
 
 module "acm_environment_domain" {
   source  = "terraform-aws-modules/acm/aws"
-  version = "~> 3.4"
+  version = "~> 4.3"
 
   providers = {
     aws = aws.us-east-1
@@ -45,3 +44,4 @@ module "acm_environment_domain" {
   )
 
 }
+

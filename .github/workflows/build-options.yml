@@ -16,19 +16,17 @@ jobs:
     env:
       ENABLE_BACKUP: false
       ENABLE_CREDENTIALS: false
-      ENABLE_MFE: true
       ENABLE_LICENSE_MANAGER: false
-
       SUBDOMAIN: staging
       DOMAIN_NAME: global-communications-academy.com
       SITE_NAME: codlp
       AWS_REGION: eu-west-2
 
     steps:
-      - uses: actions/checkout@v3.0.2
+      - uses: actions/checkout@v3.2.0
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
+        uses: docker/setup-buildx-action@v2.2.1
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1.7.0
@@ -39,8 +37,11 @@ jobs:
 
       - name: Initialize environment
         uses: openedx-actions/tutor-k8s-init@v1.0.4
-        with: 
-          tutor-version: v14.2.3
+        with:
+          eks-namespace: ${{ env.NAMESPACE }}
+          eks-cluster-name: ${{ env.EKS_CLUSTER_NAME }}
+          aws-region: ${{ env.AWS_REGION }}
+          tutor-version: "15.2.0"
 
       - name: Build Backup
         if: ${{ env.ENABLE_BACKUP == 'true' }}
@@ -48,15 +49,10 @@ jobs:
 
       - name: Build Credentials
         if: ${{ env.ENABLE_CREDENTIALS == 'true' }}
-        uses: openedx-actions/tutor-plugin-build-credentials@v0.1.5
-
-      - name: Build MFE
-        if: ${{ env.ENABLE_MFE == 'true' }}
-        uses: openedx-actions/tutor-plugin-build-mfe@v0.1.6
+        uses: openedx-actions/tutor-plugin-build-credentials@v1.0.0
         with:
-          subdomain: ${SUBDOMAIN}
-          domain-name: ${DOMAIN_NAME}
-          site-name: ${SITE_NAME}
+          version: latest
+          aws-ecr-repo: openedx_credentials
 
       - name: Build License Manager
         if: ${{ env.ENABLE_LICENSE_MANAGER == 'true' }}

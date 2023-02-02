@@ -11,10 +11,12 @@ locals {
   platform_name              = "codlp"
   platform_region            = "global"
   shared_resource_identifier = "live"
+  shared_resource_namespace  = "codlp-global-live"
   root_domain                = "global-communications-academy.com"
   services_subdomain         = "service.global-communications-academy.com"
   aws_region                 = "eu-west-2"
   account_id                 = "824885811700"
+  studio_subdomain           = "studio"
 
   tags = {
     "cookiecutter/platform_name"                = local.platform_name

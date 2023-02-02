@@ -15,13 +15,11 @@ jobs:
     runs-on: ubuntu-latest
     env:
       AWS_REGION: eu-west-2
-
-      CUSTOM_THEME_REPOSITORY: gcsi-openedx-theme
-      CUSTOM_THEME_REPOSITORY_ORGANIZATION: GCSI
-      CUSTOM_THEME_REPOSITORY_REF: main
+      NAMESPACE: codlp-global-staging
+      EKS_CLUSTER_NAME: codlp-global-live
 
     steps:
-      - uses: actions/checkout@v3.0.2
+      - uses: actions/checkout@v3.2.0
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1.7.0
@@ -35,8 +33,11 @@ jobs:
       #------------------------------------------------------------------------
       - name: Initialize environment
         uses: openedx-actions/tutor-k8s-init@v1.0.4
-        with: 
-          tutor-version: "14.0.5"
+        with:
+          eks-namespace: ${{ env.NAMESPACE }}
+          eks-cluster-name: ${{ env.EKS_CLUSTER_NAME }}
+          aws-region: ${{ env.AWS_REGION }}
+          tutor-version: "15.2.0"
 
       #------------------------------------------------------------------------
       # Add a custom theme here.
@@ -44,12 +45,12 @@ jobs:
       - name: Add a custom theme
         uses: openedx-actions/tutor-plugin-build-openedx-add-theme@v1.0.0
         with:
-          repository: ${{ env.CUSTOM_THEME_REPOSITORY }}
-          repository-organization: ${{ env.CUSTOM_THEME_REPOSITORY_ORGANIZATION }}
-          repository-ref: ${{ env.CUSTOM_THEME_REPOSITORY_REF }}
+          repository: edx-theme-example
+          repository-organization: lpm0073
+          repository-ref: main
           # UN-COMMENT THIS IF YOUR REPO IS PRIVATE.
           #----------------------------------------------
-          repository-token: ${{ secrets.PAT }}
+          #repository-token: ${{ secrets.PAT }}
           #----------------------------------------------
 
       #------------------------------------------------------------------------
@@ -63,40 +64,33 @@ jobs:
       # note that `repository-token` is optional and is only needed for
       # private repositories
       #------------------------------------------------------------------------
-      - name: Add an GCSI custom openedx plugin
+      - name: Add an edx plugin
         uses: openedx-actions/tutor-plugin-build-openedx-add-requirement@v1.0.4
         with:
-          repository: gcsi-digital-learning-openedx
-          repository-organization: GCSI
-          repository-ref: master
-          repository-token: ${{ secrets.PAT }}
+          repository: openedx-plugin-example
+          repository-organization: lpm0073
+          repository-ref: main
+          # UN-COMMENT THIS IF YOUR REPO IS PRIVATE.
+          #----------------------------------------------
+          #repository-token: ${{ secrets.PAT }}
+          #----------------------------------------------
 
-      - name: Add Xblock - xblock-in-video-quiz
+      - name: Add an Xblock
         uses: openedx-actions/tutor-plugin-build-openedx-add-requirement@v1.0.4
         with:
-          repository: xblock-in-video-quiz
-          repository-organization: Stanford-Online
-          repository-ref: master
-          repository-token: ${{ secrets.PAT }}
-
-      - name: Add Xblock - xblock-activetable
-        uses: openedx-actions/tutor-plugin-build-openedx-add-requirement@v1.0.4
-        with:
-          repository: xblock-activetable
-          repository-organization: open-craft
-          repository-ref: master
-          repository-token: ${{ secrets.PAT }}
-
-      - name: Add xblock-free-text-response
-        uses: openedx-actions/tutor-plugin-build-openedx-add-requirement@v1.0.4
-        with:
-          repository: xblock-free-text-response
+          repository: edx-ora2
           repository-organization: openedx
           repository-ref: master
-          repository-token: ${{ secrets.PAT }}
+          # UN-COMMENT THIS IF YOUR REPO IS PRIVATE.
+          #----------------------------------------------
+          #repository-token: ${{ secrets.PAT }}
+          #----------------------------------------------
+
+      - name: Dump tutor config
+        uses: openedx-actions/tutor-print-dump@v1.0.0
 
       #------------------------------------------------------------------------
       # Build and upload the Docker container
       #------------------------------------------------------------------------
       - name: Build openedx
-        uses: openedx-actions/tutor-plugin-build-openedx@v1.0.0
+        uses: openedx-actions/tutor-plugin-build-openedx@v1.0.2

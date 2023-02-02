@@ -80,14 +80,14 @@ module "eks" {
   # this key is benign since Kubernetes secrets encryption
   # is not enabled by default.
   #
-  # AWS EKS KMS console: https://ap-south-1.console.aws.amazon.com/kms/home
+  # AWS EKS KMS console: https://eu-west-2.console.aws.amazon.com/kms/home
   #
   # audit your AWS EKS KMS key access by running:
-  # aws kms get-key-policy --key-id ADD-YOUR-KEY-ID-HERE --region ap-south-1 --policy-name default --output text
+  # aws kms get-key-policy --key-id ADD-YOUR-KEY-ID-HERE --region eu-west-2 --policy-name default --output text
   create_kms_key = var.eks_create_kms_key
 
   # un-comment this to add more IAM users to the KMS key owners list.
-  kms_key_owners                  = ["arn:aws:iam::${var.account_id}:user/system/bastion-user/${var.namespace}-bastion"]
+  #kms_key_owners                  = ["arn:aws:iam::${var.account_id}:user/system/bastion-user/${var.namespace}-bastion"]
 
   tags = merge(
     var.tags,
@@ -98,10 +98,15 @@ module "eks" {
   )
 
   cluster_addons = {
-    coredns = {}
-    kube-proxy = {}
+    coredns = {
+      addon_version = "v1.8.7-eksbuild.3"
+    }
+    kube-proxy = {
+      addon_version = "v1.24.9-eksbuild.1"
+    }
     aws-ebs-csi-driver = {
       service_account_role_arn = aws_iam_role.AmazonEKS_EBS_CSI_DriverRole.arn
+      addon_version            = "v1.15.0-eksbuild.1"
     }
   }
 
@@ -137,19 +142,6 @@ module "eks" {
   }
 
   eks_managed_node_groups = {
-    k8s_nodes_idle = {
-      capacity_type     = "SPOT"
-      enable_monitoring = false
-      min_size          = 3
-      max_size          = 3
-      desired_size      = 3
-      instance_types = ["${var.eks_karpenter_group_instance_type}"]
-      tags = merge(
-        var.tags,
-        { Name = "eks-${var.shared_resource_identifier}-node-idle" }
-      )
-    }
-
     # This node group is managed by Karpenter. There must be at least
     # node in this group at all times in order for Karpenter to monitor
     # load and act on metrics data. Karpenter's bin packing algorithms

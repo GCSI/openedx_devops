@@ -9,7 +9,7 @@
 
 module "openedx_storage" {
   source  = "terraform-aws-modules/s3-bucket/aws"
-  version = "~> 3.3"
+  version = "~> 3.6"
 
   bucket = var.resource_name_storage
   acl    = "private"
@@ -27,16 +27,19 @@ module "openedx_storage" {
 
 module "openedx_backup" {
   source  = "terraform-aws-modules/s3-bucket/aws"
-  version = "~> 3.3"
+  version = "~> 3.6"
 
   bucket = var.resource_name_backup
   acl    = "private"
 
+  versioning = {
+    enabled = true
+  }
 }
 
 module "openedx_secrets" {
   source  = "terraform-aws-modules/s3-bucket/aws"
-  version = "~> 3.3"
+  version = "~> 3.6"
 
   bucket = var.resource_name_secrets
   acl    = "private"
@@ -78,7 +81,8 @@ data "aws_iam_policy_document" "user_policy" {
       "s3:*"
     ]
     resources = [
-      module.openedx_storage.s3_bucket_arn
+      module.openedx_storage.s3_bucket_arn,
+      module.openedx_backup.s3_bucket_arn
     ]
   }
   statement {
@@ -86,7 +90,8 @@ data "aws_iam_policy_document" "user_policy" {
       "s3:*"
     ]
     resources = [
-      "${module.openedx_storage.s3_bucket_arn}/*"
+      "${module.openedx_storage.s3_bucket_arn}/*",
+      "${module.openedx_backup.s3_bucket_arn}/*"
     ]
   }
 }

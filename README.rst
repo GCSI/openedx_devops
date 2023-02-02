@@ -47,21 +47,25 @@ Tutor Open edX Production Devops Tools
 This repository contains Terraform code and Github Actions workflows to deploy and manage a `Tutor <https://docs.tutor.overhang.io/>`_ Kubernetes-managed
 production installation of Open edX that will automatically scale up, reliably supporting several hundred thousand learners.
 
-**NEW IN VERSION 1.02: SPOT PRICING FOR EC2 INSTANCES** Save up to 75% off the cost of on-demand EC2 instances by using AWS' flexible `spot-pricing <https://aws.amazon.com/ec2/spot/pricing/>`_ .
+Open edX Application Software Endpoints
+---------------------------------------
 
-**NEW IN VERSION 1.03: an optional fully-configured remote MongoDB server running on an EC2 instance. Set cookiecutter.stack_add_remote_mongodb=Y to choose this option.**
+- LMS: https://staging.global-communications-academy.com
+- Course Management Studio: https://studio.staging.global-communications-academy.com
+- **Content Delivery Network (CDN)**: https://cdn.staging.global-communications-academy.com linked to a public read-only S3 bucket named staging-codlp-global-storage
+- **AWS S3 Backups**: staging-codlp-global-backup.s3.amazonaws.com
+- **AWS S3 Storage**: staging-codlp-global-storage.s3.amazonaws.com
+- **AWS S3 Secrets**: staging-codlp-global-secrets.s3.amazonaws.com
 
-The Terraform scripts in this repo provide a 1-click means of creating / updating / destroying the following for each environment:
+Services Endpoints
+------------------
 
-- LMS at https://staging.global-communications-academy.com
-- CMS at https://studio.staging.global-communications-academy.com
-- CDN at https://cdn.staging.global-communications-academy.com linked to a public read-only S3 bucket named staging-codlp-global-storage
-- Grafana at https://grafana.staging.global-communications-academy.com/login
-  - user: admin
-  - pwd: prom-operator
-- public ssh access via a t2.micro Ubuntu 20.04 LTS bastion EC2 instance at bastion.staging.global-communications-academy.com
-- daily data backups archived into a private S3 bucket named staging-codlp-global-mongodb-backup
-
+- **Bastion**: bastion.service.global-communications-academy.com:22. Public ssh access to a t3.micro Ubuntu 20.04 LTS bastion EC2 instance that's preconfigure with all of the software that you'll need to adminster this stack.
+- **MySQL**: mysql.service.global-communications-academy.com:3306. Private VPC access to your AWS RDS MySQL db.t2.small instance with allocated storage of 10.
+- **MongoDB**: mongodb.service.global-communications-academy.com:27017. Private VPC access to your EC2-based installation of MongoDB on a t3.medium instance with allocated storage of 10.
+- **Kubernetes Dashboard**: https://dashboard.service.global-communications-academy.com. Dashboard is a web-based Kubernetes user interface. You can use Dashboard to deploy containerized applications to a Kubernetes cluster, troubleshoot your containerized application, and manage the cluster resources. You can use Dashboard to get an overview of applications running on your cluster, as well as for creating or modifying individual Kubernetes resources (such as Deployments, Jobs, DaemonSets, etc). For example, you can scale a Deployment, initiate a rolling update, restart a pod or deploy new applications using a deploy wizard.
+- **Kubeapps**: https://kubeapps.service.global-communications-academy.com. Kubeapps is an in-cluster web-based application that enables users with a one-time installation to deploy, manage, and upgrade applications on a Kubernetes cluster
+- **Grafana**: https://grafana.service.global-communications-academy.com. Grafana is a multi-platform open source analytics and interactive visualization web application. It provides charts, graphs, and alerts for the web when connected to supported data sources.
 You can also optionally automatically create additional environments for say, dev and test and QA and so forth.
 These would result in environments like the following:
 
@@ -70,8 +74,23 @@ These would result in environments like the following:
 - CDN at https://cdn.dev.staging.global-communications-academy.com linked to an S3 bucket named dev-codlp-global-storage
 - daily data backups archived into an S3 bucket named dev-codlp-global-mongodb-backup
 
+New Features
+------------
+
+**RELEASE v1.0.19:** Out of the box support for all MFE's.
+
+**RELEASE v1.0.8:** `Kubernetes Dashboard <https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/>`_ and `Kubeapps <https://kubeapps.dev/>`_ web applications.
+
+**RELEASE v1.0.5:** Kubernetes upgrade to 1.24, plus a new adminstrative server with all of the preinstalled software that you'll need to administer your Open edX platform. Set cookiecutter.stack_add_bastion=Y to choose this option.
+
+**RELEASE v1.0.3:** an optional fully-configured remote MongoDB server running on an EC2 instance. Set cookiecutter.stack_add_remote_mongodb=Y to choose this option.
+
+**RELEASE v1.0.2: SPOT PRICING FOR EC2 INSTANCES** Save up to 75% off the cost of on-demand EC2 instances by using AWS' flexible `spot-pricing <https://aws.amazon.com/ec2/spot/pricing/>`_ .
+
+
+
 Cookiecutter Manifest
-------------------------
+---------------------
 
 This repository was generated using `Cookiecutter <https://cookiecutter.readthedocs.io/>`_. Keep your repository up to date with the latest Terraform code and configuration versions of the Open edX application stack, AWS infrastructure services and api code libraries by occasionally re-generating the Cookiecutter template using this `make file <./make.sh>`_.
 
@@ -82,63 +101,119 @@ This repository was generated using `Cookiecutter <https://cookiecutter.readthed
   * - Software
     - Version
   * - `Open edX Named Release <https://edx.readthedocs.io/projects/edx-developer-docs/en/latest/named_releases.html>`_
-    - nutmeg.2
+    - olive.1
   * - `MySQL Server <https://www.mysql.com/>`_
     - 5.7.33
   * - `Redis Cache <https://redis.io/>`_
     - 6.x
   * - `Tutor Docker-based Open edX Installer <https://docs.tutor.overhang.io/>`_
-    - latest stable
+    - 15.2.0
   * - `Tutor Plugin: Object storage for Open edX with S3 <https://github.com/hastexo/tutor-contrib-s3>`_
-    - v1.0.0
-  * - `Tutor Plugin: Backup & Restore <https://github.com/hastexo/tutor-contrib-backup>`_
-    - v1.0.0
-  * - `Tutor Plugin: Credentials Application <https://github.com/lpm0073/tutor-contrib-credentials>`_
-    - v13.0.2
+    - v1.0.2
   * - `Tutor Plugin: Discovery Service <https://github.com/overhangio/tutor-discovery>`_
     - latest stable
   * - `Tutor Plugin: Micro Front-end Service <https://github.com/overhangio/tutor-mfe>`_
     - latest stable
-  * - `Tutor Plugin: Ecommerce Service <https://github.com/overhangio/tutor-ecommerce>`_
-    - latest stable
-  * - `Tutor Plugin: Xqueue Service <https://github.com/overhangio/tutor-xqueue>`_
-    - latest stable
-  * - `Tutor Plugin: Notes Service <https://github.com/overhangio/tutor-notes>`_
-    - latest stable
-  * - `Tutor Plugin: Discussion Forum Service <https://github.com/overhangio/tutor-forum>`_
-    - latest stable
   * - `Tutor Plugin: Android Application <https://github.com/overhangio/tutor-android>`_
     - latest stable
   * - `Kubernetes Cluster <https://kubernetes.io/>`_
-    - 1.22
+    - 1.24
   * - `Terraform <https://www.terraform.io/>`_
-    - ~> 1.2
-  * - `terraform-aws-modules/acm <https://registry.terraform.io/modules/terraform-aws-modules/acm/aws/latest>`_
-    - ~> 3.4
-  * - `terraform-aws-modules/cloudfront <https://registry.terraform.io/modules/terraform-aws-modules/cloudfront/aws/latest>`_
-    - ~> 2.9
-  * - `terraform-aws-modules/eks <https://registry.terraform.io/modules/terraform-aws-modules/eks/aws/latest>`_
-    - ~> 18.27
-  * - `terraform-aws-modules/iam <https://registry.terraform.io/modules/terraform-aws-modules/iam/aws/latest>`_
-    - ~> 5.2
-  * - `terraform-aws-modules/rds <https://registry.terraform.io/modules/terraform-aws-modules/rds/aws/latest>`_
-    - ~> 5.0
-  * - `terraform-aws-modules/s3-bucket <https://registry.terraform.io/modules/terraform-aws-modules/s3-bucket/aws/latest>`_
-    - ~> 3.3
-  * - `terraform-aws-modules/security-group <https://registry.terraform.io/modules/terraform-aws-modules/security-group/aws/latest>`_
-    - ~> 4.9
-  * - `terraform-aws-modules/vpc <https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws/latest>`_
-    - ~> 3.14
-  * - Terraform `Helm cert-manager <https://charts.jetstack.io>`_
-    - ~> 1.8
-  * - Terraform `Kubernetes Provider <https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs>`_
-    - ~> 2.12
-  * - Terraform `AWS Provider <https://registry.terraform.io/providers/hashicorp/aws/latest/docs>`_
-    - ~> 4.25
-  * - Terraform `Local Provider <https://registry.terraform.io/providers/hashicorp/local/latest/docs>`_
+    - ~> 1.3
+  * - Terraform Provider `Kubernetes <https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs>`_
+    - ~> 2.16
+  * - Terraform Provider `kubectl <https://registry.terraform.io/providers/gavinbunney/kubectl/latest/docs>`_
+    - ~> 1.14
+  * - Terraform Provider `helm <https://registry.terraform.io/providers/hashicorp/helm/latest/docs>`_
+    - ~> 2.8
+  * - Terraform Provider `AWS <https://registry.terraform.io/providers/hashicorp/aws/latest/docs>`_
+    - ~> 4.48
+  * - Terraform Provider `Local <https://registry.terraform.io/providers/hashicorp/local/latest/docs>`_
     - ~> 2.2
-  * - Terraform `Random Provider <https://registry.terraform.io/providers/hashicorp/random/latest/docs>`_
-    - ~> 3.3
+  * - Terraform Provider `Random <https://registry.terraform.io/providers/hashicorp/random/latest/docs>`_
+    - ~> 3.4
+  * - `terraform-aws-modules/acm <https://registry.terraform.io/modules/terraform-aws-modules/acm/aws/latest>`_
+    - ~> 4.3
+  * - `terraform-aws-modules/cloudfront <https://registry.terraform.io/modules/terraform-aws-modules/cloudfront/aws/latest>`_
+    - ~> 3.1
+  * - `terraform-aws-modules/eks <https://registry.terraform.io/modules/terraform-aws-modules/eks/aws/latest>`_
+    - ~> 19.4
+  * - `terraform-aws-modules/iam <https://registry.terraform.io/modules/terraform-aws-modules/iam/aws/latest>`_
+    - ~> 5.9
+  * - `terraform-aws-modules/rds <https://registry.terraform.io/modules/terraform-aws-modules/rds/aws/latest>`_
+    - ~> 5.2
+  * - `terraform-aws-modules/s3-bucket <https://registry.terraform.io/modules/terraform-aws-modules/s3-bucket/aws/latest>`_
+    - ~> 3.6
+  * - `terraform-aws-modules/security-group <https://registry.terraform.io/modules/terraform-aws-modules/security-group/aws/latest>`_
+    - ~> 4.16
+  * - `terraform-aws-modules/vpc <https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws/latest>`_
+    - ~> 3.18
+  * - `Helm cert-manager <https://charts.jetstack.io>`_
+    - ~> 1.10
+  * - `Helm Ingress Nginx Controller <https://kubernetes.github.io/ingress-nginx/>`_
+    - ~> 4.4
+  * - `Helm Vertical Pod Autoscaler <https://github.com/cowboysysop/charts/tree/master/charts/vertical-pod-autoscaler>`_
+    - ~> 6.0
+  * - `Helm Kubernetes Dashboard <https://kubernetes.github.io/dashboard/>`_
+    - ~> 6.0
+  * - `Helm kubeapps <https://bitnami.com/stack/kubeapps/helm>`_
+    - latest
+  * - `Helm Karpenter <https://artifacthub.io/packages/helm/karpenter/karpenter>`_
+    - ~> 0.16
+  * - `Helm Metrics Server <https://kubernetes-sigs.github.io/metrics-server/>`_
+    - ~> 3.8
+  * - `Helm Prometheus <https://prometheus-community.github.io/helm-charts/>`_
+    - ~> 43
+  * - `openedx-actions/tutor-k8s-init <https://github.com/marketplace/actions/open-edx-tutor-k8s-init>`_
+    - v1.0.4
+  * - `openedx-actions/tutor-k8s-configure-edx-secret <https://github.com/openedx-actions/tutor-k8s-configure-edx-secret>`_
+    - v1.0.0
+  * - `openedx-actions/tutor-k8s-configure-edx-admin <https://github.com/openedx-actions/tutor-k8s-configure-edx-admin>`_
+    - v1.0.1
+  * - `openedx-actions/tutor-k8s-configure-jwt <https://github.com/openedx-actions/tutor-k8s-configure-jwt>`_
+    - v1.0.0
+  * - `openedx-actions/tutor-k8s-configure-mysql <https://github.com/openedx-actions/tutor-k8s-configure-mysql>`_
+    - v1.0.2
+  * - `openedx-actions/tutor-k8s-configure-mongodb <https://github.com/openedx-actions/tutor-k8s-configure-mongodb>`_
+    - v1.0.1
+  * - `openedx-actions/tutor-k8s-configure-redis <https://github.com/openedx-actions/tutor-k8s-configure-redis>`_
+    - v1.0.0
+  * - `openedx-actions/tutor-k8s-configure-smtp <https://github.com/openedx-actions/tutor-k8s-configure-smtp>`_
+    - v1.0.0
+  * - `openedx-actions/tutor-print-dump <https://github.com/openedx-actions/tutor-print-dump>`_
+    - v1.0.0
+  * - `openedx-actions/tutor-plugin-build-backup <https://github.com/openedx-actions/tutor-plugin-build-backup>`_
+    - v0.1.7
+  * - `openedx-actions/tutor-plugin-build-credentials <https://github.com/openedx-actions/tutor-plugin-build-credentials>`_
+    - v1.0.0
+  * - `openedx-actions/tutor-plugin-build-license-manager <https://github.com/openedx-actions/tutor-plugin-build-license-manager>`_
+    - v0.0.2
+  * - `openedx-actions/tutor-plugin-build-openedx <https://github.com/openedx-actions/tutor-plugin-build-openedx>`_
+    - v1.0.2
+  * - `openedx-actions/tutor-plugin-build-openedx-add-requirement <https://github.com/openedx-actions/tutor-plugin-build-openedx-add-requirement>`_
+    - v1.0.4
+  * - `openedx-actions/tutor-plugin-build-openedx-add-theme <https://github.com/openedx-actions/tutor-plugin-build-openedx-add-theme>`_
+    - v1.0.0
+  * - `openedx-actions/tutor-plugin-enable-backup <https://github.com/openedx-actions/tutor-plugin-enable-backup>`_
+    - v0.0.10
+  * - `openedx-actions/tutor-plugin-enable-credentials <https://github.com/openedx-actions/tutor-plugin-enable-credentials>`_
+    - v1.0.0
+  * - `openedx-actions/tutor-plugin-enable-discovery <https://github.com/openedx-actions/tutor-plugin-enable-discovery>`_
+    - v1.0.0
+  * - `openedx-actions/tutor-plugin-enable-ecommerce <https://github.com/openedx-actions/tutor-plugin-enable-ecommerce>`_
+    - v1.0.2
+  * - `openedx-actions/tutor-plugin-enable-forum <https://github.com/openedx-actions/tutor-plugin-enable-forum>`_
+    - v1.0.0
+  * - `openedx-actions/tutor-plugin-enable-k8s-deploy-tasks <https://github.com/openedx-actions/tutor-plugin-enable-k8s-deploy-tasks>`_
+    - v0.0.1
+  * - `openedx-actions/tutor-enable-plugin-license-manager <https://github.com/openedx-actions/tutor-enable-plugin-license-manager>`_
+    - v0.0.3
+  * - `openedx-actions/tutor-plugin-enable-notes <https://github.com/openedx-actions/tutor-plugin-enable-notes>`_
+    - v1.0.2
+  * - `openedx-actions/tutor-plugin-enable-s3 <https://github.com/openedx-actions/tutor-plugin-enable-s3>`_
+    - v1.0.2
+  * - `openedx-actions/tutor-plugin-enable-xqueue <https://github.com/openedx-actions/tutor-plugin-enable-xqueue>`_
+    - v1.0.0
 
 
 Important Considerations
@@ -175,7 +250,7 @@ Set your `global parameters <terraform/environments/global.hcl>`_
   locals {
     platform_name    = "codlp"
     platform_region  = "global"
-    root_domain      = "global-communications-academy.com.ai"
+    root_domain      = "global-communications-academy.com"
     aws_region       = "eu-west-2"
     account_id       = "824885811700"
   }
@@ -258,7 +333,17 @@ Specifically with regard to MySQL, several 3rd party analytics tools provide out
   :width: 700
   :alt: Connecting to MySQL Workbench
 
-V. Add more Kubernetes admins
+V. Manage your new Kubernetes cluster
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Installs four of the most popular web applications:
+
+- `k9s <https://k9scli.io/>`_, preinstalled in the optional EC2 Bastion server. K9s is an amazing retro styled, ascii-based UI for viewing and monitoring all aspects of your Kubernetes cluster. It looks and runs great from any ssh-connected terminal window.
+- `Kubernetes Dashboard <https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/>`_ at https://dashboard.service.global-communications-academy.com. Written by the same team that maintain Kubernetes, Kubernetes Dashboard provides an elegant web UI for monitoring and administering your kubernetes cluster.
+- `Kubeapps <https://kubeapps.dev/>`_ at https://kubeapps.service.global-communications-academy.com. Maintained by VMWare Bitnami, Kubeapps is the easiest way to install popular open source software packages from MySQL and MongoDB to Wordpress and Drupal.
+- `Grafana <https://grafana.com/>`_ at https://grafana.service.global-communications-academy.com/login. Provides an elegant web UI to view time series data gathered by prometheus and metrics-server.
+
+VI. Add more Kubernetes admins
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 By default your AWS IAM user account will be the only user who can view, interact with and manage your new Kubernetes cluster. Other IAM users with admin permissions will still need to be explicitly added to the list of Kluster admins.
@@ -320,7 +405,7 @@ Both the Build as well as the Deploy workflows were pre-configured based on your
 I. Build your Tutor Docker Image
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Use `this automated Github Actions workflow <https://github.com/lpm0073/openedx_devops/actions/workflows/tutor_build_image.yml>`_ to build a customized Open edX Docker container based on the latest stable version of Open edX (current nutmeg.2) and
+Use `this automated Github Actions workflow <https://github.com/lpm0073/openedx_devops/actions/workflows/tutor_build_image.yml>`_ to build a customized Open edX Docker container based on the latest stable version of Open edX (current olive.1) and
 your Open edX custom theme repository and Open edX plugin repository. Your new Docker image will be automatically uploaded to `AWS Amazon Elastic Container Registry <https://eu-west-2.console.aws.amazon.com/ecr/repositories?region=eu-west-2>`_
 
 
