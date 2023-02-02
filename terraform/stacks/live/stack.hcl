@@ -50,19 +50,24 @@ locals {
   #
   # see: https://aws.amazon.com/ec2/instance-types/
   #----------------------------------------------------------------------------
-  kubernetes_version = "1.22"
+  kubernetes_version = "1.24"
+  eks_create_kms_key                = true
   eks_worker_group_instance_type = "t3.large"
-  eks_worker_group_min_size = 0
-  eks_worker_group_max_size = 1
-  eks_worker_group_desired_size = 0
+  eks_worker_group_min_size = 3
+  eks_worker_group_max_size = 3
+  eks_worker_group_desired_size = 3
 
   eks_karpenter_group_instance_type = "t3.large"
-  eks_karpenter_group_min_size = 3
-  eks_karpenter_group_max_size =  3
-  eks_karpenter_group_desired_size =  3
+  eks_karpenter_group_min_size = 0
+  eks_karpenter_group_max_size =  1
+  eks_karpenter_group_desired_size =  0
 
-  tags = {
-    Stack = local.stack
-  }
+  tags = merge(
+    local.global_vars.locals.tags,
+    {
+      "cookiecutter/stack"             = local.stack
+      "cookiecutter/stack_namespace"   = local.stack_namespace
+    }
+  )
 
 }

@@ -25,32 +25,32 @@ resource "helm_release" "karpenter" {
   name       = "karpenter"
   repository = "https://charts.karpenter.sh"
   chart      = "karpenter"
-  version    = "v0.13.2"
+  version    = "~> 0.16"
 
-  set {
-    name  = "serviceAccount.annotations.eks\\.amazonaws\\.com/role-arn"
-    value = module.karpenter_controller_irsa_role.iam_role_arn
-  }
+  # set {
+  #   name  = "serviceAccount.annotations.eks\\.amazonaws\\.com/role-arn"
+  #   value = module.karpenter_controller_irsa_role.iam_role_arn
+  # }
 
-  set {
-    name  = "clusterName"
-    value = module.eks.cluster_id
-  }
+  # set {
+  #   name  = "clusterName"
+  #   value = module.eks.cluster_id
+  # }
 
-  set {
-    name  = "clusterEndpoint"
-    value = module.eks.cluster_endpoint
-  }
+  # set {
+  #   name  = "clusterEndpoint"
+  #   value = module.eks.cluster_endpoint
+  # }
 
-  set {
-    name  = "aws.defaultInstanceProfile"
-    value = aws_iam_instance_profile.karpenter.name
-  }
+  # set {
+  #   name  = "aws.defaultInstanceProfile"
+  #   value = aws_iam_instance_profile.karpenter.name
+  # }
 
   depends_on = [
     module.eks,
-    module.karpenter_controller_irsa_role,
-    aws_iam_instance_profile.karpenter,
+    # module.karpenter_controller_irsa_role,
+    # aws_iam_instance_profile.karpenter,
     aws_iam_role.ec2_spot_fleet_tagging_role,
     aws_iam_role_policy_attachment.ec2_spot_fleet_tagging,
   ]
@@ -70,13 +70,10 @@ module "karpenter_controller_irsa_role" {
 
   role_name                          = "karpenter-controller-${var.namespace}"
   create_role                        = true
-  attach_karpenter_controller_policy = true
+  attach_karpenter_controller_policy = false
 
   karpenter_controller_cluster_id = module.eks.cluster_id
-  karpenter_controller_node_iam_role_arns = [
-    module.eks.eks_managed_node_groups["karpenter"].iam_role_arn,
-    module.eks.eks_managed_node_groups["k8s_nodes_idle"].iam_role_arn
-  ]
+  karpenter_controller_node_iam_role_arns = []
 
   oidc_providers = {
     ex = {
