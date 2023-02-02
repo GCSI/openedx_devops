@@ -96,29 +96,6 @@ resource "kubernetes_secret" "discovery" {
 }
 
 
-resource "random_password" "mysql_notes" {
-  length           = 16
-  special          = true
-  override_special = "_%@"
-  keepers = {
-    version = "1"
-  }
-}
-
-resource "kubernetes_secret" "notes" {
-  metadata {
-    name      = "mysql-notes"
-    namespace = var.environment_namespace
-  }
-
-  data = {
-    NOTES_MYSQL_DATABASE = substr("${var.db_prefix}_notes", -64, -1)
-    NOTES_MYSQL_USERNAME = substr("${var.db_prefix}_notes", -32, -1)
-    NOTES_MYSQL_PASSWORD = random_password.mysql_notes.result
-    MYSQL_HOST           = data.kubernetes_secret.mysql_root.data.MYSQL_HOST
-    MYSQL_PORT           = data.kubernetes_secret.mysql_root.data.MYSQL_PORT
-  }
-}
 
 resource "random_password" "mysql_xqueue" {
   length           = 16
@@ -145,27 +122,4 @@ resource "kubernetes_secret" "xqueue" {
 }
 
 
-resource "random_password" "mysql_license_manager" {
-  length           = 16
-  special          = true
-  override_special = "_%@"
-  keepers = {
-    version = "1"
-  }
-}
-
-resource "kubernetes_secret" "license_manager" {
-  metadata {
-    name      = "mysql-license-manager"
-    namespace = var.environment_namespace
-  }
-
-  data = {
-    LICENSE_MANAGER_MYSQL_DATABASE = substr("${var.db_prefix}_lm", -64, -1)
-    LICENSE_MANAGER_MYSQL_USERNAME = substr("${var.db_prefix}_lm", -32, -1)
-    LICENSE_MANAGER_MYSQL_PASSWORD = random_password.mysql_license_manager.result
-    MYSQL_HOST                     = data.kubernetes_secret.mysql_root.data.MYSQL_HOST
-    MYSQL_PORT                     = data.kubernetes_secret.mysql_root.data.MYSQL_PORT
-  }
-}
 

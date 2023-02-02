@@ -13,17 +13,21 @@ variable "environment_namespace" {
   type = string
 }
 
+variable "studio_subdomain" {
+  type = string
+}
 variable "shared_resource_namespace" {
   type = string
 }
 
-variable "namespace" {
-  type = string
-}
 
 variable "root_domain" {
   description = "Root domain (route53 zone) for the default cluster ingress."
   type        = string
+}
+
+variable "aws_region" {
+  type = string
 }
 
 variable "tags" {

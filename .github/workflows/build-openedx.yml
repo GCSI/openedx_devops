@@ -16,12 +16,8 @@ jobs:
     env:
       AWS_REGION: eu-west-2
 
-      CUSTOM_THEME_REPOSITORY: gcsi-openedx-theme
-      CUSTOM_THEME_REPOSITORY_ORGANIZATION: GCSI
-      CUSTOM_THEME_REPOSITORY_REF: main
-
     steps:
-      - uses: actions/checkout@v3.0.2
+      - uses: actions/checkout@v3.2.0
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1.7.0
@@ -35,8 +31,11 @@ jobs:
       #------------------------------------------------------------------------
       - name: Initialize environment
         uses: openedx-actions/tutor-k8s-init@v1.0.4
-        with: 
-          tutor-version: "14.0.5"
+        with:
+          eks-namespace: ${{ env.NAMESPACE }}
+          eks-cluster-name: ${{ env.EKS_CLUSTER_NAME }}
+          aws-region: ${{ env.AWS_REGION }}
+          tutor-version: "15.2.0"
 
       #------------------------------------------------------------------------
       # Add a custom theme here.
@@ -44,13 +43,10 @@ jobs:
       - name: Add a custom theme
         uses: openedx-actions/tutor-plugin-build-openedx-add-theme@v1.0.0
         with:
-          repository: ${{ env.CUSTOM_THEME_REPOSITORY }}
-          repository-organization: ${{ env.CUSTOM_THEME_REPOSITORY_ORGANIZATION }}
-          repository-ref: ${{ env.CUSTOM_THEME_REPOSITORY_REF }}
-          # UN-COMMENT THIS IF YOUR REPO IS PRIVATE.
-          #----------------------------------------------
+          repository: gcsi-openedx-theme
+          repository-organization: GCSI
+          repository-ref: main
           repository-token: ${{ secrets.PAT }}
-          #----------------------------------------------
 
       #------------------------------------------------------------------------
       # Add any Python requirements here.
@@ -95,8 +91,11 @@ jobs:
           repository-ref: master
           repository-token: ${{ secrets.PAT }}
 
+      - name: Dump tutor config
+        uses: openedx-actions/tutor-print-dump@v1.0.0
+
       #------------------------------------------------------------------------
       # Build and upload the Docker container
       #------------------------------------------------------------------------
       - name: Build openedx
-        uses: openedx-actions/tutor-plugin-build-openedx@v1.0.0
+        uses: openedx-actions/tutor-plugin-build-openedx@v1.0.2

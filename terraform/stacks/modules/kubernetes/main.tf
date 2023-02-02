@@ -63,23 +63,36 @@ resource "aws_security_group" "all_worker_mgmt" {
 
 module "eks" {
   source                          = "terraform-aws-modules/eks/aws"
-  version                         = "~> 18.27"
+  version                         = "~> 19.4"
   cluster_name                    = var.namespace
   cluster_version                 = var.kubernetes_cluster_version
   cluster_endpoint_private_access = true
   cluster_endpoint_public_access  = true
-  enable_irsa                     = true
   vpc_id                          = var.vpc_id
   subnet_ids                      = var.private_subnet_ids
   create_cloudwatch_log_group     = false
+  enable_irsa                     = true
 
-  cluster_addons = {
-    coredns = {}
-    kube-proxy = {}
-    aws-ebs-csi-driver = {
-      service_account_role_arn = aws_iam_role.AmazonEKS_EBS_CSI_DriverRole.arn
-    }
-  }
+  # NOTE:
+  # larger organizations might want to change these two settings
+  # in order to further restrict which IAM users have access to
+  # the AWS EKS Kubernetes Secrets. Note that at cluster creation,
+  # this key is benign since Kubernetes secrets encryption
+  # is not enabled by default.
+  #
+  # AWS EKS KMS console: https://eu-west-2.console.aws.amazon.com/kms/home
+  #
+  # audit your AWS EKS KMS key access by running:
+  # aws kms get-key-policy --key-id ADD-YOUR-KEY-ID-HERE --region eu-west-2 --policy-name default --output text
+  create_kms_key = var.eks_create_kms_key
+
+  # un-comment this to add more IAM users to the KMS key owners list.
+  kms_key_owners                  = [
+    "arn:aws:iam::${var.account_id}:user/system/bastion-user/${var.namespace}-bastion",
+    "arn:aws:iam::824885811700:user/ci",
+    "arn:aws:iam::824885811700:user/lawrence.mcdaniel",
+    "arn:aws:iam::824885811700:user/edunext_admin",
+    ]
 
   tags = merge(
     var.tags,
@@ -88,6 +101,19 @@ module "eks" {
     # security group that Karpenter should utilize with the following tag
     { "karpenter.sh/discovery" = var.namespace }
   )
+
+  cluster_addons = {
+    coredns = {
+      addon_version = "v1.8.7-eksbuild.3"
+    }
+    kube-proxy = {
+      addon_version = "v1.24.9-eksbuild.1"
+    }
+    aws-ebs-csi-driver = {
+      service_account_role_arn = aws_iam_role.AmazonEKS_EBS_CSI_DriverRole.arn
+      addon_version            = "v1.15.0-eksbuild.1"
+    }
+  }
 
   node_security_group_additional_rules = {
     ingress_self_all = {
@@ -120,43 +146,7 @@ module "eks" {
     }
   }
 
-  eks_managed_node_group_defaults = {
-    iam_role_additional_policies = [
-      "arn:${local.partition}:iam::aws:policy/AmazonSSMManagedInstanceCore"
-    ]
-  }
-
   eks_managed_node_groups = {
-    # -------------------------------------------------------------------------
-    # 1.) Static node group, configured for extended platform idle states.
-    # -------------------------------------------------------------------------
-    # This group ensures that one node exists in every
-    # aws availability zone at all times, which is important for ensuring that
-    # there is a matching node for all existing k8s Persistent Volume Claims.
-    # The EC2 instance type for this group should be small. the Cookiecutter
-    # EC2 default instance type is t3.medium.
-    #
-    # Cost optimizing the EC2 instance type for this group is a great idea.
-    # For example, you might consider purchasing EC2 Reserved instances
-    # for these nodes as this will reduce your EC2 costs by around 40%.
-    # https://aws.amazon.com/ec2/pricing/reserved-instances/
-
-    k8s_nodes_idle = {
-      capacity_type     = "SPOT"
-      enable_monitoring = false
-      min_size          = var.eks_worker_group_min_size
-      max_size          = var.eks_worker_group_max_size
-      desired_size      = var.eks_worker_group_desired_size
-      instance_types    = [var.eks_worker_group_instance_type]
-      tags = merge(
-        var.tags,
-        { Name = "eks-${var.shared_resource_identifier}-node-idle" }
-      )
-    }
-
-    # -------------------------------------------------------------------------
-    # 2.) Dynamic node group, for scaling.
-    # -------------------------------------------------------------------------
     # This node group is managed by Karpenter. There must be at least
     # node in this group at all times in order for Karpenter to monitor
     # load and act on metrics data. Karpenter's bin packing algorithms
@@ -172,7 +162,16 @@ module "eks" {
       desired_size      = var.eks_karpenter_group_desired_size
       min_size          = var.eks_karpenter_group_min_size
       max_size          = var.eks_karpenter_group_max_size
-      instance_types    = ["${var.eks_karpenter_group_instance_type}"]
+
+      iam_role_additional_policies = {
+        # Required by Karpenter
+        AmazonSSMManagedInstanceCore = "arn:${local.partition}:iam::aws:policy/AmazonSSMManagedInstanceCore"
+
+        # Required by EBS CSI Add-on
+        AmazonEBSCSIDriverPolicy = data.aws_iam_policy.AmazonEBSCSIDriverPolicy.arn
+      }
+
+      instance_types = ["${var.eks_karpenter_group_instance_type}"]
       tags = merge(
         var.tags,
         { Name = "eks-${var.shared_resource_identifier}-karpenter" }

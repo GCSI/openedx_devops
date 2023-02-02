@@ -29,7 +29,7 @@ data "aws_route53_zone" "environment_domain" {
   name = var.environment_domain
 
   tags = {
-    Namespace = var.environment_namespace
+    "cookiecutter/environment_namespace" = var.environment_namespace
   }
 }
 
@@ -37,9 +37,9 @@ data "aws_route53_zone" "environment_domain" {
 # see eks_ec2/acm.tf or eks_fargate/acm.tf for creation of this certificate
 # as well as the definition for the provider "aws.us-east-1"
 data "aws_acm_certificate" "environment_domain" {
-  domain     = var.environment_domain
-  statuses   = ["ISSUED"]
-  provider   = aws.us-east-1
+  domain   = var.environment_domain
+  statuses = ["ISSUED"]
+  provider = aws.us-east-1
   depends_on = [module.acm_environment_domain]
 }
 
@@ -64,7 +64,7 @@ resource "aws_route53_record" "cdn_environment_domain" {
 
 module "cdn_environment_domain" {
   source  = "terraform-aws-modules/cloudfront/aws"
-  version = "~> 2.9"
+  version = "~> 3.1"
 
   aliases = [local.cdn_name]
 

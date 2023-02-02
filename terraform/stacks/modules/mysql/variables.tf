@@ -7,8 +7,8 @@
 # usage: create an RDS MySQL instance.
 #------------------------------------------------------------------------------
 
-variable "root_domain" {
-  type        = string
+variable "services_subdomain" {
+  type = string
 }
 variable "allocated_storage" {
   description = "The allocated storage in gigabytes"

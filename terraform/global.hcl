@@ -11,14 +11,20 @@ locals {
   platform_name              = "codlp"
   platform_region            = "global"
   shared_resource_identifier = "live"
+  shared_resource_namespace  = "codlp-global-live"
   root_domain                = "global-communications-academy.com"
+  services_subdomain         = "service.global-communications-academy.com"
   aws_region                 = "eu-west-2"
   account_id                 = "824885811700"
+  studio_subdomain           = "studio"
 
   tags = {
-    Platform        = local.platform_name
-    Platform-Region = local.platform_region
-    Terraform       = "true"
+    "cookiecutter/platform_name"                = local.platform_name
+    "cookiecutter/platform_region"              = local.platform_region
+    "cookiecutter/shared_resource_identifier"   = local.shared_resource_identifier
+    "cookiecutter/root_domain"                  = local.root_domain
+    "cookiecutter/services_subdomain"           = local.services_subdomain
+    "cookiecutter/terraform"                    = "true"
   }
 
 }

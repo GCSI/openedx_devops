@@ -31,11 +31,11 @@ jobs:
       ENABLE_FORUM: true
       ENABLE_MFE: true
       ENABLE_S3: true
+      ENABLE_DISCOVERY: true
 
       # other optional features that codlp doesn't use
       # --------------------------------------------
       ENABLE_NOTES: false
-      ENABLE_DISCOVERY: false
       ENABLE_ECOMMERCE: false
       ENABLE_BACKUP: false
       ENABLE_XQUEUE: false
@@ -47,7 +47,7 @@ jobs:
     steps:
       # checkout github repos: this repo, plus, all Gihubs Actions repos in this workflow
       - name: Checkout
-        uses: actions/checkout@v3.0.2
+        uses: actions/checkout@v3.2.0
 
       # AWS helper Github Actions. creates a session token that's usable by all other
       # aws-actions. Prevents us from having to explicitly provide authentication credentials
@@ -67,13 +67,13 @@ jobs:
           eks-namespace: ${{ env.NAMESPACE }}
           eks-cluster-name: ${{ env.EKS_CLUSTER_NAME }}
           aws-region: ${{ env.AWS_REGION }}
-          tutor-version: "14.0.5"
+          tutor-version: "15.2.0"
 
       # Setup a connection to our AWS Elastic Container Registry so that we can pull
       # containers that we created with the build workflows in this Cookiecutter.
       - name: Login to Amazon ECR
         id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v1
+        uses: aws-actions/amazon-ecr-login@v1.5.3
 
       # ---------------------------------------------------------------------------------
       # initialize workflow environment variables
@@ -89,7 +89,6 @@ jobs:
           echo "AWS_ECR_REPOSITORY_BACKUP=${AWS_ECR_URI}/openedx_backup:latest" >> $GITHUB_ENV
           echo "AWS_ECR_REPOSITORY_CREDENTIALS=${AWS_ECR_URI}/openedx_credentials:latest" >> $GITHUB_ENV
           echo "AWS_ECR_REPOSITORY_LICENSE_MANAGER=${AWS_ECR_URI}/license_manager:latest" >> $GITHUB_ENV
-          echo "AWS_ECR_REPOSITORY_MFE=${AWS_ECR_URI}/openedx_mfe:latest" >> $GITHUB_ENV
           echo "AWS_ECR_REPOSITORY_OPENEDX=${AWS_ECR_URI}/openedx:latest" >> $GITHUB_ENV
 
       - name: Load environment specific settings (direct)
@@ -112,7 +111,7 @@ jobs:
       # Configure optional tutor plugins
       # ---------------------------------------------------------------------------------
       - name: Enable tutor plugin - S3
-        uses: openedx-actions/tutor-plugin-enable-s3@v1.0.0
+        uses: openedx-actions/tutor-plugin-enable-s3@v1.0.2
         if: ${{ env.ENABLE_S3 == 'true' }}
         with:
           namespace: ${{ env.NAMESPACE }}
@@ -131,23 +130,14 @@ jobs:
           namespace: ${{ env.NAMESPACE }}
 
       - name: Enable tutor plugin - MFE
-        if: ${{ env.ENABLE_MFE == 'true' }}
-        #uses: openedx-actions/tutor-plugin-enable-mfe@v0.0.1
-        #with:
-        #  aws-ecr-uri: ${AWS_ECR_REPOSITORY_MFE}
         shell: bash
         run:  |-
-          pip list
-          pip install tutor-mfe==14.0.2
+          pip install tutor-mfe
           tutor plugins enable mfe
-          tutor config save --set MFE_DOCKER_IMAGE=${AWS_ECR_REPOSITORY_MFE} \
-                            --set MFE_ENABLE_HTTPS=true          
-                            --set MFE_AUTHN_MFE_APP=null
-          pip list
-
+          tutor config save
 
       - name: Enable tutor plugin - Credentials
-        uses: openedx-actions/tutor-plugin-enable-credentials@v0.0.6
+        uses: openedx-actions/tutor-plugin-enable-credentials@v1.0.0
         if: ${{ env.ENABLE_CREDENTIALS == 'true' }}
         with:
           namespace: ${{ env.NAMESPACE }}
@@ -161,17 +151,10 @@ jobs:
           namespace: ${{ env.NAMESPACE }}
 
       - name: Enable tutor plugin - Notes
-        #uses: openedx-actions/tutor-plugin-enable-notes@v1.0.2
+        uses: openedx-actions/tutor-plugin-enable-notes@v1.0.2
         if: ${{ env.ENABLE_NOTES == 'true' }}
-        #with:
-        #  namespace: ${{ env.NAMESPACE }}
-        shell: bash
-        run:  |-
-          pip list
-          pip install tutor-notes==14.0.1
-          tutor plugins enable notes
-          pip list
-
+        with:
+          namespace: ${{ env.NAMESPACE }}
 
       - name: Enable tutor plugin - Ecommerce
         uses: openedx-actions/tutor-plugin-enable-ecommerce@v1.0.2
@@ -183,19 +166,14 @@ jobs:
           enabled-payment-processors: '["stripe", "paypal"]'
 
       - name: Enable tutor plugin - Forum
-        #uses: openedx-actions/tutor-plugin-enable-forum@v1.0.0
+        uses: openedx-actions/tutor-plugin-enable-forum@v1.0.0
         if: ${{ env.ENABLE_FORUM == 'true' }}
-        shell: bash
-        run:  |-
-          pip list
-          pip install tutor-forum==14.0.0
-          tutor plugins enable forum
-          pip list
 
       - name: Enable tutor plugin - License Manager
         uses: openedx-actions/tutor-enable-plugin-license-manager@v0.0.3
         if: ${{ env.ENABLE_LICENSE_MANAGER == 'true' }}
         with:
+          namespace: ${{ env.NAMESPACE }}
           aws-ecr-uri: ${AWS_ECR_REPOSITORY_LICENSE_MANAGER}
           host: subscriptions.staging.global-communications-academy.com
           lms_host: staging.global-communications-academy.com
@@ -206,8 +184,8 @@ jobs:
       - name: Configure SMTP
         uses: openedx-actions/tutor-k8s-configure-smtp@v1.0.0
         with:
-          aws-ses-iam-key: ${{ secrets.aws-ses-iam-key }}
-          aws-ses-iam-secret: ${{ secrets.aws-ses-iam-secret }}
+          aws-ses-iam-key: ${{ secrets.AWS_SES_IAM_KEY }}
+          aws-ses-iam-secret: ${{ secrets.AWS_SES_IAM_SECRET }}
           aws-region: ${{ env.AWS_REGION }}
 
       - name: Configure Redis
@@ -257,15 +235,39 @@ jobs:
                             --set MFE_DISCUSSIONS_MFE_APP=null \
                             --set MFE_AUTHN_MFE_APP=null \
 
+      # install and enable tutor plugin https://github.com/lpm0073/tutor-contrib-k8s-deploy-tasks
+      # this resolves any problems that cannot be address by directly manipulating tutor's
+      # config.yml and/or the resources that it generates in its lms and cms working folders.
+      #
+      # this includes the following:
+      # ----------------------------
+      # 1. oauth misconfiguration. tutor relies on an environment variable ENABLE_HTTPS to determine the protocol of the
+      # production oauth client for applications that rely on the LMS oauth service. For Kubernetes installations however,
+      # this value needs to be set to false which results in ./manage.py lms create_dot_application misconfiguring the oauth
+      # client for some, but not all, of these oauth clients. This plugin reconfigures the oauth clients of cms,
+      # discovery, ecommerce and credentials to use https protocol for redirect URI.
+
+      # 2. Nutmeg upgrade and initializataion tasks There are a few manage.py tasks that need to run for platforms that are
+      # upgrading to Nutmeg or newer from Maple or older. This plugin runs those tasks for you. For more information see
+      # Open edX Nutmeg Release.
+
+      # 3. Missing user profile records. User accounts created with manage.py lack a corresponding auth_userprofile record,
+      # which causes a 500 exception during login for that account. Adds a blank record in cases where a record is missing.
+
+      # 4. MFE misconfiguration. tutor-mfe relies on the value of ENABLE_HTTPS when generating the dict MFE_CONFIG,
+      # which in the case of k8s deployments will result in the browser blocking content due to "Mixed content".
+      # This plugin overrides the results of tutor-mfe openedx-lms-production-settings, replacing protocol produced
+      # by logic relying on ENABLE_HTTPS (assumed to result in 'http') with the hard-coded value 'https'.
+      # ---------------------------------------------------------------------------------
+      - name: Add tutor k8s-specific deployment tasks
+        uses: openedx-actions/tutor-plugin-enable-k8s-deploy-tasks@v0.0.1
+
       - name: Dump tutor config
         uses: openedx-actions/tutor-print-dump@v1.0.0
 
       # ---------------------------------------------------------------------------------
       # Deploy
       # ---------------------------------------------------------------------------------
-      - name: Add tutor k8s-specific deployment tasks
-        uses: openedx-actions/tutor-plugin-enable-k8s-deploy-tasks@v0.0.1
-
       - name: Deploy to Kubernetes
         uses: ./.github/actions/tutor/k8s/deploy
         with:
@@ -275,14 +277,9 @@ jobs:
       - name: Set theme
         shell: bash
         run:  |-
-          #tutor k8s do settheme gcsi-openedx-theme
-          tutor k8s settheme gcsi-openedx-theme
+          tutor k8s do settheme gcsi-openedx-theme
 
       #- name: Create admin user
       #  uses: openedx-actions/tutor-k8s-configure-edx-admin@v1.0.1
       #  with:
       #    namespace: ${{ env.NAMESPACE }}
-
-      - name: Summary
-        shell: bash
-        run: kubectl get hpa
