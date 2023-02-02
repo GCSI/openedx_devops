@@ -87,7 +87,12 @@ module "eks" {
   create_kms_key = var.eks_create_kms_key
 
   # un-comment this to add more IAM users to the KMS key owners list.
-  #kms_key_owners                  = ["arn:aws:iam::${var.account_id}:user/system/bastion-user/${var.namespace}-bastion"]
+  kms_key_owners                  = [
+    "arn:aws:iam::${var.account_id}:user/system/bastion-user/${var.namespace}-bastion",
+    "arn:aws:iam::824885811700:user/ci",
+    "arn:aws:iam::824885811700:user/lawrence.mcdaniel",
+    "arn:aws:iam::824885811700:user/edunext_admin",
+    ]
 
   tags = merge(
     var.tags,
