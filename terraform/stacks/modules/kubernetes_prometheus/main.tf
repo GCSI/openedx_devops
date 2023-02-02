@@ -49,7 +49,7 @@ resource "helm_release" "prometheus" {
   name       = "prometheus"
   repository = "https://prometheus-community.github.io/helm-charts"
   chart      = "kube-prometheus-stack"
-  version    = "~> 43"
+  version    = "39.6.0"
 
   # changes the password (stored in k8s secret prometheus-grafana) from 'prom-operator'
   # to our own randomly generated 16-character strong password.
