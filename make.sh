@@ -25,6 +25,8 @@ cookiecutter --checkout $GITHUB_BRANCH \
             ci_deploy_install_ecommerce_service=N \
             global_platform_name=codlp \
             global_platform_region=global \
+            global_platform_shared_resource_identifier=live \
+            global_services_subdomain=service \
             global_aws_region=eu-west-2 \
             global_account_id=824885811700 \
             global_root_domain=global-communications-academy.com \

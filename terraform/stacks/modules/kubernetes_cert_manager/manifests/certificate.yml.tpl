@@ -16,7 +16,7 @@ spec:
   secretName: ${services_subdomain}-tls
   issuerRef:
     kind: ClusterIssuer
-    name: letsencrypt
+    name: service.global-communications-academy.com
   commonName: ${services_subdomain}
   dnsNames:
     - "${services_subdomain}"

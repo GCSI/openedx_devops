@@ -87,12 +87,7 @@ module "eks" {
   create_kms_key = var.eks_create_kms_key
 
   # un-comment this to add more IAM users to the KMS key owners list.
-  kms_key_owners                  = [
-    "arn:aws:iam::${var.account_id}:user/system/bastion-user/${var.namespace}-bastion",
-    "arn:aws:iam::824885811700:user/ci",
-    "arn:aws:iam::824885811700:user/lawrence.mcdaniel",
-    "arn:aws:iam::824885811700:user/edunext_admin",
-    ]
+  #kms_key_owners                  = ["arn:aws:iam::${var.account_id}:user/system/bastion-user/${var.namespace}-bastion"]
 
   tags = merge(
     var.tags,
@@ -147,16 +142,6 @@ module "eks" {
   }
 
   eks_managed_node_groups = {
-    k8s_nodes_idle = {
-      enable_monitoring = false
-      desired_size      = 3
-      min_size          = 3
-      max_size          = 3
-      tags = merge(
-        var.tags,
-        { Name = "eks-${var.shared_resource_identifier}-idle" }
-      )
-    }
     # This node group is managed by Karpenter. There must be at least
     # node in this group at all times in order for Karpenter to monitor
     # load and act on metrics data. Karpenter's bin packing algorithms

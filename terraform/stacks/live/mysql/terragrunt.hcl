@@ -92,7 +92,7 @@ inputs = {
   # db server parameters
   port                  = "3306"
   engine                = "mysql"
-  engine_version        = "5.7.38"
+  engine_version        = "5.7.33"
   family                = "mysql5.7"
   major_engine_version  = "5.7"
   parameters = [
