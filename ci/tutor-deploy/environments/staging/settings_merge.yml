@@ -1,4 +1,21 @@
 ---
+# custom GCAS parameters
+# ----------------------
+#
+# used in 
+#   gcsi_edxapi/management/commands/gcasbootstrap.py
+#   gcsi_edxapi/management/commands/create_gcas_oauth_application_client_confg.py
+EDX_DOMAIN_NAME: "staging.global-communications-academy.com"
+#
+# used in gcsi_edxapi and gcsi_grades 
+GCAS_BASE_URL: https://platform.staging.global-communications-academy.com
+#
+# used in gcsi_grades
+BOOKING_AUTH_BASE_URL: https://platform.staging.global-communications-academy.com/
+#
+GCSI_BOOKING_SYSTEM_USER_API_USER: gcas-api-user
+# ----------------------
+#
 CORS_ORIGIN_ALLOW_ALL: true
 CORS_ORIGIN_WHITELIST:
 - https://global-communications-academy.com
@@ -21,6 +38,26 @@ ENTERPRISE_SUPPORT_URL: https://global-communications-academy.com/support/
 ENTERPRISE_TAGLINE: "codlp"
 FACEBOOK_API_VERSION: v12.0
 FEATURES:
+  # -----------------------------------------------------
+  # mcdaniel nov-2022
+  # trouble shoot notes service
+  # - https://discuss.overhang.io/t/how-to-create-a-new-database-for-notes/57/4
+  ACTIVATE_NOTES: true
+  # -----------------------------------------------------
+  # mcdaniel nov-2022
+  # for edx-sga
+  # -----------------------------------------------------
+  ALLOW_ALL_ADVANCED_COMPONENTS: true
+  # mcdaniel aug-2022: to setup our own url from plugin.
+  # -----------------------------------------------------
+  ENABLE_DJANGO_ADMIN_SITE: true
+  ENABLE_CHANGE_USER_PASSWORD_ADMIN: true
+  ENABLE_SYSADMIN_DASHBOARD: false
+  COURSES_ARE_BROWSABLE: false
+  ENABLE_SERVICE_STATUS: true
+  # -----------------------------------------------------
+  # mcdaniel nov-2022: to remove the Help link from the authenticated header menu
+  ENABLE_HELP_LINK: false
   ENABLE_CHANGE_USER_PASSWORD_ADMIN: true
   CERTIFICATES_HTML_VIEW: true
   PREVIEW_LMS_BASE: "staging.global-communications-academy.com/"
@@ -40,6 +77,7 @@ FEATURES:
   ENABLE_COUNTRY_ACCESS: false
   ENABLE_CREDIT_API: false
   ENABLE_CREDIT_ELIGIBILITY: false
+  ENABLE_COURSEWARE_SEARCH: false
   ENABLE_CROSS_DOMAIN_CSRF_COOKIE: true
   ENABLE_DISCUSSION_HOME_PANEL: false
   ENABLE_DISCUSSION_SERVICE: false
@@ -66,7 +104,7 @@ LANGUAGE_COOKIE: openedx-language-preference
 LOGO_URL_PNG: "https://cdn.staging.global-communications-academy.com"
 PLATFORM_DESCRIPTION: "Your School"
 PLATFORM_FACEBOOK_ACCOUNT: http://www.facebook.com/
-PLATFORM_NAME: "codlp"
+PLATFORM_NAME: "GCA Courses"
 PLATFORM_TWITTER_ACCOUNT: ''
 REGISTRATION_EXTRA_FIELDS:
   city: hidden
@@ -79,6 +117,9 @@ REGISTRATION_EXTRA_FIELDS:
   mailing_address: hidden
   terms_of_service: hidden
   year_of_birth: hidden
+REST_FRAMEWORK:
+  DEFAULT_THROTTLE_RATES:
+    user: "1000/minute"
 SESSION_COOKIE_DOMAIN: "staging.global-communications-academy.com"
 SESSION_COOKIE_NAME: sessionid
 SESSION_COOKIE_SECURE: true
@@ -89,25 +130,25 @@ SOCIAL_MEDIA_FOOTER_URLS:
   linkedin: https://www.linkedin.com/
   twitter: https://twitter.com/
   facebook: https://www.facebook.com/
-SUPPORT_SITE_LINK: https://global-communications-academy.com/support/
-TIME_ZONE: America/New_York
+TIME_ZONE: Europe/London
 THIRD_PARTY_AUTH_BACKENDS:
+- gcsi_edxapi.booking.BookingOAuth2
 - social_core.backends.google.GoogleOAuth2
 - social_core.backends.facebook.FacebookOAuth2
 WIKI_ENABLED: false
-API_ACCESS_FROM_EMAIL: api-requests@global-communications-academy.com
-API_ACCESS_MANAGER_EMAIL: api-access@global-communications-academy.com
-BUGS_EMAIL: bugs@global-communications-academy.com
-BULK_EMAIL_DEFAULT_FROM_EMAIL: no-reply@global-communications-academy.com
-CONTACT_EMAIL: info@global-communications-academy.com
-CONTACT_MAILING_ADDRESS: ''
-DEFAULT_FEEDBACK_EMAIL: feedback@global-communications-academy.com
-DEFAULT_FROM_EMAIL: registration@global-communications-academy.com
-FEEDBACK_SUBMISSION_EMAIL: support@global-communications-academy.com
-PARTNER_SUPPORT_EMAIL: support@global-communications-academy.com
-PASSWORD_RESET_SUPPORT_LINK: support@global-communications-academy.com
-PAYMENT_SUPPORT_EMAIL: billing@global-communications-academy.com
-PRESS_EMAIL: press@global-communications-academy.com
-SERVER_EMAIL: devops@global-communications-academy.com
-TECH_SUPPORT_EMAIL: technical@global-communications-academy.com
-UNIVERSITY_EMAIL: university@global-communications-academy.com
+API_ACCESS_FROM_EMAIL: courses.support@cabinetoffice.gov.uk
+API_ACCESS_MANAGER_EMAIL: courses.support@cabinetoffice.gov.uk
+BUGS_EMAIL: courses.support@cabinetoffice.gov.uk
+BULK_EMAIL_DEFAULT_FROM_EMAIL: courses.support@cabinetoffice.gov.uk
+CONTACT_EMAIL: courses.support@cabinetoffice.gov.uk
+CONTACT_MAILING_ADDRESS: courses.support@cabinetoffice.gov.uk
+DEFAULT_FEEDBACK_EMAIL: courses.support@cabinetoffice.gov.uk
+DEFAULT_FROM_EMAIL: courses.support@cabinetoffice.gov.uk
+FEEDBACK_SUBMISSION_EMAIL: courses.support@cabinetoffice.gov.uk
+PARTNER_SUPPORT_EMAIL: courses.support@cabinetoffice.gov.uk
+PASSWORD_RESET_SUPPORT_LINK: courses.support@cabinetoffice.gov.uk
+PAYMENT_SUPPORT_EMAIL: courses.support@cabinetoffice.gov.uk
+PRESS_EMAIL: courses.support@cabinetoffice.gov.uk
+SERVER_EMAIL: courses.support@cabinetoffice.gov.uk
+TECH_SUPPORT_EMAIL: courses.support@cabinetoffice.gov.uk
+UNIVERSITY_EMAIL: courses.support@cabinetoffice.gov.uk
