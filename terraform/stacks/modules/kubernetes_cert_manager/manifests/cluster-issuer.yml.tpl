@@ -15,7 +15,7 @@ metadata:
   namespace: ${namespace}
 spec:
   acme:
-    email: no-reply@aube.university
+    email: no-reply@${root_domain}
     privateKeySecretRef:
       name: service.global-communications-academy.com
     server: https://acme-v02.api.letsencrypt.org/directory
