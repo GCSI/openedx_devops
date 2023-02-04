@@ -7,7 +7,7 @@
 # usage: build an EKS cluster load balancer
 #------------------------------------------------------------------------------
 variable "root_domain" {
-  type = string  
+  type = string
 }
 
 variable "namespace" {
@@ -24,4 +24,8 @@ variable "aws_region" {
 
 variable "services_subdomain" {
   type = string
+}
+
+variable "cert_manager_image_version" {
+    type = string
 }

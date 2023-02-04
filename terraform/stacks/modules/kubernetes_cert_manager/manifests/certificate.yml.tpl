@@ -16,7 +16,7 @@ spec:
   secretName: ${services_subdomain}-tls
   issuerRef:
     kind: ClusterIssuer
-    name: service.global-communications-academy.com
+    name: ${services_subdomain}
   commonName: ${services_subdomain}
   dnsNames:
     - "${services_subdomain}"

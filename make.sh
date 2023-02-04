@@ -9,7 +9,7 @@
 #------------------------------------------------------------------------------
 
 GITHUB_REPO="gh:lpm0073/cookiecutter-openedx-devops"
-GITHUB_BRANCH="main"
+GITHUB_BRANCH="v1.0.20"
 OUTPUT_FOLDER="../"
 
 cookiecutter --checkout $GITHUB_BRANCH \
@@ -17,6 +17,7 @@ cookiecutter --checkout $GITHUB_BRANCH \
             --overwrite-if-exists \
             --no-input \
             $GITHUB_REPO \
+            github_repo_name=openedx_devops \
             ci_deploy_install_credentials_server=N \
             ci_deploy_install_license_manager_service=N \
             ci_deploy_install_discovery_service=Y \
@@ -33,6 +34,7 @@ cookiecutter --checkout $GITHUB_BRANCH \
             global_aws_route53_hosted_zone_id=Z03421433FTTS9CGGX8LH \
             environment_name=staging \
             environment_subdomain=staging \
+            eks_create_kms_key=Y \
             eks_worker_group_instance_type=t3.xlarge \
             eks_worker_group_min_size=0 \
             eks_worker_group_max_size=1 \

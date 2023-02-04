@@ -11,13 +11,13 @@
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
-  name: service.global-communications-academy.com
+  name: ${services_subdomain}
   namespace: ${namespace}
 spec:
   acme:
     email: no-reply@${root_domain}
     privateKeySecretRef:
-      name: service.global-communications-academy.com
+      name: ${services_subdomain}
     server: https://acme-v02.api.letsencrypt.org/directory
     solvers:
       - dns01:
