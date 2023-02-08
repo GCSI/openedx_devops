@@ -9,7 +9,7 @@
 #------------------------------------------------------------------------------
 
 GITHUB_REPO="gh:lpm0073/cookiecutter-openedx-devops"
-GITHUB_BRANCH="v1.0.20"
+GITHUB_BRANCH="v1.0.21"
 OUTPUT_FOLDER="../"
 
 cookiecutter --checkout $GITHUB_BRANCH \
@@ -54,6 +54,7 @@ cookiecutter --checkout $GITHUB_BRANCH \
             stack_add_remote_mysql=Y \
             stack_add_remote_mongodb=Y \
             stack_add_remote_redis=Y \
+            wordpress_add_site=Y \
             mongodb_instance_type=t3.medium \
             mongodb_allocated_storage=10 \
             
