@@ -9,7 +9,7 @@
 locals {
   wp_hosted_zone_id   = "Z064431917WGFKESPTVUT"
   wp_domain           = "global-communications-academy.com"
-  wp_subdomain        = "wp"
+  wp_subdomain        = "help"
   wp_namespace        = "codlp-wordpress"
   wp_username         = "codlp_staging_wp"
   wp_email            = "wordpress_admin@global-communications-academy.com"
