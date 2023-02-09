@@ -52,7 +52,7 @@ Open edX Application Software Endpoints
 
 - LMS: https://staging.global-communications-academy.com
 - Course Management Studio: https://studio.staging.global-communications-academy.com
-- Wordpress: https://wp.global-communications-academy.com. WordPress is a free and open-source content management system written in php and paired with a MySQL database with supported HTTPS. Features include a plugin architecture and a template system, referred to within WordPress as "Themes"
+- Wordpress: https://help.global-communications-academy.com. WordPress is a free and open-source content management system written in php and paired with a MySQL database with supported HTTPS. Features include a plugin architecture and a template system, referred to within WordPress as "Themes"
 - **Content Delivery Network (CDN)**: https://cdn.staging.global-communications-academy.com linked to a public read-only S3 bucket named staging-codlp-global-storage
 - **AWS S3 Backups**: staging-codlp-global-backup.s3.amazonaws.com
 - **AWS S3 Storage**: staging-codlp-global-storage.s3.amazonaws.com

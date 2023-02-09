@@ -86,13 +86,8 @@ module "eks" {
   # aws kms get-key-policy --key-id ADD-YOUR-KEY-ID-HERE --region eu-west-2 --policy-name default --output text
   create_kms_key = var.eks_create_kms_key
 
-  # un-comment this to add more IAM users to the KMS key owners list.
-  kms_key_owners                  = [
-    "arn:aws:iam::${var.account_id}:user/system/bastion-user/${var.namespace}-bastion",
-    "arn:aws:iam::824885811700:user/ci",
-    "arn:aws:iam::824885811700:user/lawrence.mcdaniel",
-    "arn:aws:iam::824885811700:user/edunext_admin",
-    ]
+  # add more IAM users to the KMS key owners list
+  kms_key_owners = ["arn:aws:iam::${var.account_id}:user/system/bastion-user/${var.namespace}-bastion"]
 
   tags = merge(
     var.tags,

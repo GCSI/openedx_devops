@@ -26,14 +26,14 @@ locals {
 
 dependencies {
   paths = [
-    "../../../stacks/live/vpc",
-    "../../../stacks/live/kubernetes",
-    "../../../stacks/live/redis",
+    "../../../stacks/service/vpc",
+    "../../../stacks/service/kubernetes",
+    "../../../stacks/service/redis",
     ]
 }
 
 dependency "vpc" {
-  config_path = "../../../stacks/live/vpc"
+  config_path = "../../../stacks/service/vpc"
 
   # Configure mock outputs for the `validate` and `init` commands that are returned when there are no outputs available (e.g the
   # module hasn't been applied yet.
@@ -47,7 +47,7 @@ dependency "vpc" {
 }
 
 dependency "kubernetes" {
-  config_path = "../../../stacks/live/kubernetes"
+  config_path = "../../../stacks/service/kubernetes"
 
   # Configure mock outputs for the `validate` and `init` commands that are returned when there are no outputs available (e.g the
   # module hasn't been applied yet.
@@ -73,7 +73,7 @@ dependency "kubernetes" {
 }
 
 dependency "redis" {
-  config_path = "../../../stacks/live/redis"
+  config_path = "../../../stacks/service/redis"
 
   # Configure mock outputs for the `validate` and `init` commands that are returned when there are no outputs available (e.g the
   # module hasn't been applied yet.

@@ -28,20 +28,19 @@ jobs:
 
       # feature flags for optional tutor modules
       # --------------------------------------------
-      ENABLE_FORUM: true
-      ENABLE_MFE: true
       ENABLE_S3: true
+      
       ENABLE_DISCOVERY: true
-
-      # other optional features that codlp doesn't use
-      # --------------------------------------------
-      ENABLE_NOTES: false
-      ENABLE_ECOMMERCE: false
       ENABLE_BACKUP: false
-      ENABLE_XQUEUE: false
       ENABLE_CREDENTIALS: false
+      ENABLE_ECOMMERCE: false
+      ENABLE_FORUM: false
+      ENABLE_NOTES: false
+      ENABLE_XQUEUE: false
+      
       ENABLE_LICENSE_MANAGER: false
       
+
     # deployment workflow begins here
     # --------------------------------------------
     steps:
@@ -49,9 +48,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3.2.0
 
-      # AWS helper Github Actions. creates a session token that's usable by all other
+      # AWS helper method. creates a session token that's usable by all other
       # aws-actions. Prevents us from having to explicitly provide authentication credentials
-      # to each of these individually.
+      # to each aws-actions method individually.
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1.7.0
         with:
@@ -105,7 +104,7 @@ jobs:
           echo "TUTOR_LMS_HOST=$LMS_HOSTNAME" >> $GITHUB_ENV
           echo "TUTOR_CMS_HOST=$CMS_HOSTNAME" >> $GITHUB_ENV
           echo "TUTOR_DOCKER_IMAGE_OPENEDX=${AWS_ECR_REPOSITORY_OPENEDX}" >> $GITHUB_ENV
-          echo "OPENEDX_COMMON_VERSION=open-release/nutmeg.2" >> $GITHUB_ENV
+          echo "OPENEDX_COMMON_VERSION=open-release/olive.1" >> $GITHUB_ENV
 
       # ---------------------------------------------------------------------------------
       # Configure optional tutor plugins
@@ -129,17 +128,11 @@ jobs:
         with:
           namespace: ${{ env.NAMESPACE }}
 
-      - name: Enable tutor plugin - MFE
-        shell: bash
-        run:  |-
-          pip install tutor-mfe
-          tutor plugins enable mfe
-          tutor config save
-
       - name: Enable tutor plugin - Credentials
         uses: openedx-actions/tutor-plugin-enable-credentials@v1.0.0
         if: ${{ env.ENABLE_CREDENTIALS == 'true' }}
         with:
+          version: latest
           namespace: ${{ env.NAMESPACE }}
           aws-ecr-uri: ${AWS_ECR_REPOSITORY_CREDENTIALS}
           common-logo-url: https://www.edx.org/images/logos/edx-logo-elm.svg
@@ -220,21 +213,36 @@ jobs:
         with:
           namespace: ${{ env.NAMESPACE }}
 
-      # ---------------------------------------------------------------------------------
+      # -----------------------------------------------------------------------
       # Add your custom configuration tasks here ....
-      # ---------------------------------------------------------------------------------
+      # -----------------------------------------------------------------------
+      - name: Disable Caddy web proxy service
+        shell: bash
+        run:  |-
+          tutor config save --set ENABLE_WEB_PROXY=false \
+                            --set RUN_CADDY=false
 
       # see: https://github.com/overhangio/tutor-mfe
-      - name: Disable all MFEs
+      - name: enable mfe
         shell: bash
         run: |-
-          tutor config save --set MFE_ACCOUNT_MFE_APP=null \
-                            --set MFE_GRADEBOOK_MFE_APP=null \
-                            --set MFE_PROFILE_MFE_APP=null \
-                            --set MFE_COURSE_AUTHORING_MFE_APP=null \
-                            --set MFE_DISCUSSIONS_MFE_APP=null \
-                            --set MFE_AUTHN_MFE_APP=null \
+          pip install tutor-mfe
+          tutor plugins enable mfe
+          tutor config save
 
+      # see: https://github.com/overhangio/tutor-mfe
+  # un-comment this section to disable specific MFEs
+      # -----------------------------------------------------------------------
+      # - name: Disable all MFEs
+      #   shell: bash
+      #   run: |-
+      #     tutor config save --set MFE_ACCOUNT_MFE_APP=null \
+      #                       --set MFE_GRADEBOOK_MFE_APP=null \
+      #                       --set MFE_PROFILE_MFE_APP=null \
+      #                       --set MFE_COURSE_AUTHORING_MFE_APP=null \
+      #                       --set MFE_DISCUSSIONS_MFE_APP=null \
+      #                       --set MFE_AUTHN_MFE_APP=null \
+  # ---------------------------------------------------------------------------------
       # install and enable tutor plugin https://github.com/lpm0073/tutor-contrib-k8s-deploy-tasks
       # this resolves any problems that cannot be address by directly manipulating tutor's
       # config.yml and/or the resources that it generates in its lms and cms working folders.
@@ -265,9 +273,9 @@ jobs:
       - name: Dump tutor config
         uses: openedx-actions/tutor-print-dump@v1.0.0
 
-      # ---------------------------------------------------------------------------------
+      # -----------------------------------------------------------------------
       # Deploy
-      # ---------------------------------------------------------------------------------
+      # -----------------------------------------------------------------------
       - name: Deploy to Kubernetes
         uses: ./.github/actions/tutor/k8s/deploy
         with:
@@ -277,9 +285,9 @@ jobs:
       - name: Set theme
         shell: bash
         run:  |-
-          tutor k8s do settheme gcsi-openedx-theme
+          tutor k8s do settheme edx-theme
 
-      #- name: Create admin user
-      #  uses: openedx-actions/tutor-k8s-configure-edx-admin@v1.0.1
-      #  with:
-      #    namespace: ${{ env.NAMESPACE }}
+      - name: Create admin user
+        uses: openedx-actions/tutor-k8s-configure-edx-admin@v1.0.1
+        with:
+          namespace: ${{ env.NAMESPACE }}
