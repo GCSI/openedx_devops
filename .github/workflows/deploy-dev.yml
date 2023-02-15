@@ -232,9 +232,9 @@ jobs:
       # see: https://github.com/overhangio/tutor-mfe
   # un-comment this section to disable specific MFEs
       # -----------------------------------------------------------------------
-      # - name: Disable all MFEs
-      #   shell: bash
-      #   run: |-
+       - name: Disable all MFEs
+         shell: bash
+         run: |-
            tutor config save --set MFE_ACCOUNT_MFE_APP=null \
                              --set MFE_GRADEBOOK_MFE_APP=null \
                              --set MFE_PROFILE_MFE_APP=null \
