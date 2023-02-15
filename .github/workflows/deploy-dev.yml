@@ -5,7 +5,7 @@
 # usage: top-level workflow. Initiated manually from Github Actions console page
 #        Deploys a Tutor-created openedx Docker image to the Kubernetes cluster.
 #------------------------------------------------------------------------------
-name: Deploy codlp staging
+name: Deploy codlp dev
 
 on:
   workflow_dispatch:
@@ -21,23 +21,22 @@ jobs:
 
       # environment settings
       # --------------------------------------------
-      ENVIRONMENT_ID: staging
-      NAMESPACE: codlp-global-staging
+      ENVIRONMENT_ID: dev
+      NAMESPACE: codlp-global-dev
       EKS_CLUSTER_NAME: codlp-global-live
-      S3_BUCKET_PREFIX: codlp-global-staging
+      S3_BUCKET_PREFIX: codlp-global-dev
 
       # feature flags for optional tutor modules
       # --------------------------------------------
       ENABLE_S3: true
-      
-      ENABLE_DISCOVERY: true
+
+      ENABLE_DISCOVERY: false
       ENABLE_BACKUP: false
       ENABLE_CREDENTIALS: false
       ENABLE_ECOMMERCE: false
       ENABLE_FORUM: false
       ENABLE_NOTES: false
       ENABLE_XQUEUE: false
-      
       ENABLE_LICENSE_MANAGER: false
       
 
@@ -97,7 +96,7 @@ jobs:
           cat ci/tutor-deploy/environments/${{ env.ENVIRONMENT_ID }}/config.yml >> $GITHUB_ENV
 
       # note that values like $LMS_HOSTNAME come from this repo
-      # in /ci/tutor-deploy/environments/staging/config.yml
+      # in /ci/tutor-deploy/environments/dev/config.yml
       - name: Load additional environment specific settings
         shell: bash
         run: |-
@@ -168,8 +167,8 @@ jobs:
         with:
           namespace: ${{ env.NAMESPACE }}
           aws-ecr-uri: ${AWS_ECR_REPOSITORY_LICENSE_MANAGER}
-          host: subscriptions.staging.global-communications-academy.com
-          lms_host: staging.global-communications-academy.com
+          host: subscriptions.dev.global-communications-academy.com
+          lms_host: dev.global-communications-academy.com
 
       # ---------------------------------------------------------------------------------
       # Configure backend services
@@ -285,7 +284,7 @@ jobs:
       - name: Set theme
         shell: bash
         run:  |-
-          tutor k8s do settheme edx-theme
+          tutor k8s do settheme gcsi-openedx-theme
 
       - name: Create admin user
         uses: openedx-actions/tutor-k8s-configure-edx-admin@v1.0.1
