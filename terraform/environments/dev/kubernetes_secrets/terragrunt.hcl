@@ -4,31 +4,25 @@
 #
 # date: Aug-2021
 #
-# usage: create an ElastiCache Redis cache
+# usage: create all the application secrets
 #------------------------------------------------------------------------------
 locals {
   # Automatically load environment-level variables
   global_vars      = read_terragrunt_config(find_in_parent_folders("global.hcl"))
   environment_vars = read_terragrunt_config(find_in_parent_folders("env.hcl"))
 
-  services_subdomain        = local.global_vars.locals.services_subdomain
-  shared_resource_namespace = local.global_vars.locals.shared_resource_namespace
-  environment_domain        = local.environment_vars.locals.environment_domain
-  environment_subdomain     = local.environment_vars.locals.environment_subdomain
-  environment_namespace     = local.environment_vars.locals.environment_namespace
-  resource_name             = local.environment_vars.locals.environment_namespace
-
-  tags = merge(
-    local.environment_vars.locals.tags,
-    { Name = "${local.resource_name}" }
-  )
+  environment_namespace = local.environment_vars.locals.environment_namespace
+  environment           = local.environment_vars.locals.environment
+  resource_name         = local.environment_vars.locals.shared_resource_namespace
+  root_domain           = local.global_vars.locals.root_domain
 }
+
 
 dependencies {
   paths = [
     "../../../stacks/live/vpc",
     "../../../stacks/live/kubernetes",
-    "../../../stacks/live/redis",
+    "../kubernetes"
     ]
 }
 
@@ -37,13 +31,14 @@ dependency "vpc" {
 
   # Configure mock outputs for the `validate` and `init` commands that are returned when there are no outputs available (e.g the
   # module hasn't been applied yet.
-  mock_outputs_allowed_terraform_commands = ["init", "validate"]
+  mock_outputs_allowed_terraform_commands = ["init", "validate", "plan", "destroy"]
   mock_outputs = {
     vpc_id           = "fake-vpc-id"
-    database_subnets = ["fake-subnetid-01", "fake-subnetid-02"]
-    elasticache_subnets = ["fake-elasticache-subnet-01", "fake-elasticache-subnet-02"]
-    vpc_cidr_block = "fake-cidr-block"
+    public_subnets   = ["fake-public-subnet-01", "fake-public-subnet-02"]
+    private_subnets  = ["fake-private-subnet-01", "fake-private-subnet-02"]
+    database_subnets = ["fake-database-subnet-01", "fake-database-subnet-02"]
   }
+
 }
 
 dependency "kubernetes" {
@@ -51,7 +46,7 @@ dependency "kubernetes" {
 
   # Configure mock outputs for the `validate` and `init` commands that are returned when there are no outputs available (e.g the
   # module hasn't been applied yet.
-  mock_outputs_allowed_terraform_commands = ["init", "validate"]
+  mock_outputs_allowed_terraform_commands = ["init", "validate", "plan", "destroy"]
   mock_outputs = {
     cluster_arn           = "fake-cluster-arn"
     cluster_certificate_authority_data = "fake-cert"
@@ -70,21 +65,14 @@ dependency "kubernetes" {
     oidc_provider = "fake-oidc-provider"
     oidc_provider_arn = "fake-provider-arn"
   }
-}
 
-dependency "redis" {
-  config_path = "../../../stacks/live/redis"
-
-  # Configure mock outputs for the `validate` and `init` commands that are returned when there are no outputs available (e.g the
-  # module hasn't been applied yet.
-  mock_outputs_allowed_terraform_commands = ["init", "validate"]
-  mock_outputs = {}
 }
 
 # Terragrunt will copy the Terraform configurations specified by the source parameter, along with any files in the
 # working directory, into a temporary folder, and execute your Terraform commands in that folder.
+
 terraform {
-  source = "../../modules//redis"
+  source = "../../modules//kubernetes_secrets"
 }
 
 # Include all settings from the root terragrunt.hcl file
@@ -94,10 +82,7 @@ include {
 
 # These are the variables we have to pass in to use the module specified in the terragrunt configuration above
 inputs = {
-  shared_resource_namespace     = local.shared_resource_namespace
-  environment_namespace         = local.environment_namespace
-  environment_domain            = local.environment_domain
-  environment_subdomain         = local.environment_subdomain
-  services_subdomain            = local.services_subdomain
-  tags                          = local.tags
+  resource_name = local.resource_name
+  environment_namespace     = local.environment_namespace
+  root_domain   = local.root_domain
 }
