@@ -55,17 +55,14 @@ cd ${WORKING_DIRECTORY}
 #------------------------------------------------------------------------------------------------------------------------
 
 echo "Backing up MongoDB"
-for db in edxapp cs_comment_service_development; do
-    echo "Dumping Mongo db ${db}..."
-    mongodump --host ${MONGODB_HOST}
-done
+mongodump --host ${MONGODB_HOST} --out mongo-dump-${NOW}
 echo "Done backing up MongoDB"
 
 #Tarball all of our backup files
 echo "Compressing backups into a single tarball archive"
 tar -czf ${BACKUPS_DIRECTORY}openedx-mongo-${NOW}.tgz mongo-dump-${NOW}
-sudo chown root ${BACKUPS_DIRECTORY}openedx-mongo-${NOW}.tgz
-sudo chgrp root ${BACKUPS_DIRECTORY}openedx-mongo-${NOW}.tgz
+sudo chown ubuntu ${BACKUPS_DIRECTORY}openedx-mongo-${NOW}.tgz
+sudo chgrp ubuntu ${BACKUPS_DIRECTORY}openedx-mongo-${NOW}.tgz
 echo "Created tarball of backup data openedx-mongo-${NOW}.tgz"
 # End Backup Mongo
 #------------------------------------------------------------------------------------------------------------------------
