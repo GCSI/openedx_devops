@@ -12,12 +12,19 @@
 #
 # mongo 'mongodb://${MONGODB_HOST}:27017'
 #---------------------------------------------------------
+AWS_CONFIG_FILE=/home/ubuntu/.aws/config
+AWS_REGION=eu-west-2
 
 S3_BUCKET="codlp-global-staging-backup"
 
-BACKUPS_DIRECTORY="/home/ubuntu/backups/"
+BASE_BACKUPS_DIRECTORY="/home/ubuntu/backups/"
+BACKUPS_DIRECTORY="${BASE_BACKUPS_DIRECTORY}/mongodb/"
 WORKING_DIRECTORY="/home/ubuntu/backup-tmp/"
-NUMBER_OF_BACKUPS_TO_RETAIN="3"
+NUMBER_OF_BACKUPS_TO_RETAIN="2"      # Note: this only regards local storage (ie on the ubuntu server).
+                                      # All backups are retained in the S3 bucket forever.
+                                      # BE AWARE: AWS S3 monthly costs will grow unbounded.
+                                      # You need to monitor the size of the S3 bucket and prune
+                                      # old backups as you deem appropriate.
 NOW="$(date +%Y%m%dT%H%M%S)"
 
 #------------------------------------------------------------------------------
@@ -42,7 +49,13 @@ if [ -f "$WORKING_DIRECTORY/*" ]; then
   sudo rm -r "$WORKING_DIRECTORY/*"
 fi
 
-#Check to see if a backups/ folder exists. if not, create it.
+#Check to see if a base backups/ folder exists. if not, create it.
+if [ ! -d ${BASE_BACKUPS_DIRECTORY} ]; then
+    mkdir ${BASE_BACKUPS_DIRECTORY}
+    echo "created backups folder ${BASE_BACKUPS_DIRECTORY}"
+fi
+
+#Check to see if a backups/mongodb/ folder exists. if not, create it.
 if [ ! -d ${BACKUPS_DIRECTORY} ]; then
     mkdir ${BACKUPS_DIRECTORY}
     echo "created backups folder ${BACKUPS_DIRECTORY}"
@@ -79,5 +92,5 @@ echo "Cleaning up"
 sudo rm -r ${WORKING_DIRECTORY}
 
 echo "Sync backup to AWS S3 backup folder"
-aws s3 sync --delete ${BACKUPS_DIRECTORY} s3://${S3_BUCKET}/backups
+aws s3 sync ${BASE_BACKUPS_DIRECTORY} s3://${S3_BUCKET}/backups
 echo "Done!"

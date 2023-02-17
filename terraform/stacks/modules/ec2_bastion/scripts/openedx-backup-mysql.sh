@@ -10,10 +10,13 @@
 #
 # reference:  https://github.com/edx/edx-documentation/blob/master/en_us/install_operations/source/platform_releases/ginkgo.rst
 #------------------------------------------------------------------------------
+AWS_CONFIG_FILE=/home/ubuntu/.aws/config
+AWS_REGION=eu-west-2
 
 S3_BUCKET="codlp-global-staging-backup"
 
-BACKUPS_DIRECTORY="/home/ubuntu/backups/"
+BASE_BACKUPS_DIRECTORY="/home/ubuntu/backups/"
+BACKUPS_DIRECTORY="${BASE_BACKUPS_DIRECTORY}/mysql/"
 WORKING_DIRECTORY="/home/ubuntu/backup-tmp/"
 NUMBER_OF_BACKUPS_TO_RETAIN=30
 
@@ -39,6 +42,12 @@ if [ -f "$WORKING_DIRECTORY/*" ]; then
   sudo rm -r "$WORKING_DIRECTORY/*"
 fi
 
+#Check to see if a base backups/ folder exists. if not, create it.
+if [ ! -d ${BASE_BACKUPS_DIRECTORY} ]; then
+    mkdir ${BASE_BACKUPS_DIRECTORY}
+    echo "created backups folder ${BASE_BACKUPS_DIRECTORY}"
+fi
+
 #Check to see if a backups/ folder exists. if not, create it.
 if [ ! -d ${BACKUPS_DIRECTORY} ]; then
     mkdir ${BACKUPS_DIRECTORY}
@@ -52,12 +61,12 @@ cd ${WORKING_DIRECTORY}
 #------------------------------------------------------------------------------------------------------------------------
 echo "Backing up MySQL databases"
 echo "Reading MySQL database names..."
-mysql -h ${MYSQL_HOST} -uroot -p"$MYSQL_ROOT_PASSWORD" -ANe "SELECT schema_name FROM information_schema.schemata WHERE schema_name NOT IN ('innodb', 'tmp', 'mysql','sys','information_schema','performance_schema')" > /tmp/db.txt
+mysql -h ${MYSQL_HOST} -u ${MYSQL_ROOT_USERNAME} -p"$MYSQL_ROOT_PASSWORD" -ANe "SELECT schema_name FROM information_schema.schemata WHERE schema_name NOT IN ('innodb', 'tmp', 'mysql','sys','information_schema','performance_schema')" > /tmp/db.txt
 DBS="--databases $(cat /tmp/db.txt)"
 NOW="$(date +%Y%m%dT%H%M%S)"
 SQL_FILE="mysql-data-${NOW}.sql"
 echo "Dumping MySQL structures..."
-mysqldump --set-gtid-purged=OFF --column-statistics=0 -h ${MYSQL_HOST} -uroot -p"$MYSQL_ROOT_PASSWORD" --add-drop-database ${DBS} > ${SQL_FILE}
+mysqldump --set-gtid-purged=OFF --column-statistics=0 -h ${MYSQL_HOST} -u ${MYSQL_ROOT_USERNAME} -p"$MYSQL_ROOT_PASSWORD" --add-drop-database ${DBS} > ${SQL_FILE}
 echo "Done backing up MySQL"
 
 #Tarball our mysql backup file
@@ -68,25 +77,6 @@ sudo chgrp ubuntu ${BACKUPS_DIRECTORY}openedx-mysql-${NOW}.tgz
 echo "Created tarball of backup data openedx-mysql-${NOW}.tgz"
 # End Backup MySQL databases
 #------------------------------------------------------------------------------------------------------------------------
-
-
-#Check to see if a working folder exists. if not, create it.
-if [ ! -d ${WORKING_DIRECTORY} ]; then
-    mkdir ${WORKING_DIRECTORY}
-    echo "created backup working folder ${WORKING_DIRECTORY}"
-fi
-
-#Check to see if anything is currently in the working folder. if so, delete it all.
-if [ -f "$WORKING_DIRECTORY/*" ]; then
-  sudo rm -r "$WORKING_DIRECTORY/*"
-fi
-
-#Check to see if a backups/ folder exists. if not, create it.
-if [ ! -d ${BACKUPS_DIRECTORY} ]; then
-    mkdir ${BACKUPS_DIRECTORY}
-    echo "created backups folder ${BACKUPS_DIRECTORY}"
-fi
-
 
 #Prune the Backups/ folder by eliminating all but the 30 most recent tarball files
 echo "Pruning the local backup folder archive"
@@ -100,5 +90,5 @@ echo "Cleaning up"
 sudo rm -r ${WORKING_DIRECTORY}
 
 echo "Sync backup to AWS S3 backup folder"
-aws s3 sync --delete ${BACKUPS_DIRECTORY} s3://${S3_BUCKET}/backups
+aws s3 sync ${BASE_BACKUPS_DIRECTORY} s3://${S3_BUCKET}/backups
 echo "Done!"
