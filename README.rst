@@ -76,6 +76,11 @@ These would result in environments like the following:
 - CDN at https://cdn.dev.staging.global-communications-academy.com linked to an S3 bucket named dev-codlp-global-storage
 - daily data backups archived into an S3 bucket named dev-codlp-global-mongodb-backup
 
+Passwords, Credentials and Sensitive Data
+-----------------------------------------
+
+See: `Secrets Management <./doc/SECRETS_MANAGEMENT.md>`_
+
 New Features
 ------------
 
