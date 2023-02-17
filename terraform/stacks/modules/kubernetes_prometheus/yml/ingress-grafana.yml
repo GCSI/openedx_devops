@@ -19,7 +19,7 @@ metadata:
 spec:
   tls:
   - hosts:
-    - "*.service.global-communications-academy.com"
+    - "grafana.service.global-communications-academy.com"
     secretName: service.global-communications-academy.com-tls
   rules:
   - host: grafana.service.global-communications-academy.com

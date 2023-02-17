@@ -54,6 +54,11 @@ output "aws_route53_record-wordpress-fqdn" {
   value       = aws_route53_record.wordpress.fqdn
 }
 
+output "aws_route53_record-phpmyadmin-fqdn" {
+  description = "The phpMyAdmin DNS fqdn"
+  value       = var.phpmyadmin == "Y" ? aws_route53_record.phpmyadmin[0].fqdn : ""
+}
+
 output "aws_route53_record-wordpress-name" {
   description = "The Wordpress DNS name"
   value       = aws_route53_record.wordpress.name
@@ -71,12 +76,12 @@ output "aws_route53_record-wordpress-type" {
 
 output "kubernetes_secret-wordpress-id" {
   description = "The Wordpress Kubernetes secret id"
-  value       = kubernetes_secret.wordpress_db.id
+  value       = kubernetes_secret.wordpress_config.id
 }
 
 output "kubernetes_secret-wordpress-metadata" {
   description = "The Wordpress Kubernetes secret metadata"
-  value       = kubernetes_secret.wordpress_db.metadata
+  value       = kubernetes_secret.wordpress_config.metadata
 }
 
 output "wordpress_mysql_host" {
@@ -95,4 +100,14 @@ output "wordpress_mysql_database" {
 
 output "wordpress_mysql_username" {
   value = local.externalDatabaseUser
+}
+
+output "kubernetes_resource_quota_cpu" {
+  description = "The namespace resource limit for cpu"
+  value       = var.resource_quota == "Y" ? var.resource_quota_cpu : ""
+}
+
+output "kubernetes_resource_quota_memory" {
+  description = "The namespace resource limit for memory"
+  value       = var.resource_quota == "Y" ? var.resource_quota_memory : ""
 }

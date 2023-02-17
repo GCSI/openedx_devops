@@ -1,26 +1,26 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: kubeapps
-  namespace: kubeapps
+  name: "cost-analyzer"
+  namespace: ${subdomain}
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/proxy-body-size: "0"
     kubernetes.io/ingress.class: "nginx"
-    cert-manager.io/cluster-issuer: service.global-communications-academy.com
+    cert-manager.io/cluster-issuer: ${services_domain}
 spec:
   tls:
   - hosts:
-    - "kubeapps.service.global-communications-academy.com"
-    secretName: service.global-communications-academy.com-tls
+    - "${subdomain}.${services_domain}"
+    secretName: "${subdomain}.${services_domain}-tls"
   rules:
-  - host: kubeapps.service.global-communications-academy.com
+  - host: ${subdomain}.${services_domain}
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: kubeapps
+            name: cost-analyzer-cost-analyzer
             port:
-              number: 80
+              number: 9090

@@ -29,6 +29,7 @@ dependencies {
     "../../../stacks/live/vpc",
     "../../../stacks/live/kubernetes",
     "../../../stacks/live/redis",
+    "../vpc",
     ]
 }
 

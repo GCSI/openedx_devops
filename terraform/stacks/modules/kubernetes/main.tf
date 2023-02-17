@@ -87,7 +87,7 @@ module "eks" {
   create_kms_key = var.eks_create_kms_key
 
   # add more IAM users to the KMS key owners list
-  kms_key_owners = ["arn:aws:iam::${var.account_id}:user/system/bastion-user/${var.namespace}-bastion"]
+  # kms_key_owners = ["arn:aws:iam::${var.account_id}:user/system/bastion-user/${var.namespace}-bastion"]
 
   tags = merge(
     var.tags,
@@ -98,6 +98,9 @@ module "eks" {
   )
 
   cluster_addons = {
+    vpc-cni = {
+      addon_version = "v1.12.2-eksbuild.1"
+    }
     coredns = {
       addon_version = "v1.8.7-eksbuild.3"
     }
@@ -180,6 +183,13 @@ module "eks" {
 resource "kubernetes_namespace" "namespace-shared" {
   metadata {
     name = var.namespace
+  }
+  depends_on = [module.eks]
+}
+
+resource "kubernetes_namespace" "wordpress" {
+  metadata {
+    name = "wordpress"
   }
   depends_on = [module.eks]
 }

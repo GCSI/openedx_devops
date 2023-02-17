@@ -19,4 +19,5 @@ locals {
   wp_database_user    = "codlp_staging_wp"
   wp_database         = "codlp_staging_wp"
   wp_disk_volume_size = "10Gi"
+  phpmyadmin          = "N"
 }

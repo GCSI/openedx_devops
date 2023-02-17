@@ -66,6 +66,7 @@ Services Endpoints
 - **MongoDB**: mongodb.service.global-communications-academy.com:27017. Private VPC access to your EC2-based installation of MongoDB on a t3.medium instance with allocated storage of 10.
 - **Kubernetes Dashboard**: https://dashboard.service.global-communications-academy.com. Dashboard is a web-based Kubernetes user interface. You can use Dashboard to deploy containerized applications to a Kubernetes cluster, troubleshoot your containerized application, and manage the cluster resources. You can use Dashboard to get an overview of applications running on your cluster, as well as for creating or modifying individual Kubernetes resources (such as Deployments, Jobs, DaemonSets, etc). For example, you can scale a Deployment, initiate a rolling update, restart a pod or deploy new applications using a deploy wizard.
 - **Kubeapps**: https://kubeapps.service.global-communications-academy.com. Kubeapps is an in-cluster web-based application that enables users with a one-time installation to deploy, manage, and upgrade applications on a Kubernetes cluster
+- **Kubecost**: https://kubecost.service.global-communications-academy.com. Kubecost provides real-time cost visibility and insights for teams using Kubernetes, helping you continuously reduce your cloud costs.
 - **Grafana**: https://grafana.service.global-communications-academy.com. Grafana is a multi-platform open source analytics and interactive visualization web application. It provides charts, graphs, and alerts for the web when connected to supported data sources.
 You can also optionally automatically create additional environments for say, dev and test and QA and so forth.
 These would result in environments like the following:
@@ -77,6 +78,12 @@ These would result in environments like the following:
 
 New Features
 ------------
+
+**RELEASE v1.0.24** preconfigured automated remote backup solutions for MySQL and MongoDB. See `doc/DATA_BACKUP.md <./doc/DATA_BACKUP.md>`_ for additional details.
+
+**RELEASE v1.0.23:** `Kubecost <https://www.kubecost.com/>`_ and `phpMyAdmin <https://www.phpmyadmin.net/>`_ applications.
+
+**RELEASE v1.0.21:** Add a Wordpress site to your installation.
 
 **RELEASE v1.0.19:** Out of the box support for all MFE's.
 
@@ -157,14 +164,20 @@ This repository was generated using `Cookiecutter <https://cookiecutter.readthed
     - ~> 6.0
   * - `Helm Kubernetes Dashboard <https://kubernetes.github.io/dashboard/>`_
     - ~> 6.0
+  * - `Helm kubecost <https://kubecost.github.io/cost-analyzer/>`_
+    - ~> 1.100
   * - `Helm kubeapps <https://bitnami.com/stack/kubeapps/helm>`_
-    - latest
+    - ~> 12.2
   * - `Helm Karpenter <https://artifacthub.io/packages/helm/karpenter/karpenter>`_
     - ~> 0.16
   * - `Helm Metrics Server <https://kubernetes-sigs.github.io/metrics-server/>`_
     - ~> 3.8
   * - `Helm Prometheus <https://prometheus-community.github.io/helm-charts/>`_
     - 39.6.0
+  * - `Helm Wordpress <https://charts.bitnami.com/bitnami/wordpress>`_
+    - ~> 15.2
+  * - `Helm phpMyAdmin <https://charts.bitnami.com/bitnami/phpmyadmin>`_
+    - ~> 10.4
   * - `openedx-actions/tutor-k8s-init <https://github.com/marketplace/actions/open-edx-tutor-k8s-init>`_
     - v1.0.4
   * - `openedx-actions/tutor-k8s-configure-edx-secret <https://github.com/openedx-actions/tutor-k8s-configure-edx-secret>`_
@@ -370,12 +383,13 @@ Specifically with regard to MySQL, several 3rd party analytics tools provide out
 VI. Manage your new Kubernetes cluster
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Installs four of the most popular web applications:
+Installs five of the most popular Kubernetes management applications:
 
 - `k9s <https://k9scli.io/>`_, preinstalled in the optional EC2 Bastion server. K9s is an amazing retro styled, ascii-based UI for viewing and monitoring all aspects of your Kubernetes cluster. It looks and runs great from any ssh-connected terminal window.
 - `Kubernetes Dashboard <https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/>`_ at https://dashboard.service.global-communications-academy.com. Written by the same team that maintain Kubernetes, Kubernetes Dashboard provides an elegant web UI for monitoring and administering your kubernetes cluster.
 - `Kubeapps <https://kubeapps.dev/>`_ at https://kubeapps.service.global-communications-academy.com. Maintained by VMWare Bitnami, Kubeapps is the easiest way to install popular open source software packages from MySQL and MongoDB to Wordpress and Drupal.
 - `Grafana <https://grafana.com/>`_ at https://grafana.service.global-communications-academy.com/login. Provides an elegant web UI to view time series data gathered by prometheus and metrics-server.
+- `Kubecost <https://www.kubecost.com/>`_ at https://kubecost.service.global-communications-academy.com/login. Provides real-time cost visibility and insights for teams using Kubernetes, helping you continuously reduce your cloud costs.
 
 VII. Add more Kubernetes admins
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

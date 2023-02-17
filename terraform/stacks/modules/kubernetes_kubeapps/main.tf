@@ -14,6 +14,7 @@
 #   helm repo add bitnami https://charts.bitnami.com/bitnami
 #   helm repo update
 #   helm search repo bitnami/kubeapps
+#   helm show values bitnami/kubeapps
 #
 # NOTE: run `helm repo update` prior to running this
 #       Terraform module.
@@ -35,8 +36,7 @@ resource "helm_release" "kubeapps" {
   name       = "kubeapps"
   repository = "https://charts.bitnami.com/bitnami"
   chart      = "kubeapps"
-  # FIX NOTE: what is the semantic version for this?
-  #version    = "latest"
+  version    = "~> 12.2"
 
   # see https://docs.bitnami.com/kubernetes/infrastructure/kubeapps/configuration/expose-service/
   set {

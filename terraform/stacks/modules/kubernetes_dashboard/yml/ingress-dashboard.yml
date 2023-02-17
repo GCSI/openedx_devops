@@ -11,7 +11,7 @@ metadata:
 spec:
   tls:
   - hosts:
-    - "*.service.global-communications-academy.com"
+    - "dashboard.service.global-communications-academy.com"
     secretName: service.global-communications-academy.com-tls
   rules:
   - host: dashboard.service.global-communications-academy.com
