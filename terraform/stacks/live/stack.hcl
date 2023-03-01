@@ -40,11 +40,11 @@ locals {
   eks_service_group_instance_type    = "t3.large"
   eks_service_group_min_size         = 3
   eks_service_group_max_size         = 10
-  eks_service_group_desired_size     = 5
+  eks_service_group_desired_size     = 6
 
   eks_hosting_group_instance_type    = "t3.large"
   eks_hosting_group_min_size         = 0
-  eks_hosting_group_max_size         = 1
+  eks_hosting_group_max_size         = 10
   eks_hosting_group_desired_size     = 0
 
 
