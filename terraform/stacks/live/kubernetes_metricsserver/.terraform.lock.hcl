@@ -120,3 +120,10 @@ provider "registry.terraform.io/hashicorp/random" {
     "zh:f143a9a5af42b38fed328a161279906759ff39ac428ebcfe55606e05e1518b93",
   ]
 }
+
+provider "registry.terraform.io/hashicorp/template" {
+  version = "2.2.0"
+  hashes = [
+    "h1:LLixa6j2MWnirPzYZPMD9/B5CVuN4Alg01SddOIoA5s=",
+  ]
+}
