@@ -2,95 +2,44 @@
 # written by: Lawrence McDaniel
 #             https://lawrencemcdaniel.com/
 #
-# date: Jan-2023
+# date: Feb-2023
 #
 # usage: installs Kubernetes Dashboard web application
 # see: https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
-#      https://stackoverflow.com/questions/46664104/how-to-sign-in-kubernetes-dashboard
+#      https://blog.heptio.com/on-securing-the-kubernetes-dashboard-16b09b1b7aca
 #
-# requirements:
-#   helm repo add kubernetes-dashboard https://kubernetes.github.io/dashboard/
-#   helm repo update
+# to run:
+#   in a separate terminal window run:  kubectl proxy
+#   in a browser window run: http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
+#
+#   The login page will ask for a token. To generate said token, run:
+#   kubectl -n kubernetes-dashboard create token kubernetes-dashboard
+#
+# helm repo add kubernetes-dashboard https://kubernetes.github.io/dashboard/
+# helm install kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard
+# helm search repo kubernetes-dashboard
+# helm show values kubernetes-dashboard/kubernetes-dashboard
+#
+# Get the Kubernetes Dashboard URL by running:
+#   export POD_NAME=$(kubectl get pods -n default -l "app.kubernetes.io/name=kubernetes-dashboard,app.kubernetes.io/instance=kubernetes-dashboard" -o jsonpath="{.items[0].metadata.name}")
+#   echo https://127.0.0.1:8443/
+#   kubectl -n default port-forward $POD_NAME 8443:8443
 #-----------------------------------------------------------
-locals {
+
+data "template_file" "dashboard-values" {
+  template = file("${path.module}/yml/values.yaml")
 }
 
+resource "helm_release" "dashboard" {
+  name             = "common"
+  namespace        = "kubernetes-dashboard"
+  create_namespace = true
 
-resource "kubernetes_namespace" "dashboard" {
-  metadata {
-    name = var.dashboard_namespace
-  }
-}
-
-resource "helm_release" "kubernetes-dashboard" {
-  namespace        = var.dashboard_namespace
-  create_namespace = false
-
-  # see https://artifacthub.io/packages/helm/k8s-dashboard/kubernetes-dashboard
-  name       = "kubernetes-dashboard"
-  repository = "https://kubernetes.github.io/dashboard/"
   chart      = "kubernetes-dashboard"
+  repository = "https://kubernetes.github.io/dashboard/"
   version    = "~> 6.0"
 
-  # see https://docs.bitnami.com/kubernetes/infrastructure/dashboard/configuration/expose-service/
-  set {
-    name  = "service.externalPort"
-    value = 80
-  }
-
-  set {
-    name  = "protocolHttp"
-    value = true
-  }
-
-  set {
-    name  = "serviceAccount.create"
-    value = false
-  }
-
-  set {
-    name  = "serviceAccount.name"
-    value = var.dashboard_account_name
-  }
-
-  set {
-    name  = "rbac.create"
-    value = false
-  }
-
-  depends_on = [
-    kubernetes_namespace.dashboard
+  values = [
+    data.template_file.dashboard-values.rendered
   ]
-}
-
-resource "kubernetes_service_account" "dashboard_admin" {
-  metadata {
-    name      = var.dashboard_account_name
-    namespace = var.dashboard_namespace
-  }
-}
-
-resource "kubernetes_cluster_role_binding" "dashboard_admin" {
-  metadata {
-    name = kubernetes_service_account.dashboard_admin.metadata.0.name
-  }
-  role_ref {
-    api_group = "rbac.authorization.k8s.io"
-    kind      = "ClusterRole"
-    name      = "cluster-admin"
-  }
-  subject {
-    kind      = "ServiceAccount"
-    name      = kubernetes_service_account.dashboard_admin.metadata.0.name
-    namespace = kubernetes_namespace.dashboard.metadata.0.name
-  }
-  subject {
-    kind      = "Group"
-    name      = "system:masters"
-    api_group = "rbac.authorization.k8s.io"
-  }
-}
-
-resource "kubectl_manifest" "ingress-dashboard" {
-  yaml_body = file("${path.module}/yml/ingress-dashboard.yml")
 }

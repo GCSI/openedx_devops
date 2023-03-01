@@ -12,6 +12,15 @@ GITHUB_REPO="gh:lpm0073/cookiecutter-openedx-devops"
 GITHUB_BRANCH="v1.0.21"
 OUTPUT_FOLDER="../"
 
+if [ -d openedx_devops ]; then
+  read -p "Delete all existing Terraform modules in your repository? This is recommended (Y/n) " yn
+  case $yn in
+    [yY] ) sudo rm -r openedx_devops/terraform;
+      echo "removed the current set of Terraform folders in ./openedx_devops/terraform";
+      break;;
+  esac
+fi
+
 cookiecutter --checkout $GITHUB_BRANCH \
             --output-dir $OUTPUT_FOLDER \
             --overwrite-if-exists \
@@ -35,14 +44,14 @@ cookiecutter --checkout $GITHUB_BRANCH \
             environment_name=staging \
             environment_subdomain=staging \
             eks_create_kms_key=Y \
-            eks_worker_group_instance_type=t3.xlarge \
-            eks_worker_group_min_size=0 \
-            eks_worker_group_max_size=1 \
-            eks_worker_group_desired_size=0 \
-            eks_karpenter_group_instance_type=t3.large \
-            eks_karpenter_group_min_size=3 \
-            eks_karpenter_group_max_size=10 \
-            eks_karpenter_group_desired_size=3 \
+            eks_hosting_group_instance_type=t3.large \
+            eks_hosting_group_min_size=0 \
+            eks_hosting_group_max_size=1 \
+            eks_hosting_group_desired_size=0 \
+            eks_service_group_instance_type=t3.large \
+            eks_service_group_min_size=3 \
+            eks_service_group_max_size=10 \
+            eks_service_group_desired_size=3 \
             mysql_instance_class=db.t2.small \
             mysql_allocated_storage=10 \
             redis_node_type=cache.t2.small \
@@ -54,7 +63,7 @@ cookiecutter --checkout $GITHUB_BRANCH \
             stack_add_remote_mysql=Y \
             stack_add_remote_mongodb=Y \
             stack_add_remote_redis=Y \
-            wordpress_add_site=Y \
+            wordpress_add_site=N \
             mongodb_instance_type=t3.medium \
             mongodb_allocated_storage=10 \
             
