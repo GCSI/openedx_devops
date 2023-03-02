@@ -122,4 +122,3 @@ resource "kubernetes_secret" "xqueue" {
 }
 
 
-

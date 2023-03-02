@@ -26,30 +26,8 @@
 #
 # see: https://registry.terraform.io/modules/terraform-aws-modules/iam/aws/latest/submodules/iam-role-for-service-accounts-eks
 
-module "karpenter_controller_irsa_role" {
-  source = "terraform-aws-modules/iam/aws//modules/iam-role-for-service-accounts-eks"
-  # mcdaniel aug-2022: specifying an explicit version causes this module to create
-  # an incomplete IAM policy.
-  #version = "~> 5.3"
-
-  role_name                          = "karpenter-controller-${var.stack_namespace}"
-  create_role                        = true
-  attach_karpenter_controller_policy = true
-
-  karpenter_controller_cluster_id = data.aws_eks_cluster.eks.name
-  karpenter_controller_node_iam_role_arns = [
-    var.karpenter_node_group_iam_role_arn
-  ]
-
-  oidc_providers = {
-    ex = {
-      provider_arn               = var.oidc_provider_arn
-      namespace_service_accounts = ["karpenter:karpenter"]
-    }
-  }
-
-  tags = var.tags
-
+data "template_file" "karpenter-values" {
+  template = file("${path.module}/yml/karpenter-values.yaml")
 }
 
 
@@ -62,6 +40,10 @@ resource "helm_release" "karpenter" {
   chart      = "karpenter"
 
   version = "~> 0.16"
+
+  values = [
+    data.template_file.karpenter-values.rendered
+  ]
 
   set {
     name  = "serviceAccount.annotations.eks\\.amazonaws\\.com/role-arn"
@@ -85,13 +67,43 @@ resource "helm_release" "karpenter" {
 
 }
 
+#------------------------------------------------------------------------------
+#                           SUPPORTING RESOURCES
+#------------------------------------------------------------------------------
+module "karpenter_controller_irsa_role" {
+  source = "terraform-aws-modules/iam/aws//modules/iam-role-for-service-accounts-eks"
+  # mcdaniel aug-2022: specifying an explicit version causes this module to create
+  # an incomplete IAM policy.
+  #version = "~> 5.3"
+
+  role_name                          = "karpenter-controller-${var.stack_namespace}"
+  create_role                        = true
+  attach_karpenter_controller_policy = true
+
+  karpenter_controller_cluster_id = data.aws_eks_cluster.eks.name
+  karpenter_controller_node_iam_role_arns = [
+    var.service_node_group_iam_role_arn
+  ]
+
+  oidc_providers = {
+    ex = {
+      provider_arn               = var.oidc_provider_arn
+      namespace_service_accounts = ["karpenter:karpenter"]
+    }
+  }
+
+  tags = var.tags
+
+}
+
+
 resource "random_pet" "this" {
   length = 2
 }
 
 resource "aws_iam_instance_profile" "karpenter" {
   name = "KarpenterNodeInstanceProfile-${var.stack_namespace}-${random_pet.this.id}"
-  role = var.karpenter_node_group_iam_role_name
+  role = var.service_node_group_iam_role_name
 }
 
 

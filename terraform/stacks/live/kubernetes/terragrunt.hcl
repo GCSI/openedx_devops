@@ -8,8 +8,8 @@
 #------------------------------------------------------------------------------
 locals {
   # Automatically load stack-level variables
-  stack_vars = read_terragrunt_config(find_in_parent_folders("stack.hcl"))
-  global_vars      = read_terragrunt_config(find_in_parent_folders("global.hcl"))
+  stack_vars    = read_terragrunt_config(find_in_parent_folders("stack.hcl"))
+  global_vars   = read_terragrunt_config(find_in_parent_folders("global.hcl"))
 
   # Extract out common variables for reuse
   env                             = local.stack_vars.locals.stack
@@ -22,14 +22,16 @@ locals {
   shared_resource_identifier      = local.global_vars.locals.shared_resource_identifier
   kubernetes_version              = local.stack_vars.locals.kubernetes_version
   eks_create_kms_key              = local.stack_vars.locals.eks_create_kms_key
-  eks_worker_group_instance_type  = local.stack_vars.locals.eks_worker_group_instance_type
-  eks_worker_group_min_size       = local.stack_vars.locals.eks_worker_group_min_size
-  eks_worker_group_max_size       = local.stack_vars.locals.eks_worker_group_max_size
-  eks_worker_group_desired_size   = local.stack_vars.locals.eks_worker_group_desired_size
-  eks_karpenter_group_instance_type = local.stack_vars.locals.eks_karpenter_group_instance_type
-  eks_karpenter_group_min_size      = local.stack_vars.locals.eks_karpenter_group_min_size
-  eks_karpenter_group_max_size      =  local.stack_vars.locals.eks_karpenter_group_max_size
-  eks_karpenter_group_desired_size  =  local.stack_vars.locals.eks_karpenter_group_desired_size
+  eks_hosting_group_instance_type = local.stack_vars.locals.eks_hosting_group_instance_type
+  eks_hosting_group_min_size      = local.stack_vars.locals.eks_hosting_group_min_size
+  eks_hosting_group_max_size      = local.stack_vars.locals.eks_hosting_group_max_size
+  eks_hosting_group_desired_size  = local.stack_vars.locals.eks_hosting_group_desired_size
+  eks_service_group_instance_type = local.stack_vars.locals.eks_service_group_instance_type
+  eks_service_group_min_size      = local.stack_vars.locals.eks_service_group_min_size
+  eks_service_group_max_size      =  local.stack_vars.locals.eks_service_group_max_size
+  eks_service_group_desired_size  =  local.stack_vars.locals.eks_service_group_desired_size
+  bastion_iam_arn                 = "arn:aws:iam::${local.account_id}:user/system/bastion-user/${local.namespace}-bastion"
+  bastion_iam_username            = "${local.namespace}-bastion"
 
   tags = merge(
     local.stack_vars.locals.tags,
@@ -65,33 +67,61 @@ include {
 
 # These are the variables we have to pass in to use the module specified in the terragrunt configuration above
 inputs = {
-  account_id = local.account_id
-  shared_resource_identifier = local.shared_resource_identifier
-  aws_region = local.aws_region
-  root_domain = local.root_domain
-  namespace = local.namespace
-  private_subnet_ids = dependency.vpc.outputs.private_subnets
-  public_subnet_ids = dependency.vpc.outputs.public_subnets
-  vpc_id  = dependency.vpc.outputs.vpc_id
-  kubernetes_cluster_version = local.kubernetes_version
-  eks_create_kms_key = local.eks_create_kms_key
-  eks_worker_group_instance_type  = local.eks_worker_group_instance_type
-  eks_worker_group_min_size = local.eks_worker_group_min_size
-  eks_worker_group_max_size = local.eks_worker_group_max_size
-  eks_worker_group_desired_size = local.eks_worker_group_desired_size
-  eks_karpenter_group_instance_type = local.eks_karpenter_group_instance_type
-  eks_karpenter_group_min_size      = local.eks_karpenter_group_min_size
-  eks_karpenter_group_max_size      =  local.eks_karpenter_group_max_size
-  eks_karpenter_group_desired_size  =  local.eks_karpenter_group_desired_size
+  account_id                      = local.account_id
+  shared_resource_identifier      = local.shared_resource_identifier
+  aws_region                      = local.aws_region
+  root_domain                     = local.root_domain
+  namespace                       = local.namespace
+  private_subnet_ids              = dependency.vpc.outputs.private_subnets
+  public_subnet_ids               = dependency.vpc.outputs.public_subnets
+  vpc_id                          = dependency.vpc.outputs.vpc_id
+  kubernetes_cluster_version      = local.kubernetes_version
+  eks_create_kms_key              = local.eks_create_kms_key
+  eks_hosting_group_instance_type = local.eks_hosting_group_instance_type
+  eks_hosting_group_min_size      = local.eks_hosting_group_min_size
+  eks_hosting_group_max_size      = local.eks_hosting_group_max_size
+  eks_hosting_group_desired_size  = local.eks_hosting_group_desired_size
+  eks_service_group_instance_type = local.eks_service_group_instance_type
+  eks_service_group_min_size      = local.eks_service_group_min_size
+  eks_service_group_max_size      = local.eks_service_group_max_size
+  eks_service_group_desired_size  = local.eks_service_group_desired_size
+  bastion_iam_arn                 = local.bastion_iam_arn
+  tags                            = local.tags
 
-  tags = local.tags
   map_roles = []
+  kms_key_owners = [
+    "${local.bastion_iam_arn}",
+    # -------------------------------------------------------------------------
+    # ADD MORE CLUSTER ADMIN USER IAM ACCOUNTS TO THE AWS KMS KEY OWNER LIST:
+    # -------------------------------------------------------------------------
+    "arn:aws:iam::${local.account_id}:user/ci",
+    "arn:aws:iam::${local.account_id}:user/lawrence.mcdaniel",
+    "arn:aws:iam::${local.account_id}:user/edunext_admin",
+  ]
   map_users = [
     {
-      userarn  = "arn:aws:iam::621672204142:user/ci"
+      userarn  = local.bastion_iam_arn
+      username = local.bastion_iam_username
+      groups   = ["system:masters"]
+    },
+    # -------------------------------------------------------------------------
+    # ADD MORE CLUSTER ADMIN USER IAM ACCOUNTS HERE:
+    # -------------------------------------------------------------------------
+    {
+      userarn  = "arn:aws:iam::${local.account_id}:user/ci"
       username = "ci"
       groups   = ["system:masters"]
-    }
+    },
+    {
+      userarn  = "arn:aws:iam::${local.account_id}:user/lawrence.mcdaniel"
+      username = "lawrence.mcdaniel"
+      groups   = ["system:masters"]
+    },
+    {
+      userarn  = "arn:aws:iam::${local.account_id}:user/edunext_admin"
+      username = "edunext_admin"
+      groups   = ["system:masters"]
+    },
   ]
 
 }

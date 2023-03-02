@@ -19,7 +19,7 @@ locals {
 }
 
 resource "aws_security_group" "worker_group_mgmt" {
-  name_prefix = "${var.namespace}-eks_worker_group_mgmt"
+  name_prefix = "${var.namespace}-eks_hosting_group_mgmt"
   description = "openedx_devops: Ingress CLB worker group management"
   vpc_id      = var.vpc_id
 
@@ -80,19 +80,17 @@ module "eks" {
   # this key is benign since Kubernetes secrets encryption
   # is not enabled by default.
   #
-  # AWS EKS KMS console: https://eu-west-2.console.aws.amazon.com/kms/home
+  # AWS EKS KMS console: https://us-east-2.console.aws.amazon.com/kms/home
   #
   # audit your AWS EKS KMS key access by running:
-  # aws kms get-key-policy --key-id ADD-YOUR-KEY-ID-HERE --region eu-west-2 --policy-name default --output text
+  # aws kms get-key-policy --key-id ADD-YOUR-KEY-ID-HERE --region us-east-2 --policy-name default --output text
   create_kms_key = var.eks_create_kms_key
+  kms_key_owners = var.kms_key_owners
 
-  # add more IAM users to the KMS key owners list
-  kms_key_owners = [
-    "arn:aws:iam::824885811700:user/lawrence.mcdaniel",
-    "arn:aws:iam::824885811700:user/system/bastion-user/codlp-global-live-bastion",
-    "arn:aws:iam::824885811700:user/edunext_admin",
-    "arn:aws:iam::824885811700:user/ci"
-  ]
+  # add the bastion IAM user to aws-auth.mapUsers so that
+  # kubectl and k9s work from inside the bastion server by default.
+  manage_aws_auth_configmap = true
+  aws_auth_users = var.map_users
 
   tags = merge(
     var.tags,
@@ -104,17 +102,17 @@ module "eks" {
 
   cluster_addons = {
     vpc-cni = {
-      addon_version = "v1.12.2-eksbuild.1"
+      addon_version = "v1.12.5-eksbuild.1"
     }
     coredns = {
-      addon_version = "v1.8.7-eksbuild.3"
+      addon_version = "v1.9.3-eksbuild.2"
     }
     kube-proxy = {
-      addon_version = "v1.24.9-eksbuild.1"
+      addon_version = "v1.25.6-eksbuild.1"
     }
     aws-ebs-csi-driver = {
       service_account_role_arn = aws_iam_role.AmazonEKS_EBS_CSI_DriverRole.arn
-      addon_version            = "v1.15.0-eksbuild.1"
+      addon_version            = "v1.16.0-eksbuild.1"
     }
   }
 
@@ -159,12 +157,16 @@ module "eks" {
     # (a few hours or less) as these are usually only instantiated during
     # bursts of user activity such as at the start of a scheduled lecture or
     # exam on a large mooc.
-    karpenter = {
+    live = {
       capacity_type     = "SPOT"
       enable_monitoring = false
-      desired_size      = var.eks_karpenter_group_desired_size
-      min_size          = var.eks_karpenter_group_min_size
-      max_size          = var.eks_karpenter_group_max_size
+      desired_size      = var.eks_service_group_desired_size
+      min_size          = var.eks_service_group_min_size
+      max_size          = var.eks_service_group_max_size
+
+      labels = {
+        node-group = "live"
+      }
 
       iam_role_additional_policies = {
         # Required by Karpenter
@@ -174,15 +176,40 @@ module "eks" {
         AmazonEBSCSIDriverPolicy = data.aws_iam_policy.AmazonEBSCSIDriverPolicy.arn
       }
 
-      instance_types = ["${var.eks_karpenter_group_instance_type}"]
+      instance_types = ["${var.eks_service_group_instance_type}"]
       tags = merge(
         var.tags,
-        { Name = "eks-${var.shared_resource_identifier}-karpenter" }
+        { Name = "eks-${var.shared_resource_identifier}" }
+      )
+    }
+
+    hosting = {
+      capacity_type     = "SPOT"
+      enable_monitoring = false
+      desired_size      = var.eks_hosting_group_desired_size
+      min_size          = var.eks_hosting_group_min_size
+      max_size          = var.eks_hosting_group_max_size
+
+      labels = {
+        node-group = "live"
+      }
+
+      iam_role_additional_policies = {
+        # Required by Karpenter
+        AmazonSSMManagedInstanceCore = "arn:${local.partition}:iam::aws:policy/AmazonSSMManagedInstanceCore"
+
+        # Required by EBS CSI Add-on
+        AmazonEBSCSIDriverPolicy = data.aws_iam_policy.AmazonEBSCSIDriverPolicy.arn
+      }
+
+      instance_types = ["${var.eks_hosting_group_instance_type}"]
+      tags = merge(
+        var.tags,
+        { Name = "eks-${var.shared_resource_identifier}-hosting" }
       )
     }
 
   }
-
 }
 
 resource "kubernetes_namespace" "namespace-shared" {
@@ -192,9 +219,3 @@ resource "kubernetes_namespace" "namespace-shared" {
   depends_on = [module.eks]
 }
 
-resource "kubernetes_namespace" "wordpress" {
-  metadata {
-    name = "wordpress"
-  }
-  depends_on = [module.eks]
-}
