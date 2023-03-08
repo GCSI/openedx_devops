@@ -33,6 +33,11 @@ metadata:
     nginx.ingress.kubernetes.io/session-cookie-expires: "172800"
     nginx.ingress.kubernetes.io/session-cookie-max-age: "172800"
 
+    # mcdaniel mar-2023
+    # force ssl redirect
+    # ---------------------
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
 spec:
   tls:
   - hosts:
@@ -41,6 +46,16 @@ spec:
     secretName: ${environment_domain}-tls
   rules:
   - host: ${environment_domain}
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: lms
+            port:
+              number: 8000
+  - host: "preview.${environment_domain}"
     http:
       paths:
       - path: /
@@ -70,14 +85,3 @@ spec:
             name: discovery
             port:
               number: 8000
-
-  - host: apps.${environment_domain}
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: mfe
-            port:
-              number: 8002

@@ -10,12 +10,13 @@
 locals {
   global_vars = read_terragrunt_config(find_in_parent_folders("global.hcl"))
 
-  environment               = "dev"
-  environment_subdomain     = "dev"
-  environment_domain        = "${local.environment_subdomain}.${local.global_vars.locals.root_domain}"
-  environment_namespace     = "${local.global_vars.locals.platform_name}-${local.global_vars.locals.platform_region}-${local.environment}"
-  shared_resource_namespace = local.global_vars.locals.shared_resource_namespace
-  db_prefix                 = replace(replace("${local.global_vars.locals.platform_name}_${local.environment}", ".", ""), "-", "")
+  environment                   = "dev"
+  environment_subdomain         = "dev"
+  environment_domain            = "${local.environment_subdomain}.${local.global_vars.locals.root_domain}"
+  environment_studio_subdomain  = "studio"
+  environment_namespace         = "${local.global_vars.locals.platform_name}-${local.global_vars.locals.platform_region}-${local.environment}"
+  shared_resource_namespace     = local.global_vars.locals.shared_resource_namespace
+  db_prefix                     = replace(replace("${local.global_vars.locals.platform_name}_${local.environment}", ".", ""), "-", "")
 
   # AWS instance sizing
   redis_node_type      = "cache.t2.small"

@@ -20,4 +20,3 @@ securityContext:
   #enabled: true
   # -------------------------------------------------------------------------------
   fsGroup: 1001
-installCRDs: true

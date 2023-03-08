@@ -40,6 +40,20 @@ metadata:
     # see: https://github.com/kubernetes/ingress-nginx/blob/main/docs/examples/rewrite/README.md
     # ----------------------
     nginx.ingress.kubernetes.io/rewrite-target: /api/mfe_config/v1$2
+
+    # mcdaniel mar-2023
+    # add sticky sessions
+    # ---------------------
+    nginx.ingress.kubernetes.io/affinity: "cookie"
+    nginx.ingress.kubernetes.io/session-cookie-name: "openedx_sticky_session"
+    nginx.ingress.kubernetes.io/session-cookie-expires: "172800"
+    nginx.ingress.kubernetes.io/session-cookie-max-age: "172800"
+
+    # mcdaniel mar-2023
+    # force ssl redirect
+    # ---------------------
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
 spec:
   tls:
   - hosts:
