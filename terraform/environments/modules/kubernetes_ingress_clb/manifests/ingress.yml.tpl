@@ -45,6 +45,8 @@ metadata:
     # see (better): https://github.com/kubernetes/ingress-nginx/issues/6165#issuecomment-692684553
     # see: https://github.com/kubernetes/ingress-nginx/issues/4280
     #
+    # how it works in Caddy:
+    # ----------------------
     #  @scorm_matcher {
     #    path /scorm-proxy/*
     #  }
