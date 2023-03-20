@@ -37,7 +37,12 @@ jobs:
           eks-namespace: ${{ env.NAMESPACE }}
           eks-cluster-name: ${{ env.EKS_CLUSTER_NAME }}
           aws-region: ${{ env.AWS_REGION }}
-          tutor-version: "15.2.0"
+          tutor-version: "14.2.4"
+
+      - name: Load additional environment specific settings
+        shell: bash
+        run: |-
+          echo "TUTOR_OPENEDX_COMMON_VERSION=open-release/nutmeg.2" >> $GITHUB_ENV
 
       #------------------------------------------------------------------------
       # Add a custom theme here.
@@ -87,7 +92,10 @@ jobs:
           #----------------------------------------------
 
       - name: Dump tutor config
-        uses: openedx-actions/tutor-print-dump@v1.0.0
+        uses: openedx-actions/tutor-print-dump@v1.0.4
+        with:
+          namespace: ${{ env.NAMESPACE }}
+          action: build
 
       #------------------------------------------------------------------------
       # Build and upload the Docker container

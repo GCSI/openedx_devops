@@ -64,7 +64,7 @@ Backend Services Endpoints
 
 - **Bastion**: bastion.service.global-communications-academy.com:22. Public ssh access to a t3.micro Ubuntu 20.04 LTS bastion EC2 instance that's preconfigure with all of the software that you'll need to adminster this stack.
 - **MySQL**: mysql.service.global-communications-academy.com:3306. Private VPC access to your AWS RDS MySQL db.t2.small instance with allocated storage of 10.
-- **MongoDB**: mongodb.service.global-communications-academy.com:27017. Private VPC access to your EC2-based installation of MongoDB on a t3.medium instance with allocated storage of 10.
+- **MongoDB**: mongodb.service.global-communications-academy.com:27017. Private VPC access to your EC2-based installation of MongoDB on a t3.medium instance with allocated storage of 100.
 - **Kubernetes Dashboard**: Dashboard is a web-based Kubernetes user interface. You can use Dashboard to deploy containerized applications to a Kubernetes cluster, troubleshoot your containerized application, and manage the cluster resources. You can use Dashboard to get an overview of applications running on your cluster, as well as for creating or modifying individual Kubernetes resources (such as Deployments, Jobs, DaemonSets, etc). For example, you can scale a Deployment, initiate a rolling update, restart a pod or deploy new applications using a deploy wizard. See: `Kubernetes Dashboard Quickstart <./doc/KUBERNETES_DASHBOARD.md>`_
 - **Kubeapps**: https://kubeapps.service.global-communications-academy.com. Kubeapps is an in-cluster web-based application that enables users with a one-time installation to deploy, manage, and upgrade applications on a Kubernetes cluster
 - **Kubecost**: https://kubecost.service.global-communications-academy.com. Kubecost provides real-time cost visibility and insights for teams using Kubernetes, helping you continuously reduce your cloud costs.
@@ -139,15 +139,15 @@ This repository was generated using `Cookiecutter <https://cookiecutter.readthed
   * - Software
     - Version
   * - `Open edX Named Release <https://edx.readthedocs.io/projects/edx-developer-docs/en/latest/named_releases.html>`_
-    - olive.1
+    - nutmeg.2
   * - `MySQL Server <https://www.mysql.com/>`_
-    - 5.7.33
+    - 5.7.38
   * - `Redis Cache <https://redis.io/>`_
     - 6.x
   * - `Tutor Docker-based Open edX Installer <https://docs.tutor.overhang.io/>`_
-    - 15.2.0
+    - 14.2.4
   * - `Tutor Plugin: Object storage for Open edX with S3 <https://github.com/hastexo/tutor-contrib-s3>`_
-    - v1.0.2
+    - v1.0.3
   * - `Tutor Plugin: Discovery Service <https://github.com/overhangio/tutor-discovery>`_
     - latest stable
   * - `Tutor Plugin: Micro Front-end Service <https://github.com/overhangio/tutor-mfe>`_
@@ -165,43 +165,43 @@ This repository was generated using `Cookiecutter <https://cookiecutter.readthed
   * - Terraform Provider `helm <https://registry.terraform.io/providers/hashicorp/helm/latest/docs>`_
     - ~> 2.8
   * - Terraform Provider `AWS <https://registry.terraform.io/providers/hashicorp/aws/latest/docs>`_
-    - ~> 4.48
+    - 4.48
   * - Terraform Provider `Local <https://registry.terraform.io/providers/hashicorp/local/latest/docs>`_
     - ~> 2.2
   * - Terraform Provider `Random <https://registry.terraform.io/providers/hashicorp/random/latest/docs>`_
     - ~> 3.4
   * - `terraform-aws-modules/acm <https://registry.terraform.io/modules/terraform-aws-modules/acm/aws/latest>`_
-    - ~> 4.3
+    - 4.3
   * - `terraform-aws-modules/cloudfront <https://registry.terraform.io/modules/terraform-aws-modules/cloudfront/aws/latest>`_
-    - ~> 3.1
+    - 3.1
   * - `terraform-aws-modules/eks <https://registry.terraform.io/modules/terraform-aws-modules/eks/aws/latest>`_
-    - ~> 19.4
+    - 19.4
   * - `terraform-aws-modules/iam <https://registry.terraform.io/modules/terraform-aws-modules/iam/aws/latest>`_
     - ~> 5.9
   * - `terraform-aws-modules/rds <https://registry.terraform.io/modules/terraform-aws-modules/rds/aws/latest>`_
-    - ~> 5.2
+    - 5.2
   * - `terraform-aws-modules/s3-bucket <https://registry.terraform.io/modules/terraform-aws-modules/s3-bucket/aws/latest>`_
-    - ~> 3.6
+    - 3.6
   * - `terraform-aws-modules/security-group <https://registry.terraform.io/modules/terraform-aws-modules/security-group/aws/latest>`_
-    - ~> 4.16
+    - 4.16
   * - `terraform-aws-modules/vpc <https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws/latest>`_
-    - ~> 3.18
+    - 3.18
   * - `Helm cert-manager <https://charts.jetstack.io>`_
-    - ~> 1.11
+    - 1.11
   * - `Helm Ingress Nginx Controller <https://kubernetes.github.io/ingress-nginx/>`_
-    - ~> 4.4
+    - 4.4
   * - `Helm Vertical Pod Autoscaler <https://github.com/cowboysysop/charts/tree/master/charts/vertical-pod-autoscaler>`_
-    - ~> 6.0
+    - 6.0
   * - `Helm Kubernetes Dashboard <https://kubernetes.github.io/dashboard/>`_
-    - ~> 6.0
+    - 6.0
   * - `Helm kubecost <https://kubecost.github.io/cost-analyzer/>`_
-    - ~> 1.100
+    - 1.100
   * - `Helm kubeapps <https://bitnami.com/stack/kubeapps/helm>`_
-    - ~> 12.2
+    - 12.2
   * - `Helm Karpenter <https://artifacthub.io/packages/helm/karpenter/karpenter>`_
-    - ~> 0.16
+    - 0.16
   * - `Helm Metrics Server <https://kubernetes-sigs.github.io/metrics-server/>`_
-    - ~> 3.8
+    - 3.8
   * - `Helm Prometheus <https://prometheus-community.github.io/helm-charts/>`_
     - 39.6.0
   * - `Helm Wordpress <https://charts.bitnami.com/bitnami/wordpress>`_
@@ -225,7 +225,7 @@ This repository was generated using `Cookiecutter <https://cookiecutter.readthed
   * - `openedx-actions/tutor-k8s-configure-smtp <https://github.com/openedx-actions/tutor-k8s-configure-smtp>`_
     - v1.0.0
   * - `openedx-actions/tutor-print-dump <https://github.com/openedx-actions/tutor-print-dump>`_
-    - v1.0.0
+    - v1.0.4
   * - `openedx-actions/tutor-plugin-build-backup <https://github.com/openedx-actions/tutor-plugin-build-backup>`_
     - v0.1.7
   * - `openedx-actions/tutor-plugin-build-credentials <https://github.com/openedx-actions/tutor-plugin-build-credentials>`_
@@ -255,6 +255,6 @@ This repository was generated using `Cookiecutter <https://cookiecutter.readthed
   * - `openedx-actions/tutor-plugin-enable-notes <https://github.com/openedx-actions/tutor-plugin-enable-notes>`_
     - v1.0.2
   * - `openedx-actions/tutor-plugin-enable-s3 <https://github.com/openedx-actions/tutor-plugin-enable-s3>`_
-    - v1.0.2
+    - v1.0.3
   * - `openedx-actions/tutor-plugin-enable-xqueue <https://github.com/openedx-actions/tutor-plugin-enable-xqueue>`_
     - v1.0.0

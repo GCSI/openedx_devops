@@ -41,7 +41,7 @@ jobs:
           eks-namespace: ${{ env.NAMESPACE }}
           eks-cluster-name: ${{ env.EKS_CLUSTER_NAME }}
           aws-region: ${{ env.AWS_REGION }}
-          tutor-version: "15.2.0"
+          tutor-version: "14.2.4"
 
       - name: Build Backup
         if: ${{ env.ENABLE_BACKUP == 'true' }}
