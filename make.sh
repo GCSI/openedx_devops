@@ -9,7 +9,7 @@
 #------------------------------------------------------------------------------
 
 GITHUB_REPO="gh:lpm0073/cookiecutter-openedx-devops"
-GITHUB_BRANCH="v1.0.21"
+GITHUB_BRANCH="main"
 OUTPUT_FOLDER="../"
 
 if [ -d openedx_devops ]; then
@@ -65,5 +65,5 @@ cookiecutter --checkout $GITHUB_BRANCH \
             stack_add_remote_redis=Y \
             wordpress_add_site=N \
             mongodb_instance_type=t3.medium \
-            mongodb_allocated_storage=10 \
+            mongodb_allocated_storage=100 \
             

@@ -39,7 +39,13 @@ resource "aws_iam_role" "AmazonEKS_EBS_CSI_DriverRole" {
       }
     ]
   })
-  tags = var.tags
+  tags = merge(
+    local.tags,
+    {
+      "cookiecutter/resource/source"  = "hashicorp/aws/aws_iam_role"
+      "cookiecutter/resource/version" = "4.48"
+    }
+  )
 }
 
 # 3. Attach the required AWS managed policy to the role
@@ -54,7 +60,7 @@ resource "null_resource" "annotate-ebs-csi-controller" {
 
   provisioner "local-exec" {
     command = <<-EOT
-      # 1. conifugre kubeconfig locally with the credentials data of the just-created
+      # 1. configure kubeconfig locally with the credentials data of the just-created
       # kubernetes cluster.
       # ---------------------------------------
       aws eks --region ${var.aws_region} update-kubeconfig --name ${var.namespace} --alias ${var.namespace}

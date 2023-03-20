@@ -35,6 +35,7 @@ locals {
 
   tags = merge(
     local.stack_vars.locals.tags,
+    local.global_vars.locals.tags,
     { "cookiecutter/name" = "${local.namespace}-eks" }
   )
 }
@@ -94,9 +95,8 @@ inputs = {
     # -------------------------------------------------------------------------
     # ADD MORE CLUSTER ADMIN USER IAM ACCOUNTS TO THE AWS KMS KEY OWNER LIST:
     # -------------------------------------------------------------------------
-    "arn:aws:iam::${local.account_id}:user/ci",
-    "arn:aws:iam::${local.account_id}:user/lawrence.mcdaniel",
-    "arn:aws:iam::${local.account_id}:user/edunext_admin",
+    #"arn:aws:iam::${local.account_id}:user/mcdaniel",
+    #"arn:aws:iam::${local.account_id}:user/bob_marley",
   ]
   map_users = [
     {
@@ -107,21 +107,16 @@ inputs = {
     # -------------------------------------------------------------------------
     # ADD MORE CLUSTER ADMIN USER IAM ACCOUNTS HERE:
     # -------------------------------------------------------------------------
-    {
-      userarn  = "arn:aws:iam::${local.account_id}:user/ci"
-      username = "ci"
-      groups   = ["system:masters"]
-    },
-    {
-      userarn  = "arn:aws:iam::${local.account_id}:user/lawrence.mcdaniel"
-      username = "lawrence.mcdaniel"
-      groups   = ["system:masters"]
-    },
-    {
-      userarn  = "arn:aws:iam::${local.account_id}:user/edunext_admin"
-      username = "edunext_admin"
-      groups   = ["system:masters"]
-    },
+    #{
+    #  userarn  = "arn:aws:iam::${local.account_id}:user/mcdaniel"
+    #  username = "mcdaniel"
+    #  groups   = ["system:masters"]
+    #},
+    #{
+    #  userarn  = "arn:aws:iam::${local.account_id}:user/bob_marley"
+    #  username = "bob_marley"
+    #  groups   = ["system:masters"]
+    #},
   ]
 
 }

@@ -1,111 +1,117 @@
 ---
-# custom GCAS parameters
-# ----------------------
-#
-# used in 
-#   gcsi_edxapi/management/commands/gcasbootstrap.py
-#   gcsi_edxapi/management/commands/create_gcas_oauth_application_client_confg.py
-EDX_DOMAIN_NAME: "staging.global-communications-academy.com"
-#
-# used in gcsi_edxapi and gcsi_grades 
-GCAS_BASE_URL: https://platform.staging.global-communications-academy.com
-#
-# used in gcsi_grades
-BOOKING_AUTH_BASE_URL: https://platform.staging.global-communications-academy.com/
-#
-GCSI_BOOKING_SYSTEM_USER_API_USER: gcas-api-user
-# ----------------------
-#
+ACTIVATION_EMAIL_SUPPORT_LINK: https://global-communications-academy.com/support/
+AUTH_PASSWORD_VALIDATORS:
+-   NAME: django.contrib.auth.password_validation.UserAttributeSimilarityValidator
+-   NAME: common.djangoapps.util.password_policy_validators.MinimumLengthValidator
+    OPTIONS:
+        min_length: 8
+-   NAME: common.djangoapps.util.password_policy_validators.MaximumLengthValidator
+    OPTIONS:
+        max_length: 75
+AWS_SES_REGION_ENDPOINT: email.eu-west-2.amazonaws.com
+AWS_SES_REGION_NAME: "eu-west-2"
 CORS_ORIGIN_ALLOW_ALL: true
 CORS_ORIGIN_WHITELIST:
 - https://global-communications-academy.com
 - https://staging.global-communications-academy.com
 - https://studio.staging.global-communications-academy.com
 - https://apps.staging.global-communications-academy.com
+COURSE_ABOUT_VISIBILITY_PERMISSION: see_about_page
+COURSE_CATALOG_VISIBILITY_PERMISSION: see_in_catalog
+CREDIT_HELP_LINK_URL: https://global-communications-academy.com/support/
 CROSS_DOMAIN_CSRF_COOKIE_DOMAIN: "staging.global-communications-academy.com"
 CROSS_DOMAIN_CSRF_COOKIE_NAME: native-csrf-cookie
 CSRF_COOKIE_SECURE: true
-CSRF_TRUSTED_ORIGINS: []
+CSRF_TRUSTED_ORIGINS:
+- https://apps.staging.global-communications-academy.com
 DCS_SESSION_COOKIE_SAMESITE: lax
 DCS_SESSION_COOKIE_SAMESITE_FORCE_ALL: true
-ACTIVATION_EMAIL_SUPPORT_LINK: https://global-communications-academy.com/support/
-AWS_SES_REGION_ENDPOINT: email.eu-west-2.amazonaws.com
-AWS_SES_REGION_NAME: "eu-west-2"
-CREDIT_HELP_LINK_URL: https://global-communications-academy.com/support/
 DEFAULT_MOBILE_AVAILABLE: false
 DEFAULT_EMAIL_LOGO_URL: https://cdn.staging.global-communications-academy.com
 ENTERPRISE_SUPPORT_URL: https://global-communications-academy.com/support/
 ENTERPRISE_TAGLINE: "codlp"
 FACEBOOK_API_VERSION: v12.0
 FEATURES:
-  # -----------------------------------------------------
-  # mcdaniel nov-2022
-  # trouble shoot notes service
-  # - https://discuss.overhang.io/t/how-to-create-a-new-database-for-notes/57/4
-  ACTIVATE_NOTES: true
-  # -----------------------------------------------------
-  # mcdaniel nov-2022
-  # for edx-sga
-  # -----------------------------------------------------
   ALLOW_ALL_ADVANCED_COMPONENTS: true
-  # mcdaniel aug-2022: to setup our own url from plugin.
-  # -----------------------------------------------------
-  ENABLE_DJANGO_ADMIN_SITE: true
-  ENABLE_CHANGE_USER_PASSWORD_ADMIN: true
-  ENABLE_SYSADMIN_DASHBOARD: false
-  COURSES_ARE_BROWSABLE: false
-  ENABLE_SERVICE_STATUS: true
-  # -----------------------------------------------------
-  # mcdaniel nov-2022: to remove the Help link from the authenticated header menu
-  ENABLE_HELP_LINK: false
-  ENABLE_CHANGE_USER_PASSWORD_ADMIN: true
-  CERTIFICATES_HTML_VIEW: true
-  PREVIEW_LMS_BASE: "staging.global-communications-academy.com/"
-  ENABLE_COURSEWARE_INDEX: true
-  ENABLE_CSMH_EXTENDED: false
-  ENABLE_LEARNER_RECORDS: true
-  ENABLE_LIBRARY_INDEX: true
-  MILESTONES_APP: true
-  ENABLE_PREREQUISITE_COURSES: true
-  ENABLE_DASHBOARD_SEARCH: false
+  ALLOW_HIDING_DISCUSSION_TAB: true
   AUTH_USE_OPENID_PROVIDER: false
+  AUTH_USE_OPENID: false
   AUTOMATIC_AUTH_FOR_TESTING: false
+  CERTIFICATES_ENABLED: true
+  CERTIFICATES_HTML_VIEW: true
+  CUSTOM_CERTIFICATE_TEMPLATES_ENABLED: true
   CUSTOM_COURSES_EDX: false
+  ENABLE_ACCOUNT_DELETION: true
   ENABLE_BULK_ENROLLMENT_VIEW: true
+  ENABLE_CHANGE_USER_PASSWORD_ADMIN: true
   ENABLE_COMBINED_LOGIN_REGISTRATION: true
   ENABLE_CORS_HEADERS: true
   ENABLE_COUNTRY_ACCESS: false
+  ENABLE_COURSEWARE_INDEX: true
+  ENABLE_COURSEWARE_MICROFRONTEND: false
   ENABLE_CREDIT_API: false
   ENABLE_CREDIT_ELIGIBILITY: false
-  ENABLE_COURSEWARE_SEARCH: false
   ENABLE_CROSS_DOMAIN_CSRF_COOKIE: true
-  ENABLE_DISCUSSION_HOME_PANEL: false
-  ENABLE_DISCUSSION_SERVICE: false
+  ENABLE_CSMH_EXTENDED: false
+  ENABLE_DASHBOARD_SEARCH: true
+  ENABLE_DISCUSSION_EMAIL_DIGEST: true
+  ENABLE_DISCUSSION_HOME_PANEL: true
+  ENABLE_DISCUSSION_SERVICE: true
+  ENABLE_DJANGO_ADMIN_SITE: true
   ENABLE_EDXNOTES: true
   ENABLE_ENROLLMENT_RESET: true
   ENABLE_EXPORT_GIT: false
   ENABLE_GRADE_DOWNLOADS: true
   ENABLE_INSTRUCTOR_ANALYTICS: true
+  ENABLE_INSTRUCTOR_EMAIL: true
+  ENABLE_LEARNER_RECORDS: true
+  ENABLE_LIBRARY_INDEX: true
   ENABLE_LTI_PROVIDER: false
   ENABLE_MKTG_SITE: false
   ENABLE_MOBILE_REST_API: true
   ENABLE_OAUTH2_PROVIDER: true
+  ENABLE_PEARSON_HACK_TEST: false
+  ENABLE_PREREQUISITE_COURSES: true
   ENABLE_PUBLISHER: false
   ENABLE_READING_FROM_MULTIPLE_HISTORY_TABLES: false
   ENABLE_SPECIAL_EXAMS: false
   ENABLE_SYSADMIN_DASHBOARD: true
   ENABLE_THIRD_PARTY_AUTH: true
   ENABLE_VIDEO_UPLOAD_PIPELINE: false
+  ENABLE_XBLOCK_VIEW_ENDPOINT: true
+  MILESTONES_APP: true
+  ORGANIZATIONS_APP: true
+  PREVENT_CONCURRENT_LOGINS: true
+  PREVIEW_LMS_BASE: preview.staging.global-communications-academy.com
   SHOW_FOOTER_LANGUAGE_SELECTOR: false
   SHOW_HEADER_LANGUAGE_SELECTOR: false
+GOOGLE_ANALYTICS_ACCOUNT: SET-ME-PLEASE
+HEARTBEAT_EXTENDED_CHECKS:
+- openedx.core.djangoapps.heartbeat.default_checks.check_celery
+- openedx.core.djangoapps.django_comment_common.comment_client.utils.check_forum_heartbeat
 ID_VERIFICATION_SUPPORT_LINK: https://global-communications-academy.com/support/
 LANGUAGE_CODE: en
 LANGUAGE_COOKIE: openedx-language-preference
+LOGIN_REDIRECT_WHITELIST:
+- https://studio.staging.global-communications-academy.com
+- https://apps.staging.global-communications-academy.com
 LOGO_URL_PNG: "https://cdn.staging.global-communications-academy.com"
+MKTG_URL_OVERRIDES:
+  ABOUT: '#'
+  BLOG: '#'
+  DONATE: '#'
+  PRIVACY: '#'
+  TOS: '#'
+PARENTAL_CONSENT_AGE_LIMIT: 13
 PLATFORM_DESCRIPTION: "Your School"
 PLATFORM_FACEBOOK_ACCOUNT: http://www.facebook.com/
-PLATFORM_NAME: "GCA Courses"
+PLATFORM_NAME: "codlp"
 PLATFORM_TWITTER_ACCOUNT: ''
+PROFILE_IMAGE_SIZES_MAP:
+    full: 500
+    large: 120
+    medium: 50
+    small: 30
 REGISTRATION_EXTRA_FIELDS:
   city: hidden
   confirm_email: hidden
@@ -117,9 +123,6 @@ REGISTRATION_EXTRA_FIELDS:
   mailing_address: hidden
   terms_of_service: hidden
   year_of_birth: hidden
-REST_FRAMEWORK:
-  DEFAULT_THROTTLE_RATES:
-    user: "1000/minute"
 SESSION_COOKIE_DOMAIN: "staging.global-communications-academy.com"
 SESSION_COOKIE_NAME: sessionid
 SESSION_COOKIE_SECURE: true
@@ -130,25 +133,31 @@ SOCIAL_MEDIA_FOOTER_URLS:
   linkedin: https://www.linkedin.com/
   twitter: https://twitter.com/
   facebook: https://www.facebook.com/
-TIME_ZONE: Europe/London
+SUPPORT_SITE_LINK: https://global-communications-academy.com/support/
+TIME_ZONE: America/New_York
 THIRD_PARTY_AUTH_BACKENDS:
-- gcsi_edxapi.booking.BookingOAuth2
 - social_core.backends.google.GoogleOAuth2
+- social_core.backends.linkedin.LinkedinOAuth2
 - social_core.backends.facebook.FacebookOAuth2
+- social_core.backends.azuread.AzureADOAuth2
+- common.djangoapps.third_party_auth.appleid.AppleIdAuth
+- common.djangoapps.third_party_auth.identityserver3.IdentityServer3
+- common.djangoapps.third_party_auth.saml.SAMLAuthBackend
+- common.djangoapps.third_party_auth.lti.LTIAuthBackend
 WIKI_ENABLED: false
-API_ACCESS_FROM_EMAIL: courses.support@cabinetoffice.gov.uk
-API_ACCESS_MANAGER_EMAIL: courses.support@cabinetoffice.gov.uk
-BUGS_EMAIL: courses.support@cabinetoffice.gov.uk
-BULK_EMAIL_DEFAULT_FROM_EMAIL: courses.support@cabinetoffice.gov.uk
-CONTACT_EMAIL: courses.support@cabinetoffice.gov.uk
-CONTACT_MAILING_ADDRESS: courses.support@cabinetoffice.gov.uk
-DEFAULT_FEEDBACK_EMAIL: courses.support@cabinetoffice.gov.uk
-DEFAULT_FROM_EMAIL: courses.support@cabinetoffice.gov.uk
-FEEDBACK_SUBMISSION_EMAIL: courses.support@cabinetoffice.gov.uk
-PARTNER_SUPPORT_EMAIL: courses.support@cabinetoffice.gov.uk
-PASSWORD_RESET_SUPPORT_LINK: courses.support@cabinetoffice.gov.uk
-PAYMENT_SUPPORT_EMAIL: courses.support@cabinetoffice.gov.uk
-PRESS_EMAIL: courses.support@cabinetoffice.gov.uk
-SERVER_EMAIL: courses.support@cabinetoffice.gov.uk
-TECH_SUPPORT_EMAIL: courses.support@cabinetoffice.gov.uk
-UNIVERSITY_EMAIL: courses.support@cabinetoffice.gov.uk
+API_ACCESS_FROM_EMAIL: api-requests@global-communications-academy.com
+API_ACCESS_MANAGER_EMAIL: api-access@global-communications-academy.com
+BUGS_EMAIL: bugs@global-communications-academy.com
+BULK_EMAIL_DEFAULT_FROM_EMAIL: no-reply@global-communications-academy.com
+CONTACT_EMAIL: info@global-communications-academy.com
+CONTACT_MAILING_ADDRESS: ''
+DEFAULT_FEEDBACK_EMAIL: feedback@global-communications-academy.com
+DEFAULT_FROM_EMAIL: registration@global-communications-academy.com
+FEEDBACK_SUBMISSION_EMAIL: support@global-communications-academy.com
+PARTNER_SUPPORT_EMAIL: support@global-communications-academy.com
+PASSWORD_RESET_SUPPORT_LINK: support@global-communications-academy.com
+PAYMENT_SUPPORT_EMAIL: billing@global-communications-academy.com
+PRESS_EMAIL: press@global-communications-academy.com
+SERVER_EMAIL: devops@global-communications-academy.com
+TECH_SUPPORT_EMAIL: technical@global-communications-academy.com
+UNIVERSITY_EMAIL: university@global-communications-academy.com

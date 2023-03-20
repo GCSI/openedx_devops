@@ -16,50 +16,16 @@
 locals {
   # Used by Karpenter config to determine correct partition (i.e. - `aws`, `aws-gov`, `aws-cn`, etc.)
   partition = data.aws_partition.current.partition
-}
 
-resource "aws_security_group" "worker_group_mgmt" {
-  name_prefix = "${var.namespace}-eks_hosting_group_mgmt"
-  description = "openedx_devops: Ingress CLB worker group management"
-  vpc_id      = var.vpc_id
-
-  ingress {
-    description = "openedx_devops: Ingress CLB"
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-
-    cidr_blocks = [
-      "10.0.0.0/8",
-    ]
-  }
-
-  tags = var.tags
+  tags = merge(
+    var.tags,
+    module.cookiecutter_meta.tags,
+    {
+      "cookiecutter/module/source"  = "openedx_devops/terraform/stacks/modules/kubernetes"
+    }
+  )
 
 }
-
-resource "aws_security_group" "all_worker_mgmt" {
-  name_prefix = "${var.namespace}-eks_all_worker_management"
-  description = "openedx_devops: Ingress CLB worker management"
-  vpc_id      = var.vpc_id
-
-  ingress {
-    description = "openedx_devops: Ingress CLB"
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-
-    cidr_blocks = [
-      "10.0.0.0/8",
-      "172.16.0.0/12",
-      "192.168.0.0/16",
-    ]
-  }
-
-  tags = var.tags
-
-}
-
 
 module "eks" {
   source                          = "terraform-aws-modules/eks/aws"
@@ -93,32 +59,36 @@ module "eks" {
   aws_auth_users = var.map_users
 
   tags = merge(
-    var.tags,
+    local.tags,
     # Tag node group resources for Karpenter auto-discovery
     # NOTE - if creating multiple security groups with this module, only tag the
     # security group that Karpenter should utilize with the following tag
-    { "karpenter.sh/discovery" = var.namespace }
+    { "karpenter.sh/discovery" = var.namespace },
+    {
+      "cookiecutter/resource/source"  = "terraform-aws-modules/eks/aws"
+      "cookiecutter/resource/version" = "19.4"
+    }
   )
 
   cluster_addons = {
     vpc-cni = {
-      addon_version = "v1.12.5-eksbuild.1"
+      addon_version = "v1.12.5-eksbuild.2"
     }
     coredns = {
       addon_version = "v1.9.3-eksbuild.2"
     }
     kube-proxy = {
-      addon_version = "v1.25.6-eksbuild.1"
+      addon_version = "v1.25.6-eksbuild.2"
     }
     aws-ebs-csi-driver = {
       service_account_role_arn = aws_iam_role.AmazonEKS_EBS_CSI_DriverRole.arn
-      addon_version            = "v1.16.0-eksbuild.1"
+      addon_version            = "v1.16.1-eksbuild.1"
     }
   }
 
   node_security_group_additional_rules = {
     ingress_self_all = {
-      description = "openedx_devops: Node to node all ports/protocols"
+      description = "cookiecutter: Node to node all ports/protocols"
       protocol    = "-1"
       from_port   = 0
       to_port     = 0
@@ -129,7 +99,7 @@ module "eks" {
       ]
     }
     port_8443 = {
-      description                = "openedx_devops: open port 8443 to vpc"
+      description                = "cookiecutter: open port 8443 to vpc"
       protocol                   = "-1"
       from_port                  = 8443
       to_port                    = 8443
@@ -137,7 +107,7 @@ module "eks" {
       source_node_security_group = true
     }
     egress_all = {
-      description      = "openedx_devops: Node all egress"
+      description      = "cookiecutter: Node all egress"
       protocol         = "-1"
       from_port        = 0
       to_port          = 0
@@ -178,8 +148,16 @@ module "eks" {
 
       instance_types = ["${var.eks_service_group_instance_type}"]
       tags = merge(
-        var.tags,
-        { Name = "eks-${var.shared_resource_identifier}" }
+        local.tags,
+        module.cookiecutter_meta.tags,
+        # Tag node group resources for Karpenter auto-discovery
+        # NOTE - if creating multiple security groups with this module, only tag the
+        # security group that Karpenter should utilize with the following tag
+        { Name = "eks-${var.shared_resource_identifier}-live" },
+        {
+          "cookiecutter/resource/source"  = "terraform-aws-modules/eks/aws"
+          "cookiecutter/resource/version" = "19.4"
+        }
       )
     }
 
@@ -204,13 +182,81 @@ module "eks" {
 
       instance_types = ["${var.eks_hosting_group_instance_type}"]
       tags = merge(
-        var.tags,
-        { Name = "eks-${var.shared_resource_identifier}-hosting" }
+        local.tags,
+        module.cookiecutter_meta.tags,
+        # Tag node group resources for Karpenter auto-discovery
+        # NOTE - if creating multiple security groups with this module, only tag the
+        # security group that Karpenter should utilize with the following tag
+        { Name = "eks-${var.shared_resource_identifier}-hosting" },
+        {
+          "cookiecutter/resource/source"  = "terraform-aws-modules/eks/aws"
+          "cookiecutter/resource/version" = "19.4"
+        }
       )
     }
 
   }
 }
+
+#==============================================================================
+#                             SUPPORTING RESOURCES
+#==============================================================================
+
+resource "aws_security_group" "worker_group_mgmt" {
+  name_prefix = "${var.namespace}-eks_hosting_group_mgmt"
+  description = "cookiecutter: Ingress CLB worker group management"
+  vpc_id      = var.vpc_id
+
+  ingress {
+    description = "cookiecutter: Ingress CLB"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+
+    cidr_blocks = [
+      "10.0.0.0/8",
+    ]
+  }
+
+  tags = merge(
+    local.tags,
+    { Name = "eks-${var.shared_resource_identifier}-worker_group_mgmt" },
+    {
+      "cookiecutter/resource/source"  = "hashicorp/aws/aws_security_group"
+      "cookiecutter/resource/version" = "4.48"
+    }
+  )
+}
+
+resource "aws_security_group" "all_worker_mgmt" {
+  name_prefix = "${var.namespace}-eks_all_worker_management"
+  description = "cookiecutter: Ingress CLB worker management"
+  vpc_id      = var.vpc_id
+
+  ingress {
+    description = "cookiecutter: Ingress CLB"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+
+    cidr_blocks = [
+      "10.0.0.0/8",
+      "172.16.0.0/12",
+      "192.168.0.0/16",
+    ]
+  }
+
+  tags = merge(
+    local.tags,
+    { Name = "eks-${var.shared_resource_identifier}-all_worker_mgmt" },
+    {
+      "cookiecutter/resource/source"  = "hashicorp/aws/aws_security_group"
+      "cookiecutter/resource/version" = "4.48"
+    }
+  )
+}
+
+
 
 resource "kubernetes_namespace" "namespace-shared" {
   metadata {
@@ -219,3 +265,9 @@ resource "kubernetes_namespace" "namespace-shared" {
   depends_on = [module.eks]
 }
 
+#------------------------------------------------------------------------------
+#                               COOKIECUTTER META
+#------------------------------------------------------------------------------
+module "cookiecutter_meta" {
+  source = "../../../../../../../common/cookiecutter_meta"
+}
