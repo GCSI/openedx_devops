@@ -21,7 +21,7 @@ locals {
 
   # MongoDB EC2 instance sizing
   mongodb_instance_type     = "t3.medium"
-  mongodb_allocated_storage = 10
+  mongodb_allocated_storage = 100
   
 
   # Bastion EC2 instance sizing

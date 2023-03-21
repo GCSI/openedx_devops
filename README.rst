@@ -139,15 +139,15 @@ This repository was generated using `Cookiecutter <https://cookiecutter.readthed
   * - Software
     - Version
   * - `Open edX Named Release <https://edx.readthedocs.io/projects/edx-developer-docs/en/latest/named_releases.html>`_
-    - nutmeg.2
+    - nutmeg.3
   * - `MySQL Server <https://www.mysql.com/>`_
     - 5.7.38
   * - `Redis Cache <https://redis.io/>`_
     - 6.x
   * - `Tutor Docker-based Open edX Installer <https://docs.tutor.overhang.io/>`_
-    - 14.2.4
+    - 14.2.3
   * - `Tutor Plugin: Object storage for Open edX with S3 <https://github.com/hastexo/tutor-contrib-s3>`_
-    - v1.0.3
+    - v1.0.2
   * - `Tutor Plugin: Discovery Service <https://github.com/overhangio/tutor-discovery>`_
     - latest stable
   * - `Tutor Plugin: Micro Front-end Service <https://github.com/overhangio/tutor-mfe>`_
@@ -255,6 +255,6 @@ This repository was generated using `Cookiecutter <https://cookiecutter.readthed
   * - `openedx-actions/tutor-plugin-enable-notes <https://github.com/openedx-actions/tutor-plugin-enable-notes>`_
     - v1.0.2
   * - `openedx-actions/tutor-plugin-enable-s3 <https://github.com/openedx-actions/tutor-plugin-enable-s3>`_
-    - v1.0.3
+    - v1.0.2
   * - `openedx-actions/tutor-plugin-enable-xqueue <https://github.com/openedx-actions/tutor-plugin-enable-xqueue>`_
     - v1.0.0

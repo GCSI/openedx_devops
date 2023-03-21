@@ -1,4 +1,4 @@
-data "template_file" "proxy_service" {
+data "template_file" "scorm_proxy_service" {
   template = file("${path.module}/manifests/proxy-service.yml.tpl")
   vars = {
     environment_domain    = var.environment_domain
@@ -6,8 +6,8 @@ data "template_file" "proxy_service" {
     bucket_uri            = data.aws_s3_bucket.storage.bucket_domain_name
   }
 }
-resource "kubectl_manifest" "proxy_service" {
-  yaml_body = data.template_file.proxy_service.rendered
+resource "kubectl_manifest" "scorm_proxy_service" {
+  yaml_body = data.template_file.scorm_proxy_service.rendered
 
   depends_on = [
     aws_route53_record.naked,
@@ -24,7 +24,7 @@ data "template_file" "ingress" {
   }
 }
 
-data "template_file" "ingress_proxy_service" {
+data "template_file" "ingress_scorm_proxy_service" {
   template = file("${path.module}/manifests/ingress-scorm-proxy-service.yml.tpl")
   vars = {
     environment_domain    = var.environment_domain
@@ -50,13 +50,13 @@ resource "kubectl_manifest" "ingress" {
   ]
 }
 
-resource "kubectl_manifest" "ingress_proxy_service" {
-  yaml_body = data.template_file.ingress_proxy_service.rendered
+resource "kubectl_manifest" "ingress_scorm_proxy_service" {
+  yaml_body = data.template_file.ingress_scorm_proxy_service.rendered
 
   depends_on = [
     aws_route53_record.naked,
     aws_route53_record.wildcard,
-    kubectl_manifest.ingress_proxy_service,
+    kubectl_manifest.ingress_scorm_proxy_service,
   ]
 }
 
@@ -72,4 +72,3 @@ resource "kubectl_manifest" "ingress_mfe" {
 data "aws_s3_bucket" "storage" {
   bucket = var.s3_bucket_storage
 }
-

@@ -4,7 +4,7 @@
 
 # date: Mar-2023
 #
-# usage: implements an ingress for the scorm proxy service for backend 
+# usage: implements an ingress for the scorm proxy service for backend
 #        storage to AWS S3.
 #------------------------------------------------------------------------------
 apiVersion: networking.k8s.io/v1
@@ -19,7 +19,6 @@ metadata:
     nginx.ingress.kubernetes.io/session-cookie-name: "openedx_sticky_session"
     nginx.ingress.kubernetes.io/session-cookie-expires: "172800"
     nginx.ingress.kubernetes.io/session-cookie-max-age: "172800"
-
 
     # scorm proxy service settings
     # -------------------------------------------------------------------------

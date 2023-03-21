@@ -34,7 +34,8 @@ dependencies {
   paths = [
     "../../../stacks/live/vpc",
     "../../../stacks/live/kubernetes",
-    "../kubernetes"
+    "../kubernetes",
+    "../s3_openedx_storage",
     ]
 }
 
