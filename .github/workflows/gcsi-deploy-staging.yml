@@ -81,6 +81,7 @@ jobs:
         shell: bash
         run: |-
           echo "AWS_ECR_URI=${{ steps.login-ecr.outputs.registry }}" >> $GITHUB_ENV
+          echo "CONFIG_PATH=$(tutor config printroot)/env/apps/openedx/config" >> $GITHUB_ENV
 
       - name: Intialize AWS ECR repo URIs
         shell: bash
@@ -228,8 +229,8 @@ jobs:
       - name: Set GCAS api
         shell: bash
         run: |-
-          echo "GCSI_BOOKING_SYSTEM_USER_API_KEY=${TUTOR_GCSI_BOOKING_SYSTEM_USER_API_KEY}" \ >> ${CONFIG_PATH}/lms.env.yml
-          echo "GCSI_BOOKING_SYSTEM_USER_API_KEY=${TUTOR_GCSI_BOOKING_SYSTEM_USER_API_KEY}" \ >> ${CONFIG_PATH}/cms.env.yml
+          echo "GCSI_BOOKING_SYSTEM_USER_API_KEY=${TUTOR_GCSI_BOOKING_SYSTEM_USER_API_KEY}" >> ${CONFIG_PATH}/lms.env.yml
+          echo "GCSI_BOOKING_SYSTEM_USER_API_KEY=${TUTOR_GCSI_BOOKING_SYSTEM_USER_API_KEY}" >> ${CONFIG_PATH}/cms.env.yml
 
       # ---------------------------------------------------------------------------------
       # Configure application secrets
