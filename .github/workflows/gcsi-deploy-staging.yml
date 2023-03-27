@@ -203,11 +203,18 @@ jobs:
           namespace: ${{ env.NAMESPACE }}
 
       - name: Configure MongoDB
+        uses: openedx-actions/tutor-k8s-get-secret@v1.0.0
+        with:
+          eks-namespace: gcas-staging
+          eks-secret-name: gcas-api
+          
+      - name: Configure GCAS api
         uses: openedx-actions/tutor-k8s-configure-mongodb@v1.0.1
         with:
           namespace: ${{ env.NAMESPACE }}
           remote-server: "true"
           
+
 
       # ---------------------------------------------------------------------------------
       # Configure application secrets
