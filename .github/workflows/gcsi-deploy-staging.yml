@@ -226,7 +226,7 @@ jobs:
       - name: Set GCAS api
         shell: bash
         run: |-
-          tutor config save --set OPENEDX_GCSI_BOOKING_SYSTEM_USER_API_KEY=$GCSI_BOOKING_SYSTEM_USER_API_KEY \
+          tutor config save --set OPENEDX_GCSI_BOOKING_SYSTEM_USER_API_KEY=$TUTOR_GCSI_BOOKING_SYSTEM_USER_API_KEY \
 
       # ---------------------------------------------------------------------------------
       # Configure application secrets
