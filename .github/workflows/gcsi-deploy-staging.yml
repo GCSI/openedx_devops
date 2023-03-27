@@ -52,7 +52,7 @@ jobs:
       # aws-actions. Prevents us from having to explicitly provide authentication credentials
       # to each aws-actions method individually.
       - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v2.0.0
+        uses: aws-actions/configure-aws-credentials@v2
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -203,18 +203,30 @@ jobs:
           namespace: ${{ env.NAMESPACE }}
 
       - name: Configure MongoDB
-        uses: openedx-actions/tutor-k8s-get-secret@v1.0.0
-        with:
-          eks-namespace: gcas-staging
-          eks-secret-name: gcas-api
-          
-      - name: Configure GCAS api
         uses: openedx-actions/tutor-k8s-configure-mongodb@v1.0.1
         with:
           namespace: ${{ env.NAMESPACE }}
           remote-server: "true"
           
+      # GCAS API key
+      # extract the key from k8s secrets in the following form:
+      #   export GCSI_BOOKING_SYSTEM_USER_API_KEY=the-key-value-from-k8s
+      #
+      - name: Extract GCAS api
+        uses: openedx-actions/tutor-k8s-get-secret@v1.0.0
+        with:
+          eks-namespace: gcas-staging
+          eks-secret-name: gcas-api
 
+      # mcdaniel mar-2023
+      # patch for GCAS API key name. we actually needed the secret to be named as
+      # OPENEDX_GCSI_BOOKING_SYSTEM_USER_API_KEY.
+      # 
+      # as a workaround, we'll set this value here, now, using tutor:
+      - name: Set GCAS api
+        shell: bash
+        run: |-
+          tutor config save --set OPENEDX_GCSI_BOOKING_SYSTEM_USER_API_KEY=$GCSI_BOOKING_SYSTEM_USER_API_KEY \
 
       # ---------------------------------------------------------------------------------
       # Configure application secrets
