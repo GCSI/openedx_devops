@@ -313,8 +313,8 @@ jobs:
       - name: Set GCAS api
         shell: bash
         run: |-
-          echo "GCSI_BOOKING_SYSTEM_USER_API_KEY=${TUTOR_GCSI_BOOKING_SYSTEM_USER_API_KEY}" >> ${CONFIG_PATH}/lms.env.yml
-          echo "GCSI_BOOKING_SYSTEM_USER_API_KEY=${TUTOR_GCSI_BOOKING_SYSTEM_USER_API_KEY}" >> ${CONFIG_PATH}/cms.env.yml
+          echo "\rGCSI_BOOKING_SYSTEM_USER_API_KEY=${TUTOR_GCSI_BOOKING_SYSTEM_USER_API_KEY}" >> ${CONFIG_PATH}/lms.env.yml
+          echo "\rGCSI_BOOKING_SYSTEM_USER_API_KEY=${TUTOR_GCSI_BOOKING_SYSTEM_USER_API_KEY}" >> ${CONFIG_PATH}/cms.env.yml
 
       - name: Dump tutor config
         uses: openedx-actions/tutor-print-dump@v1.0.4
