@@ -219,14 +219,17 @@ jobs:
           eks-secret-name: gcas-api
 
       # mcdaniel mar-2023
-      # patch for GCAS API key name. we actually needed the secret to be named as
-      # OPENEDX_GCSI_BOOKING_SYSTEM_USER_API_KEY.
+      # patch for GCAS API key name. we have two problems to resolve.
+      # 1.) the secret should have been named OPENEDX_GCSI_BOOKING_SYSTEM_USER_API_KEY
+      # 2.) regardless, tutor ignores this environment variable
       # 
-      # as a workaround, we'll set this value here, now, using tutor:
+      # we'll try jamming the value into tutor's lms.env.yml and cms.env.yml
+      # from the command line
       - name: Set GCAS api
         shell: bash
         run: |-
-          tutor config save --set OPENEDX_GCSI_BOOKING_SYSTEM_USER_API_KEY=$TUTOR_GCSI_BOOKING_SYSTEM_USER_API_KEY \
+          echo "GCSI_BOOKING_SYSTEM_USER_API_KEY=${TUTOR_GCSI_BOOKING_SYSTEM_USER_API_KEY}" \ >> ${CONFIG_PATH}/lms.env.yml
+          echo "GCSI_BOOKING_SYSTEM_USER_API_KEY=${TUTOR_GCSI_BOOKING_SYSTEM_USER_API_KEY}" \ >> ${CONFIG_PATH}/cms.env.yml
 
       # ---------------------------------------------------------------------------------
       # Configure application secrets
