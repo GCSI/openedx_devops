@@ -5,13 +5,13 @@
 # used in 
 #   gcsi_edxapi/management/commands/gcasbootstrap.py
 #   gcsi_edxapi/management/commands/create_gcas_oauth_application_client_confg.py
-EDX_DOMAIN_NAME: "dev.global-communications-academy.com"
+EDX_DOMAIN_NAME: "staging.global-communications-academy.com"
 #
 # used in gcsi_edxapi and gcsi_grades 
-GCAS_BASE_URL: https://platform.dev.global-communications-academy.com
+GCAS_BASE_URL: https://platform.staging.global-communications-academy.com
 #
 # used in gcsi_grades
-BOOKING_AUTH_BASE_URL: https://platform.dev.global-communications-academy.com/
+BOOKING_AUTH_BASE_URL: https://platform.staging.global-communications-academy.com/
 #
 GCSI_BOOKING_SYSTEM_USER_API_USER: gcas-api-user
 # ----------------------
