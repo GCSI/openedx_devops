@@ -351,6 +351,6 @@ jobs:
           tutor k8s settheme gcsi-openedx-theme
 
       - name: Create admin user
-        uses: openedx-actions/tutor-k8s-configure-edx-admin@v1.0.1
+        uses: openedx-actions/tutor-k8s-configure-edx-admin@v1.0.2
         with:
           namespace: ${{ env.NAMESPACE }}
