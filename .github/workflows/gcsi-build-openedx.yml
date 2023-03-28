@@ -15,11 +15,13 @@ jobs:
     runs-on: ubuntu-latest
     env:
       AWS_REGION: eu-west-2
-      NAMESPACE: codlp-global-staging
-      EKS_CLUSTER_NAME: codlp-global-live
+
+      CUSTOM_THEME_REPOSITORY: gcsi-openedx-theme
+      CUSTOM_THEME_REPOSITORY_ORGANIZATION: GCSI
+      CUSTOM_THEME_REPOSITORY_REF: main
 
     steps:
-      - uses: actions/checkout@v3.2.0
+      - uses: actions/checkout@v3
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1.7.0
@@ -32,24 +34,9 @@ jobs:
       # install and configure tutor
       #------------------------------------------------------------------------
       - name: Initialize environment
-        uses: openedx-actions/tutor-k8s-init@v1.0.4
-        with:
-          eks-namespace: ${{ env.NAMESPACE }}
-          eks-cluster-name: ${{ env.EKS_CLUSTER_NAME }}
-          aws-region: ${{ env.AWS_REGION }}
-          tutor-version: "14.2.3"
-
-      #------------------------------------------------------------------------
-      # un-comment this to pin your build to a specific open edx release.
-      #
-      # a word of caution: usually you're better off choosing a version of tutor
-      # and then letting tutor make decisions of this nature.
-      # see: https://discuss.openedx.org/t/how-to-move-through-tutor-versions-part-ii/9574
-      #------------------------------------------------------------------------
-      #- name: Set OPENEDX_COMMON_VERSION
-      #  shell: bash
-      #  run: |-
-      #    echo "TUTOR_OPENEDX_COMMON_VERSION=open-release/nutmeg.3" >> $GITHUB_ENV
+        uses: openedx-actions/tutor-k8s-init@v1.0.7
+        with: 
+          tutor-version: v14.2.3
 
       #------------------------------------------------------------------------
       # Add a custom theme here.
@@ -57,12 +44,12 @@ jobs:
       - name: Add a custom theme
         uses: openedx-actions/tutor-plugin-build-openedx-add-theme@v1.0.0
         with:
-          repository: edx-theme-example
-          repository-organization: lpm0073
-          repository-ref: main
+          repository: ${{ env.CUSTOM_THEME_REPOSITORY }}
+          repository-organization: ${{ env.CUSTOM_THEME_REPOSITORY_ORGANIZATION }}
+          repository-ref: ${{ env.CUSTOM_THEME_REPOSITORY_REF }}
           # UN-COMMENT THIS IF YOUR REPO IS PRIVATE.
           #----------------------------------------------
-          #repository-token: ${{ secrets.PAT }}
+          repository-token: ${{ secrets.PAT }}
           #----------------------------------------------
 
       #------------------------------------------------------------------------
@@ -76,36 +63,40 @@ jobs:
       # note that `repository-token` is optional and is only needed for
       # private repositories
       #------------------------------------------------------------------------
-      - name: Add an edx plugin
+      - name: Add an GCSI custom openedx plugin
         uses: openedx-actions/tutor-plugin-build-openedx-add-requirement@v1.0.4
         with:
-          repository: openedx-plugin-example
-          repository-organization: lpm0073
-          repository-ref: main
-          # UN-COMMENT THIS IF YOUR REPO IS PRIVATE.
-          #----------------------------------------------
-          #repository-token: ${{ secrets.PAT }}
-          #----------------------------------------------
+          repository: gcsi-digital-learning-openedx
+          repository-organization: GCSI
+          repository-ref: master
+          repository-token: ${{ secrets.PAT }}
 
-      - name: Add an Xblock
+      - name: Add Xblock - xblock-in-video-quiz
         uses: openedx-actions/tutor-plugin-build-openedx-add-requirement@v1.0.4
         with:
-          repository: edx-ora2
+          repository: xblock-in-video-quiz
+          repository-organization: Stanford-Online
+          repository-ref: master
+          repository-token: ${{ secrets.PAT }}
+
+      - name: Add Xblock - xblock-activetable
+        uses: openedx-actions/tutor-plugin-build-openedx-add-requirement@v1.0.4
+        with:
+          repository: xblock-activetable
+          repository-organization: open-craft
+          repository-ref: master
+          repository-token: ${{ secrets.PAT }}
+
+      - name: Add xblock-free-text-response
+        uses: openedx-actions/tutor-plugin-build-openedx-add-requirement@v1.0.4
+        with:
+          repository: xblock-free-text-response
           repository-organization: openedx
           repository-ref: master
-          # UN-COMMENT THIS IF YOUR REPO IS PRIVATE.
-          #----------------------------------------------
-          #repository-token: ${{ secrets.PAT }}
-          #----------------------------------------------
-
-      - name: Dump tutor config
-        uses: openedx-actions/tutor-print-dump@v1.0.4
-        with:
-          namespace: ${{ env.NAMESPACE }}
-          action: build
+          repository-token: ${{ secrets.PAT }}
 
       #------------------------------------------------------------------------
       # Build and upload the Docker container
       #------------------------------------------------------------------------
       - name: Build openedx
-        uses: openedx-actions/tutor-plugin-build-openedx@v1.0.2
+        uses: openedx-actions/tutor-plugin-build-openedx@v1.0.0
