@@ -29,7 +29,7 @@ jobs:
       # feature flags for optional tutor modules
       # --------------------------------------------
       ENABLE_S3: true
-      ENABLE_DISCOVERY: false
+      ENABLE_DISCOVERY: true
       ENABLE_BACKUP: false
       ENABLE_CREDENTIALS: false
       ENABLE_ECOMMERCE: false
@@ -41,8 +41,8 @@ jobs:
 
     # deployment workflow begins here
     # --------------------------------------------
-    # checkout github repos: this repo, plus, all Gihubs Actions repos in this workflow
     steps:
+    # checkout github repos: this repo, plus, all Gihubs Actions repos in this workflow
       - name: Checkout
         uses: actions/checkout@v3.2.0
 
@@ -59,12 +59,18 @@ jobs:
       # Open edX Github Actions init procedure. Provides reliable initializations of
       # kubectl, aws-cli and tutor
       - name: Initialize environment
-        uses: openedx-actions/tutor-k8s-init@v1.0.7
+        uses: openedx-actions/tutor-k8s-init@v1.0.8
         with:
           eks-namespace: ${{ env.NAMESPACE }}
           eks-cluster-name: ${{ env.EKS_CLUSTER_NAME }}
           aws-region: ${{ env.AWS_REGION }}
+          kubectl-version: "1.25"
           tutor-version: "14.2.3"
+          tutor-mfe-version: "14.0.2"
+
+      - name: Set MFE_DOCKER_IMAGE
+        run: |-
+          tutor config save --set MFE_DOCKER_IMAGE="824885811700.dkr.ecr.eu-west-2.amazonaws.com/openedx_mfe:latest"
 
       # Setup a connection to our AWS Elastic Container Registry so that we can pull
       # containers that we created with the build workflows in this Cookiecutter.
@@ -111,10 +117,10 @@ jobs:
       # and then letting tutor make decisions of this nature.
       # see: https://discuss.openedx.org/t/how-to-move-through-tutor-versions-part-ii/9574
       #------------------------------------------------------------------------
-      #- name: Set OPENEDX_COMMON_VERSION
-      #  shell: bash
-      #  run: |-
-      #    echo "TUTOR_OPENEDX_COMMON_VERSION=open-release/nutmeg.3" >> $GITHUB_ENV
+      - name: Set OPENEDX_COMMON_VERSION
+        shell: bash
+        run: |-
+          tutor config save --set OPENEDX_COMMON_VERSION=open-release/nutmeg.3
 
       # ---------------------------------------------------------------------------------
       # Configure optional tutor plugins
@@ -264,6 +270,7 @@ jobs:
                             --set MFE_COURSE_AUTHORING_MFE_APP=null \
                             --set MFE_DISCUSSIONS_MFE_APP=null \
                             --set MFE_AUTHN_MFE_APP=null \
+
       # ---------------------------------------------------------------------------------
       # install and enable tutor plugin https://github.com/cookiecutter-openedx/tutor-contrib-k8s-deploy-tasks
       # this resolves any problems that cannot be address by directly manipulating tutor's
@@ -331,12 +338,19 @@ jobs:
           environment-id: ${{ env.ENVIRONMENT_ID }}
           namespace: ${{ env.NAMESPACE }}
 
-      - name: Set theme
+      - name: Set theme - tutor 15x and later syntax
+        continue-on-error: true
         shell: bash
         run:  |-
           tutor k8s do settheme gcsi-openedx-theme
 
+      - name: Set theme - legacy legacy syntax
+        continue-on-error: true
+        shell: bash
+        run:  |-
+          tutor k8s settheme gcsi-openedx-theme
+
       - name: Create admin user
-        uses: openedx-actions/tutor-k8s-configure-edx-admin@v1.0.1
+        uses: openedx-actions/tutor-k8s-configure-edx-admin@v1.0.2
         with:
           namespace: ${{ env.NAMESPACE }}
