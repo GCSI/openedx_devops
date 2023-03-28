@@ -69,6 +69,10 @@ jobs:
           tutor-version: "14.2.3"
           tutor-mfe-version: "14.0.2"
 
+    - name: Set MFE_DOCKER_IMAGE
+      run: |-
+        tutor config save --set MFE_DOCKER_IMAGE="824885811700.dkr.ecr.eu-west-2.amazonaws.com/openedx_mfe:latest"
+
       # Setup a connection to our AWS Elastic Container Registry so that we can pull
       # containers that we created with the build workflows in this Cookiecutter.
       - name: Login to Amazon ECR
@@ -334,10 +338,17 @@ jobs:
           environment-id: ${{ env.ENVIRONMENT_ID }}
           namespace: ${{ env.NAMESPACE }}
 
-      - name: Set theme
+      - name: Set theme - tutor 15x and later syntax
+        continue-on-error: true
         shell: bash
         run:  |-
           tutor k8s do settheme gcsi-openedx-theme
+
+      - name: Set theme - legacy legacy syntax
+        continue-on-error: true
+        shell: bash
+        run:  |-
+          tutor k8s settheme gcsi-openedx-theme
 
       - name: Create admin user
         uses: openedx-actions/tutor-k8s-configure-edx-admin@v1.0.1
