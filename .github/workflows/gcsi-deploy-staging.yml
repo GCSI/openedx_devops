@@ -60,12 +60,14 @@ jobs:
       # Open edX Github Actions init procedure. Provides reliable initializations of
       # kubectl, aws-cli and tutor
       - name: Initialize environment
-        uses: openedx-actions/tutor-k8s-init@v1.0.7
+        uses: openedx-actions/tutor-k8s-init@v1.0.8
         with:
           eks-namespace: ${{ env.NAMESPACE }}
           eks-cluster-name: ${{ env.EKS_CLUSTER_NAME }}
           aws-region: ${{ env.AWS_REGION }}
           tutor-version: "14.0.5"
+          tutor-version: "14.2.3"
+          tutor-mfe-version: "14.0.2"
 
       # Setup a connection to our AWS Elastic Container Registry so that we can pull
       # containers that we created with the build workflows in this Cookiecutter.

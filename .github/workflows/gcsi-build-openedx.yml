@@ -32,10 +32,10 @@ jobs:
 
       #------------------------------------------------------------------------
       # install and configure tutor
-      #  uses: openedx-actions/tutor-k8s-init@v1.0.7
+      #  
       #------------------------------------------------------------------------
       - name: Initialize environment
-        uses: ./.github/actions/tutor/k8s/init
+        uses: openedx-actions/tutor-k8s-init@v1.0.8
         with: 
           kubectl-version: "1.25"
           tutor-version: "14.2.3"
