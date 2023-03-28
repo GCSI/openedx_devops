@@ -29,7 +29,7 @@ jobs:
       # feature flags for optional tutor modules
       # --------------------------------------------
       ENABLE_S3: true
-      ENABLE_DISCOVERY: true
+      ENABLE_DISCOVERY: false
       ENABLE_BACKUP: false
       ENABLE_CREDENTIALS: false
       ENABLE_ECOMMERCE: false
@@ -50,7 +50,7 @@ jobs:
       # aws-actions. Prevents us from having to explicitly provide authentication credentials
       # to each aws-actions method individually.
       - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1.7.0
+        uses: aws-actions/configure-aws-credentials@v2
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -59,7 +59,7 @@ jobs:
       # Open edX Github Actions init procedure. Provides reliable initializations of
       # kubectl, aws-cli and tutor
       - name: Initialize environment
-        uses: openedx-actions/tutor-k8s-init@v1.0.4
+        uses: openedx-actions/tutor-k8s-init@v1.0.7
         with:
           eks-namespace: ${{ env.NAMESPACE }}
           eks-cluster-name: ${{ env.EKS_CLUSTER_NAME }}
@@ -79,6 +79,7 @@ jobs:
         shell: bash
         run: |-
           echo "AWS_ECR_URI=${{ steps.login-ecr.outputs.registry }}" >> $GITHUB_ENV
+          echo "CONFIG_PATH=$(tutor config printroot)/env/apps/openedx/config" >> $GITHUB_ENV
 
       - name: Intialize AWS ECR repo URIs
         shell: bash
@@ -206,6 +207,15 @@ jobs:
           namespace: ${{ env.NAMESPACE }}
           remote-server: "true"
           
+      # GCAS API key
+      # extract the key from k8s secrets in the following form:
+      #   export GCSI_BOOKING_SYSTEM_USER_API_KEY=the-key-value-from-k8s
+      #
+      - name: Extract GCAS api
+        uses: openedx-actions/tutor-k8s-get-secret@v1.0.0
+        with:
+          eks-namespace: gcas-staging
+          eks-secret-name: gcas-api
 
       # ---------------------------------------------------------------------------------
       # Configure application secrets
@@ -243,7 +253,7 @@ jobs:
           tutor config save
 
       # see: https://github.com/overhangio/tutor-mfe
-  # un-comment this section to disable specific MFEs
+      # un-comment this section to disable specific MFEs
       # -----------------------------------------------------------------------
       - name: Disable all MFEs
         shell: bash
@@ -254,8 +264,8 @@ jobs:
                             --set MFE_COURSE_AUTHORING_MFE_APP=null \
                             --set MFE_DISCUSSIONS_MFE_APP=null \
                             --set MFE_AUTHN_MFE_APP=null \
-  # ---------------------------------------------------------------------------------
-      # install and enable tutor plugin https://github.com/lpm0073/tutor-contrib-k8s-deploy-tasks
+      # ---------------------------------------------------------------------------------
+      # install and enable tutor plugin https://github.com/cookiecutter-openedx/tutor-contrib-k8s-deploy-tasks
       # this resolves any problems that cannot be address by directly manipulating tutor's
       # config.yml and/or the resources that it generates in its lms and cms working folders.
       #
@@ -290,6 +300,21 @@ jobs:
       # ---------------------------------------------------------------------------------
       - name: Add tutor k8s-specific deployment tasks
         uses: openedx-actions/tutor-plugin-enable-k8s-deploy-tasks@v0.0.1
+
+      # mcdaniel mar-2023
+      # patch for GCAS API key name. we have two problems to resolve.
+      # 1.) the secret should have been named OPENEDX_GCSI_BOOKING_SYSTEM_USER_API_KEY
+      # 2.) regardless, tutor ignores this environment variable
+      # 
+      # we'll try jamming the value into tutor's lms.env.yml and cms.env.yml
+      # from the command line
+      - name: Set GCAS api
+        shell: bash
+        run: |-
+          echo "" >> ${CONFIG_PATH}/lms.env.yml
+          echo "" >> ${CONFIG_PATH}/cms.env.yml
+          echo "GCSI_BOOKING_SYSTEM_USER_API_KEY: ${TUTOR_GCSI_BOOKING_SYSTEM_USER_API_KEY}" >> ${CONFIG_PATH}/lms.env.yml
+          echo "GCSI_BOOKING_SYSTEM_USER_API_KEY: ${TUTOR_GCSI_BOOKING_SYSTEM_USER_API_KEY}" >> ${CONFIG_PATH}/cms.env.yml
 
       - name: Dump tutor config
         uses: openedx-actions/tutor-print-dump@v1.0.4
