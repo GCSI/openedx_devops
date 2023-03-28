@@ -29,6 +29,11 @@ inputs:
     required: false
     default: us-east-1
     type: string
+  kubectl-version:
+    description: 'The version of kubectl to install'
+    required: false
+    default: "1.25"
+    type: string
   tutor-version:
     description: 'The version of tutor to install'
     required: false
@@ -62,7 +67,7 @@ runs:
       id: kubectl-configure
       shell: bash
       run: |-
-        sudo snap install kubectl --channel=1.25/stable --classic
+        sudo snap install kubectl --channel=${{ inputs.kubectl-version }}/stable --classic
         aws eks --region ${{ inputs.aws-region }} update-kubeconfig --name ${{ inputs.eks-cluster-name }} --alias ${{ inputs.eks-cluster-name }}
         echo "kubectl version and diagnostic info:"
         echo "------------------------------------"
