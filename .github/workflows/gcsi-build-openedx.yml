@@ -32,11 +32,11 @@ jobs:
 
       #------------------------------------------------------------------------
       # install and configure tutor
+      #  with: 
+      #    tutor-version: "14.0.5"
       #------------------------------------------------------------------------
       - name: Initialize environment
         uses: openedx-actions/tutor-k8s-init@v1.0.7
-        with: 
-          tutor-version: "14.0.5"
 
       - name: Load additional environment specific settings
         shell: bash
