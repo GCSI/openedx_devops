@@ -65,7 +65,7 @@ jobs:
           eks-namespace: ${{ env.NAMESPACE }}
           eks-cluster-name: ${{ env.EKS_CLUSTER_NAME }}
           aws-region: ${{ env.AWS_REGION }}
-          tutor-version: "14.0.5"
+          kubectl-version: "1.25"
           tutor-version: "14.2.3"
           tutor-mfe-version: "14.0.2"
 
