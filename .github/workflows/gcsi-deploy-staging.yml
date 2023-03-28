@@ -30,14 +30,13 @@ jobs:
       # --------------------------------------------
       ENABLE_S3: true
       
-      ENABLE_DISCOVERY: true
+      ENABLE_DISCOVERY: false
       ENABLE_BACKUP: false
       ENABLE_CREDENTIALS: false
       ENABLE_ECOMMERCE: false
       ENABLE_FORUM: false
       ENABLE_NOTES: false
       ENABLE_XQUEUE: false
-      
       ENABLE_LICENSE_MANAGER: false
       
 
