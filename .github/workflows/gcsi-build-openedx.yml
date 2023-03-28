@@ -36,12 +36,12 @@ jobs:
       - name: Initialize environment
         uses: openedx-actions/tutor-k8s-init@v1.0.7
         with: 
-          tutor-version: v14.2.3
+          tutor-version: "14.0.5"
 
       - name: Load additional environment specific settings
         shell: bash
         run: |-
-          tutor config save --set OPENEDX_COMMON_VERSION=open-release/nutmeg.3
+          tutor config save --set OPENEDX_COMMON_VERSION=open-release/nutmeg.2
 
       #------------------------------------------------------------------------
       # Add a custom theme here.
