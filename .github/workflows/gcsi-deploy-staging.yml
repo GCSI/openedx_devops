@@ -214,16 +214,6 @@ jobs:
           namespace: ${{ env.NAMESPACE }}
           remote-server: "true"
           
-      # GCAS API key
-      # extract the key from k8s secrets in the following form:
-      #   export GCSI_BOOKING_SYSTEM_USER_API_KEY=the-key-value-from-k8s
-      #
-      - name: Extract GCAS api
-        uses: openedx-actions/tutor-k8s-get-secret@v1.0.0
-        with:
-          eks-namespace: gcas-staging
-          eks-secret-name: gcas-api
-
       # ---------------------------------------------------------------------------------
       # Configure application secrets
       # ---------------------------------------------------------------------------------
@@ -308,6 +298,28 @@ jobs:
       - name: Add tutor k8s-specific deployment tasks
         uses: openedx-actions/tutor-plugin-enable-k8s-deploy-tasks@v0.0.1
 
+      # GCAS API key
+      # extract the key from k8s secrets in the following form:
+      #   export TUTOR_GCSI_BOOKING_SYSTEM_USER_API_KEY=the-key-value-from-k8s
+      #
+      - name: Extract GCAS api
+        uses: openedx-actions/tutor-k8s-get-secret@v1.0.0
+        with:
+          eks-namespace: gcas-staging
+          eks-secret-name: gcas-api
+
+      # GCAS oauth credentials
+      # extract the key from k8s secrets in the following form:
+      #   export TUTOR_CLIENT_ID=the-key-value-from-k8s
+      #   export TUTOR_CLIENT_SECRET=the-secret-value-from-k8s
+      #
+      - name: Extract GCAS api
+        uses: openedx-actions/tutor-k8s-get-secret@v1.0.0
+        with:
+          eks-namespace: gcas-staging
+          eks-secret-name: gcas-oauth
+
+
       # mcdaniel mar-2023
       # patch for GCAS API key name. we have two problems to resolve.
       # 1.) the secret should have been named OPENEDX_GCSI_BOOKING_SYSTEM_USER_API_KEY
@@ -322,6 +334,8 @@ jobs:
           echo "" >> ${CONFIG_PATH}/cms.env.yml
           echo "GCSI_BOOKING_SYSTEM_USER_API_KEY: ${TUTOR_GCSI_BOOKING_SYSTEM_USER_API_KEY}" >> ${CONFIG_PATH}/lms.env.yml
           echo "GCSI_BOOKING_SYSTEM_USER_API_KEY: ${TUTOR_GCSI_BOOKING_SYSTEM_USER_API_KEY}" >> ${CONFIG_PATH}/cms.env.yml
+          echo "GCAS_CLIENT_ID: ${TUTOR_CLIENT_ID}" >> ${CONFIG_PATH}/cms.env.yml
+          echo "GCAS_CLIENT_SECRET: ${TUTOR_CLIENT_SECRET}" >> ${CONFIG_PATH}/cms.env.yml
 
       - name: Dump tutor config
         uses: openedx-actions/tutor-print-dump@v1.0.4
@@ -338,17 +352,10 @@ jobs:
           environment-id: ${{ env.ENVIRONMENT_ID }}
           namespace: ${{ env.NAMESPACE }}
 
-      - name: Set theme - tutor 15x and later syntax
-        continue-on-error: true
-        shell: bash
-        run:  |-
-          tutor k8s do settheme gcsi-openedx-theme
-
-      - name: Set theme - legacy legacy syntax
-        continue-on-error: true
-        shell: bash
-        run:  |-
-          tutor k8s settheme gcsi-openedx-theme
+      - name: Set theme
+        uses: openedx-actions/tutor-k8s-configure-edx-set-theme@v0.1.1
+        with:
+          theme-name: gcsi-openedx-theme
 
       - name: Create admin user
         uses: openedx-actions/tutor-k8s-configure-edx-admin@v1.0.2
