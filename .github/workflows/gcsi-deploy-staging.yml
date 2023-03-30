@@ -45,7 +45,7 @@ jobs:
     steps:
       # checkout github repos: this repo, plus, all Gihubs Actions repos in this workflow
       - name: Checkout
-        uses: actions/checkout@v3.2.0
+        uses: actions/checkout@v3
 
       # AWS helper method. creates a session token that's usable by all other
       # aws-actions. Prevents us from having to explicitly provide authentication credentials
@@ -321,7 +321,7 @@ jobs:
 
 
       # mcdaniel mar-2023
-      # patch for GCAS API key name. we have three problems to resolve.
+      # patch for GCAS integration settings. we have three problems to resolve.
       # 1.) the gcas api secret should have been named OPENEDX_GCSI_BOOKING_SYSTEM_USER_API_KEY
       # 2.) CLIENT_ID and secret should have been named GCAS_CLIENT_ID and GCAS_CLIENT_SECRET
       # 3.) regardless of the naming convention, tutor ignores these environment variables <--- why??????

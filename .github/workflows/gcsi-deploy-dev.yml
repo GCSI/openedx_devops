@@ -44,7 +44,7 @@ jobs:
     steps:
     # checkout github repos: this repo, plus, all Gihubs Actions repos in this workflow
       - name: Checkout
-        uses: actions/checkout@v3.2.0
+        uses: actions/checkout@v3
 
       # AWS helper method. creates a session token that's usable by all other
       # aws-actions. Prevents us from having to explicitly provide authentication credentials
@@ -213,16 +213,6 @@ jobs:
           namespace: ${{ env.NAMESPACE }}
           remote-server: "true"
           
-      # GCAS API key
-      # extract the key from k8s secrets in the following form:
-      #   export GCSI_BOOKING_SYSTEM_USER_API_KEY=the-key-value-from-k8s
-      #
-      - name: Extract GCAS api
-        uses: openedx-actions/tutor-k8s-get-secret@v1.0.0
-        with:
-          eks-namespace: gcas-staging
-          eks-secret-name: gcas-api
-
       # ---------------------------------------------------------------------------------
       # Configure application secrets
       # ---------------------------------------------------------------------------------
@@ -272,7 +262,7 @@ jobs:
                             --set MFE_AUTHN_MFE_APP=null \
 
       # ---------------------------------------------------------------------------------
-      # install and enable tutor plugin https://github.com/cookiecutter-openedx/tutor-contrib-k8s-deploy-tasks
+      # install and enable tutor plugin https://github.com/lpm0073/tutor-contrib-k8s-deploy-tasks
       # this resolves any problems that cannot be address by directly manipulating tutor's
       # config.yml and/or the resources that it generates in its lms and cms working folders.
       #
@@ -308,13 +298,35 @@ jobs:
       - name: Add tutor k8s-specific deployment tasks
         uses: openedx-actions/tutor-plugin-enable-k8s-deploy-tasks@v0.0.1
 
+      # GCAS API key
+      # extract the key from k8s secrets in the following form:
+      #   export TUTOR_GCSI_BOOKING_SYSTEM_USER_API_KEY=the-key-value-from-k8s
+      #
+      - name: Extract GCAS api
+        uses: openedx-actions/tutor-k8s-get-secret@v1.0.0
+        with:
+          eks-namespace: gcas-staging
+          eks-secret-name: gcas-api
+
+      # GCAS oauth client credentials
+      # extract the key from k8s secrets in the following form:
+      #   export TUTOR_CLIENT_ID=the-key-value-from-k8s
+      #   export TUTOR_CLIENT_SECRET=the-secret-value-from-k8s
+      #
+      - name: Extract GCAS api
+        uses: openedx-actions/tutor-k8s-get-secret@v1.0.0
+        with:
+          eks-namespace: gcas-staging
+          eks-secret-name: gcas-oauth
+
+
       # mcdaniel mar-2023
-      # patch for GCAS API key name. we have two problems to resolve.
-      # 1.) the secret should have been named OPENEDX_GCSI_BOOKING_SYSTEM_USER_API_KEY
-      # 2.) regardless, tutor ignores this environment variable
+      # patch for GCAS integration settings. we have three problems to resolve.
+      # 1.) the gcas api secret should have been named OPENEDX_GCSI_BOOKING_SYSTEM_USER_API_KEY
+      # 2.) CLIENT_ID and secret should have been named GCAS_CLIENT_ID and GCAS_CLIENT_SECRET
+      # 3.) regardless of the naming convention, tutor ignores these environment variables <--- why??????
       # 
-      # we'll try jamming the value into tutor's lms.env.yml and cms.env.yml
-      # from the command line
+      # we'll fix these on the command line and then append to tutor's lms.env.yml and cms.env.yml
       - name: Set GCAS api
         shell: bash
         run: |-
@@ -322,6 +334,12 @@ jobs:
           echo "" >> ${CONFIG_PATH}/cms.env.yml
           echo "GCSI_BOOKING_SYSTEM_USER_API_KEY: ${TUTOR_GCSI_BOOKING_SYSTEM_USER_API_KEY}" >> ${CONFIG_PATH}/lms.env.yml
           echo "GCSI_BOOKING_SYSTEM_USER_API_KEY: ${TUTOR_GCSI_BOOKING_SYSTEM_USER_API_KEY}" >> ${CONFIG_PATH}/cms.env.yml
+
+          echo "GCAS_CLIENT_ID: ${TUTOR_CLIENT_ID}" >> ${CONFIG_PATH}/lms.env.yml
+          echo "GCAS_CLIENT_SECRET: ${TUTOR_CLIENT_SECRET}" >> ${CONFIG_PATH}/lms.env.yml
+
+          echo "GCAS_CLIENT_ID: ${TUTOR_CLIENT_ID}" >> ${CONFIG_PATH}/cms.env.yml
+          echo "GCAS_CLIENT_SECRET: ${TUTOR_CLIENT_SECRET}" >> ${CONFIG_PATH}/cms.env.yml
 
       - name: Dump tutor config
         uses: openedx-actions/tutor-print-dump@v1.0.4
@@ -338,17 +356,10 @@ jobs:
           environment-id: ${{ env.ENVIRONMENT_ID }}
           namespace: ${{ env.NAMESPACE }}
 
-      - name: Set theme - tutor 15x and later syntax
-        continue-on-error: true
-        shell: bash
-        run:  |-
-          tutor k8s do settheme gcsi-openedx-theme
-
-      - name: Set theme - legacy legacy syntax
-        continue-on-error: true
-        shell: bash
-        run:  |-
-          tutor k8s settheme gcsi-openedx-theme
+      - name: Set theme
+        uses: openedx-actions/tutor-k8s-configure-edx-set-theme@v0.1.1
+        with:
+          theme-name: gcsi-openedx-theme
 
       - name: Create admin user
         uses: openedx-actions/tutor-k8s-configure-edx-admin@v1.0.2
