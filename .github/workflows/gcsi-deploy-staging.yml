@@ -140,10 +140,11 @@ jobs:
           namespace: ${{ env.NAMESPACE }}
 
       - name: Enable tutor plugin - Discovery
-        uses: openedx-actions/tutor-plugin-enable-discovery@v1.0.0
+        uses: openedx-actions/tutor-plugin-enable-discovery@v1.0.1
         if: ${{ env.ENABLE_DISCOVERY == 'true' }}
         with:
           namespace: ${{ env.NAMESPACE }}
+          tutor-discovery-version: "14.0.2"
 
       - name: Enable tutor plugin - Credentials
         uses: openedx-actions/tutor-plugin-enable-credentials@v1.0.0
