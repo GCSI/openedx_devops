@@ -73,7 +73,7 @@ jobs:
         with:
           repository: gcsi-digital-learning-openedx
           repository-organization: GCSI
-          repository-ref: master
+          repository-ref: mcdaniel_20230522
           repository-token: ${{ secrets.PAT }}
 
       - name: Add Xblock - xblock-in-video-quiz
