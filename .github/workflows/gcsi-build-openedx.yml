@@ -18,7 +18,7 @@ jobs:
 
       CUSTOM_THEME_REPOSITORY: gcsi-openedx-theme
       CUSTOM_THEME_REPOSITORY_ORGANIZATION: GCSI
-      CUSTOM_THEME_REPOSITORY_REF: main
+      CUSTOM_THEME_REPOSITORY_REF: dob/error-pages
 
     steps:
       - uses: actions/checkout@v3
