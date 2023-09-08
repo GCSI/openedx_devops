@@ -100,6 +100,14 @@ jobs:
           repository-ref: master
           repository-token: ${{ secrets.PAT }}
 
+      - name: Add eox-hooks
+        uses: openedx-actions/tutor-plugin-build-openedx-add-requirement@v1.0.5
+        with:
+          repository: eox-hooks
+          repository-organization: eduNEXT
+          repository-ref: dob/orgs-test
+          repository-token: ${{ secrets.PAT }}
+
       #------------------------------------------------------------------------
       # Build and upload the Docker container
       #------------------------------------------------------------------------
