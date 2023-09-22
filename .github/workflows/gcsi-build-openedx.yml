@@ -108,6 +108,14 @@ jobs:
           repository-ref: dob/orgs-test
           repository-token: ${{ secrets.PAT }}
 
+      - name: Add chatgpt-xblock
+        uses: openedx-actions/tutor-plugin-build-openedx-add-requirement@v1.0.5
+        with:
+          repository: chatgpt-xblock
+          repository-organization: abconlinecourses
+          repository-ref: main
+          repository-token: ${{ secrets.PAT }}
+
       #------------------------------------------------------------------------
       # Build and upload the Docker container
       #------------------------------------------------------------------------
