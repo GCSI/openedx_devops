@@ -38,7 +38,7 @@ jobs:
         uses: openedx-actions/tutor-k8s-init@v1.0.8
         with: 
           kubectl-version: "1.25"
-          tutor-version: "14.2.3"
+          tutor-version: "14.2.5"
           tutor-mfe-version: "14.0.2"
 
       # - name: Load additional environment specific settings

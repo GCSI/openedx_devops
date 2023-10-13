@@ -145,7 +145,7 @@ This repository was generated using `Cookiecutter <https://cookiecutter.readthed
   * - `Redis Cache <https://redis.io/>`_
     - 6.x
   * - `Tutor Docker-based Open edX Installer <https://docs.tutor.overhang.io/>`_
-    - 14.2.3
+    - 14.2.5
   * - `Tutor Plugin: Object storage for Open edX with S3 <https://github.com/hastexo/tutor-contrib-s3>`_
     - v1.0.2
   * - `Tutor Plugin: Discovery Service <https://github.com/overhangio/tutor-discovery>`_
