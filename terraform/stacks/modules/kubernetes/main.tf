@@ -147,6 +147,16 @@ module "eks" {
       }
 
       instance_types = ["${var.eks_service_group_instance_type}"]
+
+      block_device_mappings = {
+        xvda = {
+          device_name = "/dev/xvda"
+          ebs = {
+            volume_size = 40
+          }
+        }
+      }
+
       tags = merge(
         local.tags,
         module.cookiecutter_meta.tags,
