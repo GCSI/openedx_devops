@@ -157,11 +157,11 @@ output "fargate_profiles" {
 # EKS Managed Node Groups
 ################################################################################
 output "service_node_group_iam_role_name" {
-  value = module.eks.eks_managed_node_groups["live"].iam_role_name
+  value = module.eks.eks_managed_node_groups["live-v2"].iam_role_name
 }
 
 output "service_node_group_iam_role_arn" {
-  value = module.eks.eks_managed_node_groups["live"].iam_role_arn
+  value = module.eks.eks_managed_node_groups["live-v2"].iam_role_arn
 }
 output "hosting_node_group_iam_role_name" {
   value = module.eks.eks_managed_node_groups["hosting"].iam_role_name

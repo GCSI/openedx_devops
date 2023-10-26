@@ -127,7 +127,7 @@ module "eks" {
     # (a few hours or less) as these are usually only instantiated during
     # bursts of user activity such as at the start of a scheduled lecture or
     # exam on a large mooc.
-    live = {
+    live-v2 = {
       capacity_type     = "SPOT"
       enable_monitoring = false
       desired_size      = var.eks_service_group_desired_size
@@ -135,7 +135,7 @@ module "eks" {
       max_size          = var.eks_service_group_max_size
 
       labels = {
-        node-group = "live"
+        node-group = "live-v2"
       }
 
       iam_role_additional_policies = {
@@ -146,16 +146,16 @@ module "eks" {
         AmazonEBSCSIDriverPolicy = data.aws_iam_policy.AmazonEBSCSIDriverPolicy.arn
       }
 
-      instance_types = ["${var.eks_service_group_instance_type}"]
+      instance_types = ["t3.large", "t3a.large", "t2.large", "m6a.large", "m6i.large", "m5a.large", "m5.large"]
 
-      block_device_mappings = {
-        xvda = {
+      block_device_mappings = [
+        {
           device_name = "/dev/xvda"
           ebs = {
             volume_size = 40
           }
         }
-      }
+      ]
 
       tags = merge(
         local.tags,
@@ -163,7 +163,7 @@ module "eks" {
         # Tag node group resources for Karpenter auto-discovery
         # NOTE - if creating multiple security groups with this module, only tag the
         # security group that Karpenter should utilize with the following tag
-        { Name = "eks-${var.shared_resource_identifier}-live" },
+        { Name = "eks-${var.shared_resource_identifier}-live-v2" },
         {
           "cookiecutter/resource/source"  = "terraform-aws-modules/eks/aws"
           "cookiecutter/resource/version" = "19.4"
@@ -179,7 +179,7 @@ module "eks" {
       max_size          = var.eks_hosting_group_max_size
 
       labels = {
-        node-group = "live"
+        node-group = "live-v2"
       }
 
       iam_role_additional_policies = {
