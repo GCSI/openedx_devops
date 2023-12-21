@@ -155,7 +155,7 @@ This repository was generated using `Cookiecutter <https://cookiecutter.readthed
   * - `Tutor Plugin: Android Application <https://github.com/overhangio/tutor-android>`_
     - latest stable
   * - `Kubernetes Cluster <https://kubernetes.io/>`_
-    - 1.25
+    - 1.26
   * - `Terraform <https://www.terraform.io/>`_
     - ~> 1.3
   * - Terraform Provider `Kubernetes <https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs>`_
