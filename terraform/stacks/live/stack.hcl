@@ -35,7 +35,7 @@ locals {
   #
   # see: https://aws.amazon.com/ec2/instance-types/
   #----------------------------------------------------------------------------
-  kubernetes_version                 = "1.26"
+  kubernetes_version                 = "1.29"
   eks_create_kms_key                 = true
   eks_service_group_instance_type    = "t3.large"
   eks_service_group_min_size         = 3
