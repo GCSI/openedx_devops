@@ -1,0 +1,111 @@
+14:37:54.311 STDOUT terraform: plan. Resource actions are indicated with the following symbols:
+14:37:54.311 STDOUT terraform:   - destroy
+14:37:54.311 STDOUT terraform: Terraform will perform the following actions:
+14:37:54.311 STDOUT terraform:   # aws_route53_record.environment_domain-ns will be destroyed
+14:37:54.311 STDOUT terraform:   - resource "aws_route53_record" "environment_domain-ns" {
+14:37:54.311 STDOUT terraform:       - fqdn                             = "staging.global-communications-academy.com" -> null
+14:37:54.311 STDOUT terraform:       - id                               = "Z064431917WGFKESPTVUT_staging.global-communications-academy.com_NS" -> null
+14:37:54.311 STDOUT terraform:       - multivalue_answer_routing_policy = false -> null
+14:37:54.311 STDOUT terraform:       - name                             = "staging.global-communications-academy.com" -> null
+14:37:54.311 STDOUT terraform:       - records                          = [
+14:37:54.311 STDOUT terraform:           - "ns-1383.awsdns-44.org",
+14:37:54.311 STDOUT terraform:           - "ns-2017.awsdns-60.co.uk",
+14:37:54.311 STDOUT terraform:           - "ns-26.awsdns-03.com",
+14:37:54.311 STDOUT terraform:           - "ns-653.awsdns-17.net",
+14:37:54.311 STDOUT terraform:         ] -> null
+14:37:54.311 STDOUT terraform:       - ttl                              = 30 -> null
+14:37:54.311 STDOUT terraform:       - type                             = "NS" -> null
+14:37:54.311 STDOUT terraform:       - zone_id                          = "Z064431917WGFKESPTVUT" -> null
+14:37:54.311 STDOUT terraform:         # (2 unchanged attributes hidden)
+14:37:54.311 STDOUT terraform:     }
+14:37:54.311 STDOUT terraform:   # aws_route53_zone.environment_domain will be destroyed
+14:37:54.311 STDOUT terraform:   - resource "aws_route53_zone" "environment_domain" {
+14:37:54.312 STDOUT terraform:       - arn                 = "arn:aws:route53:::hostedzone/Z03421433FTTS9CGGX8LH" -> null
+14:37:54.312 STDOUT terraform:       - comment             = "Managed by Terraform" -> null
+14:37:54.312 STDOUT terraform:       - force_destroy       = false -> null
+14:37:54.312 STDOUT terraform:       - id                  = "Z03421433FTTS9CGGX8LH" -> null
+14:37:54.312 STDOUT terraform:       - name                = "staging.global-communications-academy.com" -> null
+14:37:54.312 STDOUT terraform:       - name_servers        = [
+14:37:54.312 STDOUT terraform:           - "ns-1383.awsdns-44.org",
+14:37:54.312 STDOUT terraform:           - "ns-2017.awsdns-60.co.uk",
+14:37:54.312 STDOUT terraform:           - "ns-26.awsdns-03.com",
+14:37:54.312 STDOUT terraform:           - "ns-653.awsdns-17.net",
+14:37:54.312 STDOUT terraform:         ] -> null
+14:37:54.312 STDOUT terraform:       - primary_name_server = "ns-1383.awsdns-44.org" -> null
+14:37:54.312 STDOUT terraform:       - tags                = {
+14:37:54.312 STDOUT terraform:           - "cookiecutter/environment"                       = "staging"
+14:37:54.312 STDOUT terraform:           - "cookiecutter/environment_domain"                = "staging.global-communications-academy.com"
+14:37:54.312 STDOUT terraform:           - "cookiecutter/environment_namespace"             = "codlp-global-staging"
+14:37:54.312 STDOUT terraform:           - "cookiecutter/environment_subdomain"             = "staging"
+14:37:54.312 STDOUT terraform:           - "cookiecutter/global/aws_region"                 = "eu-west-2"
+14:37:54.312 STDOUT terraform:           - "cookiecutter/global/platform_name"              = "codlp"
+14:37:54.312 STDOUT terraform:           - "cookiecutter/global/platform_region"            = "global"
+14:37:54.312 STDOUT terraform:           - "cookiecutter/global/root_domain"                = "global-communications-academy.com"
+14:37:54.312 STDOUT terraform:           - "cookiecutter/global/services_subdomain"         = "service.global-communications-academy.com"
+14:37:54.313 STDOUT terraform:           - "cookiecutter/global/shared_resource_identifier" = "live"
+14:37:54.313 STDOUT terraform:           - "cookiecutter/global/shared_resource_namespace"  = "codlp-global-live"
+14:37:54.313 STDOUT terraform:           - "cookiecutter/meta/aws_iam_user"                 = "arn:aws:iam::824885811700:user/lawrence.mcdaniel"
+14:37:54.313 STDOUT terraform:           - "cookiecutter/meta/awscli_version"               = "2.10.3"
+14:37:54.313 STDOUT terraform:           - "cookiecutter/meta/github_branch"                = "cookiecutter_1.0.25 cookiecutter_1.1.0 main mcdaniel_202301 mcdaniel_202301_upgrade_1.0.19 mcdaniel_edunext_scorm"
+14:37:54.313 STDOUT terraform:           - "cookiecutter/meta/github_commit"                = "8968abd3275d90cd64fd7ec4fe62d5d7ae7de304"
+14:37:54.313 STDOUT terraform:           - "cookiecutter/meta/github_commit_date"           = "20230308T131544"
+14:37:54.313 STDOUT terraform:           - "cookiecutter/meta/github_repository"            = "https://github.com/GCSI/openedx_devops.git"
+14:37:54.313 STDOUT terraform:           - "cookiecutter/meta/kubectl_version"              = "v1.26.1"
+14:37:54.313 STDOUT terraform:           - "cookiecutter/meta/os"                           = "darwin22"
+14:37:54.313 STDOUT terraform:           - "cookiecutter/meta/terraform"                    = "true"
+14:37:54.313 STDOUT terraform:           - "cookiecutter/meta/terraform_version"            = "v1.3.9"
+14:37:54.313 STDOUT terraform:           - "cookiecutter/meta/timestamp"                    = "20230320T082734"
+14:37:54.313 STDOUT terraform:           - "cookiecutter/meta/version"                      = "v1.1.0"
+14:37:54.313 STDOUT terraform:           - "cookiecutter/module/source"                     = "openedx_devops/terraform/environments/modules/vpn"
+14:37:54.313 STDOUT terraform:           - "cookiecutter/resource/source"                   = "hashicorp/aws/aws_route53_zone"
+14:37:54.314 STDOUT terraform:           - "cookiecutter/resource/version"                  = "4.48"
+14:37:54.314 STDOUT terraform:           - "cookiecutter/shared_resource_namespace"         = "codlp-global-live"
+14:37:54.314 STDOUT terraform:         } -> null
+14:37:54.314 STDOUT terraform:       - tags_all            = {
+14:37:54.314 STDOUT terraform:           - "cookiecutter/environment"                       = "staging"
+14:37:54.314 STDOUT terraform:           - "cookiecutter/environment_domain"                = "staging.global-communications-academy.com"
+14:37:54.314 STDOUT terraform:           - "cookiecutter/environment_namespace"             = "codlp-global-staging"
+14:37:54.314 STDOUT terraform:           - "cookiecutter/environment_subdomain"             = "staging"
+14:37:54.314 STDOUT terraform:           - "cookiecutter/global/aws_region"                 = "eu-west-2"
+14:37:54.314 STDOUT terraform:           - "cookiecutter/global/platform_name"              = "codlp"
+14:37:54.314 STDOUT terraform:           - "cookiecutter/global/platform_region"            = "global"
+14:37:54.314 STDOUT terraform:           - "cookiecutter/global/root_domain"                = "global-communications-academy.com"
+14:37:54.314 STDOUT terraform:           - "cookiecutter/global/services_subdomain"         = "service.global-communications-academy.com"
+14:37:54.314 STDOUT terraform:           - "cookiecutter/global/shared_resource_identifier" = "live"
+14:37:54.314 STDOUT terraform:           - "cookiecutter/global/shared_resource_namespace"  = "codlp-global-live"
+14:37:54.314 STDOUT terraform:           - "cookiecutter/meta/aws_iam_user"                 = "arn:aws:iam::824885811700:user/lawrence.mcdaniel"
+14:37:54.314 STDOUT terraform:           - "cookiecutter/meta/awscli_version"               = "2.10.3"
+14:37:54.314 STDOUT terraform:           - "cookiecutter/meta/github_branch"                = "cookiecutter_1.0.25 cookiecutter_1.1.0 main mcdaniel_202301 mcdaniel_202301_upgrade_1.0.19 mcdaniel_edunext_scorm"
+14:37:54.314 STDOUT terraform:           - "cookiecutter/meta/github_commit"                = "8968abd3275d90cd64fd7ec4fe62d5d7ae7de304"
+14:37:54.315 STDOUT terraform:           - "cookiecutter/meta/github_commit_date"           = "20230308T131544"
+14:37:54.315 STDOUT terraform:           - "cookiecutter/meta/github_repository"            = "https://github.com/GCSI/openedx_devops.git"
+14:37:54.315 STDOUT terraform:           - "cookiecutter/meta/kubectl_version"              = "v1.26.1"
+14:37:54.315 STDOUT terraform:           - "cookiecutter/meta/os"                           = "darwin22"
+14:37:54.315 STDOUT terraform:           - "cookiecutter/meta/terraform"                    = "true"
+14:37:54.315 STDOUT terraform:           - "cookiecutter/meta/terraform_version"            = "v1.3.9"
+14:37:54.315 STDOUT terraform:           - "cookiecutter/meta/timestamp"                    = "20230320T082734"
+14:37:54.315 STDOUT terraform:           - "cookiecutter/meta/version"                      = "v1.1.0"
+14:37:54.315 STDOUT terraform:           - "cookiecutter/module/source"                     = "openedx_devops/terraform/environments/modules/vpn"
+14:37:54.315 STDOUT terraform:           - "cookiecutter/resource/source"                   = "hashicorp/aws/aws_route53_zone"
+14:37:54.315 STDOUT terraform:           - "cookiecutter/resource/version"                  = "4.48"
+14:37:54.315 STDOUT terraform:           - "cookiecutter/shared_resource_namespace"         = "codlp-global-live"
+14:37:54.315 STDOUT terraform:         } -> null
+14:37:54.315 STDOUT terraform:       - zone_id             = "Z03421433FTTS9CGGX8LH" -> null
+14:37:54.315 STDOUT terraform:         # (1 unchanged attribute hidden)
+14:37:54.315 STDOUT terraform:     }
+14:37:54.315 STDOUT terraform:   # module.cookiecutter_meta.null_resource.environment will be destroyed
+14:37:54.315 STDOUT terraform:   - resource "null_resource" "environment" {
+14:37:54.315 STDOUT terraform:       - id = "6691486962570550814" -> null
+14:37:54.315 STDOUT terraform:     }
+14:37:54.315 STDOUT terraform:   # module.cookiecutter_meta.null_resource.init will be destroyed
+14:37:54.316 STDOUT terraform:   - resource "null_resource" "init" {
+14:37:54.316 STDOUT terraform:       - id = "6835311027674146018" -> null
+14:37:54.316 STDOUT terraform:     }
+14:37:54.316 STDOUT terraform:   # module.cookiecutter_meta.null_resource.taint will be destroyed
+14:37:54.316 STDOUT terraform:   - resource "null_resource" "taint" {
+14:37:54.316 STDOUT terraform:       - id       = "6489552777653480585" -> null
+14:37:54.316 STDOUT terraform:       - triggers = {
+14:37:54.316 STDOUT terraform:           - "timestamp" = "2023-03-20T14:27:32Z"
+14:37:54.316 STDOUT terraform:         } -> null
+14:37:54.316 STDOUT terraform:     }
+14:37:54.316 STDOUT terraform: Plan: 0 to add, 0 to change, 5 to destroy.

@@ -1,0 +1,754 @@
+[0;90m15:11:39.523[0m [0;33mWARN  [0m Using `terragrunt.hcl` as the root of Terragrunt configurations is an anti-pattern, and no longer recommended. In a future version of Terragrunt, this will result in an error. You are advised to use a differently named file like `root.hcl` instead. For more information, see https://terragrunt.gruntwork.io/docs/migrate/migrating-from-root-terragrunt-hcl
+[0;90m15:22:21.111[0m [0;32mINFO  [0m Downloading Terraform configurations from ../../modules into ./.terragrunt-cache/g9XdgDnEy2pw5-u27-MkymVIWJI/6CdddHkeN9JGSs1w4z9DwWJCpIE
+[0;90m15:22:28.692[0m [0;32mINFO  [0m [0;36mterraform: [0m[0m[1mInitializing the backend...[0m[0m
+[0;90m15:22:33.028[0m [0;32mINFO  [0m [0;36mterraform: [0m[0m[32m[0m
+[0;90m15:22:33.028[0m [0;32mINFO  [0m [0;36mterraform: [0mSuccessfully configured the backend "s3"! Terraform will automatically
+[0;90m15:22:33.028[0m [0;32mINFO  [0m [0;36mterraform: [0muse this backend unless the backend configuration changes.[0m[0m
+[0;90m15:22:41.173[0m [0;32mINFO  [0m [0;36mterraform: [0m[0m[1mInitializing modules...[0m[0m
+[0;90m15:22:41.176[0m [0;32mINFO  [0m [0;36mterraform: [0m- cookiecutter_meta in ../../../../../../../common/cookiecutter_meta
+[0;90m15:22:42.135[0m [0;32mINFO  [0m [0;36mterraform: [0mDownloading registry.terraform.io/terraform-aws-modules/s3-bucket/aws 3.15.2 for openedx_backup...
+[0;90m15:23:00.964[0m [0;32mINFO  [0m [0;36mterraform: [0m- openedx_backup in .terraform/modules/openedx_backup
+[0;90m15:23:00.967[0m [0;32mINFO  [0m [0;36mterraform: [0mDownloading registry.terraform.io/terraform-aws-modules/s3-bucket/aws 3.15.2 for openedx_secrets...
+[0;90m15:23:01.003[0m [0;32mINFO  [0m [0;36mterraform: [0m- openedx_secrets in .terraform/modules/openedx_secrets
+[0;90m15:23:01.003[0m [0;32mINFO  [0m [0;36mterraform: [0mDownloading registry.terraform.io/terraform-aws-modules/s3-bucket/aws 3.15.2 for openedx_storage...
+[0;90m15:23:01.045[0m [0;32mINFO  [0m [0;36mterraform: [0m- openedx_storage in .terraform/modules/openedx_storage
+[0;90m15:23:01.056[0m [0;32mINFO  [0m [0;36mterraform: [0m[0m[1mInitializing provider plugins...[0m[0m
+[0;90m15:23:01.057[0m [0;32mINFO  [0m [0;36mterraform: [0m- Finding hashicorp/aws versions matching ">= 4.9.0, ~> 4.48"...
+[0;90m15:23:01.788[0m [0;32mINFO  [0m [0;36mterraform: [0m- Finding hashicorp/local versions matching "~> 2.2"...
+[0;90m15:23:02.358[0m [0;32mINFO  [0m [0;36mterraform: [0m- Finding hashicorp/random versions matching "~> 3.4"...
+[0;90m15:23:03.033[0m [0;32mINFO  [0m [0;36mterraform: [0m- Finding latest version of hashicorp/null...
+[0;90m15:23:03.832[0m [0;32mINFO  [0m [0;36mterraform: [0m- Finding hashicorp/kubernetes versions matching "~> 2.16"...
+[0;90m15:23:06.811[0m [0;32mINFO  [0m [0;36mterraform: [0m- Installing hashicorp/aws v4.67.0...
+[0;90m15:24:22.305[0m [0;32mINFO  [0m [0;36mterraform: [0m- Installed hashicorp/aws v4.67.0 (signed by HashiCorp)
+[0;90m15:24:23.879[0m [0;32mINFO  [0m [0;36mterraform: [0m- Installing hashicorp/local v2.9.0...
+[0;90m15:24:46.449[0m [0;32mINFO  [0m [0;36mterraform: [0m- Installed hashicorp/local v2.9.0 (signed by HashiCorp)
+[0;90m15:24:48.996[0m [0;32mINFO  [0m [0;36mterraform: [0m- Installing hashicorp/random v3.9.0...
+[0;90m15:25:05.632[0m [0;32mINFO  [0m [0;36mterraform: [0m- Installed hashicorp/random v3.9.0 (signed by HashiCorp)
+[0;90m15:25:07.726[0m [0;32mINFO  [0m [0;36mterraform: [0m- Installing hashicorp/null v3.3.0...
+[0;90m15:25:33.729[0m [0;32mINFO  [0m [0;36mterraform: [0m- Installed hashicorp/null v3.3.0 (signed by HashiCorp)
+[0;90m15:25:35.625[0m [0;32mINFO  [0m [0;36mterraform: [0m- Installing hashicorp/kubernetes v2.38.0...
+[0;90m15:25:54.600[0m [0;32mINFO  [0m [0;36mterraform: [0m- Installed hashicorp/kubernetes v2.38.0 (signed by HashiCorp)
+[0;90m15:25:54.601[0m [0;32mINFO  [0m [0;36mterraform: [0mTerraform has created a lock file [1m.terraform.lock.hcl[0m to record the provider[0m
+[0;90m15:25:54.601[0m [0;32mINFO  [0m [0;36mterraform: [0mselections it made above. Include this file in your version control repository
+[0;90m15:25:54.601[0m [0;32mINFO  [0m [0;36mterraform: [0mso that Terraform can guarantee to make the same selections by default when
+[0;90m15:25:54.601[0m [0;32mINFO  [0m [0;36mterraform: [0myou run "terraform init" in the future.[0m[0m
+[0;90m15:25:54.601[0m [0;32mINFO  [0m [0;36mterraform: [0m[0m[1m[32mTerraform has been successfully initialized![0m[32m[0m[0m
+[0;90m15:25:54.601[0m [0;32mINFO  [0m [0;36mterraform: [0m[0m[32m[0m
+[0;90m15:25:54.601[0m [0;32mINFO  [0m [0;36mterraform: [0mYou may now begin working with Terraform. Try running "terraform plan" to see
+[0;90m15:25:54.601[0m [0;32mINFO  [0m [0;36mterraform: [0many changes that are required for your infrastructure. All Terraform commands
+[0;90m15:25:54.601[0m [0;32mINFO  [0m [0;36mterraform: [0mshould now work.
+[0;90m15:25:54.601[0m [0;32mINFO  [0m [0;36mterraform: [0mIf you ever set or change modules or backend configuration for Terraform,
+[0;90m15:25:54.601[0m [0;32mINFO  [0m [0;36mterraform: [0mrerun this command to reinitialize your working directory. If you forget, other
+[0;90m15:25:54.601[0m [0;32mINFO  [0m [0;36mterraform: [0mcommands will detect it and remind you to do so if necessary.[0m[0m
+[0;90m15:26:01.470[0m [0;37mSTDOUT[0m [0;36mterraform: [0mAcquiring state lock. This may take a few moments...
+[0;90m15:26:09.905[0m [0;37mSTDOUT[0m [0;36mterraform: [0mTerraform used the selected providers to generate the following execution
+[0;90m15:26:09.905[0m [0;37mSTDOUT[0m [0;36mterraform: [0mplan. Resource actions are indicated with the following symbols:
+[0;90m15:26:09.905[0m [0;37mSTDOUT[0m [0;36mterraform: [0m  [31m-[0m destroy[0m[0m
+[0;90m15:26:09.905[0m [0;37mSTDOUT[0m [0;36mterraform: [0mTerraform will perform the following actions:
+[0;90m15:26:09.905[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[1m  # aws_iam_access_key.user[0m will be [1m[31mdestroyed[0m[0m
+[0;90m15:26:09.905[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[0m  [31m-[0m[0m resource "aws_iam_access_key" "user" {[0m
+[0;90m15:26:09.905[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m create_date          = "2022-09-07T23:15:30Z" [90m-> null[0m[0m[0m
+[0;90m15:26:09.905[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m id                   = "AKIA4ADYGTH2OKVNKPU2" [90m-> null[0m[0m[0m
+[0;90m15:26:09.905[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m secret               = (sensitive value) [90m-> null[0m[0m[0m
+[0;90m15:26:09.905[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m ses_smtp_password_v4 = (sensitive value) [90m-> null[0m[0m[0m
+[0;90m15:26:09.905[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m status               = "Active" [90m-> null[0m[0m[0m
+[0;90m15:26:09.905[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m user                 = "s3-openedx-user-4bb5ffcdd13c4ac6c9a7c8669a5ae011" [90m-> null[0m[0m[0m
+[0;90m15:26:09.906[0m [0;37mSTDOUT[0m [0;36mterraform: [0m    }
+[0;90m15:26:09.906[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[1m  # aws_iam_user.user[0m will be [1m[31mdestroyed[0m[0m
+[0;90m15:26:09.906[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[0m  [31m-[0m[0m resource "aws_iam_user" "user" {[0m
+[0;90m15:26:09.906[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m arn           = "arn:aws:iam::824885811700:user/system/s3-bucket-user/s3-openedx-user-4bb5ffcdd13c4ac6c9a7c8669a5ae011" [90m-> null[0m[0m[0m
+[0;90m15:26:09.906[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m force_destroy = false [90m-> null[0m[0m[0m
+[0;90m15:26:09.906[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m id            = "s3-openedx-user-4bb5ffcdd13c4ac6c9a7c8669a5ae011" [90m-> null[0m[0m[0m
+[0;90m15:26:09.906[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m name          = "s3-openedx-user-4bb5ffcdd13c4ac6c9a7c8669a5ae011" [90m-> null[0m[0m[0m
+[0;90m15:26:09.906[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m path          = "/system/s3-bucket-user/" [90m-> null[0m[0m[0m
+[0;90m15:26:09.906[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m tags          = {[0m
+[0;90m15:26:09.906[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/environment"                       = "staging"[0m
+[0;90m15:26:09.906[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/environment_domain"                = "staging.global-communications-academy.com"[0m
+[0;90m15:26:09.906[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/environment_namespace"             = "codlp-global-staging"[0m
+[0;90m15:26:09.906[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/environment_subdomain"             = "staging"[0m
+[0;90m15:26:09.906[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/aws_region"                 = "eu-west-2"[0m
+[0;90m15:26:09.906[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/platform_name"              = "codlp"[0m
+[0;90m15:26:09.906[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/platform_region"            = "global"[0m
+[0;90m15:26:09.906[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/root_domain"                = "global-communications-academy.com"[0m
+[0;90m15:26:09.906[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/services_subdomain"         = "service.global-communications-academy.com"[0m
+[0;90m15:26:09.906[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/shared_resource_identifier" = "live"[0m
+[0;90m15:26:09.907[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/shared_resource_namespace"  = "codlp-global-live"[0m
+[0;90m15:26:09.907[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/aws_iam_user"                 = "arn:aws:iam::824885811700:user/lawrence.mcdaniel"[0m
+[0;90m15:26:09.907[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/awscli_version"               = "2.10.3"[0m
+[0;90m15:26:09.907[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/github_branch"                = "cookiecutter_1.0.25 cookiecutter_1.1.0 main mcdaniel_202301 mcdaniel_202301_upgrade_1.0.19 mcdaniel_edunext_scorm"[0m
+[0;90m15:26:09.907[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/github_commit"                = "8968abd3275d90cd64fd7ec4fe62d5d7ae7de304"[0m
+[0;90m15:26:09.907[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/github_commit_date"           = "20230308T131544"[0m
+[0;90m15:26:09.907[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/github_repository"            = "https://github.com/GCSI/openedx_devops.git"[0m
+[0;90m15:26:09.907[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/kubectl_version"              = "v1.26.1"[0m
+[0;90m15:26:09.907[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/os"                           = "darwin22"[0m
+[0;90m15:26:09.907[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/terraform"                    = "true"[0m
+[0;90m15:26:09.907[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/terraform_version"            = "v1.3.9"[0m
+[0;90m15:26:09.907[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/timestamp"                    = "20230320T085054"[0m
+[0;90m15:26:09.907[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/version"                      = "v1.1.0"[0m
+[0;90m15:26:09.907[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/module/source"                     = "openedx_devops/terraform/environments/modules/s3"[0m
+[0;90m15:26:09.908[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/resource/source"                   = "hashicorp/aws/aws_iam_user"[0m
+[0;90m15:26:09.908[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/resource/version"                  = "4.48"[0m
+[0;90m15:26:09.908[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/shared_resource_namespace"         = "codlp-global-live"[0m
+[0;90m15:26:09.908[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        } [90m-> null[0m[0m[0m
+[0;90m15:26:09.908[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m tags_all      = {[0m
+[0;90m15:26:09.908[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/environment"                       = "staging"[0m
+[0;90m15:26:09.908[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/environment_domain"                = "staging.global-communications-academy.com"[0m
+[0;90m15:26:09.908[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/environment_namespace"             = "codlp-global-staging"[0m
+[0;90m15:26:09.908[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/environment_subdomain"             = "staging"[0m
+[0;90m15:26:09.908[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/aws_region"                 = "eu-west-2"[0m
+[0;90m15:26:09.908[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/platform_name"              = "codlp"[0m
+[0;90m15:26:09.908[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/platform_region"            = "global"[0m
+[0;90m15:26:09.908[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/root_domain"                = "global-communications-academy.com"[0m
+[0;90m15:26:09.909[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/services_subdomain"         = "service.global-communications-academy.com"[0m
+[0;90m15:26:09.909[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/shared_resource_identifier" = "live"[0m
+[0;90m15:26:09.909[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/shared_resource_namespace"  = "codlp-global-live"[0m
+[0;90m15:26:09.909[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/aws_iam_user"                 = "arn:aws:iam::824885811700:user/lawrence.mcdaniel"[0m
+[0;90m15:26:09.909[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/awscli_version"               = "2.10.3"[0m
+[0;90m15:26:09.909[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/github_branch"                = "cookiecutter_1.0.25 cookiecutter_1.1.0 main mcdaniel_202301 mcdaniel_202301_upgrade_1.0.19 mcdaniel_edunext_scorm"[0m
+[0;90m15:26:09.909[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/github_commit"                = "8968abd3275d90cd64fd7ec4fe62d5d7ae7de304"[0m
+[0;90m15:26:09.909[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/github_commit_date"           = "20230308T131544"[0m
+[0;90m15:26:09.909[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/github_repository"            = "https://github.com/GCSI/openedx_devops.git"[0m
+[0;90m15:26:09.909[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/kubectl_version"              = "v1.26.1"[0m
+[0;90m15:26:09.910[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/os"                           = "darwin22"[0m
+[0;90m15:26:09.910[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/terraform"                    = "true"[0m
+[0;90m15:26:09.910[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/terraform_version"            = "v1.3.9"[0m
+[0;90m15:26:09.910[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/timestamp"                    = "20230320T085054"[0m
+[0;90m15:26:09.910[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/version"                      = "v1.1.0"[0m
+[0;90m15:26:09.910[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/module/source"                     = "openedx_devops/terraform/environments/modules/s3"[0m
+[0;90m15:26:09.910[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/resource/source"                   = "hashicorp/aws/aws_iam_user"[0m
+[0;90m15:26:09.910[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/resource/version"                  = "4.48"[0m
+[0;90m15:26:09.910[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/shared_resource_namespace"         = "codlp-global-live"[0m
+[0;90m15:26:09.910[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        } [90m-> null[0m[0m[0m
+[0;90m15:26:09.910[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m unique_id     = "AIDA4ADYGTH2HUQTMMQAO" [90m-> null[0m[0m[0m
+[0;90m15:26:09.910[0m [0;37mSTDOUT[0m [0;36mterraform: [0m    }
+[0;90m15:26:09.910[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[1m  # aws_iam_user_policy.policy[0m will be [1m[31mdestroyed[0m[0m
+[0;90m15:26:09.910[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[0m  [31m-[0m[0m resource "aws_iam_user_policy" "policy" {[0m
+[0;90m15:26:09.910[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m id     = "s3-openedx-user-4bb5ffcdd13c4ac6c9a7c8669a5ae011:s3-bucket" [90m-> null[0m[0m[0m
+[0;90m15:26:09.910[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m name   = "s3-bucket" [90m-> null[0m[0m[0m
+[0;90m15:26:09.910[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m policy = jsonencode([0m
+[0;90m15:26:09.910[0m [0;37mSTDOUT[0m [0;36mterraform: [0m            {
+[0;90m15:26:09.910[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m Statement = [[0m
+[0;90m15:26:09.910[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                  [31m-[0m[0m {[0m
+[0;90m15:26:09.910[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                      [31m-[0m[0m Action   = "s3:*"[0m
+[0;90m15:26:09.910[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                      [31m-[0m[0m Effect   = "Allow"[0m
+[0;90m15:26:09.910[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                      [31m-[0m[0m Resource = [[0m
+[0;90m15:26:09.910[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                          [31m-[0m[0m "arn:aws:s3:::codlp-global-staging-storage",[0m
+[0;90m15:26:09.910[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                          [31m-[0m[0m "arn:aws:s3:::codlp-global-staging-backup",[0m
+[0;90m15:26:09.911[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                        ]
+[0;90m15:26:09.911[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                      [31m-[0m[0m Sid      = ""[0m
+[0;90m15:26:09.911[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                    },
+[0;90m15:26:09.911[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                  [31m-[0m[0m {[0m
+[0;90m15:26:09.911[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                      [31m-[0m[0m Action   = "s3:*"[0m
+[0;90m15:26:09.911[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                      [31m-[0m[0m Effect   = "Allow"[0m
+[0;90m15:26:09.911[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                      [31m-[0m[0m Resource = [[0m
+[0;90m15:26:09.911[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                          [31m-[0m[0m "arn:aws:s3:::codlp-global-staging-storage/*",[0m
+[0;90m15:26:09.911[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                          [31m-[0m[0m "arn:aws:s3:::codlp-global-staging-backup/*",[0m
+[0;90m15:26:09.911[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                        ]
+[0;90m15:26:09.911[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                      [31m-[0m[0m Sid      = ""[0m
+[0;90m15:26:09.911[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                    },
+[0;90m15:26:09.911[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                ]
+[0;90m15:26:09.911[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m Version   = "2012-10-17"[0m
+[0;90m15:26:09.911[0m [0;37mSTDOUT[0m [0;36mterraform: [0m            }
+[0;90m15:26:09.911[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        ) [90m-> null[0m[0m[0m
+[0;90m15:26:09.911[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m user   = "s3-openedx-user-4bb5ffcdd13c4ac6c9a7c8669a5ae011" [90m-> null[0m[0m[0m
+[0;90m15:26:09.911[0m [0;37mSTDOUT[0m [0;36mterraform: [0m    }
+[0;90m15:26:09.911[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[1m  # aws_s3_bucket_lifecycle_configuration.openedx_backup[0m will be [1m[31mdestroyed[0m[0m
+[0;90m15:26:09.911[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[0m  [31m-[0m[0m resource "aws_s3_bucket_lifecycle_configuration" "openedx_backup" {[0m
+[0;90m15:26:09.911[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m bucket                = "codlp-global-staging-backup" [90m-> null[0m[0m[0m
+[0;90m15:26:09.911[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m id                    = "codlp-global-staging-backup" [90m-> null[0m[0m[0m
+[0;90m15:26:09.911[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        [90m# (1 unchanged attribute hidden)[0m[0m[0m
+[0;90m15:26:09.911[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m rule {[0m
+[0;90m15:26:09.911[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m id     = "openedx-backup-large-files" [90m-> null[0m[0m[0m
+[0;90m15:26:09.911[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m status = "Enabled" [90m-> null[0m[0m[0m
+[0;90m15:26:09.911[0m [0;37mSTDOUT[0m [0;36mterraform: [0m            [90m# (1 unchanged attribute hidden)[0m[0m[0m
+[0;90m15:26:09.911[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m expiration {[0m
+[0;90m15:26:09.911[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m days                         = 30 [90m-> null[0m[0m[0m
+[0;90m15:26:09.912[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m expired_object_delete_marker = false [90m-> null[0m[0m[0m
+[0;90m15:26:09.912[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                [90m# (1 unchanged attribute hidden)[0m[0m[0m
+[0;90m15:26:09.912[0m [0;37mSTDOUT[0m [0;36mterraform: [0m            }
+[0;90m15:26:09.912[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m filter {[0m
+[0;90m15:26:09.912[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m object_size_greater_than = "1000000000" [90m-> null[0m[0m[0m
+[0;90m15:26:09.912[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                [90m# (2 unchanged attributes hidden)[0m[0m[0m
+[0;90m15:26:09.912[0m [0;37mSTDOUT[0m [0;36mterraform: [0m            }
+[0;90m15:26:09.912[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        }
+[0;90m15:26:09.912[0m [0;37mSTDOUT[0m [0;36mterraform: [0m    }
+[0;90m15:26:09.912[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[1m  # kubernetes_secret.s3[0m will be [1m[31mdestroyed[0m[0m
+[0;90m15:26:09.912[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[0m  [31m-[0m[0m resource "kubernetes_secret" "s3" {[0m
+[0;90m15:26:09.912[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m data                           = (sensitive value) [90m-> null[0m[0m[0m
+[0;90m15:26:09.912[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m id                             = "codlp-global-staging/s3-openedx-storage" [90m-> null[0m[0m[0m
+[0;90m15:26:09.912[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m immutable                      = false [90m-> null[0m[0m[0m
+[0;90m15:26:09.912[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m type                           = "Opaque" [90m-> null[0m[0m[0m
+[0;90m15:26:09.912[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m wait_for_service_account_token = true [90m-> null[0m[0m[0m
+[0;90m15:26:09.912[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m metadata {[0m
+[0;90m15:26:09.912[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m annotations      = {} [90m-> null[0m[0m[0m
+[0;90m15:26:09.912[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m generation       = 0 [90m-> null[0m[0m[0m
+[0;90m15:26:09.912[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m labels           = {} [90m-> null[0m[0m[0m
+[0;90m15:26:09.912[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m name             = "s3-openedx-storage" [90m-> null[0m[0m[0m
+[0;90m15:26:09.912[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m namespace        = "codlp-global-staging" [90m-> null[0m[0m[0m
+[0;90m15:26:09.913[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m resource_version = "84146272" [90m-> null[0m[0m[0m
+[0;90m15:26:09.913[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m uid              = "ee556234-1b12-41d8-a47c-cbde101e53e6" [90m-> null[0m[0m[0m
+[0;90m15:26:09.913[0m [0;37mSTDOUT[0m [0;36mterraform: [0m            [90m# (1 unchanged attribute hidden)[0m[0m[0m
+[0;90m15:26:09.913[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        }
+[0;90m15:26:09.913[0m [0;37mSTDOUT[0m [0;36mterraform: [0m    }
+[0;90m15:26:09.913[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[1m  # random_id.id[0m will be [1m[31mdestroyed[0m[0m
+[0;90m15:26:09.913[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[0m  [31m-[0m[0m resource "random_id" "id" {[0m
+[0;90m15:26:09.913[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m b64_std     = "S7X/zdE8SsbJp8hmmlrgEQ==" [90m-> null[0m[0m[0m
+[0;90m15:26:09.913[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m b64_url     = "S7X_zdE8SsbJp8hmmlrgEQ" [90m-> null[0m[0m[0m
+[0;90m15:26:09.913[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m byte_length = 16 [90m-> null[0m[0m[0m
+[0;90m15:26:09.913[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m dec         = "100637093736240996592640721710137139217" [90m-> null[0m[0m[0m
+[0;90m15:26:09.913[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m hex         = "4bb5ffcdd13c4ac6c9a7c8669a5ae011" [90m-> null[0m[0m[0m
+[0;90m15:26:09.913[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m id          = "S7X_zdE8SsbJp8hmmlrgEQ" [90m-> null[0m[0m[0m
+[0;90m15:26:09.913[0m [0;37mSTDOUT[0m [0;36mterraform: [0m    }
+[0;90m15:26:09.913[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[1m  # module.cookiecutter_meta.null_resource.environment[0m will be [1m[31mdestroyed[0m[0m
+[0;90m15:26:09.913[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[0m  [31m-[0m[0m resource "null_resource" "environment" {[0m
+[0;90m15:26:09.913[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m id = "6519703033995554337" [90m-> null[0m[0m[0m
+[0;90m15:26:09.913[0m [0;37mSTDOUT[0m [0;36mterraform: [0m    }
+[0;90m15:26:09.913[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[1m  # module.cookiecutter_meta.null_resource.init[0m will be [1m[31mdestroyed[0m[0m
+[0;90m15:26:09.913[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[0m  [31m-[0m[0m resource "null_resource" "init" {[0m
+[0;90m15:26:09.913[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m id = "4773386028569001430" [90m-> null[0m[0m[0m
+[0;90m15:26:09.914[0m [0;37mSTDOUT[0m [0;36mterraform: [0m    }
+[0;90m15:26:09.914[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[1m  # module.cookiecutter_meta.null_resource.taint[0m will be [1m[31mdestroyed[0m[0m
+[0;90m15:26:09.914[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[0m  [31m-[0m[0m resource "null_resource" "taint" {[0m
+[0;90m15:26:09.914[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m id       = "2083707198851637452" [90m-> null[0m[0m[0m
+[0;90m15:26:09.914[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m triggers = {[0m
+[0;90m15:26:09.914[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "timestamp" = "2023-03-20T14:51:48Z"[0m
+[0;90m15:26:09.914[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        } [90m-> null[0m[0m[0m
+[0;90m15:26:09.914[0m [0;37mSTDOUT[0m [0;36mterraform: [0m    }
+[0;90m15:26:09.914[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[1m  # module.openedx_backup.aws_s3_bucket.this[0][0m will be [1m[31mdestroyed[0m[0m
+[0;90m15:26:09.914[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[0m  [31m-[0m[0m resource "aws_s3_bucket" "this" {[0m
+[0;90m15:26:09.914[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m arn                         = "arn:aws:s3:::codlp-global-staging-backup" [90m-> null[0m[0m[0m
+[0;90m15:26:09.914[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m bucket                      = "codlp-global-staging-backup" [90m-> null[0m[0m[0m
+[0;90m15:26:09.914[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m bucket_domain_name          = "codlp-global-staging-backup.s3.amazonaws.com" [90m-> null[0m[0m[0m
+[0;90m15:26:09.914[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m bucket_regional_domain_name = "codlp-global-staging-backup.s3.eu-west-2.amazonaws.com" [90m-> null[0m[0m[0m
+[0;90m15:26:09.914[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m force_destroy               = false [90m-> null[0m[0m[0m
+[0;90m15:26:09.914[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m hosted_zone_id              = "Z3GKZC51ZF0DB4" [90m-> null[0m[0m[0m
+[0;90m15:26:09.914[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m id                          = "codlp-global-staging-backup" [90m-> null[0m[0m[0m
+[0;90m15:26:09.914[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m object_lock_enabled         = false [90m-> null[0m[0m[0m
+[0;90m15:26:09.914[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m region                      = "eu-west-2" [90m-> null[0m[0m[0m
+[0;90m15:26:09.914[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m request_payer               = "BucketOwner" [90m-> null[0m[0m[0m
+[0;90m15:26:09.915[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m tags                        = {[0m
+[0;90m15:26:09.915[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/environment"                       = "staging"[0m
+[0;90m15:26:09.915[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/environment_domain"                = "staging.global-communications-academy.com"[0m
+[0;90m15:26:09.915[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/environment_namespace"             = "codlp-global-staging"[0m
+[0;90m15:26:09.915[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/environment_subdomain"             = "staging"[0m
+[0;90m15:26:09.915[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/aws_region"                 = "eu-west-2"[0m
+[0;90m15:26:09.915[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/platform_name"              = "codlp"[0m
+[0;90m15:26:09.915[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/platform_region"            = "global"[0m
+[0;90m15:26:09.915[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/root_domain"                = "global-communications-academy.com"[0m
+[0;90m15:26:09.915[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/services_subdomain"         = "service.global-communications-academy.com"[0m
+[0;90m15:26:09.915[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/shared_resource_identifier" = "live"[0m
+[0;90m15:26:09.915[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/shared_resource_namespace"  = "codlp-global-live"[0m
+[0;90m15:26:09.915[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/aws_iam_user"                 = "arn:aws:iam::824885811700:user/lawrence.mcdaniel"[0m
+[0;90m15:26:09.915[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/awscli_version"               = "2.10.3"[0m
+[0;90m15:26:09.915[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/github_branch"                = "cookiecutter_1.0.25 cookiecutter_1.1.0 main mcdaniel_202301 mcdaniel_202301_upgrade_1.0.19 mcdaniel_edunext_scorm"[0m
+[0;90m15:26:09.916[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/github_commit"                = "8968abd3275d90cd64fd7ec4fe62d5d7ae7de304"[0m
+[0;90m15:26:09.916[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/github_commit_date"           = "20230308T131544"[0m
+[0;90m15:26:09.916[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/github_repository"            = "https://github.com/GCSI/openedx_devops.git"[0m
+[0;90m15:26:09.916[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/kubectl_version"              = "v1.26.1"[0m
+[0;90m15:26:09.916[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/os"                           = "darwin22"[0m
+[0;90m15:26:09.916[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/terraform"                    = "true"[0m
+[0;90m15:26:09.916[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/terraform_version"            = "v1.3.9"[0m
+[0;90m15:26:09.916[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/timestamp"                    = "20230320T085054"[0m
+[0;90m15:26:09.916[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/version"                      = "v1.1.0"[0m
+[0;90m15:26:09.916[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/module/source"                     = "openedx_devops/terraform/environments/modules/s3"[0m
+[0;90m15:26:09.916[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/resource/source"                   = "terraform-aws-modules/s3-bucket/aws"[0m
+[0;90m15:26:09.916[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/resource/version"                  = "3.6"[0m
+[0;90m15:26:09.916[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/shared_resource_namespace"         = "codlp-global-live"[0m
+[0;90m15:26:09.916[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        } [90m-> null[0m[0m[0m
+[0;90m15:26:09.916[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m tags_all                    = {[0m
+[0;90m15:26:09.916[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/environment"                       = "staging"[0m
+[0;90m15:26:09.916[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/environment_domain"                = "staging.global-communications-academy.com"[0m
+[0;90m15:26:09.916[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/environment_namespace"             = "codlp-global-staging"[0m
+[0;90m15:26:09.916[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/environment_subdomain"             = "staging"[0m
+[0;90m15:26:09.917[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/aws_region"                 = "eu-west-2"[0m
+[0;90m15:26:09.917[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/platform_name"              = "codlp"[0m
+[0;90m15:26:09.917[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/platform_region"            = "global"[0m
+[0;90m15:26:09.917[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/root_domain"                = "global-communications-academy.com"[0m
+[0;90m15:26:09.917[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/services_subdomain"         = "service.global-communications-academy.com"[0m
+[0;90m15:26:09.917[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/shared_resource_identifier" = "live"[0m
+[0;90m15:26:09.917[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/shared_resource_namespace"  = "codlp-global-live"[0m
+[0;90m15:26:09.917[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/aws_iam_user"                 = "arn:aws:iam::824885811700:user/lawrence.mcdaniel"[0m
+[0;90m15:26:09.917[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/awscli_version"               = "2.10.3"[0m
+[0;90m15:26:09.917[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/github_branch"                = "cookiecutter_1.0.25 cookiecutter_1.1.0 main mcdaniel_202301 mcdaniel_202301_upgrade_1.0.19 mcdaniel_edunext_scorm"[0m
+[0;90m15:26:09.917[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/github_commit"                = "8968abd3275d90cd64fd7ec4fe62d5d7ae7de304"[0m
+[0;90m15:26:09.917[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/github_commit_date"           = "20230308T131544"[0m
+[0;90m15:26:09.917[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/github_repository"            = "https://github.com/GCSI/openedx_devops.git"[0m
+[0;90m15:26:09.917[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/kubectl_version"              = "v1.26.1"[0m
+[0;90m15:26:09.917[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/os"                           = "darwin22"[0m
+[0;90m15:26:09.917[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/terraform"                    = "true"[0m
+[0;90m15:26:09.917[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/terraform_version"            = "v1.3.9"[0m
+[0;90m15:26:09.917[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/timestamp"                    = "20230320T085054"[0m
+[0;90m15:26:09.918[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/version"                      = "v1.1.0"[0m
+[0;90m15:26:09.918[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/module/source"                     = "openedx_devops/terraform/environments/modules/s3"[0m
+[0;90m15:26:09.918[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/resource/source"                   = "terraform-aws-modules/s3-bucket/aws"[0m
+[0;90m15:26:09.918[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/resource/version"                  = "3.6"[0m
+[0;90m15:26:09.918[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/shared_resource_namespace"         = "codlp-global-live"[0m
+[0;90m15:26:09.918[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        } [90m-> null[0m[0m[0m
+[0;90m15:26:09.918[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        [90m# (2 unchanged attributes hidden)[0m[0m[0m
+[0;90m15:26:09.918[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m grant {[0m
+[0;90m15:26:09.918[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m id          = "9ab73fc4717256119dd76595852d137faf836ae798402870153d6ed7b17bab21" [90m-> null[0m[0m[0m
+[0;90m15:26:09.918[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m permissions = [[0m
+[0;90m15:26:09.918[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m "FULL_CONTROL",[0m
+[0;90m15:26:09.918[0m [0;37mSTDOUT[0m [0;36mterraform: [0m            ] [90m-> null[0m[0m[0m
+[0;90m15:26:09.918[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m type        = "CanonicalUser" [90m-> null[0m[0m[0m
+[0;90m15:26:09.918[0m [0;37mSTDOUT[0m [0;36mterraform: [0m            [90m# (1 unchanged attribute hidden)[0m[0m[0m
+[0;90m15:26:09.918[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        }
+[0;90m15:26:09.918[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m lifecycle_rule {[0m
+[0;90m15:26:09.918[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m abort_incomplete_multipart_upload_days = 0 [90m-> null[0m[0m[0m
+[0;90m15:26:09.918[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m enabled                                = true [90m-> null[0m[0m[0m
+[0;90m15:26:09.918[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m id                                     = "openedx-backup-large-files" [90m-> null[0m[0m[0m
+[0;90m15:26:09.918[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m tags                                   = {} [90m-> null[0m[0m[0m
+[0;90m15:26:09.918[0m [0;37mSTDOUT[0m [0;36mterraform: [0m            [90m# (1 unchanged attribute hidden)[0m[0m[0m
+[0;90m15:26:09.918[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m expiration {[0m
+[0;90m15:26:09.919[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m days                         = 30 [90m-> null[0m[0m[0m
+[0;90m15:26:09.919[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m expired_object_delete_marker = false [90m-> null[0m[0m[0m
+[0;90m15:26:09.919[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                [90m# (1 unchanged attribute hidden)[0m[0m[0m
+[0;90m15:26:09.919[0m [0;37mSTDOUT[0m [0;36mterraform: [0m            }
+[0;90m15:26:09.919[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        }
+[0;90m15:26:09.919[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m server_side_encryption_configuration {[0m
+[0;90m15:26:09.919[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m rule {[0m
+[0;90m15:26:09.919[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m bucket_key_enabled = false [90m-> null[0m[0m[0m
+[0;90m15:26:09.919[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m apply_server_side_encryption_by_default {[0m
+[0;90m15:26:09.919[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                  [31m-[0m[0m sse_algorithm     = "AES256" [90m-> null[0m[0m[0m
+[0;90m15:26:09.919[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                    [90m# (1 unchanged attribute hidden)[0m[0m[0m
+[0;90m15:26:09.919[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                }
+[0;90m15:26:09.919[0m [0;37mSTDOUT[0m [0;36mterraform: [0m            }
+[0;90m15:26:09.919[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        }
+[0;90m15:26:09.919[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m versioning {[0m
+[0;90m15:26:09.919[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m enabled    = true [90m-> null[0m[0m[0m
+[0;90m15:26:09.919[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m mfa_delete = false [90m-> null[0m[0m[0m
+[0;90m15:26:09.919[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        }
+[0;90m15:26:09.919[0m [0;37mSTDOUT[0m [0;36mterraform: [0m    }
+[0;90m15:26:09.919[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[1m  # module.openedx_backup.aws_s3_bucket_acl.this[0][0m will be [1m[31mdestroyed[0m[0m
+[0;90m15:26:09.919[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[0m  [31m-[0m[0m resource "aws_s3_bucket_acl" "this" {[0m
+[0;90m15:26:09.919[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m acl                   = "private" [90m-> null[0m[0m[0m
+[0;90m15:26:09.919[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m bucket                = "codlp-global-staging-backup" [90m-> null[0m[0m[0m
+[0;90m15:26:09.919[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m id                    = "codlp-global-staging-backup,private" [90m-> null[0m[0m[0m
+[0;90m15:26:09.919[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        [90m# (1 unchanged attribute hidden)[0m[0m[0m
+[0;90m15:26:09.919[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m access_control_policy {[0m
+[0;90m15:26:09.919[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m grant {[0m
+[0;90m15:26:09.919[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m permission = "FULL_CONTROL" [90m-> null[0m[0m[0m
+[0;90m15:26:09.919[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m grantee {[0m
+[0;90m15:26:09.919[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                  [31m-[0m[0m id            = "9ab73fc4717256119dd76595852d137faf836ae798402870153d6ed7b17bab21" [90m-> null[0m[0m[0m
+[0;90m15:26:09.919[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                  [31m-[0m[0m type          = "CanonicalUser" [90m-> null[0m[0m[0m
+[0;90m15:26:09.919[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                    [90m# (3 unchanged attributes hidden)[0m[0m[0m
+[0;90m15:26:09.920[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                }
+[0;90m15:26:09.920[0m [0;37mSTDOUT[0m [0;36mterraform: [0m            }
+[0;90m15:26:09.920[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m owner {[0m
+[0;90m15:26:09.920[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m id           = "9ab73fc4717256119dd76595852d137faf836ae798402870153d6ed7b17bab21" [90m-> null[0m[0m[0m
+[0;90m15:26:09.920[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                [90m# (1 unchanged attribute hidden)[0m[0m[0m
+[0;90m15:26:09.920[0m [0;37mSTDOUT[0m [0;36mterraform: [0m            }
+[0;90m15:26:09.920[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        }
+[0;90m15:26:09.920[0m [0;37mSTDOUT[0m [0;36mterraform: [0m    }
+[0;90m15:26:09.920[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[1m  # module.openedx_backup.aws_s3_bucket_public_access_block.this[0][0m will be [1m[31mdestroyed[0m[0m
+[0;90m15:26:09.920[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[0m  [31m-[0m[0m resource "aws_s3_bucket_public_access_block" "this" {[0m
+[0;90m15:26:09.920[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m block_public_acls       = false [90m-> null[0m[0m[0m
+[0;90m15:26:09.920[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m block_public_policy     = false [90m-> null[0m[0m[0m
+[0;90m15:26:09.920[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m bucket                  = "codlp-global-staging-backup" [90m-> null[0m[0m[0m
+[0;90m15:26:09.920[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m id                      = "codlp-global-staging-backup" [90m-> null[0m[0m[0m
+[0;90m15:26:09.920[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m ignore_public_acls      = false [90m-> null[0m[0m[0m
+[0;90m15:26:09.920[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m restrict_public_buckets = false [90m-> null[0m[0m[0m
+[0;90m15:26:09.920[0m [0;37mSTDOUT[0m [0;36mterraform: [0m    }
+[0;90m15:26:09.920[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[1m  # module.openedx_backup.aws_s3_bucket_versioning.this[0][0m will be [1m[31mdestroyed[0m[0m
+[0;90m15:26:09.920[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[0m  [31m-[0m[0m resource "aws_s3_bucket_versioning" "this" {[0m
+[0;90m15:26:09.920[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m bucket                = "codlp-global-staging-backup" [90m-> null[0m[0m[0m
+[0;90m15:26:09.920[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m id                    = "codlp-global-staging-backup" [90m-> null[0m[0m[0m
+[0;90m15:26:09.921[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        [90m# (1 unchanged attribute hidden)[0m[0m[0m
+[0;90m15:26:09.921[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m versioning_configuration {[0m
+[0;90m15:26:09.921[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m status     = "Enabled" [90m-> null[0m[0m[0m
+[0;90m15:26:09.921[0m [0;37mSTDOUT[0m [0;36mterraform: [0m            [90m# (1 unchanged attribute hidden)[0m[0m[0m
+[0;90m15:26:09.921[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        }
+[0;90m15:26:09.921[0m [0;37mSTDOUT[0m [0;36mterraform: [0m    }
+[0;90m15:26:09.921[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[1m  # module.openedx_secrets.aws_s3_bucket.this[0][0m will be [1m[31mdestroyed[0m[0m
+[0;90m15:26:09.921[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[0m  [31m-[0m[0m resource "aws_s3_bucket" "this" {[0m
+[0;90m15:26:09.921[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m arn                         = "arn:aws:s3:::codlp-global-staging-secrets" [90m-> null[0m[0m[0m
+[0;90m15:26:09.921[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m bucket                      = "codlp-global-staging-secrets" [90m-> null[0m[0m[0m
+[0;90m15:26:09.921[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m bucket_domain_name          = "codlp-global-staging-secrets.s3.amazonaws.com" [90m-> null[0m[0m[0m
+[0;90m15:26:09.921[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m bucket_regional_domain_name = "codlp-global-staging-secrets.s3.eu-west-2.amazonaws.com" [90m-> null[0m[0m[0m
+[0;90m15:26:09.921[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m force_destroy               = false [90m-> null[0m[0m[0m
+[0;90m15:26:09.921[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m hosted_zone_id              = "Z3GKZC51ZF0DB4" [90m-> null[0m[0m[0m
+[0;90m15:26:09.921[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m id                          = "codlp-global-staging-secrets" [90m-> null[0m[0m[0m
+[0;90m15:26:09.921[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m object_lock_enabled         = false [90m-> null[0m[0m[0m
+[0;90m15:26:09.921[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m region                      = "eu-west-2" [90m-> null[0m[0m[0m
+[0;90m15:26:09.921[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m request_payer               = "BucketOwner" [90m-> null[0m[0m[0m
+[0;90m15:26:09.921[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m tags                        = {[0m
+[0;90m15:26:09.922[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/environment"                       = "staging"[0m
+[0;90m15:26:09.922[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/environment_domain"                = "staging.global-communications-academy.com"[0m
+[0;90m15:26:09.922[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/environment_namespace"             = "codlp-global-staging"[0m
+[0;90m15:26:09.922[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/environment_subdomain"             = "staging"[0m
+[0;90m15:26:09.922[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/aws_region"                 = "eu-west-2"[0m
+[0;90m15:26:09.922[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/platform_name"              = "codlp"[0m
+[0;90m15:26:09.922[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/platform_region"            = "global"[0m
+[0;90m15:26:09.922[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/root_domain"                = "global-communications-academy.com"[0m
+[0;90m15:26:09.922[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/services_subdomain"         = "service.global-communications-academy.com"[0m
+[0;90m15:26:09.922[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/shared_resource_identifier" = "live"[0m
+[0;90m15:26:09.922[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/shared_resource_namespace"  = "codlp-global-live"[0m
+[0;90m15:26:09.922[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/aws_iam_user"                 = "arn:aws:iam::824885811700:user/lawrence.mcdaniel"[0m
+[0;90m15:26:09.922[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/awscli_version"               = "2.10.3"[0m
+[0;90m15:26:09.922[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/github_branch"                = "cookiecutter_1.0.25 cookiecutter_1.1.0 main mcdaniel_202301 mcdaniel_202301_upgrade_1.0.19 mcdaniel_edunext_scorm"[0m
+[0;90m15:26:09.922[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/github_commit"                = "8968abd3275d90cd64fd7ec4fe62d5d7ae7de304"[0m
+[0;90m15:26:09.922[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/github_commit_date"           = "20230308T131544"[0m
+[0;90m15:26:09.922[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/github_repository"            = "https://github.com/GCSI/openedx_devops.git"[0m
+[0;90m15:26:09.922[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/kubectl_version"              = "v1.26.1"[0m
+[0;90m15:26:09.923[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/os"                           = "darwin22"[0m
+[0;90m15:26:09.923[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/terraform"                    = "true"[0m
+[0;90m15:26:09.923[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/terraform_version"            = "v1.3.9"[0m
+[0;90m15:26:09.923[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/timestamp"                    = "20230320T085054"[0m
+[0;90m15:26:09.923[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/version"                      = "v1.1.0"[0m
+[0;90m15:26:09.923[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/module/source"                     = "openedx_devops/terraform/environments/modules/s3"[0m
+[0;90m15:26:09.923[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/resource/source"                   = "terraform-aws-modules/s3-bucket/aws"[0m
+[0;90m15:26:09.923[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/resource/version"                  = "3.6"[0m
+[0;90m15:26:09.923[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/shared_resource_namespace"         = "codlp-global-live"[0m
+[0;90m15:26:09.923[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        } [90m-> null[0m[0m[0m
+[0;90m15:26:09.923[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m tags_all                    = {[0m
+[0;90m15:26:09.923[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/environment"                       = "staging"[0m
+[0;90m15:26:09.923[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/environment_domain"                = "staging.global-communications-academy.com"[0m
+[0;90m15:26:09.923[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/environment_namespace"             = "codlp-global-staging"[0m
+[0;90m15:26:09.923[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/environment_subdomain"             = "staging"[0m
+[0;90m15:26:09.923[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/aws_region"                 = "eu-west-2"[0m
+[0;90m15:26:09.923[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/platform_name"              = "codlp"[0m
+[0;90m15:26:09.923[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/platform_region"            = "global"[0m
+[0;90m15:26:09.923[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/root_domain"                = "global-communications-academy.com"[0m
+[0;90m15:26:09.923[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/services_subdomain"         = "service.global-communications-academy.com"[0m
+[0;90m15:26:09.924[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/shared_resource_identifier" = "live"[0m
+[0;90m15:26:09.924[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/shared_resource_namespace"  = "codlp-global-live"[0m
+[0;90m15:26:09.924[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/aws_iam_user"                 = "arn:aws:iam::824885811700:user/lawrence.mcdaniel"[0m
+[0;90m15:26:09.924[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/awscli_version"               = "2.10.3"[0m
+[0;90m15:26:09.924[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/github_branch"                = "cookiecutter_1.0.25 cookiecutter_1.1.0 main mcdaniel_202301 mcdaniel_202301_upgrade_1.0.19 mcdaniel_edunext_scorm"[0m
+[0;90m15:26:09.924[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/github_commit"                = "8968abd3275d90cd64fd7ec4fe62d5d7ae7de304"[0m
+[0;90m15:26:09.924[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/github_commit_date"           = "20230308T131544"[0m
+[0;90m15:26:09.924[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/github_repository"            = "https://github.com/GCSI/openedx_devops.git"[0m
+[0;90m15:26:09.924[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/kubectl_version"              = "v1.26.1"[0m
+[0;90m15:26:09.924[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/os"                           = "darwin22"[0m
+[0;90m15:26:09.924[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/terraform"                    = "true"[0m
+[0;90m15:26:09.924[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/terraform_version"            = "v1.3.9"[0m
+[0;90m15:26:09.924[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/timestamp"                    = "20230320T085054"[0m
+[0;90m15:26:09.924[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/version"                      = "v1.1.0"[0m
+[0;90m15:26:09.924[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/module/source"                     = "openedx_devops/terraform/environments/modules/s3"[0m
+[0;90m15:26:09.925[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/resource/source"                   = "terraform-aws-modules/s3-bucket/aws"[0m
+[0;90m15:26:09.925[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/resource/version"                  = "3.6"[0m
+[0;90m15:26:09.925[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/shared_resource_namespace"         = "codlp-global-live"[0m
+[0;90m15:26:09.925[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        } [90m-> null[0m[0m[0m
+[0;90m15:26:09.925[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        [90m# (2 unchanged attributes hidden)[0m[0m[0m
+[0;90m15:26:09.925[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m grant {[0m
+[0;90m15:26:09.925[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m id          = "9ab73fc4717256119dd76595852d137faf836ae798402870153d6ed7b17bab21" [90m-> null[0m[0m[0m
+[0;90m15:26:09.925[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m permissions = [[0m
+[0;90m15:26:09.925[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m "FULL_CONTROL",[0m
+[0;90m15:26:09.925[0m [0;37mSTDOUT[0m [0;36mterraform: [0m            ] [90m-> null[0m[0m[0m
+[0;90m15:26:09.925[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m type        = "CanonicalUser" [90m-> null[0m[0m[0m
+[0;90m15:26:09.925[0m [0;37mSTDOUT[0m [0;36mterraform: [0m            [90m# (1 unchanged attribute hidden)[0m[0m[0m
+[0;90m15:26:09.925[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        }
+[0;90m15:26:09.925[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m server_side_encryption_configuration {[0m
+[0;90m15:26:09.925[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m rule {[0m
+[0;90m15:26:09.925[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m bucket_key_enabled = false [90m-> null[0m[0m[0m
+[0;90m15:26:09.925[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m apply_server_side_encryption_by_default {[0m
+[0;90m15:26:09.925[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                  [31m-[0m[0m sse_algorithm     = "AES256" [90m-> null[0m[0m[0m
+[0;90m15:26:09.925[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                    [90m# (1 unchanged attribute hidden)[0m[0m[0m
+[0;90m15:26:09.925[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                }
+[0;90m15:26:09.925[0m [0;37mSTDOUT[0m [0;36mterraform: [0m            }
+[0;90m15:26:09.925[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        }
+[0;90m15:26:09.925[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m versioning {[0m
+[0;90m15:26:09.925[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m enabled    = false [90m-> null[0m[0m[0m
+[0;90m15:26:09.925[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m mfa_delete = false [90m-> null[0m[0m[0m
+[0;90m15:26:09.925[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        }
+[0;90m15:26:09.925[0m [0;37mSTDOUT[0m [0;36mterraform: [0m    }
+[0;90m15:26:09.925[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[1m  # module.openedx_secrets.aws_s3_bucket_acl.this[0][0m will be [1m[31mdestroyed[0m[0m
+[0;90m15:26:09.925[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[0m  [31m-[0m[0m resource "aws_s3_bucket_acl" "this" {[0m
+[0;90m15:26:09.925[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m acl                   = "private" [90m-> null[0m[0m[0m
+[0;90m15:26:09.925[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m bucket                = "codlp-global-staging-secrets" [90m-> null[0m[0m[0m
+[0;90m15:26:09.925[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m id                    = "codlp-global-staging-secrets,private" [90m-> null[0m[0m[0m
+[0;90m15:26:09.925[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        [90m# (1 unchanged attribute hidden)[0m[0m[0m
+[0;90m15:26:09.925[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m access_control_policy {[0m
+[0;90m15:26:09.926[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m grant {[0m
+[0;90m15:26:09.926[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m permission = "FULL_CONTROL" [90m-> null[0m[0m[0m
+[0;90m15:26:09.926[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m grantee {[0m
+[0;90m15:26:09.926[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                  [31m-[0m[0m id            = "9ab73fc4717256119dd76595852d137faf836ae798402870153d6ed7b17bab21" [90m-> null[0m[0m[0m
+[0;90m15:26:09.926[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                  [31m-[0m[0m type          = "CanonicalUser" [90m-> null[0m[0m[0m
+[0;90m15:26:09.926[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                    [90m# (3 unchanged attributes hidden)[0m[0m[0m
+[0;90m15:26:09.926[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                }
+[0;90m15:26:09.926[0m [0;37mSTDOUT[0m [0;36mterraform: [0m            }
+[0;90m15:26:09.926[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m owner {[0m
+[0;90m15:26:09.926[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m id           = "9ab73fc4717256119dd76595852d137faf836ae798402870153d6ed7b17bab21" [90m-> null[0m[0m[0m
+[0;90m15:26:09.926[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                [90m# (1 unchanged attribute hidden)[0m[0m[0m
+[0;90m15:26:09.926[0m [0;37mSTDOUT[0m [0;36mterraform: [0m            }
+[0;90m15:26:09.926[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        }
+[0;90m15:26:09.926[0m [0;37mSTDOUT[0m [0;36mterraform: [0m    }
+[0;90m15:26:09.926[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[1m  # module.openedx_secrets.aws_s3_bucket_public_access_block.this[0][0m will be [1m[31mdestroyed[0m[0m
+[0;90m15:26:09.926[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[0m  [31m-[0m[0m resource "aws_s3_bucket_public_access_block" "this" {[0m
+[0;90m15:26:09.926[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m block_public_acls       = true [90m-> null[0m[0m[0m
+[0;90m15:26:09.926[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m block_public_policy     = true [90m-> null[0m[0m[0m
+[0;90m15:26:09.926[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m bucket                  = "codlp-global-staging-secrets" [90m-> null[0m[0m[0m
+[0;90m15:26:09.926[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m id                      = "codlp-global-staging-secrets" [90m-> null[0m[0m[0m
+[0;90m15:26:09.926[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m ignore_public_acls      = false [90m-> null[0m[0m[0m
+[0;90m15:26:09.926[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m restrict_public_buckets = false [90m-> null[0m[0m[0m
+[0;90m15:26:09.926[0m [0;37mSTDOUT[0m [0;36mterraform: [0m    }
+[0;90m15:26:09.926[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[1m  # module.openedx_storage.aws_s3_bucket.this[0][0m will be [1m[31mdestroyed[0m[0m
+[0;90m15:26:09.926[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[0m  [31m-[0m[0m resource "aws_s3_bucket" "this" {[0m
+[0;90m15:26:09.926[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m arn                         = "arn:aws:s3:::codlp-global-staging-storage" [90m-> null[0m[0m[0m
+[0;90m15:26:09.927[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m bucket                      = "codlp-global-staging-storage" [90m-> null[0m[0m[0m
+[0;90m15:26:09.927[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m bucket_domain_name          = "codlp-global-staging-storage.s3.amazonaws.com" [90m-> null[0m[0m[0m
+[0;90m15:26:09.927[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m bucket_regional_domain_name = "codlp-global-staging-storage.s3.eu-west-2.amazonaws.com" [90m-> null[0m[0m[0m
+[0;90m15:26:09.927[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m force_destroy               = false [90m-> null[0m[0m[0m
+[0;90m15:26:09.927[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m hosted_zone_id              = "Z3GKZC51ZF0DB4" [90m-> null[0m[0m[0m
+[0;90m15:26:09.927[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m id                          = "codlp-global-staging-storage" [90m-> null[0m[0m[0m
+[0;90m15:26:09.927[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m object_lock_enabled         = false [90m-> null[0m[0m[0m
+[0;90m15:26:09.927[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m policy                      = jsonencode([0m
+[0;90m15:26:09.927[0m [0;37mSTDOUT[0m [0;36mterraform: [0m            {
+[0;90m15:26:09.927[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m Statement = [[0m
+[0;90m15:26:09.927[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                  [31m-[0m[0m {[0m
+[0;90m15:26:09.927[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                      [31m-[0m[0m Action    = [[0m
+[0;90m15:26:09.927[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                          [31m-[0m[0m "s3:List*",[0m
+[0;90m15:26:09.927[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                          [31m-[0m[0m "s3:GetObject*",[0m
+[0;90m15:26:09.927[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                        ]
+[0;90m15:26:09.927[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                      [31m-[0m[0m Effect    = "Allow"[0m
+[0;90m15:26:09.927[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                      [31m-[0m[0m Principal = "*"[0m
+[0;90m15:26:09.927[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                      [31m-[0m[0m Resource  = "arn:aws:s3:::codlp-global-staging-storage/*"[0m
+[0;90m15:26:09.927[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                      [31m-[0m[0m Sid       = ""[0m
+[0;90m15:26:09.927[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                    },
+[0;90m15:26:09.927[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                ]
+[0;90m15:26:09.927[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m Version   = "2012-10-17"[0m
+[0;90m15:26:09.928[0m [0;37mSTDOUT[0m [0;36mterraform: [0m            }
+[0;90m15:26:09.928[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        ) [90m-> null[0m[0m[0m
+[0;90m15:26:09.928[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m region                      = "eu-west-2" [90m-> null[0m[0m[0m
+[0;90m15:26:09.928[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m request_payer               = "BucketOwner" [90m-> null[0m[0m[0m
+[0;90m15:26:09.928[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m tags                        = {[0m
+[0;90m15:26:09.928[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/environment"                       = "staging"[0m
+[0;90m15:26:09.928[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/environment_domain"                = "staging.global-communications-academy.com"[0m
+[0;90m15:26:09.928[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/environment_namespace"             = "codlp-global-staging"[0m
+[0;90m15:26:09.928[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/environment_subdomain"             = "staging"[0m
+[0;90m15:26:09.928[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/aws_region"                 = "eu-west-2"[0m
+[0;90m15:26:09.928[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/platform_name"              = "codlp"[0m
+[0;90m15:26:09.928[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/platform_region"            = "global"[0m
+[0;90m15:26:09.928[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/root_domain"                = "global-communications-academy.com"[0m
+[0;90m15:26:09.928[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/services_subdomain"         = "service.global-communications-academy.com"[0m
+[0;90m15:26:09.928[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/shared_resource_identifier" = "live"[0m
+[0;90m15:26:09.928[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/shared_resource_namespace"  = "codlp-global-live"[0m
+[0;90m15:26:09.928[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/aws_iam_user"                 = "arn:aws:iam::824885811700:user/lawrence.mcdaniel"[0m
+[0;90m15:26:09.929[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/awscli_version"               = "2.10.3"[0m
+[0;90m15:26:09.929[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/github_branch"                = "cookiecutter_1.0.25 cookiecutter_1.1.0 main mcdaniel_202301 mcdaniel_202301_upgrade_1.0.19 mcdaniel_edunext_scorm"[0m
+[0;90m15:26:09.929[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/github_commit"                = "8968abd3275d90cd64fd7ec4fe62d5d7ae7de304"[0m
+[0;90m15:26:09.929[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/github_commit_date"           = "20230308T131544"[0m
+[0;90m15:26:09.929[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/github_repository"            = "https://github.com/GCSI/openedx_devops.git"[0m
+[0;90m15:26:09.929[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/kubectl_version"              = "v1.26.1"[0m
+[0;90m15:26:09.929[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/os"                           = "darwin22"[0m
+[0;90m15:26:09.929[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/terraform"                    = "true"[0m
+[0;90m15:26:09.929[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/terraform_version"            = "v1.3.9"[0m
+[0;90m15:26:09.929[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/timestamp"                    = "20230320T085054"[0m
+[0;90m15:26:09.929[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/version"                      = "v1.1.0"[0m
+[0;90m15:26:09.929[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/module/source"                     = "openedx_devops/terraform/environments/modules/s3"[0m
+[0;90m15:26:09.929[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/resource/source"                   = "terraform-aws-modules/s3-bucket/aws"[0m
+[0;90m15:26:09.929[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/resource/version"                  = "3.6"[0m
+[0;90m15:26:09.929[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/shared_resource_namespace"         = "codlp-global-live"[0m
+[0;90m15:26:09.929[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        } [90m-> null[0m[0m[0m
+[0;90m15:26:09.929[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m tags_all                    = {[0m
+[0;90m15:26:09.929[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/environment"                       = "staging"[0m
+[0;90m15:26:09.929[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/environment_domain"                = "staging.global-communications-academy.com"[0m
+[0;90m15:26:09.930[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/environment_namespace"             = "codlp-global-staging"[0m
+[0;90m15:26:09.930[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/environment_subdomain"             = "staging"[0m
+[0;90m15:26:09.930[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/aws_region"                 = "eu-west-2"[0m
+[0;90m15:26:09.930[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/platform_name"              = "codlp"[0m
+[0;90m15:26:09.930[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/platform_region"            = "global"[0m
+[0;90m15:26:09.930[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/root_domain"                = "global-communications-academy.com"[0m
+[0;90m15:26:09.930[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/services_subdomain"         = "service.global-communications-academy.com"[0m
+[0;90m15:26:09.930[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/shared_resource_identifier" = "live"[0m
+[0;90m15:26:09.930[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/shared_resource_namespace"  = "codlp-global-live"[0m
+[0;90m15:26:09.930[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/aws_iam_user"                 = "arn:aws:iam::824885811700:user/lawrence.mcdaniel"[0m
+[0;90m15:26:09.930[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/awscli_version"               = "2.10.3"[0m
+[0;90m15:26:09.930[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/github_branch"                = "cookiecutter_1.0.25 cookiecutter_1.1.0 main mcdaniel_202301 mcdaniel_202301_upgrade_1.0.19 mcdaniel_edunext_scorm"[0m
+[0;90m15:26:09.930[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/github_commit"                = "8968abd3275d90cd64fd7ec4fe62d5d7ae7de304"[0m
+[0;90m15:26:09.930[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/github_commit_date"           = "20230308T131544"[0m
+[0;90m15:26:09.931[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/github_repository"            = "https://github.com/GCSI/openedx_devops.git"[0m
+[0;90m15:26:09.931[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/kubectl_version"              = "v1.26.1"[0m
+[0;90m15:26:09.931[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/os"                           = "darwin22"[0m
+[0;90m15:26:09.931[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/terraform"                    = "true"[0m
+[0;90m15:26:09.931[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/terraform_version"            = "v1.3.9"[0m
+[0;90m15:26:09.931[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/timestamp"                    = "20230320T085054"[0m
+[0;90m15:26:09.931[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/version"                      = "v1.1.0"[0m
+[0;90m15:26:09.931[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/module/source"                     = "openedx_devops/terraform/environments/modules/s3"[0m
+[0;90m15:26:09.931[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/resource/source"                   = "terraform-aws-modules/s3-bucket/aws"[0m
+[0;90m15:26:09.931[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/resource/version"                  = "3.6"[0m
+[0;90m15:26:09.931[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/shared_resource_namespace"         = "codlp-global-live"[0m
+[0;90m15:26:09.931[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        } [90m-> null[0m[0m[0m
+[0;90m15:26:09.931[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        [90m# (1 unchanged attribute hidden)[0m[0m[0m
+[0;90m15:26:09.931[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m cors_rule {[0m
+[0;90m15:26:09.931[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m allowed_headers = [[0m
+[0;90m15:26:09.931[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m "*",[0m
+[0;90m15:26:09.931[0m [0;37mSTDOUT[0m [0;36mterraform: [0m            ] [90m-> null[0m[0m[0m
+[0;90m15:26:09.931[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m allowed_methods = [[0m
+[0;90m15:26:09.931[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m "POST",[0m
+[0;90m15:26:09.931[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m "GET",[0m
+[0;90m15:26:09.932[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m "HEAD",[0m
+[0;90m15:26:09.932[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m "PUT",[0m
+[0;90m15:26:09.932[0m [0;37mSTDOUT[0m [0;36mterraform: [0m            ] [90m-> null[0m[0m[0m
+[0;90m15:26:09.932[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m allowed_origins = [[0m
+[0;90m15:26:09.932[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m "https://discovery.staging.global-communications-academy.com",[0m
+[0;90m15:26:09.932[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m "http://apps.staging.global-communications-academy.com",[0m
+[0;90m15:26:09.932[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m "https://preview.staging.global-communications-academy.com",[0m
+[0;90m15:26:09.932[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m "http://preview.staging.global-communications-academy.com",[0m
+[0;90m15:26:09.932[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m "http://studio.staging.global-communications-academy.com",[0m
+[0;90m15:26:09.932[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m "http://discovery.staging.global-communications-academy.com",[0m
+[0;90m15:26:09.932[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m "http://staging.global-communications-academy.com",[0m
+[0;90m15:26:09.932[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m "https://staging.global-communications-academy.com",[0m
+[0;90m15:26:09.932[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m "https://studio.staging.global-communications-academy.com",[0m
+[0;90m15:26:09.932[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m "https://apps.staging.global-communications-academy.com",[0m
+[0;90m15:26:09.932[0m [0;37mSTDOUT[0m [0;36mterraform: [0m            ] [90m-> null[0m[0m[0m
+[0;90m15:26:09.932[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m expose_headers  = [[0m
+[0;90m15:26:09.932[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m "Access-Control-Allow-Method",[0m
+[0;90m15:26:09.932[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m "Access-Control-Allow-Origin",[0m
+[0;90m15:26:09.932[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m "Access-Control-Allow-Header",[0m
+[0;90m15:26:09.932[0m [0;37mSTDOUT[0m [0;36mterraform: [0m            ] [90m-> null[0m[0m[0m
+[0;90m15:26:09.932[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m max_age_seconds = 3000 [90m-> null[0m[0m[0m
+[0;90m15:26:09.932[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        }
+[0;90m15:26:09.932[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m grant {[0m
+[0;90m15:26:09.932[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m id          = "9ab73fc4717256119dd76595852d137faf836ae798402870153d6ed7b17bab21" [90m-> null[0m[0m[0m
+[0;90m15:26:09.933[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m permissions = [[0m
+[0;90m15:26:09.933[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m "FULL_CONTROL",[0m
+[0;90m15:26:09.933[0m [0;37mSTDOUT[0m [0;36mterraform: [0m            ] [90m-> null[0m[0m[0m
+[0;90m15:26:09.933[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m type        = "CanonicalUser" [90m-> null[0m[0m[0m
+[0;90m15:26:09.933[0m [0;37mSTDOUT[0m [0;36mterraform: [0m            [90m# (1 unchanged attribute hidden)[0m[0m[0m
+[0;90m15:26:09.933[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        }
+[0;90m15:26:09.933[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m server_side_encryption_configuration {[0m
+[0;90m15:26:09.933[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m rule {[0m
+[0;90m15:26:09.933[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m bucket_key_enabled = false [90m-> null[0m[0m[0m
+[0;90m15:26:09.933[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m apply_server_side_encryption_by_default {[0m
+[0;90m15:26:09.933[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                  [31m-[0m[0m sse_algorithm     = "AES256" [90m-> null[0m[0m[0m
+[0;90m15:26:09.933[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                    [90m# (1 unchanged attribute hidden)[0m[0m[0m
+[0;90m15:26:09.933[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                }
+[0;90m15:26:09.933[0m [0;37mSTDOUT[0m [0;36mterraform: [0m            }
+[0;90m15:26:09.933[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        }
+[0;90m15:26:09.933[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m versioning {[0m
+[0;90m15:26:09.933[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m enabled    = false [90m-> null[0m[0m[0m
+[0;90m15:26:09.933[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m mfa_delete = false [90m-> null[0m[0m[0m
+[0;90m15:26:09.933[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        }
+[0;90m15:26:09.933[0m [0;37mSTDOUT[0m [0;36mterraform: [0m    }
+[0;90m15:26:09.933[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[1m  # module.openedx_storage.aws_s3_bucket_acl.this[0][0m will be [1m[31mdestroyed[0m[0m
+[0;90m15:26:09.933[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[0m  [31m-[0m[0m resource "aws_s3_bucket_acl" "this" {[0m
+[0;90m15:26:09.933[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m acl                   = "private" [90m-> null[0m[0m[0m
+[0;90m15:26:09.933[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m bucket                = "codlp-global-staging-storage" [90m-> null[0m[0m[0m
+[0;90m15:26:09.933[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m id                    = "codlp-global-staging-storage,private" [90m-> null[0m[0m[0m
+[0;90m15:26:09.934[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        [90m# (1 unchanged attribute hidden)[0m[0m[0m
+[0;90m15:26:09.934[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m access_control_policy {[0m
+[0;90m15:26:09.934[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m grant {[0m
+[0;90m15:26:09.934[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m permission = "FULL_CONTROL" [90m-> null[0m[0m[0m
+[0;90m15:26:09.934[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m grantee {[0m
+[0;90m15:26:09.934[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                  [31m-[0m[0m id            = "9ab73fc4717256119dd76595852d137faf836ae798402870153d6ed7b17bab21" [90m-> null[0m[0m[0m
+[0;90m15:26:09.934[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                  [31m-[0m[0m type          = "CanonicalUser" [90m-> null[0m[0m[0m
+[0;90m15:26:09.934[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                    [90m# (3 unchanged attributes hidden)[0m[0m[0m
+[0;90m15:26:09.934[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                }
+[0;90m15:26:09.934[0m [0;37mSTDOUT[0m [0;36mterraform: [0m            }
+[0;90m15:26:09.934[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m owner {[0m
+[0;90m15:26:09.934[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m id           = "9ab73fc4717256119dd76595852d137faf836ae798402870153d6ed7b17bab21" [90m-> null[0m[0m[0m
+[0;90m15:26:09.934[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                [90m# (1 unchanged attribute hidden)[0m[0m[0m
+[0;90m15:26:09.934[0m [0;37mSTDOUT[0m [0;36mterraform: [0m            }
+[0;90m15:26:09.934[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        }
+[0;90m15:26:09.934[0m [0;37mSTDOUT[0m [0;36mterraform: [0m    }
+[0;90m15:26:09.934[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[1m  # module.openedx_storage.aws_s3_bucket_cors_configuration.this[0][0m will be [1m[31mdestroyed[0m[0m
+[0;90m15:26:09.934[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[0m  [31m-[0m[0m resource "aws_s3_bucket_cors_configuration" "this" {[0m
+[0;90m15:26:09.934[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m bucket                = "codlp-global-staging-storage" [0m
+[0;90m15:26:09.934[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[90m-> null[0m[0m[0m
+[0;90m15:26:09.934[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m id                    = "codlp-global-staging-storage" [90m-> null[0m[0m[0m
+[0;90m15:26:09.934[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        [90m# (1 unchanged attribute hidden)[0m[0m[0m
+[0;90m15:26:09.935[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m cors_rule {[0m
+[0;90m15:26:09.935[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m allowed_headers = [[0m
+[0;90m15:26:09.935[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m "*",[0m
+[0;90m15:26:09.935[0m [0;37mSTDOUT[0m [0;36mterraform: [0m            ] [90m-> null[0m[0m[0m
+[0;90m15:26:09.935[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m allowed_methods = [[0m
+[0;90m15:26:09.935[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m "GET",[0m
+[0;90m15:26:09.935[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m "HEAD",[0m
+[0;90m15:26:09.935[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m "POST",[0m
+[0;90m15:26:09.935[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m "PUT",[0m
+[0;90m15:26:09.935[0m [0;37mSTDOUT[0m [0;36mterraform: [0m            ] [90m-> null[0m[0m[0m
+[0;90m15:26:09.935[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m allowed_origins = [[0m
+[0;90m15:26:09.935[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m "http://apps.staging.global-communications-academy.com",[0m
+[0;90m15:26:09.935[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m "http://discovery.staging.global-communications-academy.com",[0m
+[0;90m15:26:09.935[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m "http://preview.staging.global-communications-academy.com",[0m
+[0;90m15:26:09.935[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m "http://staging.global-communications-academy.com",[0m
+[0;90m15:26:09.935[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m "http://studio.staging.global-communications-academy.com",[0m
+[0;90m15:26:09.935[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m "https://apps.staging.global-communications-academy.com",[0m
+[0;90m15:26:09.935[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m "https://discovery.staging.global-communications-academy.com",[0m
+[0;90m15:26:09.935[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m "https://preview.staging.global-communications-academy.com",[0m
+[0;90m15:26:09.935[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m "https://staging.global-communications-academy.com",[0m
+[0;90m15:26:09.935[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m "https://studio.staging.global-communications-academy.com",[0m
+[0;90m15:26:09.935[0m [0;37mSTDOUT[0m [0;36mterraform: [0m            ] [90m-> null[0m[0m[0m
+[0;90m15:26:09.935[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m expose_headers  = [[0m
+[0;90m15:26:09.935[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m "Access-Control-Allow-Header",[0m
+[0;90m15:26:09.935[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m "Access-Control-Allow-Method",[0m
+[0;90m15:26:09.936[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m "Access-Control-Allow-Origin",[0m
+[0;90m15:26:09.936[0m [0;37mSTDOUT[0m [0;36mterraform: [0m            ] [90m-> null[0m[0m[0m
+[0;90m15:26:09.936[0m [0;37mSTDOUT[0m [0;36mterraform: [0m            id              = [90mnull[0m[0m[0m
+[0;90m15:26:09.936[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m max_age_seconds = 3000 [90m-> null[0m[0m[0m
+[0;90m15:26:09.936[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        }
+[0;90m15:26:09.936[0m [0;37mSTDOUT[0m [0;36mterraform: [0m    }
+[0;90m15:26:09.936[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[1m  # module.openedx_storage.aws_s3_bucket_ownership_controls.this[0][0m will be [1m[31mdestroyed[0m[0m
+[0;90m15:26:09.936[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[0m  [31m-[0m[0m resource "aws_s3_bucket_ownership_controls" "this" {[0m
+[0;90m15:26:09.936[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m bucket = "codlp-global-staging-storage" [90m-> null[0m[0m[0m
+[0;90m15:26:09.936[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m id     = "codlp-global-staging-storage" [90m-> null[0m[0m[0m
+[0;90m15:26:09.936[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m rule {[0m
+[0;90m15:26:09.936[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m object_ownership = "BucketOwnerPreferred" [90m-> null[0m[0m[0m
+[0;90m15:26:09.936[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        }
+[0;90m15:26:09.936[0m [0;37mSTDOUT[0m [0;36mterraform: [0m    }
+[0;90m15:26:09.936[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[1m  # module.openedx_storage.aws_s3_bucket_policy.this[0][0m will be [1m[31mdestroyed[0m[0m
+[0;90m15:26:09.936[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[0m  [31m-[0m[0m resource "aws_s3_bucket_policy" "this" {[0m
+[0;90m15:26:09.936[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m bucket = "codlp-global-staging-storage" [90m-> null[0m[0m[0m
+[0;90m15:26:09.936[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m id     = "codlp-global-staging-storage" [90m-> null[0m[0m[0m
+[0;90m15:26:09.936[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m policy = jsonencode([0m
+[0;90m15:26:09.936[0m [0;37mSTDOUT[0m [0;36mterraform: [0m            {
+[0;90m15:26:09.936[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m Statement = [[0m
+[0;90m15:26:09.936[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                  [31m-[0m[0m {[0m
+[0;90m15:26:09.936[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                      [31m-[0m[0m Action    = [[0m
+[0;90m15:26:09.936[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                          [31m-[0m[0m "s3:List*",[0m
+[0;90m15:26:09.936[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                          [31m-[0m[0m "s3:GetObject*",[0m
+[0;90m15:26:09.937[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                        ]
+[0;90m15:26:09.937[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                      [31m-[0m[0m Effect    = "Allow"[0m
+[0;90m15:26:09.937[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                      [31m-[0m[0m Principal = "*"[0m
+[0;90m15:26:09.937[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                      [31m-[0m[0m Resource  = "arn:aws:s3:::codlp-global-staging-storage/*"[0m
+[0;90m15:26:09.937[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                      [31m-[0m[0m Sid       = ""[0m
+[0;90m15:26:09.937[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                    },
+[0;90m15:26:09.937[0m [0;37mSTDOUT[0m [0;36mterraform: [0m                ]
+[0;90m15:26:09.937[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m Version   = "2012-10-17"[0m
+[0;90m15:26:09.937[0m [0;37mSTDOUT[0m [0;36mterraform: [0m            }
+[0;90m15:26:09.937[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        ) [90m-> null[0m[0m[0m
+[0;90m15:26:09.937[0m [0;37mSTDOUT[0m [0;36mterraform: [0m    }
+[0;90m15:26:09.937[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[1m  # module.openedx_storage.aws_s3_bucket_public_access_block.this[0][0m will be [1m[31mdestroyed[0m[0m
+[0;90m15:26:09.937[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[0m  [31m-[0m[0m resource "aws_s3_bucket_public_access_block" "this" {[0m
+[0;90m15:26:09.937[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m block_public_acls       = false [90m-> null[0m[0m[0m
+[0;90m15:26:09.937[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m block_public_policy     = false [90m-> null[0m[0m[0m
+[0;90m15:26:09.937[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m bucket                  = "codlp-global-staging-storage" [90m-> null[0m[0m[0m
+[0;90m15:26:09.937[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m id                      = "codlp-global-staging-storage" [90m-> null[0m[0m[0m
+[0;90m15:26:09.937[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m ignore_public_acls      = false [90m-> null[0m[0m[0m
+[0;90m15:26:09.937[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m restrict_public_buckets = false [90m-> null[0m[0m[0m
+[0;90m15:26:09.937[0m [0;37mSTDOUT[0m [0;36mterraform: [0m    }
+[0;90m15:26:09.937[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[1m  # module.openedx_storage.aws_s3_bucket_versioning.this[0][0m will be [1m[31mdestroyed[0m[0m
+[0;90m15:26:09.937[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[0m  [31m-[0m[0m resource "aws_s3_bucket_versioning" "this" {[0m
+[0;90m15:26:09.937[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m bucket                = "codlp-global-staging-storage" [90m-> null[0m[0m[0m
+[0;90m15:26:09.938[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m id                    = "codlp-global-staging-storage" [90m-> null[0m[0m[0m
+[0;90m15:26:09.938[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        [90m# (1 unchanged attribute hidden)[0m[0m[0m
+[0;90m15:26:09.938[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m versioning_configuration {[0m
+[0;90m15:26:09.938[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m status     = "Suspended" [90m-> null[0m[0m[0m
+[0;90m15:26:09.938[0m [0;37mSTDOUT[0m [0;36mterraform: [0m            [90m# (1 unchanged attribute hidden)[0m[0m[0m
+[0;90m15:26:09.938[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        }
+[0;90m15:26:09.938[0m [0;37mSTDOUT[0m [0;36mterraform: [0m    }
+[0;90m15:26:09.938[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[1mPlan:[0m 0 to add, 0 to change, 23 to destroy.[0m
+[0;90m15:26:09.938[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[0m[0m
+[0;90m15:26:09.938[0m [0;37mSTDOUT[0m [0;36mterraform: [0mChanges to Outputs:
+[0;90m15:26:09.938[0m [0;37mSTDOUT[0m [0;36mterraform: [0m  [31m-[0m[0m s3_secrets_bucket_arn                         = "arn:aws:s3:::codlp-global-staging-secrets" [90m-> null[0m[0m[0m
+[0;90m15:26:09.938[0m [0;37mSTDOUT[0m [0;36mterraform: [0m  [31m-[0m[0m s3_secrets_bucket_bucket_domain_name          = "codlp-global-staging-secrets.s3.amazonaws.com" [90m-> null[0m[0m[0m
+[0;90m15:26:09.938[0m [0;37mSTDOUT[0m [0;36mterraform: [0m  [31m-[0m[0m s3_secrets_bucket_bucket_regional_domain_name = "codlp-global-staging-secrets.s3.eu-west-2.amazonaws.com" [90m-> null[0m[0m[0m
+[0;90m15:26:09.938[0m [0;37mSTDOUT[0m [0;36mterraform: [0m  [31m-[0m[0m s3_secrets_bucket_hosted_zone_id              = "Z3GKZC51ZF0DB4" [90m-> null[0m[0m[0m
+[0;90m15:26:09.938[0m [0;37mSTDOUT[0m [0;36mterraform: [0m  [31m-[0m[0m s3_secrets_bucket_id                          = "codlp-global-staging-secrets" [90m-> null[0m[0m[0m
+[0;90m15:26:09.938[0m [0;37mSTDOUT[0m [0;36mterraform: [0m  [31m-[0m[0m s3_secrets_bucket_region                      = "eu-west-2" [90m-> null[0m[0m[0m
+[0;90m15:26:09.938[0m [0;37mSTDOUT[0m [0;36mterraform: [0m  [31m-[0m[0m s3_secrets_bucket_website_domain              = "" [90m-> null[0m[0m[0m
+[0;90m15:26:09.938[0m [0;37mSTDOUT[0m [0;36mterraform: [0m  [31m-[0m[0m s3_secrets_bucket_website_endpoint            = "" [90m-> null[0m[0m[0m
+[0;90m15:26:09.938[0m [0;37mSTDOUT[0m [0;36mterraform: [0m  [31m-[0m[0m s3_storage_bucket_arn                         = "arn:aws:s3:::codlp-global-staging-storage" [90m-> null[0m[0m[0m
+[0;90m15:26:09.938[0m [0;37mSTDOUT[0m [0;36mterraform: [0m  [31m-[0m[0m s3_storage_bucket_bucket_domain_name          = "codlp-global-staging-storage.s3.amazonaws.com" [90m-> null[0m[0m[0m
+[0;90m15:26:09.939[0m [0;37mSTDOUT[0m [0;36mterraform: [0m  [31m-[0m[0m s3_storage_bucket_bucket_regional_domain_name = "codlp-global-staging-storage.s3.eu-west-2.amazonaws.com" [90m-> null[0m[0m[0m
+[0;90m15:26:09.939[0m [0;37mSTDOUT[0m [0;36mterraform: [0m  [31m-[0m[0m s3_storage_bucket_hosted_zone_id              = "Z3GKZC51ZF0DB4" [90m-> null[0m[0m[0m
+[0;90m15:26:09.939[0m [0;37mSTDOUT[0m [0;36mterraform: [0m  [31m-[0m[0m s3_storage_bucket_id                          = "codlp-global-staging-storage" [90m-> null[0m[0m[0m
+[0;90m15:26:09.939[0m [0;37mSTDOUT[0m [0;36mterraform: [0m  [31m-[0m[0m s3_storage_bucket_region                      = "eu-west-2" [90m-> null[0m[0m[0m
+[0;90m15:26:09.939[0m [0;37mSTDOUT[0m [0;36mterraform: [0m  [31m-[0m[0m s3_storage_bucket_website_domain              = "" [90m-> null[0m[0m[0m
+[0;90m15:26:09.939[0m [0;37mSTDOUT[0m [0;36mterraform: [0m  [31m-[0m[0m s3_storage_bucket_website_endpoint            = "" [90m-> null[0m[0m[0m
+[0;90m15:26:09.939[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[90m[0m
+[0;90m15:26:09.939[0m [0;37mSTDOUT[0m [0;36mterraform: [0m─────────────────────────────────────────────────────────────────────────────[0m[0m
+[0;90m15:26:09.939[0m [0;37mSTDOUT[0m [0;36mterraform: [0mNote: You didn't use the -out option to save this plan, so Terraform can't
+[0;90m15:26:09.939[0m [0;37mSTDOUT[0m [0;36mterraform: [0mguarantee to take exactly these actions if you run "terraform apply" now.
+[0;90m15:26:10.308[0m [0;37mSTDOUT[0m [0;36mterraform: [0mReleasing state lock. This may take a few moments...
