@@ -1,0 +1,273 @@
+[0;90m14:43:35.119[0m [0;33mWARN  [0m Using `terragrunt.hcl` as the root of Terragrunt configurations is an anti-pattern, and no longer recommended. In a future version of Terragrunt, this will result in an error. You are advised to use a differently named file like `root.hcl` instead. For more information, see https://terragrunt.gruntwork.io/docs/migrate/migrating-from-root-terragrunt-hcl
+[0;90m14:46:07.055[0m [0;32mINFO  [0m Downloading Terraform configurations from ../../modules into ./.terragrunt-cache/Co-2n6hKxFsAlt_4s4CvGAf_b74/6CdddHkeN9JGSs1w4z9DwWJCpIE
+[0;90m14:46:30.198[0m [0;37mSTDOUT[0m [0;36mterraform: [0mAcquiring state lock. This may take a few moments...
+[0;90m14:46:40.076[0m [0;37mSTDOUT[0m [0;36mterraform: [0mTerraform used the selected providers to generate the following execution
+[0;90m14:46:40.076[0m [0;37mSTDOUT[0m [0;36mterraform: [0mplan. Resource actions are indicated with the following symbols:
+[0;90m14:46:40.076[0m [0;37mSTDOUT[0m [0;36mterraform: [0m  [31m-[0m destroy[0m[0m
+[0;90m14:46:40.076[0m [0;37mSTDOUT[0m [0;36mterraform: [0mTerraform will perform the following actions:
+[0;90m14:46:40.076[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[1m  # module.acm_environment_environment_region.aws_acm_certificate.this[0][0m will be [1m[31mdestroyed[0m[0m
+[0;90m14:46:40.076[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[0m  [31m-[0m[0m resource "aws_acm_certificate" "this" {[0m
+[0;90m14:46:40.076[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m arn                       = "arn:aws:acm:eu-west-2:824885811700:certificate/344c9d24-e72d-440d-9fbe-e055a9ebc661" [90m-> null[0m[0m[0m
+[0;90m14:46:40.076[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m domain_name               = "staging.global-communications-academy.com" [90m-> null[0m[0m[0m
+[0;90m14:46:40.076[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m domain_validation_options = [[0m
+[0;90m14:46:40.076[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m {[0m
+[0;90m14:46:40.076[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m domain_name           = "*.staging.global-communications-academy.com"[0m
+[0;90m14:46:40.076[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m resource_record_name  = "_d195fe3f7b1bd8a3ee4fe445cdfc9316.staging.global-communications-academy.com."[0m
+[0;90m14:46:40.076[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m resource_record_type  = "CNAME"[0m
+[0;90m14:46:40.076[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m resource_record_value = "_650a5d4609072797563cfdde3f8c9bc2.dhzvlrndnj.acm-validations.aws."[0m
+[0;90m14:46:40.076[0m [0;37mSTDOUT[0m [0;36mterraform: [0m            },
+[0;90m14:46:40.077[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m {[0m
+[0;90m14:46:40.077[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m domain_name           = "staging.global-communications-academy.com"[0m
+[0;90m14:46:40.077[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m resource_record_name  = "_d195fe3f7b1bd8a3ee4fe445cdfc9316.staging.global-communications-academy.com."[0m
+[0;90m14:46:40.077[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m resource_record_type  = "CNAME"[0m
+[0;90m14:46:40.077[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m resource_record_value = "_650a5d4609072797563cfdde3f8c9bc2.dhzvlrndnj.acm-validations.aws."[0m
+[0;90m14:46:40.077[0m [0;37mSTDOUT[0m [0;36mterraform: [0m            },
+[0;90m14:46:40.077[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        ] [90m-> null[0m[0m[0m
+[0;90m14:46:40.077[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m id                        = "arn:aws:acm:eu-west-2:824885811700:certificate/344c9d24-e72d-440d-9fbe-e055a9ebc661" [90m-> null[0m[0m[0m
+[0;90m14:46:40.077[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m key_algorithm             = "RSA_2048" [90m-> null[0m[0m[0m
+[0;90m14:46:40.077[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m not_after                 = "2023-10-08T23:59:59Z" [90m-> null[0m[0m[0m
+[0;90m14:46:40.077[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m not_before                = "2023-02-21T00:00:00Z" [90m-> null[0m[0m[0m
+[0;90m14:46:40.077[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m pending_renewal           = false [90m-> null[0m[0m[0m
+[0;90m14:46:40.077[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m renewal_eligibility       = "INELIGIBLE" [90m-> null[0m[0m[0m
+[0;90m14:46:40.077[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m renewal_summary           = [] [90m-> null[0m[0m[0m
+[0;90m14:46:40.077[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m status                    = "ISSUED" [90m-> null[0m[0m[0m
+[0;90m14:46:40.077[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m subject_alternative_names = [[0m
+[0;90m14:46:40.077[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "*.staging.global-communications-academy.com",[0m
+[0;90m14:46:40.077[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "staging.global-communications-academy.com",[0m
+[0;90m14:46:40.077[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        ] [90m-> null[0m[0m[0m
+[0;90m14:46:40.077[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m tags                      = {[0m
+[0;90m14:46:40.077[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "Name"                                           = "codlp-global-staging"[0m
+[0;90m14:46:40.077[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/environment"                       = "staging"[0m
+[0;90m14:46:40.078[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/environment_domain"                = "staging.global-communications-academy.com"[0m
+[0;90m14:46:40.078[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/environment_namespace"             = "codlp-global-staging"[0m
+[0;90m14:46:40.078[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/environment_subdomain"             = "staging"[0m
+[0;90m14:46:40.078[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/aws_region"                 = "eu-west-2"[0m
+[0;90m14:46:40.078[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/platform_name"              = "codlp"[0m
+[0;90m14:46:40.078[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/platform_region"            = "global"[0m
+[0;90m14:46:40.078[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/root_domain"                = "global-communications-academy.com"[0m
+[0;90m14:46:40.078[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/services_subdomain"         = "service.global-communications-academy.com"[0m
+[0;90m14:46:40.078[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/shared_resource_identifier" = "live"[0m
+[0;90m14:46:40.078[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/shared_resource_namespace"  = "codlp-global-live"[0m
+[0;90m14:46:40.078[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/aws_iam_user"                 = "arn:aws:iam::824885811700:user/lawrence.mcdaniel"[0m
+[0;90m14:46:40.078[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/awscli_version"               = "2.10.3"[0m
+[0;90m14:46:40.078[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/github_branch"                = "cookiecutter_1.0.25 cookiecutter_1.1.0 main mcdaniel_202301 mcdaniel_202301_upgrade_1.0.19 mcdaniel_edunext_scorm"[0m
+[0;90m14:46:40.078[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/github_commit"                = "8968abd3275d90cd64fd7ec4fe62d5d7ae7de304"[0m
+[0;90m14:46:40.078[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/github_commit_date"           = "20230308T131544"[0m
+[0;90m14:46:40.079[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/github_repository"            = "https://github.com/GCSI/openedx_devops.git"[0m
+[0;90m14:46:40.079[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/kubectl_version"              = "v1.26.1"[0m
+[0;90m14:46:40.079[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/os"                           = "darwin22"[0m
+[0;90m14:46:40.079[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/terraform"                    = "true"[0m
+[0;90m14:46:40.079[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/terraform_version"            = "v1.3.9"[0m
+[0;90m14:46:40.079[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/timestamp"                    = "20230320T083910"[0m
+[0;90m14:46:40.079[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/version"                      = "v1.1.0"[0m
+[0;90m14:46:40.079[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/module/source"                     = "openedx_devops/terraform/environments/modules/acm"[0m
+[0;90m14:46:40.079[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/resource/source"                   = "terraform-aws-modules/acm/aws"[0m
+[0;90m14:46:40.079[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/resource/version"                  = "4.3"[0m
+[0;90m14:46:40.079[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/shared_resource_namespace"         = "codlp-global-live"[0m
+[0;90m14:46:40.079[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        } [90m-> null[0m[0m[0m
+[0;90m14:46:40.079[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m tags_all                  = {[0m
+[0;90m14:46:40.079[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "Name"                                           = "codlp-global-staging"[0m
+[0;90m14:46:40.079[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/environment"                       = "staging"[0m
+[0;90m14:46:40.079[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/environment_domain"                = "staging.global-communications-academy.com"[0m
+[0;90m14:46:40.079[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/environment_namespace"             = "codlp-global-staging"[0m
+[0;90m14:46:40.079[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/environment_subdomain"             = "staging"[0m
+[0;90m14:46:40.079[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/aws_region"                 = "eu-west-2"[0m
+[0;90m14:46:40.080[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/platform_name"              = "codlp"[0m
+[0;90m14:46:40.080[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/platform_region"            = "global"[0m
+[0;90m14:46:40.080[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/root_domain"                = "global-communications-academy.com"[0m
+[0;90m14:46:40.080[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/services_subdomain"         = "service.global-communications-academy.com"[0m
+[0;90m14:46:40.080[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/shared_resource_identifier" = "live"[0m
+[0;90m14:46:40.080[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/shared_resource_namespace"  = "codlp-global-live"[0m
+[0;90m14:46:40.080[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/aws_iam_user"                 = "arn:aws:iam::824885811700:user/lawrence.mcdaniel"[0m
+[0;90m14:46:40.080[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/awscli_version"               = "2.10.3"[0m
+[0;90m14:46:40.080[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/github_branch"                = "cookiecutter_1.0.25 cookiecutter_1.1.0 main mcdaniel_202301 mcdaniel_202301_upgrade_1.0.19 mcdaniel_edunext_scorm"[0m
+[0;90m14:46:40.080[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/github_commit"                = "8968abd3275d90cd64fd7ec4fe62d5d7ae7de304"[0m
+[0;90m14:46:40.080[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/github_commit_date"           = "20230308T131544"[0m
+[0;90m14:46:40.080[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/github_repository"            = "https://github.com/GCSI/openedx_devops.git"[0m
+[0;90m14:46:40.080[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/kubectl_version"              = "v1.26.1"[0m
+[0;90m14:46:40.080[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/os"                           = "darwin22"[0m
+[0;90m14:46:40.080[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/terraform"                    = "true"[0m
+[0;90m14:46:40.081[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/terraform_version"            = "v1.3.9"[0m
+[0;90m14:46:40.081[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/timestamp"                    = "20230320T083910"[0m
+[0;90m14:46:40.081[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/version"                      = "v1.1.0"[0m
+[0;90m14:46:40.081[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/module/source"                     = "openedx_devops/terraform/environments/modules/acm"[0m
+[0;90m14:46:40.081[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/resource/source"                   = "terraform-aws-modules/acm/aws"[0m
+[0;90m14:46:40.081[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/resource/version"                  = "4.3"[0m
+[0;90m14:46:40.081[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/shared_resource_namespace"         = "codlp-global-live"[0m
+[0;90m14:46:40.081[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        } [90m-> null[0m[0m[0m
+[0;90m14:46:40.081[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m type                      = "AMAZON_ISSUED" [90m-> null[0m[0m[0m
+[0;90m14:46:40.081[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m validation_emails         = [] [90m-> null[0m[0m[0m
+[0;90m14:46:40.081[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m validation_method         = "DNS" [90m-> null[0m[0m[0m
+[0;90m14:46:40.081[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        [90m# (2 unchanged attributes hidden)[0m[0m[0m
+[0;90m14:46:40.081[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m options {[0m
+[0;90m14:46:40.081[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m certificate_transparency_logging_preference = "ENABLED" [90m-> null[0m[0m[0m
+[0;90m14:46:40.081[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        }
+[0;90m14:46:40.081[0m [0;37mSTDOUT[0m [0;36mterraform: [0m    }
+[0;90m14:46:40.081[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[1m  # module.acm_environment_environment_region.aws_acm_certificate_validation.this[0][0m will be [1m[31mdestroyed[0m[0m
+[0;90m14:46:40.081[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[0m  [31m-[0m[0m resource "aws_acm_certificate_validation" "this" {[0m
+[0;90m14:46:40.081[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m certificate_arn         = "arn:aws:acm:eu-west-2:824885811700:certificate/344c9d24-e72d-440d-9fbe-e055a9ebc661" [90m-> null[0m[0m[0m
+[0;90m14:46:40.081[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m id                      = "2022-09-09 19:06:19.772 +0000 UTC" [90m-> null[0m[0m[0m
+[0;90m14:46:40.082[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m validation_record_fqdns = [[0m
+[0;90m14:46:40.082[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "_d195fe3f7b1bd8a3ee4fe445cdfc9316.staging.global-communications-academy.com",[0m
+[0;90m14:46:40.082[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        ] [90m-> null[0m[0m[0m
+[0;90m14:46:40.082[0m [0;37mSTDOUT[0m [0;36mterraform: [0m    }
+[0;90m14:46:40.082[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[1m  # module.acm_environment_environment_region.aws_route53_record.validation[0][0m will be [1m[31mdestroyed[0m[0m
+[0;90m14:46:40.082[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[0m  [31m-[0m[0m resource "aws_route53_record" "validation" {[0m
+[0;90m14:46:40.082[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m allow_overwrite                  = true [90m-> null[0m[0m[0m
+[0;90m14:46:40.082[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m fqdn                             = "_d195fe3f7b1bd8a3ee4fe445cdfc9316.staging.global-communications-academy.com" [90m-> null[0m[0m[0m
+[0;90m14:46:40.082[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m id                               = "Z03421433FTTS9CGGX8LH__d195fe3f7b1bd8a3ee4fe445cdfc9316.staging.global-communications-academy.com._CNAME" [90m-> null[0m[0m[0m
+[0;90m14:46:40.082[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m multivalue_answer_routing_policy = false [90m-> null[0m[0m[0m
+[0;90m14:46:40.082[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m name                             = "_d195fe3f7b1bd8a3ee4fe445cdfc9316.staging.global-communications-academy.com" [90m-> null[0m[0m[0m
+[0;90m14:46:40.082[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m records                          = [[0m
+[0;90m14:46:40.082[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "_650a5d4609072797563cfdde3f8c9bc2.dhzvlrndnj.acm-validations.aws.",[0m
+[0;90m14:46:40.082[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        ] [90m-> null[0m[0m[0m
+[0;90m14:46:40.082[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m ttl                              = 60 [90m-> null[0m[0m[0m
+[0;90m14:46:40.083[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m type                             = "CNAME" [90m-> null[0m[0m[0m
+[0;90m14:46:40.083[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m zone_id                          = "Z03421433FTTS9CGGX8LH" [90m-> null[0m[0m[0m
+[0;90m14:46:40.083[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        [90m# (2 unchanged attributes hidden)[0m[0m[0m
+[0;90m14:46:40.083[0m [0;37mSTDOUT[0m [0;36mterraform: [0m    }
+[0;90m14:46:40.083[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[1m  # module.acm_root_domain_environment_region.aws_acm_certificate.this[0][0m will be [1m[31mdestroyed[0m[0m
+[0;90m14:46:40.083[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[0m  [31m-[0m[0m resource "aws_acm_certificate" "this" {[0m
+[0;90m14:46:40.083[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m arn                       = "arn:aws:acm:eu-west-2:824885811700:certificate/2e9f449e-86f5-4d73-b474-0f2a4066914a" [90m-> null[0m[0m[0m
+[0;90m14:46:40.083[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m domain_name               = "global-communications-academy.com" [90m-> null[0m[0m[0m
+[0;90m14:46:40.083[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m domain_validation_options = [[0m
+[0;90m14:46:40.083[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m {[0m
+[0;90m14:46:40.083[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m domain_name           = "*.global-communications-academy.com"[0m
+[0;90m14:46:40.083[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m resource_record_name  = "_7b17e37992c0a377d0382a18b9d93d4b.global-communications-academy.com."[0m
+[0;90m14:46:40.083[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m resource_record_type  = "CNAME"[0m
+[0;90m14:46:40.083[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m resource_record_value = "_ca73ce8a82aa795bc6df807a02a1e95f.dhzvlrndnj.acm-validations.aws."[0m
+[0;90m14:46:40.083[0m [0;37mSTDOUT[0m [0;36mterraform: [0m            },
+[0;90m14:46:40.083[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m {[0m
+[0;90m14:46:40.083[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m domain_name           = "global-communications-academy.com"[0m
+[0;90m14:46:40.083[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m resource_record_name  = "_7b17e37992c0a377d0382a18b9d93d4b.global-communications-academy.com."[0m
+[0;90m14:46:40.083[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m resource_record_type  = "CNAME"[0m
+[0;90m14:46:40.083[0m [0;37mSTDOUT[0m [0;36mterraform: [0m              [31m-[0m[0m resource_record_value = "_ca73ce8a82aa795bc6df807a02a1e95f.dhzvlrndnj.acm-validations.aws."[0m
+[0;90m14:46:40.084[0m [0;37mSTDOUT[0m [0;36mterraform: [0m            },
+[0;90m14:46:40.084[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        ] [90m-> null[0m[0m[0m
+[0;90m14:46:40.084[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m id                        = "arn:aws:acm:eu-west-2:824885811700:certificate/2e9f449e-86f5-4d73-b474-0f2a4066914a" [90m-> null[0m[0m[0m
+[0;90m14:46:40.084[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m key_algorithm             = "RSA_2048" [90m-> null[0m[0m[0m
+[0;90m14:46:40.084[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m not_after                 = "2023-10-08T23:59:59Z" [90m-> null[0m[0m[0m
+[0;90m14:46:40.084[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m not_before                = "2023-02-22T00:00:00Z" [90m-> null[0m[0m[0m
+[0;90m14:46:40.084[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m pending_renewal           = false [90m-> null[0m[0m[0m
+[0;90m14:46:40.084[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m renewal_eligibility       = "INELIGIBLE" [90m-> null[0m[0m[0m
+[0;90m14:46:40.084[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m renewal_summary           = [] [90m-> null[0m[0m[0m
+[0;90m14:46:40.084[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m status                    = "ISSUED" [90m-> null[0m[0m[0m
+[0;90m14:46:40.084[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m subject_alternative_names = [[0m
+[0;90m14:46:40.084[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "*.global-communications-academy.com",[0m
+[0;90m14:46:40.084[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "global-communications-academy.com",[0m
+[0;90m14:46:40.084[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        ] [90m-> null[0m[0m[0m
+[0;90m14:46:40.084[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m tags                      = {[0m
+[0;90m14:46:40.084[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "Name"                                           = "codlp-global-staging"[0m
+[0;90m14:46:40.084[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/environment"                       = "staging"[0m
+[0;90m14:46:40.084[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/environment_domain"                = "staging.global-communications-academy.com"[0m
+[0;90m14:46:40.085[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/environment_namespace"             = "codlp-global-staging"[0m
+[0;90m14:46:40.085[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/environment_subdomain"             = "staging"[0m
+[0;90m14:46:40.085[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/aws_region"                 = "eu-west-2"[0m
+[0;90m14:46:40.085[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/platform_name"              = "codlp"[0m
+[0;90m14:46:40.085[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/platform_region"            = "global"[0m
+[0;90m14:46:40.085[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/root_domain"                = "global-communications-academy.com"[0m
+[0;90m14:46:40.085[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/services_subdomain"         = "service.global-communications-academy.com"[0m
+[0;90m14:46:40.085[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/shared_resource_identifier" = "live"[0m
+[0;90m14:46:40.085[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/shared_resource_namespace"  = "codlp-global-live"[0m
+[0;90m14:46:40.085[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/aws_iam_user"                 = "arn:aws:iam::824885811700:user/lawrence.mcdaniel"[0m
+[0;90m14:46:40.085[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/awscli_version"               = "2.10.3"[0m
+[0;90m14:46:40.085[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/github_branch"                = "cookiecutter_1.0.25 cookiecutter_1.1.0 main mcdaniel_202301 mcdaniel_202301_upgrade_1.0.19 mcdaniel_edunext_scorm"[0m
+[0;90m14:46:40.085[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/github_commit"                = "8968abd3275d90cd64fd7ec4fe62d5d7ae7de304"[0m
+[0;90m14:46:40.085[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/github_commit_date"           = "20230308T131544"[0m
+[0;90m14:46:40.085[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/github_repository"            = "https://github.com/GCSI/openedx_devops.git"[0m
+[0;90m14:46:40.086[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/kubectl_version"              = "v1.26.1"[0m
+[0;90m14:46:40.086[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/os"                           = "darwin22"[0m
+[0;90m14:46:40.086[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/terraform"                    = "true"[0m
+[0;90m14:46:40.086[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/terraform_version"            = "v1.3.9"[0m
+[0;90m14:46:40.086[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/timestamp"                    = "20230320T083910"[0m
+[0;90m14:46:40.086[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/version"                      = "v1.1.0"[0m
+[0;90m14:46:40.086[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/module/source"                     = "openedx_devops/terraform/environments/modules/acm"[0m
+[0;90m14:46:40.086[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/resource/source"                   = "terraform-aws-modules/acm/aws"[0m
+[0;90m14:46:40.086[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/resource/version"                  = "4.3"[0m
+[0;90m14:46:40.086[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/shared_resource_namespace"         = "codlp-global-live"[0m
+[0;90m14:46:40.086[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        } [90m-> null[0m[0m[0m
+[0;90m14:46:40.086[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m tags_all                  = {[0m
+[0;90m14:46:40.086[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "Name"                                           = "codlp-global-staging"[0m
+[0;90m14:46:40.086[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/environment"                       = "staging"[0m
+[0;90m14:46:40.086[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/environment_domain"                = "staging.global-communications-academy.com"[0m
+[0;90m14:46:40.086[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/environment_namespace"             = "codlp-global-staging"[0m
+[0;90m14:46:40.086[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/environment_subdomain"             = "staging"[0m
+[0;90m14:46:40.086[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/aws_region"                 = "eu-west-2"[0m
+[0;90m14:46:40.086[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/platform_name"              = "codlp"[0m
+[0;90m14:46:40.086[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/platform_region"            = "global"[0m
+[0;90m14:46:40.086[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/root_domain"                = "global-communications-academy.com"[0m
+[0;90m14:46:40.086[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/services_subdomain"         = "service.global-communications-academy.com"[0m
+[0;90m14:46:40.087[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/shared_resource_identifier" = "live"[0m
+[0;90m14:46:40.087[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/global/shared_resource_namespace"  = "codlp-global-live"[0m
+[0;90m14:46:40.087[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/aws_iam_user"                 = "arn:aws:iam::824885811700:user/lawrence.mcdaniel"[0m
+[0;90m14:46:40.087[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/awscli_version"               = "2.10.3"[0m
+[0;90m14:46:40.087[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/github_branch"                = "cookiecutter_1.0.25 cookiecutter_1.1.0 main mcdaniel_202301 mcdaniel_202301_upgrade_1.0.19 mcdaniel_edunext_scorm"[0m
+[0;90m14:46:40.087[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/github_commit"                = "8968abd3275d90cd64fd7ec4fe62d5d7ae7de304"[0m
+[0;90m14:46:40.087[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/github_commit_date"           = "20230308T131544"[0m
+[0;90m14:46:40.087[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/github_repository"            = "https://github.com/GCSI/openedx_devops.git"[0m
+[0;90m14:46:40.087[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/kubectl_version"              = "v1.26.1"[0m
+[0;90m14:46:40.087[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/os"                           = "darwin22"[0m
+[0;90m14:46:40.087[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/terraform"                    = "true"[0m
+[0;90m14:46:40.087[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/terraform_version"            = "v1.3.9"[0m
+[0;90m14:46:40.087[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/timestamp"                    = "20230320T083910"[0m
+[0;90m14:46:40.087[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/meta/version"                      = "v1.1.0"[0m
+[0;90m14:46:40.087[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/module/source"                     = "openedx_devops/terraform/environments/modules/acm"[0m
+[0;90m14:46:40.087[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/resource/source"                   = "terraform-aws-modules/acm/aws"[0m
+[0;90m14:46:40.087[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/resource/version"                  = "4.3"[0m
+[0;90m14:46:40.087[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "cookiecutter/shared_resource_namespace"         = "codlp-global-live"[0m
+[0;90m14:46:40.088[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        } [90m-> null[0m[0m[0m
+[0;90m14:46:40.088[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m type                      = "AMAZON_ISSUED" [90m-> null[0m[0m[0m
+[0;90m14:46:40.088[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m validation_emails         = [] [90m-> null[0m[0m[0m
+[0;90m14:46:40.088[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m validation_method         = "DNS" [90m-> null[0m[0m[0m
+[0;90m14:46:40.088[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        [90m# (2 unchanged attributes hidden)[0m[0m[0m
+[0;90m14:46:40.088[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m options {[0m
+[0;90m14:46:40.088[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m certificate_transparency_logging_preference = "ENABLED" [90m-> null[0m[0m[0m
+[0;90m14:46:40.088[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        }
+[0;90m14:46:40.088[0m [0;37mSTDOUT[0m [0;36mterraform: [0m    }
+[0;90m14:46:40.088[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[1m  # module.acm_root_domain_environment_region.aws_acm_certificate_validation.this[0][0m will be [1m[31mdestroyed[0m[0m
+[0;90m14:46:40.088[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[0m  [31m-[0m[0m resource "aws_acm_certificate_validation" "this" {[0m
+[0;90m14:46:40.088[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m certificate_arn         = "arn:aws:acm:eu-west-2:824885811700:certificate/2e9f449e-86f5-4d73-b474-0f2a4066914a" [90m-> null[0m[0m[0m
+[0;90m14:46:40.088[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m id                      = "2022-09-09 19:06:15.463 +0000 UTC" [90m-> null[0m[0m[0m
+[0;90m14:46:40.088[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m validation_record_fqdns = [[0m
+[0;90m14:46:40.088[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "_7b17e37992c0a377d0382a18b9d93d4b.global-communications-academy.com",[0m
+[0;90m14:46:40.088[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        ] [90m-> null[0m[0m[0m
+[0;90m14:46:40.088[0m [0;37mSTDOUT[0m [0;36mterraform: [0m    }
+[0;90m14:46:40.088[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[1m  # module.acm_root_domain_environment_region.aws_route53_record.validation[0][0m will be [1m[31mdestroyed[0m[0m
+[0;90m14:46:40.088[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[0m  [31m-[0m[0m resource "aws_route53_record" "validation" {[0m
+[0;90m14:46:40.088[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m allow_overwrite                  = true [90m-> null[0m[0m[0m
+[0;90m14:46:40.088[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m fqdn                             = "_7b17e37992c0a377d0382a18b9d93d4b.global-communications-academy.com" [90m-> null[0m[0m[0m
+[0;90m14:46:40.088[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m id                               = "Z064431917WGFKESPTVUT__7b17e37992c0a377d0382a18b9d93d4b.global-communications-academy.com._CNAME" [90m-> null[0m[0m[0m
+[0;90m14:46:40.089[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m multivalue_answer_routing_policy = false [90m-> null[0m[0m[0m
+[0;90m14:46:40.089[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m name                             = "_7b17e37992c0a377d0382a18b9d93d4b.global-communications-academy.com" [90m-> null[0m[0m[0m
+[0;90m14:46:40.089[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m records                          = [[0m
+[0;90m14:46:40.089[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "_ca73ce8a82aa795bc6df807a02a1e95f.dhzvlrndnj.acm-validations.aws.",[0m
+[0;90m14:46:40.089[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        ] [90m-> null[0m[0m[0m
+[0;90m14:46:40.089[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m ttl                              = 60 [90m-> null[0m[0m[0m
+[0;90m14:46:40.089[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m type                             = "CNAME" [90m-> null[0m[0m[0m
+[0;90m14:46:40.089[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m zone_id                          = "Z064431917WGFKESPTVUT" [90m-> null[0m[0m[0m
+[0;90m14:46:40.089[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        [90m# (2 unchanged attributes hidden)[0m[0m[0m
+[0;90m14:46:40.089[0m [0;37mSTDOUT[0m [0;36mterraform: [0m    }
+[0;90m14:46:40.089[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[1m  # module.cookiecutter_meta.null_resource.environment[0m will be [1m[31mdestroyed[0m[0m
+[0;90m14:46:40.089[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[0m  [31m-[0m[0m resource "null_resource" "environment" {[0m
+[0;90m14:46:40.089[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m id = "3663481805059454628" [90m-> null[0m[0m[0m
+[0;90m14:46:40.089[0m [0;37mSTDOUT[0m [0;36mterraform: [0m    }
+[0;90m14:46:40.089[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[1m  # module.cookiecutter_meta.null_resource.init[0m will be [1m[31mdestroyed[0m[0m
+[0;90m14:46:40.089[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[0m  [31m-[0m[0m resource "null_resource" "init" {[0m
+[0;90m14:46:40.089[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m id = "8045305755796692726" [90m-> null[0m[0m[0m
+[0;90m14:46:40.089[0m [0;37mSTDOUT[0m [0;36mterraform: [0m    }
+[0;90m14:46:40.089[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[1m  # module.cookiecutter_meta.null_resource.taint[0m will be [1m[31mdestroyed[0m[0m
+[0;90m14:46:40.089[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[0m  [31m-[0m[0m resource "null_resource" "taint" {[0m
+[0;90m14:46:40.089[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m id       = "7045862348240247956" [90m-> null[0m[0m[0m
+[0;90m14:46:40.089[0m [0;37mSTDOUT[0m [0;36mterraform: [0m      [31m-[0m[0m triggers = {[0m
+[0;90m14:46:40.089[0m [0;37mSTDOUT[0m [0;36mterraform: [0m          [31m-[0m[0m "timestamp" = "2023-03-20T14:39:31Z"[0m
+[0;90m14:46:40.089[0m [0;37mSTDOUT[0m [0;36mterraform: [0m        } [90m-> null[0m[0m[0m
+[0;90m14:46:40.089[0m [0;37mSTDOUT[0m [0;36mterraform: [0m    }
+[0;90m14:46:40.089[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[1mPlan:[0m 0 to add, 0 to change, 9 to destroy.[0m
+[0;90m14:46:40.089[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[0m[0m
+[0;90m14:46:40.089[0m [0;37mSTDOUT[0m [0;36mterraform: [0mChanges to Outputs:
+[0;90m14:46:40.089[0m [0;37mSTDOUT[0m [0;36mterraform: [0m  [31m-[0m[0m acm_root_domain_environment_region_acm_certificate_status = "ISSUED" [90m-> null[0m[0m[0m
+[0;90m14:46:40.089[0m [0;37mSTDOUT[0m [0;36mterraform: [0m[90m[0m
+[0;90m14:46:40.089[0m [0;37mSTDOUT[0m [0;36mterraform: [0m─────────────────────────────────────────────────────────────────────────────[0m[0m
+[0;90m14:46:40.090[0m [0;37mSTDOUT[0m [0;36mterraform: [0mNote: You didn't use the -out option to save this plan, so Terraform can't
+[0;90m14:46:40.090[0m [0;37mSTDOUT[0m [0;36mterraform: [0mguarantee to take exactly these actions if you run "terraform apply" now.
+[0;90m14:46:40.477[0m [0;37mSTDOUT[0m [0;36mterraform: [0mReleasing state lock. This may take a few moments...

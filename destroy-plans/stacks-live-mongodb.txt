@@ -1,0 +1,446 @@
+16:25:36.719 STDOUT terraform: plan. Resource actions are indicated with the following symbols:
+16:25:36.719 STDOUT terraform:   - destroy
+16:25:36.719 STDOUT terraform: Terraform will perform the following actions:
+16:25:36.719 STDOUT terraform:   # aws_iam_access_key.aws_cli will be destroyed
+16:25:36.719 STDOUT terraform:   - resource "aws_iam_access_key" "aws_cli" {
+16:25:36.719 STDOUT terraform:       - create_date          = "2022-09-07T19:08:33Z" -> null
+16:25:36.719 STDOUT terraform:       - id                   = "AKIA4ADYGTH2CL74EQIM" -> null
+16:25:36.719 STDOUT terraform:       - secret               = (sensitive value) -> null
+16:25:36.719 STDOUT terraform:       - ses_smtp_password_v4 = (sensitive value) -> null
+16:25:36.719 STDOUT terraform:       - status               = "Active" -> null
+16:25:36.719 STDOUT terraform:       - user                 = "codlp-global-live-mongodb" -> null
+16:25:36.720 STDOUT terraform:     }
+16:25:36.720 STDOUT terraform:   # aws_iam_user.aws_cli will be destroyed
+16:25:36.720 STDOUT terraform:   - resource "aws_iam_user" "aws_cli" {
+16:25:36.720 STDOUT terraform:       - arn           = "arn:aws:iam::824885811700:user/system/mongodb-user/codlp-global-live-mongodb" -> null
+16:25:36.720 STDOUT terraform:       - force_destroy = false -> null
+16:25:36.720 STDOUT terraform:       - id            = "codlp-global-live-mongodb" -> null
+16:25:36.720 STDOUT terraform:       - name          = "codlp-global-live-mongodb" -> null
+16:25:36.720 STDOUT terraform:       - path          = "/system/mongodb-user/" -> null
+16:25:36.720 STDOUT terraform:       - tags          = {
+16:25:36.720 STDOUT terraform:           - "Name"                                    = "codlp-global-live-mongodb"
+16:25:36.720 STDOUT terraform:           - "cookiecutter/platform_name"              = "codlp"
+16:25:36.720 STDOUT terraform:           - "cookiecutter/platform_region"            = "global"
+16:25:36.720 STDOUT terraform:           - "cookiecutter/root_domain"                = "global-communications-academy.com"
+16:25:36.721 STDOUT terraform:           - "cookiecutter/services_subdomain"         = "service.global-communications-academy.com"
+16:25:36.721 STDOUT terraform:           - "cookiecutter/shared_resource_identifier" = "live"
+16:25:36.721 STDOUT terraform:           - "cookiecutter/stack"                      = "live"
+16:25:36.721 STDOUT terraform:           - "cookiecutter/stack_namespace"            = "codlp-global-live"
+16:25:36.721 STDOUT terraform:           - "cookiecutter/terraform"                  = "true"
+16:25:36.721 STDOUT terraform:         } -> null
+16:25:36.721 STDOUT terraform:       - tags_all      = {
+16:25:36.721 STDOUT terraform:           - "Name"                                    = "codlp-global-live-mongodb"
+16:25:36.721 STDOUT terraform:           - "cookiecutter/platform_name"              = "codlp"
+16:25:36.721 STDOUT terraform:           - "cookiecutter/platform_region"            = "global"
+16:25:36.721 STDOUT terraform:           - "cookiecutter/root_domain"                = "global-communications-academy.com"
+16:25:36.721 STDOUT terraform:           - "cookiecutter/services_subdomain"         = "service.global-communications-academy.com"
+16:25:36.722 STDOUT terraform:           - "cookiecutter/shared_resource_identifier" = "live"
+16:25:36.722 STDOUT terraform:           - "cookiecutter/stack"                      = "live"
+16:25:36.722 STDOUT terraform:           - "cookiecutter/stack_namespace"            = "codlp-global-live"
+16:25:36.722 STDOUT terraform:           - "cookiecutter/terraform"                  = "true"
+16:25:36.722 STDOUT terraform:         } -> null
+16:25:36.722 STDOUT terraform:       - unique_id     = "AIDA4ADYGTH2FMCZ3D26N" -> null
+16:25:36.722 STDOUT terraform:     }
+16:25:36.722 STDOUT terraform:   # aws_iam_user_policy_attachment.AmazonS3FullAccess will be destroyed
+16:25:36.722 STDOUT terraform:   - resource "aws_iam_user_policy_attachment" "AmazonS3FullAccess" {
+16:25:36.722 STDOUT terraform:       - id         = "codlp-global-live-mongodb-20220907190832847500000002" -> null
+16:25:36.722 STDOUT terraform:       - policy_arn = "arn:aws:iam::aws:policy/AmazonS3FullAccess" -> null
+16:25:36.722 STDOUT terraform:       - user       = "codlp-global-live-mongodb" -> null
+16:25:36.722 STDOUT terraform:     }
+16:25:36.722 STDOUT terraform:   # aws_instance.mongodb will be destroyed
+16:25:36.722 STDOUT terraform:   - resource "aws_instance" "mongodb" {
+16:25:36.723 STDOUT terraform:       - ami                                  = "ami-031ddf8bd79d677fd" -> null
+16:25:36.723 STDOUT terraform:       - arn                                  = "arn:aws:ec2:eu-west-2:824885811700:instance/i-00b5031cec8a00178" -> null
+16:25:36.723 STDOUT terraform:       - associate_public_ip_address          = false -> null
+16:25:36.723 STDOUT terraform:       - availability_zone                    = "eu-west-2a" -> null
+16:25:36.723 STDOUT terraform:       - cpu_core_count                       = 1 -> null
+16:25:36.723 STDOUT terraform:       - cpu_threads_per_core                 = 2 -> null
+16:25:36.723 STDOUT terraform:       - disable_api_stop                     = false -> null
+16:25:36.723 STDOUT terraform:       - disable_api_termination              = false -> null
+16:25:36.723 STDOUT terraform:       - ebs_optimized                        = false -> null
+16:25:36.723 STDOUT terraform:       - get_password_data                    = false -> null
+16:25:36.724 STDOUT terraform:       - hibernation                          = false -> null
+16:25:36.724 STDOUT terraform:       - id                                   = "i-00b5031cec8a00178" -> null
+16:25:36.724 STDOUT terraform:       - instance_initiated_shutdown_behavior = "stop" -> null
+16:25:36.724 STDOUT terraform:       - instance_state                       = "running" -> null
+16:25:36.724 STDOUT terraform:       - instance_type                        = "t3.medium" -> null
+16:25:36.724 STDOUT terraform:       - ipv6_address_count                   = 0 -> null
+16:25:36.724 STDOUT terraform:       - ipv6_addresses                       = [] -> null
+16:25:36.724 STDOUT terraform:       - key_name                             = "codlp-global-live-mongodb" -> null
+16:25:36.724 STDOUT terraform:       - monitoring                           = false -> null
+16:25:36.724 STDOUT terraform:       - placement_partition_number           = 0 -> null
+16:25:36.725 STDOUT terraform:       - primary_network_interface_id         = "eni-0d19173c8bfa7e0eb" -> null
+16:25:36.725 STDOUT terraform:       - private_dns                          = "ip-192-168-8-137.eu-west-2.compute.internal" -> null
+16:25:36.725 STDOUT terraform:       - private_ip                           = "192.168.8.137" -> null
+16:25:36.725 STDOUT terraform:       - secondary_private_ips                = [] -> null
+16:25:36.725 STDOUT terraform:       - security_groups                      = [] -> null
+16:25:36.725 STDOUT terraform:       - source_dest_check                    = true -> null
+16:25:36.725 STDOUT terraform:       - subnet_id                            = "subnet-0c6dd6295e7138696" -> null
+16:25:36.726 STDOUT terraform:       - tags                                 = {
+16:25:36.726 STDOUT terraform:           - "Name"            = "codlp-global-live-mongodb"
+16:25:36.726 STDOUT terraform:           - "Platform"        = "codlp"
+16:25:36.726 STDOUT terraform:           - "Platform-Region" = "global"
+16:25:36.726 STDOUT terraform:           - "Stack"           = "live"
+16:25:36.726 STDOUT terraform:           - "Terraform"       = "true"
+16:25:36.726 STDOUT terraform:         } -> null
+16:25:36.726 STDOUT terraform:       - tags_all                             = {
+16:25:36.726 STDOUT terraform:           - "Name"            = "codlp-global-live-mongodb"
+16:25:36.726 STDOUT terraform:           - "Platform"        = "codlp"
+16:25:36.726 STDOUT terraform:           - "Platform-Region" = "global"
+16:25:36.726 STDOUT terraform:           - "Stack"           = "live"
+16:25:36.727 STDOUT terraform:           - "Terraform"       = "true"
+16:25:36.727 STDOUT terraform:         } -> null
+16:25:36.727 STDOUT terraform:       - tenancy                              = "default" -> null
+16:25:36.727 STDOUT terraform:       - user_data_replace_on_change          = false -> null
+16:25:36.727 STDOUT terraform:       - vpc_security_group_ids               = [
+16:25:36.727 STDOUT terraform:           - "sg-02be4ddbc4464cc9f",
+16:25:36.727 STDOUT terraform:           - "sg-0a4235ee15a3e9043",
+16:25:36.727 STDOUT terraform:         ] -> null
+16:25:36.727 STDOUT terraform:         # (7 unchanged attributes hidden)
+16:25:36.727 STDOUT terraform:       - capacity_reservation_specification {
+16:25:36.727 STDOUT terraform:           - capacity_reservation_preference = "open" -> null
+16:25:36.727 STDOUT terraform:         }
+16:25:36.727 STDOUT terraform:       - credit_specification {
+16:25:36.727 STDOUT terraform:           - cpu_credits = "unlimited" -> null
+16:25:36.727 STDOUT terraform:         }
+16:25:36.727 STDOUT terraform:       - ebs_block_device {
+16:25:36.727 STDOUT terraform:           - delete_on_termination = false -> null
+16:25:36.728 STDOUT terraform:           - device_name           = "/dev/sdh" -> null
+16:25:36.728 STDOUT terraform:           - encrypted             = false -> null
+16:25:36.728 STDOUT terraform:           - iops                  = 100 -> null
+16:25:36.728 STDOUT terraform:           - tags                  = {
+16:25:36.728 STDOUT terraform:               - "Name"                                    = "codlp-global-live-mongodb"
+16:25:36.728 STDOUT terraform:               - "cookiecutter/platform_name"              = "codlp"
+16:25:36.728 STDOUT terraform:               - "cookiecutter/platform_region"            = "global"
+16:25:36.728 STDOUT terraform:               - "cookiecutter/root_domain"                = "global-communications-academy.com"
+16:25:36.728 STDOUT terraform:               - "cookiecutter/services_subdomain"         = "service.global-communications-academy.com"
+16:25:36.729 STDOUT terraform:               - "cookiecutter/shared_resource_identifier" = "live"
+16:25:36.729 STDOUT terraform:               - "cookiecutter/stack"                      = "live"
+16:25:36.729 STDOUT terraform:               - "cookiecutter/stack_namespace"            = "codlp-global-live"
+16:25:36.729 STDOUT terraform:               - "cookiecutter/terraform"                  = "true"
+16:25:36.729 STDOUT terraform:             } -> null
+16:25:36.729 STDOUT terraform:           - throughput            = 0 -> null
+16:25:36.729 STDOUT terraform:           - volume_id             = "vol-0965473902706ec45" -> null
+16:25:36.729 STDOUT terraform:           - volume_size           = 10 -> null
+16:25:36.729 STDOUT terraform:           - volume_type           = "gp2" -> null
+16:25:36.729 STDOUT terraform:             # (2 unchanged attributes hidden)
+16:25:36.730 STDOUT terraform:         }
+16:25:36.730 STDOUT terraform:       - enclave_options {
+16:25:36.730 STDOUT terraform:           - enabled = false -> null
+16:25:36.730 STDOUT terraform:         }
+16:25:36.730 STDOUT terraform:       - maintenance_options {
+16:25:36.730 STDOUT terraform:           - auto_recovery = "default" -> null
+16:25:36.730 STDOUT terraform:         }
+16:25:36.730 STDOUT terraform:       - metadata_options {
+16:25:36.730 STDOUT terraform:           - http_endpoint               = "enabled" -> null
+16:25:36.730 STDOUT terraform:           - http_put_response_hop_limit = 1 -> null
+16:25:36.730 STDOUT terraform:           - http_tokens                 = "optional" -> null
+16:25:36.730 STDOUT terraform:           - instance_metadata_tags      = "disabled" -> null
+16:25:36.730 STDOUT terraform:         }
+16:25:36.730 STDOUT terraform:       - private_dns_name_options {
+16:25:36.730 STDOUT terraform:           - enable_resource_name_dns_a_record    = false -> null
+16:25:36.731 STDOUT terraform:           - enable_resource_name_dns_aaaa_record = false -> null
+16:25:36.731 STDOUT terraform:           - hostname_type                        = "ip-name" -> null
+16:25:36.731 STDOUT terraform:         }
+16:25:36.731 STDOUT terraform:       - root_block_device {
+16:25:36.731 STDOUT terraform:           - delete_on_termination = true -> null
+16:25:36.731 STDOUT terraform:           - device_name           = "/dev/sda1" -> null
+16:25:36.731 STDOUT terraform:           - encrypted             = false -> null
+16:25:36.731 STDOUT terraform:           - iops                  = 100 -> null
+16:25:36.731 STDOUT terraform:           - tags                  = {
+16:25:36.731 STDOUT terraform:               - "Name"                                    = "codlp-global-live-mongodb"
+16:25:36.732 STDOUT terraform:               - "cookiecutter/platform_name"              = "codlp"
+16:25:36.732 STDOUT terraform:               - "cookiecutter/platform_region"            = "global"
+16:25:36.732 STDOUT terraform:               - "cookiecutter/root_domain"                = "global-communications-academy.com"
+16:25:36.732 STDOUT terraform:               - "cookiecutter/services_subdomain"         = "service.global-communications-academy.com"
+16:25:36.732 STDOUT terraform:               - "cookiecutter/shared_resource_identifier" = "live"
+16:25:36.732 STDOUT terraform:               - "cookiecutter/stack"                      = "live"
+16:25:36.732 STDOUT terraform:               - "cookiecutter/stack_namespace"            = "codlp-global-live"
+16:25:36.732 STDOUT terraform:               - "cookiecutter/terraform"                  = "true"
+16:25:36.732 STDOUT terraform:             } -> null
+16:25:36.733 STDOUT terraform:           - throughput            = 0 -> null
+16:25:36.733 STDOUT terraform:           - volume_id             = "vol-037da2aa3fbd95e46" -> null
+16:25:36.733 STDOUT terraform:           - volume_size           = 8 -> null
+16:25:36.733 STDOUT terraform:           - volume_type           = "gp2" -> null
+16:25:36.733 STDOUT terraform:             # (1 unchanged attribute hidden)
+16:25:36.733 STDOUT terraform:         }
+16:25:36.733 STDOUT terraform:     }
+16:25:36.733 STDOUT terraform:   # aws_key_pair.mongodb will be destroyed
+16:25:36.733 STDOUT terraform:   - resource "aws_key_pair" "mongodb" {
+16:25:36.733 STDOUT terraform:       - arn             = "arn:aws:ec2:eu-west-2:824885811700:key-pair/codlp-global-live-mongodb" -> null
+16:25:36.733 STDOUT terraform:       - fingerprint     = "e6:6e:6e:fd:fd:3a:97:40:3e:77:e2:72:11:2d:a0:a5" -> null
+16:25:36.733 STDOUT terraform:       - id              = "codlp-global-live-mongodb" -> null
+16:25:36.734 STDOUT terraform:       - key_name        = "codlp-global-live-mongodb" -> null
+16:25:36.734 STDOUT terraform:       - key_pair_id     = "key-0707ad63eb9a5e70e" -> null
+16:25:36.734 STDOUT terraform:       - key_type        = "rsa" -> null
+16:25:36.734 STDOUT terraform:       - public_key      = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC3nOyPmiyleBzv4I96dOjVobaF38WDL5qvERxO32bHJ/E2fuckRU6OndUYnMkibtU3nhlM/VwhulHJZ9nfAM4AOiZ+5VRkYeM5gxu8VYPsh/ciKQo0W8iUhgGQ5Y+YKVFavzPqzegZHyxWSKvKykPHKARQqSCjbsWgvcGI7qyoZKFJQ7SQJga+YfSupA7r75SDaHnjVr+iXZOACCJtLaY4SqwbfR2q9ST89ZIep9Hra/DXya34aYXUcRDKzLsb5d5ry1OZkbQukWXs4MgzvhFTX99Ms4EOfas4aaZ8XZNq03CaO7exPzZtlUFYPSLw+Zy0S3tdjC0BHVP8fBoAThja9w3+Ctq4n5d++q+kbDydXQAVJQoIALYYpVCowBf9lTghlKaZtIQ4ISY7B1ikAeBTkMeds8T97M79hB/M7F6reiVlgoTbD91eKhSF7fweyWjDVLHL2E8ibhmaMcxiEmilgig1wJKHfO1WywAx+d/7v6HO6UT/R9UJj496ZDx85dyYwvd0AwNXAfNX6cqT7VOaJtrJu6y4NFMIFKgEiszYoILKdKWPsiUCrGM013F7oCic4nxlYJZhuMhH+u2XxmuYgtINfDQ+B4Nul2W/Eb18KvzuwarvjXbwj8NFaF+Tj5UI8jkTYTlbKX5LHVPrQuCQbmUZ2maIU+TgBPi67cl4kw==" -> null
+16:25:36.735 STDOUT terraform:       - tags            = {} -> null
+16:25:36.735 STDOUT terraform:       - tags_all        = {} -> null
+16:25:36.735 STDOUT terraform:         # (1 unchanged attribute hidden)
+16:25:36.735 STDOUT terraform:     }
+16:25:36.735 STDOUT terraform:   # aws_route53_record.mongodb will be destroyed
+16:25:36.735 STDOUT terraform:   - resource "aws_route53_record" "mongodb" {
+16:25:36.735 STDOUT terraform:       - fqdn                             = "mongodb.service.global-communications-academy.com" -> null
+16:25:36.736 STDOUT terraform:       - id                               = "Z04816663RS7JSSRH8ZYP_mongodb.service.global-communications-academy.com_A" -> null
+16:25:36.736 STDOUT terraform:       - multivalue_answer_routing_policy = false -> null
+16:25:36.736 STDOUT terraform:       - name                             = "mongodb.service.global-communications-academy.com" -> null
+16:25:36.736 STDOUT terraform:       - records                          = [
+16:25:36.736 STDOUT terraform:           - "192.168.8.137",
+16:25:36.736 STDOUT terraform:         ] -> null
+16:25:36.736 STDOUT terraform:       - ttl                              = 600 -> null
+16:25:36.736 STDOUT terraform:       - type                             = "A" -> null
+16:25:36.736 STDOUT terraform:       - zone_id                          = "Z04816663RS7JSSRH8ZYP" -> null
+16:25:36.737 STDOUT terraform:         # (2 unchanged attributes hidden)
+16:25:36.737 STDOUT terraform:     }
+16:25:36.737 STDOUT terraform:   # aws_security_group.sg_mongodb will be destroyed
+16:25:36.737 STDOUT terraform:   - resource "aws_security_group" "sg_mongodb" {
+16:25:36.737 STDOUT terraform:       - arn                    = "arn:aws:ec2:eu-west-2:824885811700:security-group/sg-02be4ddbc4464cc9f" -> null
+16:25:36.737 STDOUT terraform:       - description            = "openedx_devops: MongoDB access from within VPC" -> null
+16:25:36.737 STDOUT terraform:       - egress                 = [
+16:25:36.737 STDOUT terraform:           - {
+16:25:36.737 STDOUT terraform:               - cidr_blocks      = [
+16:25:36.737 STDOUT terraform:                   - "0.0.0.0/0",
+16:25:36.737 STDOUT terraform:                 ]
+16:25:36.737 STDOUT terraform:               - description      = "openedx_devops: public MongoDB out to anywhere"
+16:25:36.738 STDOUT terraform:               - from_port        = 0
+16:25:36.738 STDOUT terraform:               - ipv6_cidr_blocks = [
+16:25:36.738 STDOUT terraform:                   - "::/0",
+16:25:36.738 STDOUT terraform:                 ]
+16:25:36.738 STDOUT terraform:               - prefix_list_ids  = []
+16:25:36.738 STDOUT terraform:               - protocol         = "-1"
+16:25:36.738 STDOUT terraform:               - security_groups  = []
+16:25:36.738 STDOUT terraform:               - self             = false
+16:25:36.738 STDOUT terraform:               - to_port          = 0
+16:25:36.738 STDOUT terraform:             },
+16:25:36.738 STDOUT terraform:         ] -> null
+16:25:36.738 STDOUT terraform:       - id                     = "sg-02be4ddbc4464cc9f" -> null
+16:25:36.738 STDOUT terraform:       - ingress                = [
+16:25:36.738 STDOUT terraform:           - {
+16:25:36.738 STDOUT terraform:               - cidr_blocks      = [
+16:25:36.738 STDOUT terraform:                   - "192.168.0.0/20",
+16:25:36.738 STDOUT terraform:                 ]
+16:25:36.738 STDOUT terraform:               - description      = "openedx_devops: MongoDB access from within VPC"
+16:25:36.739 STDOUT terraform:               - from_port        = 27017
+16:25:36.739 STDOUT terraform:               - ipv6_cidr_blocks = []
+16:25:36.739 STDOUT terraform:               - prefix_list_ids  = []
+16:25:36.739 STDOUT terraform:               - protocol         = "tcp"
+16:25:36.739 STDOUT terraform:               - security_groups  = []
+16:25:36.739 STDOUT terraform:               - self             = false
+16:25:36.739 STDOUT terraform:               - to_port          = 27017
+16:25:36.739 STDOUT terraform:             },
+16:25:36.739 STDOUT terraform:           - {
+16:25:36.739 STDOUT terraform:               - cidr_blocks      = [
+16:25:36.739 STDOUT terraform:                   - "192.168.0.0/20",
+16:25:36.739 STDOUT terraform:                 ]
+16:25:36.739 STDOUT terraform:               - description      = "openedx_devops: ssh access to MongoDB from within VPC"
+16:25:36.739 STDOUT terraform:               - from_port        = 22
+16:25:36.739 STDOUT terraform:               - ipv6_cidr_blocks = []
+16:25:36.740 STDOUT terraform:               - prefix_list_ids  = []
+16:25:36.740 STDOUT terraform:               - protocol         = "tcp"
+16:25:36.740 STDOUT terraform:               - security_groups  = []
+16:25:36.740 STDOUT terraform:               - self             = false
+16:25:36.740 STDOUT terraform:               - to_port          = 22
+16:25:36.740 STDOUT terraform:             },
+16:25:36.740 STDOUT terraform:         ] -> null
+16:25:36.740 STDOUT terraform:       - name                   = "codlp-global-live-mongodb20220907190832000900000001" -> null
+16:25:36.740 STDOUT terraform:       - name_prefix            = "codlp-global-live-mongodb" -> null
+16:25:36.740 STDOUT terraform:       - owner_id               = "824885811700" -> null
+16:25:36.740 STDOUT terraform:       - revoke_rules_on_delete = false -> null
+16:25:36.741 STDOUT terraform:       - tags                   = {
+16:25:36.741 STDOUT terraform:           - "Name"                                    = "codlp-global-live-mongodb"
+16:25:36.741 STDOUT terraform:           - "cookiecutter/platform_name"              = "codlp"
+16:25:36.741 STDOUT terraform:           - "cookiecutter/platform_region"            = "global"
+16:25:36.741 STDOUT terraform:           - "cookiecutter/root_domain"                = "global-communications-academy.com"
+16:25:36.741 STDOUT terraform:           - "cookiecutter/services_subdomain"         = "service.global-communications-academy.com"
+16:25:36.741 STDOUT terraform:           - "cookiecutter/shared_resource_identifier" = "live"
+16:25:36.741 STDOUT terraform:           - "cookiecutter/stack"                      = "live"
+16:25:36.742 STDOUT terraform:           - "cookiecutter/stack_namespace"            = "codlp-global-live"
+16:25:36.742 STDOUT terraform:           - "cookiecutter/terraform"                  = "true"
+16:25:36.742 STDOUT terraform:         } -> null
+16:25:36.742 STDOUT terraform:       - tags_all               = {
+16:25:36.742 STDOUT terraform:           - "Name"                                    = "codlp-global-live-mongodb"
+16:25:36.742 STDOUT terraform:           - "cookiecutter/platform_name"              = "codlp"
+16:25:36.742 STDOUT terraform:           - "cookiecutter/platform_region"            = "global"
+16:25:36.742 STDOUT terraform:           - "cookiecutter/root_domain"                = "global-communications-academy.com"
+16:25:36.743 STDOUT terraform:           - "cookiecutter/services_subdomain"         = "service.global-communications-academy.com"
+16:25:36.743 STDOUT terraform:           - "cookiecutter/shared_resource_identifier" = "live"
+16:25:36.743 STDOUT terraform:           - "cookiecutter/stack"                      = "live"
+16:25:36.743 STDOUT terraform:           - "cookiecutter/stack_namespace"            = "codlp-global-live"
+16:25:36.743 STDOUT terraform:           - "cookiecutter/terraform"                  = "true"
+16:25:36.743 STDOUT terraform:         } -> null
+16:25:36.743 STDOUT terraform:       - vpc_id                 = "vpc-0c764ae678e3a5509" -> null
+16:25:36.744 STDOUT terraform:     }
+16:25:36.744 STDOUT terraform:   # aws_volume_attachment.mongodb will be destroyed
+16:25:36.744 STDOUT terraform:   - resource "aws_volume_attachment" "mongodb" {
+16:25:36.744 STDOUT terraform:       - device_name = "/dev/sdh" -> null
+16:25:36.744 STDOUT terraform:       - id          = "vai-3430567880" -> null
+16:25:36.744 STDOUT terraform:       - instance_id = "i-00b5031cec8a00178" -> null
+16:25:36.744 STDOUT terraform:       - volume_id   = "vol-0965473902706ec45" -> null
+16:25:36.744 STDOUT terraform:     }
+16:25:36.744 STDOUT terraform:   # null_resource.install_script will be destroyed
+16:25:36.744 STDOUT terraform:   - resource "null_resource" "install_script" {
+16:25:36.744 STDOUT terraform:       - id       = "531446305839092841" -> null
+16:25:36.744 STDOUT terraform:       - triggers = {
+16:25:36.744 STDOUT terraform:           - "install_script"   = <<-EOT
+16:25:36.744 STDOUT terraform:                 #!/bin/bash
+16:25:36.745 STDOUT terraform:                 #---------------------------------------------------------
+16:25:36.745 STDOUT terraform:                 # written by: Lawrence McDaniel
+16:25:36.745 STDOUT terraform:                 #             https://lawrencemcdaniel.com
+16:25:36.745 STDOUT terraform:                 #
+16:25:36.745 STDOUT terraform:                 # date:       aug-2022
+16:25:36.745 STDOUT terraform:                 #
+16:25:36.745 STDOUT terraform:                 # usage: MongoDB installation tasks on Bastion.
+16:25:36.745 STDOUT terraform:                 #--------------------------------------------------------
+16:25:36.745 STDOUT terraform:                 
+16:25:36.745 STDOUT terraform:                 # initialize local variables from Terraform template tags
+16:25:36.745 STDOUT terraform:                 PRIVATE_KEY_PEM=codlp-global-live-mongodb.pem
+16:25:36.745 STDOUT terraform:                 PRIVATE_IPV4=192.168.8.137
+16:25:36.745 STDOUT terraform:                 
+16:25:36.745 STDOUT terraform:                 # remove any raw template files that might have gotten copied into
+16:25:36.745 STDOUT terraform:                 # the scripts folder by Terraform bulk copy operations.
+16:25:36.746 STDOUT terraform:                 rm ../../../../../../../../../../ubuntu/scripts/*.sh.tpl
+16:25:36.746 STDOUT terraform:                 
+16:25:36.746 STDOUT terraform:                 # for diagnostics: dump the tmp contents. These files were
+16:25:36.746 STDOUT terraform:                 # added by provisioner directives in aws_instance in main.tf
+16:25:36.746 STDOUT terraform:                 ls /tmp/openedx_devops/mongodb/ -lha
+16:25:36.746 STDOUT terraform:                 
+16:25:36.746 STDOUT terraform:                 # set aws-mandated permissions on the mongodb private key
+16:25:36.746 STDOUT terraform:                 echo setting permission on ~/.ssh/$PRIVATE_KEY_PEM
+16:25:36.746 STDOUT terraform:                 chmod 400 ~/.ssh/$PRIVATE_KEY_PEM
+16:25:36.746 STDOUT terraform:                 
+16:25:36.746 STDOUT terraform:                 # add the private ip address of this instance to the bastion .ssh/known_hosts
+16:25:36.747 STDOUT terraform:                 echo "appending fingerprint to known_hosts"
+16:25:36.747 STDOUT terraform:                 ssh-keyscan $PRIVATE_IPV4 >> $HOME/.ssh/known_hosts
+16:25:36.747 STDOUT terraform:                 
+16:25:36.747 STDOUT terraform:                 echo copying files from bastion tmp folder to $PRIVATE_IPV4
+16:25:36.747 STDOUT terraform:                 
+16:25:36.747 STDOUT terraform:                 # prep mongodb config files, then copy to the mongodb instance
+16:25:36.747 STDOUT terraform:                 chmod +x /tmp/openedx_devops/mongodb/scripts/*.sh
+16:25:36.747 STDOUT terraform:                 echo copying scripts to home folder on $PRIVATE_IPV4
+16:25:36.747 STDOUT terraform:                 scp -i ~/.ssh/$PRIVATE_KEY_PEM -r /tmp/openedx_devops/mongodb/scripts/ ubuntu@$PRIVATE_IPV4:../../../../../../../../../../ubuntu/
+16:25:36.747 STDOUT terraform:                 echo copying aws cli config to home folder on $PRIVATE_IPV4
+16:25:36.747 STDOUT terraform:                 scp -i ~/.ssh/$PRIVATE_KEY_PEM -r /tmp/openedx_devops/mongodb/.aws/ ubuntu@$PRIVATE_IPV4:../../../../../../../../../../ubuntu/
+16:25:36.747 STDOUT terraform:                 
+16:25:36.747 STDOUT terraform:                 # configure the login banner, copy login banner files from bastion tmp folder to the mongodb tmp folder
+16:25:36.747 STDOUT terraform:                 chmod 755 /tmp/openedx_devops/mongodb/etc/*
+16:25:36.747 STDOUT terraform:                 echo copying login banner files to mongodb tmp folder on $PRIVATE_IPV4
+16:25:36.747 STDOUT terraform:                 scp -i ~/.ssh/$PRIVATE_KEY_PEM -r /tmp/openedx_devops/mongodb/etc/ ubuntu@$PRIVATE_IPV4:/tmp/
+16:25:36.748 STDOUT terraform:                 
+16:25:36.748 STDOUT terraform:                 # copy banner files from mongodb tmp folder to /etc/update-motd.d/
+16:25:36.748 STDOUT terraform:                 echo installing login banners on $PRIVATE_IPV4
+16:25:36.748 STDOUT terraform:                 ssh ubuntu@$PRIVATE_IPV4 -i ~/.ssh/$PRIVATE_KEY_PEM sudo cp /tmp/etc/09-welcome-banner /etc/update-motd.d/09-welcome-banner
+16:25:36.748 STDOUT terraform:                 ssh ubuntu@$PRIVATE_IPV4 -i ~/.ssh/$PRIVATE_KEY_PEM sudo cp /tmp/etc/10-help-text /etc/update-motd.d/10-help-text
+16:25:36.748 STDOUT terraform:                 # copy mongo.conf from mongodb tmp folder to /etc/mongo.conf
+16:25:36.748 STDOUT terraform:                 echo installing mongo.conf on $PRIVATE_IPV4
+16:25:36.748 STDOUT terraform:                 ssh ubuntu@$PRIVATE_IPV4 -i ~/.ssh/$PRIVATE_KEY_PEM sudo cp /tmp/etc/mongod.conf /etc/mongod.conf
+16:25:36.748 STDOUT terraform:                 
+16:25:36.748 STDOUT terraform:                 
+16:25:36.748 STDOUT terraform:                 # disable some of the original Ubuntu login banner components by removing the executable permission
+16:25:36.748 STDOUT terraform:                 echo setting permissions in $PRIVATE_IPV4:/etc/update-motd.d/
+16:25:36.748 STDOUT terraform:                 ssh ubuntu@$PRIVATE_IPV4 -i ~/.ssh/$PRIVATE_KEY_PEM sudo chmod 755 /etc/update-motd.d/*
+16:25:36.749 STDOUT terraform:                 ssh ubuntu@$PRIVATE_IPV4 -i ~/.ssh/$PRIVATE_KEY_PEM sudo chmod 644 /etc/update-motd.d/50-landscape-sysinfo
+16:25:36.749 STDOUT terraform:                 ssh ubuntu@$PRIVATE_IPV4 -i ~/.ssh/$PRIVATE_KEY_PEM sudo chmod 644 /etc/update-motd.d/85-fwupd
+16:25:36.749 STDOUT terraform:                 ssh ubuntu@$PRIVATE_IPV4 -i ~/.ssh/$PRIVATE_KEY_PEM sudo chmod 644 /etc/update-motd.d/88-esm-announce
+16:25:36.749 STDOUT terraform:                 
+16:25:36.749 STDOUT terraform:                 # cleanup
+16:25:36.749 STDOUT terraform:                 # FIX NOTE: un-comment me
+16:25:36.749 STDOUT terraform:                 # "rm -rf /tmp/openedx_devops/mongodb",
+16:25:36.749 STDOUT terraform:                 
+16:25:36.749 STDOUT terraform:                 # create an ssh shortcut inside the bastion .ssh folder for the mongodb instance
+16:25:36.749 STDOUT terraform:                 # FIX NOTE: I DO NOT WORK :(
+16:25:36.749 STDOUT terraform:                 #"grep -qxF 'Host mongodb' ~/.ssh/config || cat /tmp/openedx_devops/mongodb/ssh_config >> ~/.ssh/config && echo added ssh key and config to bastion.",
+16:25:36.749 STDOUT terraform:                 
+16:25:36.749 STDOUT terraform:                 echo configuring .ssh/config on bastion
+16:25:36.749 STDOUT terraform:                 rm -f ~/.ssh/config
+16:25:36.750 STDOUT terraform:                 cat <<EOL >> ~/.ssh/config 
+16:25:36.750 STDOUT terraform:                 Host *
+16:25:36.750 STDOUT terraform:                   IdentitiesOnly yes
+16:25:36.750 STDOUT terraform:                 
+16:25:36.750 STDOUT terraform:                 Host mongodb
+16:25:36.750 STDOUT terraform:                  Hostname      192.168.8.137
+16:25:36.750 STDOUT terraform:                  User          ubuntu
+16:25:36.750 STDOUT terraform:                  IdentityFile  ~/.ssh/codlp-global-live-mongodb.pem
+16:25:36.750 STDOUT terraform:                 EOL
+16:25:36.750 STDOUT terraform:                 
+16:25:36.750 STDOUT terraform:                 echo done!
+16:25:36.750 STDOUT terraform:             EOT
+16:25:36.750 STDOUT terraform:           - "mongodb_instance" = "i-00b5031cec8a00178"
+16:25:36.750 STDOUT terraform:         } -> null
+16:25:36.750 STDOUT terraform:     }
+16:25:36.750 STDOUT terraform:   # random_password.mongodb_admin will be destroyed
+16:25:36.750 STDOUT terraform:   - resource "random_password" "mongodb_admin" {
+16:25:36.750 STDOUT terraform:       - bcrypt_hash      = (sensitive value) -> null
+16:25:36.750 STDOUT terraform:       - id               = "none" -> null
+16:25:36.750 STDOUT terraform:       - keepers          = {
+16:25:36.750 STDOUT terraform:           - "version" = "1"
+16:25:36.750 STDOUT terraform:         } -> null
+16:25:36.750 STDOUT terraform:       - length           = 16 -> null
+16:25:36.750 STDOUT terraform:       - lower            = true -> null
+16:25:36.750 STDOUT terraform:       - min_lower        = 0 -> null
+16:25:36.751 STDOUT terraform:       - min_numeric      = 0 -> null
+16:25:36.751 STDOUT terraform:       - min_special      = 0 -> null
+16:25:36.751 STDOUT terraform:       - min_upper        = 0 -> null
+16:25:36.751 STDOUT terraform:       - number           = true -> null
+16:25:36.751 STDOUT terraform:       - numeric          = true -> null
+16:25:36.751 STDOUT terraform:       - override_special = "_%@" -> null
+16:25:36.751 STDOUT terraform:       - result           = (sensitive value) -> null
+16:25:36.751 STDOUT terraform:       - special          = true -> null
+16:25:36.751 STDOUT terraform:       - upper            = true -> null
+16:25:36.751 STDOUT terraform:     }
+16:25:36.751 STDOUT terraform:   # tls_private_key.mongodb will be destroyed
+16:25:36.751 STDOUT terraform:   - resource "tls_private_key" "mongodb" {
+16:25:36.751 STDOUT terraform:       - algorithm                     = "RSA" -> null
+16:25:36.751 STDOUT terraform:       - ecdsa_curve                   = "P224" -> null
+16:25:36.751 STDOUT terraform:       - id                            = "6082fe0a86dc1165b2ef9ab37a799ecbd4b5547e" -> null
+16:25:36.752 STDOUT terraform:       - private_key_openssh           = (sensitive value) -> null
+16:25:36.752 STDOUT terraform:       - private_key_pem               = (sensitive value) -> null
+16:25:36.752 STDOUT terraform:       - private_key_pem_pkcs8         = (sensitive value) -> null
+16:25:36.752 STDOUT terraform:       - public_key_fingerprint_md5    = "2d:1d:10:c5:c5:bc:72:7d:0e:c5:a4:7f:4a:6a:7d:ab" -> null
+16:25:36.752 STDOUT terraform:       - public_key_fingerprint_sha256 = "SHA256:fggBqI5KDgDlq3bZ8EW3a42U+zctsHgB9ojv00VYLrw" -> null
+16:25:36.752 STDOUT terraform:       - public_key_openssh            = <<-EOT
+16:25:36.753 STDOUT terraform:             ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC3nOyPmiyleBzv4I96dOjVobaF38WDL5qvERxO32bHJ/E2fuckRU6OndUYnMkibtU3nhlM/VwhulHJZ9nfAM4AOiZ+5VRkYeM5gxu8VYPsh/ciKQo0W8iUhgGQ5Y+YKVFavzPqzegZHyxWSKvKykPHKARQqSCjbsWgvcGI7qyoZKFJQ7SQJga+YfSupA7r75SDaHnjVr+iXZOACCJtLaY4SqwbfR2q9ST89ZIep9Hra/DXya34aYXUcRDKzLsb5d5ry1OZkbQukWXs4MgzvhFTX99Ms4EOfas4aaZ8XZNq03CaO7exPzZtlUFYPSLw+Zy0S3tdjC0BHVP8fBoAThja9w3+Ctq4n5d++q+kbDydXQAVJQoIALYYpVCowBf9lTghlKaZtIQ4ISY7B1ikAeBTkMeds8T97M79hB/M7F6reiVlgoTbD91eKhSF7fweyWjDVLHL2E8ibhmaMcxiEmilgig1wJKHfO1WywAx+d/7v6HO6UT/R9UJj496ZDx85dyYwvd0AwNXAfNX6cqT7VOaJtrJu6y4NFMIFKgEiszYoILKdKWPsiUCrGM013F7oCic4nxlYJZhuMhH+u2XxmuYgtINfDQ+B4Nul2W/Eb18KvzuwarvjXbwj8NFaF+Tj5UI8jkTYTlbKX5LHVPrQuCQbmUZ2maIU+TgBPi67cl4kw==
+16:25:36.754 STDOUT terraform:         EOT -> null
+16:25:36.754 STDOUT terraform:       - public_key_pem                = <<-EOT
+16:25:36.754 STDOUT terraform:             -----BEGIN PUBLIC KEY-----
+16:25:36.754 STDOUT terraform:             MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAt5zsj5ospXgc7+CPenTo
+16:25:36.754 STDOUT terraform:             1aG2hd/Fgy+arxEcTt9mxyfxNn7nJEVOjp3VGJzJIm7VN54ZTP1cIbpRyWfZ3wDO
+16:25:36.754 STDOUT terraform:             ADomfuVUZGHjOYMbvFWD7If3IikKNFvIlIYBkOWPmClRWr8z6s3oGR8sVkiryspD
+16:25:36.754 STDOUT terraform:             xygEUKkgo27FoL3BiO6sqGShSUO0kCYGvmH0rqQO6++Ug2h541a/ol2TgAgibS2m
+16:25:36.754 STDOUT terraform:             OEqsG30dqvUk/PWSHqfR62vw18mt+GmF1HEQysy7G+Xea8tTmZG0LpFl7ODIM74R
+16:25:36.754 STDOUT terraform:             U1/fTLOBDn2rOGmmfF2TatNwmju3sT82bZVBWD0i8PmctEt7XYwtAR1T/HwaAE4Y
+16:25:36.754 STDOUT terraform:             2vcN/grauJ+XfvqvpGw8nV0AFSUKCAC2GKVQqMAX/ZU4IZSmmbSEOCEmOwdYpAHg
+16:25:36.754 STDOUT terraform:             U5DHnbPE/ezO/YQfzOxeq3olZYKE2w/dXioUhe38Hslow1Sxy9hPIm4ZmjHMYhJo
+16:25:36.754 STDOUT terraform:             pYIoNcCSh3ztVssAMfnf+7+hzulE/0fVCY+PemQ8fOXcmML3dAMDVwHzV+nKk+1T
+16:25:36.754 STDOUT terraform:             mibaybusuDRTCBSoBIrM2KCCynSlj7IlAqxjNNdxe6AonOJ8ZWCWYbjIR/rtl8Zr
+16:25:36.754 STDOUT terraform:             mILSDXw0PgeDbpdlvxG9fCr87sGq74128I/DRWhfk4+VCPI5E2E5Wyl+Sx1T60Lg
+16:25:36.755 STDOUT terraform:             kG5lGdpmiFPk4AT4uu3JeJMCAwEAAQ==
+16:25:36.755 STDOUT terraform:             -----END PUBLIC KEY-----
+16:25:36.755 STDOUT terraform:         EOT -> null
+16:25:36.755 STDOUT terraform:       - rsa_bits                      = 4096 -> null
+16:25:36.755 STDOUT terraform:     }
+16:25:36.755 STDOUT terraform:   # module.cookiecutter_meta.null_resource.environment will be destroyed
+16:25:36.755 STDOUT terraform:   - resource "null_resource" "environment" {
+16:25:36.755 STDOUT terraform:       - id = "9216503353717386295" -> null
+16:25:36.755 STDOUT terraform:     }
+16:25:36.755 STDOUT terraform:   # module.cookiecutter_meta.null_resource.init will be destroyed
+16:25:36.755 STDOUT terraform:   - resource "null_resource" "init" {
+16:25:36.755 STDOUT terraform:       - id = "4096381333761464004" -> null
+16:25:36.755 STDOUT terraform:     }
+16:25:36.755 STDOUT terraform:   # module.cookiecutter_meta.null_resource.taint will be destroyed
+16:25:36.755 STDOUT terraform:   - resource "null_resource" "taint" {
+16:25:36.755 STDOUT terraform:       - id       = "2519904948849996870" -> null
+16:25:36.755 STDOUT terraform:       - triggers = {
+16:25:36.755 STDOUT terraform:           - "timestamp" = "2023-03-20T13:57:58Z"
+16:25:36.755 STDOUT terraform:         } -> null
+16:25:36.755 STDOUT terraform:     }
+16:25:36.755 STDOUT terraform: Plan: 0 to add, 0 to change, 14 to destroy.
+16:25:36.755 STDOUT terraform: 
+16:25:36.755 STDOUT terraform: Changes to Outputs:
+16:25:36.755 STDOUT terraform:   - kubernetes_secret_mongodb_admin_name      = "mongodb-admin" -> null
+16:25:36.756 STDOUT terraform:   - kubernetes_secret_mongodb_admin_namespace = "codlp-global-live" -> null
+16:25:36.756 STDOUT terraform:   - mongodb_ami                               = "ami-031ddf8bd79d677fd" -> null
+16:25:36.756 STDOUT terraform:   - mongodb_hostname                          = "mongodb.service.global-communications-academy.com" -> null
+16:25:36.756 STDOUT terraform:   - mongodb_internal_ip                       = "192.168.8.137" -> null
+16:25:36.756 STDOUT terraform:   - mongodb_subnet_id                         = "subnet-0c6dd6295e7138696" -> null
+16:25:36.756 STDOUT terraform:   - mongodb_subnet_ssh_keyname                = "codlp-global-live-mongodb" -> null
+16:25:37.061 STDOUT terraform: module.cookiecutter_meta.null_resource.environment: Destroying... [id=9216503353717386295]

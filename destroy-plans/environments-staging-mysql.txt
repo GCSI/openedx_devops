@@ -1,0 +1,91 @@
+16:02:28.158 STDOUT terraform: plan. Resource actions are indicated with the following symbols:
+16:02:28.158 STDOUT terraform:   - destroy
+16:02:28.158 STDOUT terraform: Terraform will perform the following actions:
+16:02:28.158 STDOUT terraform:   # aws_route53_record.mysql will be destroyed
+16:02:28.158 STDOUT terraform:   - resource "aws_route53_record" "mysql" {
+16:02:28.158 STDOUT terraform:       - fqdn                             = "mysql.staging.global-communications-academy.com" -> null
+16:02:28.158 STDOUT terraform:       - id                               = "Z03421433FTTS9CGGX8LH_mysql_CNAME" -> null
+16:02:28.158 STDOUT terraform:       - multivalue_answer_routing_policy = false -> null
+16:02:28.158 STDOUT terraform:       - name                             = "mysql" -> null
+16:02:28.158 STDOUT terraform:       - records                          = (sensitive value) -> null
+16:02:28.159 STDOUT terraform:       - ttl                              = 300 -> null
+16:02:28.159 STDOUT terraform:       - type                             = "CNAME" -> null
+16:02:28.159 STDOUT terraform:       - zone_id                          = "Z03421433FTTS9CGGX8LH" -> null
+16:02:28.159 STDOUT terraform:         # (2 unchanged attributes hidden)
+16:02:28.159 STDOUT terraform:     }
+16:02:28.159 STDOUT terraform:   # random_password.mysql_discovery will be destroyed
+16:02:28.159 STDOUT terraform:   - resource "random_password" "mysql_discovery" {
+16:02:28.159 STDOUT terraform:       - bcrypt_hash      = (sensitive value) -> null
+16:02:28.159 STDOUT terraform:       - id               = "none" -> null
+16:02:28.159 STDOUT terraform:       - keepers          = {
+16:02:28.159 STDOUT terraform:           - "version" = "1"
+16:02:28.159 STDOUT terraform:         } -> null
+16:02:28.159 STDOUT terraform:       - length           = 16 -> null
+16:02:28.159 STDOUT terraform:       - lower            = true -> null
+16:02:28.159 STDOUT terraform:       - min_lower        = 0 -> null
+16:02:28.159 STDOUT terraform:       - min_numeric      = 0 -> null
+16:02:28.159 STDOUT terraform:       - min_special      = 0 -> null
+16:02:28.159 STDOUT terraform:       - min_upper        = 0 -> null
+16:02:28.159 STDOUT terraform:       - number           = true -> null
+16:02:28.160 STDOUT terraform:       - numeric          = true -> null
+16:02:28.160 STDOUT terraform:       - override_special = "_%@" -> null
+16:02:28.160 STDOUT terraform:       - result           = (sensitive value) -> null
+16:02:28.160 STDOUT terraform:       - special          = true -> null
+16:02:28.160 STDOUT terraform:       - upper            = true -> null
+16:02:28.160 STDOUT terraform:     }
+16:02:28.160 STDOUT terraform:   # random_password.mysql_openedx will be destroyed
+16:02:28.160 STDOUT terraform:   - resource "random_password" "mysql_openedx" {
+16:02:28.160 STDOUT terraform:       - bcrypt_hash      = (sensitive value) -> null
+16:02:28.160 STDOUT terraform:       - id               = "none" -> null
+16:02:28.160 STDOUT terraform:       - keepers          = {
+16:02:28.160 STDOUT terraform:           - "version" = "1"
+16:02:28.160 STDOUT terraform:         } -> null
+16:02:28.160 STDOUT terraform:       - length           = 16 -> null
+16:02:28.160 STDOUT terraform:       - lower            = true -> null
+16:02:28.160 STDOUT terraform:       - min_lower        = 0 -> null
+16:02:28.160 STDOUT terraform:       - min_numeric      = 0 -> null
+16:02:28.160 STDOUT terraform:       - min_special      = 0 -> null
+16:02:28.160 STDOUT terraform:       - min_upper        = 0 -> null
+16:02:28.160 STDOUT terraform:       - number           = true -> null
+16:02:28.160 STDOUT terraform:       - numeric          = true -> null
+16:02:28.160 STDOUT terraform:       - override_special = "_%@" -> null
+16:02:28.160 STDOUT terraform:       - result           = (sensitive value) -> null
+16:02:28.160 STDOUT terraform:       - special          = true -> null
+16:02:28.160 STDOUT terraform:       - upper            = true -> null
+16:02:28.160 STDOUT terraform:     }
+16:02:28.160 STDOUT terraform:   # random_password.mysql_xqueue will be destroyed
+16:02:28.160 STDOUT terraform:   - resource "random_password" "mysql_xqueue" {
+16:02:28.160 STDOUT terraform:       - bcrypt_hash      = (sensitive value) -> null
+16:02:28.160 STDOUT terraform:       - id               = "none" -> null
+16:02:28.160 STDOUT terraform:       - keepers          = {
+16:02:28.160 STDOUT terraform:           - "version" = "1"
+16:02:28.160 STDOUT terraform:         } -> null
+16:02:28.160 STDOUT terraform:       - length           = 16 -> null
+16:02:28.161 STDOUT terraform:       - lower            = true -> null
+16:02:28.161 STDOUT terraform:       - min_lower        = 0 -> null
+16:02:28.161 STDOUT terraform:       - min_numeric      = 0 -> null
+16:02:28.161 STDOUT terraform:       - min_special      = 0 -> null
+16:02:28.161 STDOUT terraform:       - min_upper        = 0 -> null
+16:02:28.161 STDOUT terraform:       - number           = true -> null
+16:02:28.161 STDOUT terraform:       - numeric          = true -> null
+16:02:28.161 STDOUT terraform:       - override_special = "_%@" -> null
+16:02:28.161 STDOUT terraform:       - result           = (sensitive value) -> null
+16:02:28.161 STDOUT terraform:       - special          = true -> null
+16:02:28.161 STDOUT terraform:       - upper            = true -> null
+16:02:28.161 STDOUT terraform:     }
+16:02:28.161 STDOUT terraform:   # module.cookiecutter_meta.null_resource.environment will be destroyed
+16:02:28.161 STDOUT terraform:   - resource "null_resource" "environment" {
+16:02:28.161 STDOUT terraform:       - id = "2829783100712497029" -> null
+16:02:28.161 STDOUT terraform:     }
+16:02:28.161 STDOUT terraform:   # module.cookiecutter_meta.null_resource.init will be destroyed
+16:02:28.161 STDOUT terraform:   - resource "null_resource" "init" {
+16:02:28.161 STDOUT terraform:       - id = "7859083468278075769" -> null
+16:02:28.161 STDOUT terraform:     }
+16:02:28.161 STDOUT terraform:   # module.cookiecutter_meta.null_resource.taint will be destroyed
+16:02:28.161 STDOUT terraform:   - resource "null_resource" "taint" {
+16:02:28.161 STDOUT terraform:       - id       = "6627838045779173626" -> null
+16:02:28.161 STDOUT terraform:       - triggers = {
+16:02:28.161 STDOUT terraform:           - "timestamp" = "2023-03-20T14:45:44Z"
+16:02:28.161 STDOUT terraform:         } -> null
+16:02:28.161 STDOUT terraform:     }
+16:02:28.161 STDOUT terraform: Plan: 0 to add, 0 to change, 7 to destroy.

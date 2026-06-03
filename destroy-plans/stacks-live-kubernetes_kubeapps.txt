@@ -1,0 +1,26 @@
+17:01:10.873 STDOUT terraform: plan. Resource actions are indicated with the following symbols:
+17:01:10.873 STDOUT terraform:   - destroy
+17:01:10.873 STDOUT terraform: Terraform will perform the following actions:
+17:01:10.873 STDOUT terraform:   # module.cookiecutter_meta.null_resource.environment will be destroyed
+17:01:10.873 STDOUT terraform:   - resource "null_resource" "environment" {
+17:01:10.873 STDOUT terraform:       - id = "3518761814792027892" -> null
+17:01:10.873 STDOUT terraform:     }
+17:01:10.873 STDOUT terraform:   # module.cookiecutter_meta.null_resource.init will be destroyed
+17:01:10.873 STDOUT terraform:   - resource "null_resource" "init" {
+17:01:10.873 STDOUT terraform:       - id = "5295312065435940771" -> null
+17:01:10.873 STDOUT terraform:     }
+17:01:10.873 STDOUT terraform:   # module.cookiecutter_meta.null_resource.taint will be destroyed
+17:01:10.873 STDOUT terraform:   - resource "null_resource" "taint" {
+17:01:10.873 STDOUT terraform:       - id       = "7498489841227362459" -> null
+17:01:10.873 STDOUT terraform:       - triggers = {
+17:01:10.873 STDOUT terraform:           - "timestamp" = "2023-03-20T14:13:24Z"
+17:01:10.873 STDOUT terraform:         } -> null
+17:01:10.873 STDOUT terraform:     }
+17:01:10.873 STDOUT terraform: Plan: 0 to add, 0 to change, 3 to destroy.
+17:01:10.873 STDOUT terraform: 
+17:01:10.873 STDOUT terraform: Changes to Outputs:
+17:01:10.873 STDOUT terraform:   - helm_release_chart      = "kubeapps" -> null
+17:01:10.873 STDOUT terraform:   - helm_release_id         = "kubeapps" -> null
+17:01:10.873 STDOUT terraform:   - helm_release_name       = "kubeapps" -> null
+17:01:10.873 STDOUT terraform:   - helm_release_namespace  = "kubeapps" -> null
+17:01:10.874 STDOUT terraform:   - helm_release_repository = "https://charts.bitnami.com/bitnami" -> null

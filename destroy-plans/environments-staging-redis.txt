@@ -1,0 +1,29 @@
+16:55:05.758 STDOUT terraform: plan. Resource actions are indicated with the following symbols:
+16:55:05.758 STDOUT terraform:   - destroy
+16:55:05.758 STDOUT terraform: Terraform will perform the following actions:
+16:55:05.758 STDOUT terraform:   # aws_route53_record.redis_primary will be destroyed
+16:55:05.758 STDOUT terraform:   - resource "aws_route53_record" "redis_primary" {
+16:55:05.758 STDOUT terraform:       - fqdn    = "redis.primary.staging.global-communications-academy.com" -> null
+16:55:05.758 STDOUT terraform:       - id      = "Z03421433FTTS9CGGX8LH_redis.primary_CNAME" -> null
+16:55:05.758 STDOUT terraform:       - name    = "redis.primary" -> null
+16:55:05.759 STDOUT terraform:       - records = (sensitive value) -> null
+16:55:05.759 STDOUT terraform:       - ttl     = 300 -> null
+16:55:05.759 STDOUT terraform:       - type    = "CNAME" -> null
+16:55:05.759 STDOUT terraform:       - zone_id = "Z03421433FTTS9CGGX8LH" -> null
+16:55:05.759 STDOUT terraform:     }
+16:55:05.759 STDOUT terraform:   # module.cookiecutter_meta.null_resource.environment will be destroyed
+16:55:05.759 STDOUT terraform:   - resource "null_resource" "environment" {
+16:55:05.759 STDOUT terraform:       - id = "2972877681105970949" -> null
+16:55:05.759 STDOUT terraform:     }
+16:55:05.759 STDOUT terraform:   # module.cookiecutter_meta.null_resource.init will be destroyed
+16:55:05.759 STDOUT terraform:   - resource "null_resource" "init" {
+16:55:05.759 STDOUT terraform:       - id = "1522004607922873462" -> null
+16:55:05.759 STDOUT terraform:     }
+16:55:05.759 STDOUT terraform:   # module.cookiecutter_meta.null_resource.taint will be destroyed
+16:55:05.759 STDOUT terraform:   - resource "null_resource" "taint" {
+16:55:05.759 STDOUT terraform:       - id       = "2715723533361043224" -> null
+16:55:05.759 STDOUT terraform:       - triggers = {
+16:55:05.759 STDOUT terraform:           - "timestamp" = "2023-03-20T14:46:08Z"
+16:55:05.759 STDOUT terraform:         } -> null
+16:55:05.759 STDOUT terraform:     }
+16:55:05.759 STDOUT terraform: Plan: 0 to add, 0 to change, 4 to destroy.

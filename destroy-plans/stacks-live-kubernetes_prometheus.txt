@@ -1,0 +1,45 @@
+17:11:07.771 STDOUT terraform: plan. Resource actions are indicated with the following symbols:
+17:11:07.771 STDOUT terraform:   - destroy
+17:11:07.771 STDOUT terraform: Terraform will perform the following actions:
+17:11:07.771 STDOUT terraform:   # random_password.grafana will be destroyed
+17:11:07.771 STDOUT terraform:   - resource "random_password" "grafana" {
+17:11:07.771 STDOUT terraform:       - bcrypt_hash = (sensitive value) -> null
+17:11:07.771 STDOUT terraform:       - id          = "none" -> null
+17:11:07.771 STDOUT terraform:       - keepers     = {
+17:11:07.771 STDOUT terraform:           - "version" = "1"
+17:11:07.771 STDOUT terraform:         } -> null
+17:11:07.771 STDOUT terraform:       - length      = 16 -> null
+17:11:07.771 STDOUT terraform:       - lower       = true -> null
+17:11:07.772 STDOUT terraform:       - min_lower   = 0 -> null
+17:11:07.772 STDOUT terraform:       - min_numeric = 0 -> null
+17:11:07.772 STDOUT terraform:       - min_special = 0 -> null
+17:11:07.772 STDOUT terraform:       - min_upper   = 0 -> null
+17:11:07.772 STDOUT terraform:       - number      = true -> null
+17:11:07.772 STDOUT terraform:       - numeric     = true -> null
+17:11:07.772 STDOUT terraform:       - result      = (sensitive value) -> null
+17:11:07.772 STDOUT terraform:       - special     = false -> null
+17:11:07.772 STDOUT terraform:       - upper       = true -> null
+17:11:07.772 STDOUT terraform:     }
+17:11:07.772 STDOUT terraform:   # module.cookiecutter_meta.null_resource.environment will be destroyed
+17:11:07.772 STDOUT terraform:   - resource "null_resource" "environment" {
+17:11:07.772 STDOUT terraform:       - id = "2991035086258293468" -> null
+17:11:07.772 STDOUT terraform:     }
+17:11:07.772 STDOUT terraform:   # module.cookiecutter_meta.null_resource.init will be destroyed
+17:11:07.772 STDOUT terraform:   - resource "null_resource" "init" {
+17:11:07.772 STDOUT terraform:       - id = "5207249471527602110" -> null
+17:11:07.772 STDOUT terraform:     }
+17:11:07.772 STDOUT terraform:   # module.cookiecutter_meta.null_resource.taint will be destroyed
+17:11:07.772 STDOUT terraform:   - resource "null_resource" "taint" {
+17:11:07.772 STDOUT terraform:       - id       = "3435232357656726670" -> null
+17:11:07.772 STDOUT terraform:       - triggers = {
+17:11:07.773 STDOUT terraform:           - "timestamp" = "2023-03-20T14:08:32Z"
+17:11:07.773 STDOUT terraform:         } -> null
+17:11:07.773 STDOUT terraform:     }
+17:11:07.773 STDOUT terraform: Plan: 0 to add, 0 to change, 4 to destroy.
+17:11:07.773 STDOUT terraform: 
+17:11:07.773 STDOUT terraform: Changes to Outputs:
+17:11:07.773 STDOUT terraform:   - helm_release_chart      = "kube-prometheus-stack" -> null
+17:11:07.773 STDOUT terraform:   - helm_release_id         = "prometheus" -> null
+17:11:07.773 STDOUT terraform:   - helm_release_name       = "prometheus" -> null
+17:11:07.773 STDOUT terraform:   - helm_release_namespace  = "prometheus" -> null
+17:11:07.773 STDOUT terraform:   - helm_release_repository = "https://prometheus-community.github.io/helm-charts" -> null

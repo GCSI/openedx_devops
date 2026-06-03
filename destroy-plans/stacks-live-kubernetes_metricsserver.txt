@@ -1,0 +1,26 @@
+17:04:42.094 STDOUT terraform: plan. Resource actions are indicated with the following symbols:
+17:04:42.094 STDOUT terraform:   - destroy
+17:04:42.094 STDOUT terraform: Terraform will perform the following actions:
+17:04:42.094 STDOUT terraform:   # module.cookiecutter_meta.null_resource.environment will be destroyed
+17:04:42.094 STDOUT terraform:   - resource "null_resource" "environment" {
+17:04:42.094 STDOUT terraform:       - id = "1106724150382019727" -> null
+17:04:42.094 STDOUT terraform:     }
+17:04:42.094 STDOUT terraform:   # module.cookiecutter_meta.null_resource.init will be destroyed
+17:04:42.094 STDOUT terraform:   - resource "null_resource" "init" {
+17:04:42.094 STDOUT terraform:       - id = "8392504941577972928" -> null
+17:04:42.094 STDOUT terraform:     }
+17:04:42.094 STDOUT terraform:   # module.cookiecutter_meta.null_resource.taint will be destroyed
+17:04:42.094 STDOUT terraform:   - resource "null_resource" "taint" {
+17:04:42.094 STDOUT terraform:       - id       = "4642749553428927868" -> null
+17:04:42.094 STDOUT terraform:       - triggers = {
+17:04:42.094 STDOUT terraform:           - "timestamp" = "2023-03-20T13:49:46Z"
+17:04:42.094 STDOUT terraform:         } -> null
+17:04:42.094 STDOUT terraform:     }
+17:04:42.094 STDOUT terraform: Plan: 0 to add, 0 to change, 3 to destroy.
+17:04:42.095 STDOUT terraform: 
+17:04:42.095 STDOUT terraform: Changes to Outputs:
+17:04:42.095 STDOUT terraform:   - helm_release_chart      = "metrics-server" -> null
+17:04:42.095 STDOUT terraform:   - helm_release_id         = "metrics-server" -> null
+17:04:42.095 STDOUT terraform:   - helm_release_name       = "metrics-server" -> null
+17:04:42.095 STDOUT terraform:   - helm_release_namespace  = "metrics-server" -> null
+17:04:42.095 STDOUT terraform:   - helm_release_repository = "https://kubernetes-sigs.github.io/metrics-server/" -> null
