@@ -1,0 +1,432 @@
+15:41:55.036 STDOUT terraform: plan. Resource actions are indicated with the following symbols:
+15:41:55.036 STDOUT terraform:   - destroy
+15:41:55.036 STDOUT terraform: Terraform will perform the following actions:
+15:41:55.036 STDOUT terraform:   # aws_db_subnet_group.mysql_subnet_group will be destroyed
+15:41:55.036 STDOUT terraform:   - resource "aws_db_subnet_group" "mysql_subnet_group" {
+15:41:55.036 STDOUT terraform:       - arn                     = "arn:aws:rds:eu-west-2:824885811700:subgrp:mysql_subnet_group" -> null
+15:41:55.036 STDOUT terraform:       - description             = "Managed by Terraform" -> null
+15:41:55.037 STDOUT terraform:       - id                      = "mysql_subnet_group" -> null
+15:41:55.037 STDOUT terraform:       - name                    = "mysql_subnet_group" -> null
+15:41:55.037 STDOUT terraform:       - subnet_ids              = [
+15:41:55.037 STDOUT terraform:           - "subnet-04a7378c60348d22b",
+15:41:55.037 STDOUT terraform:           - "subnet-0c6dd6295e7138696",
+15:41:55.037 STDOUT terraform:         ] -> null
+15:41:55.037 STDOUT terraform:       - supported_network_types = [
+15:41:55.037 STDOUT terraform:           - "IPV4",
+15:41:55.037 STDOUT terraform:         ] -> null
+15:41:55.037 STDOUT terraform:       - tags                    = {
+15:41:55.037 STDOUT terraform:           - "cookiecutter/global/aws_region"                 = "eu-west-2"
+15:41:55.037 STDOUT terraform:           - "cookiecutter/global/platform_name"              = "codlp"
+15:41:55.037 STDOUT terraform:           - "cookiecutter/global/platform_region"            = "global"
+15:41:55.037 STDOUT terraform:           - "cookiecutter/global/root_domain"                = "global-communications-academy.com"
+15:41:55.037 STDOUT terraform:           - "cookiecutter/global/services_subdomain"         = "service.global-communications-academy.com"
+15:41:55.038 STDOUT terraform:           - "cookiecutter/global/shared_resource_identifier" = "live"
+15:41:55.038 STDOUT terraform:           - "cookiecutter/global/shared_resource_namespace"  = "codlp-global-live"
+15:41:55.038 STDOUT terraform:           - "cookiecutter/meta/aws_iam_user"                 = "arn:aws:iam::824885811700:user/lawrence.mcdaniel"
+15:41:55.038 STDOUT terraform:           - "cookiecutter/meta/awscli_version"               = "2.10.3"
+15:41:55.038 STDOUT terraform:           - "cookiecutter/meta/github_branch"                = "cookiecutter_1.0.25 cookiecutter_1.1.0 main mcdaniel_202301 mcdaniel_202301_upgrade_1.0.19 mcdaniel_edunext_scorm"
+15:41:55.038 STDOUT terraform:           - "cookiecutter/meta/github_commit"                = "8968abd3275d90cd64fd7ec4fe62d5d7ae7de304"
+15:41:55.039 STDOUT terraform:           - "cookiecutter/meta/github_commit_date"           = "20230308T131544"
+15:41:55.039 STDOUT terraform:           - "cookiecutter/meta/github_repository"            = "https://github.com/GCSI/openedx_devops.git"
+15:41:55.039 STDOUT terraform:           - "cookiecutter/meta/kubectl_version"              = "v1.26.1"
+15:41:55.039 STDOUT terraform:           - "cookiecutter/meta/os"                           = "darwin22"
+15:41:55.039 STDOUT terraform:           - "cookiecutter/meta/terraform"                    = "true"
+15:41:55.039 STDOUT terraform:           - "cookiecutter/meta/terraform_version"            = "v1.3.9"
+15:41:55.039 STDOUT terraform:           - "cookiecutter/meta/timestamp"                    = "20230320T075138"
+15:41:55.039 STDOUT terraform:           - "cookiecutter/meta/version"                      = "v1.1.0"
+15:41:55.039 STDOUT terraform:           - "cookiecutter/module/source"                     = "openedx_devops/terraform/stacks/modules/mysql"
+15:41:55.039 STDOUT terraform:           - "cookiecutter/name"                              = "codlp-global-live"
+15:41:55.039 STDOUT terraform:           - "cookiecutter/resource/source"                   = "hashicorp/aws/aws_db_subnet_group"
+15:41:55.040 STDOUT terraform:           - "cookiecutter/resource/version"                  = "4.48"
+15:41:55.040 STDOUT terraform:           - "cookiecutter/stack"                             = "live"
+15:41:55.040 STDOUT terraform:           - "cookiecutter/stack_namespace"                   = "codlp-global-live"
+15:41:55.040 STDOUT terraform:         } -> null
+15:41:55.040 STDOUT terraform:       - tags_all                = {
+15:41:55.040 STDOUT terraform:           - "cookiecutter/global/aws_region"                 = "eu-west-2"
+15:41:55.040 STDOUT terraform:           - "cookiecutter/global/platform_name"              = "codlp"
+15:41:55.040 STDOUT terraform:           - "cookiecutter/global/platform_region"            = "global"
+15:41:55.040 STDOUT terraform:           - "cookiecutter/global/root_domain"                = "global-communications-academy.com"
+15:41:55.040 STDOUT terraform:           - "cookiecutter/global/services_subdomain"         = "service.global-communications-academy.com"
+15:41:55.040 STDOUT terraform:           - "cookiecutter/global/shared_resource_identifier" = "live"
+15:41:55.040 STDOUT terraform:           - "cookiecutter/global/shared_resource_namespace"  = "codlp-global-live"
+15:41:55.041 STDOUT terraform:           - "cookiecutter/meta/aws_iam_user"                 = "arn:aws:iam::824885811700:user/lawrence.mcdaniel"
+15:41:55.041 STDOUT terraform:           - "cookiecutter/meta/awscli_version"               = "2.10.3"
+15:41:55.041 STDOUT terraform:           - "cookiecutter/meta/github_branch"                = "cookiecutter_1.0.25 cookiecutter_1.1.0 main mcdaniel_202301 mcdaniel_202301_upgrade_1.0.19 mcdaniel_edunext_scorm"
+15:41:55.042 STDOUT terraform:           - "cookiecutter/meta/github_commit"                = "8968abd3275d90cd64fd7ec4fe62d5d7ae7de304"
+15:41:55.042 STDOUT terraform:           - "cookiecutter/meta/github_commit_date"           = "20230308T131544"
+15:41:55.042 STDOUT terraform:           - "cookiecutter/meta/github_repository"            = "https://github.com/GCSI/openedx_devops.git"
+15:41:55.042 STDOUT terraform:           - "cookiecutter/meta/kubectl_version"              = "v1.26.1"
+15:41:55.042 STDOUT terraform:           - "cookiecutter/meta/os"                           = "darwin22"
+15:41:55.042 STDOUT terraform:           - "cookiecutter/meta/terraform"                    = "true"
+15:41:55.046 STDOUT terraform:           - "cookiecutter/meta/terraform_version"            = "v1.3.9"
+15:41:55.046 STDOUT terraform:           - "cookiecutter/meta/timestamp"                    = "20230320T075138"
+15:41:55.046 STDOUT terraform:           - "cookiecutter/meta/version"                      = "v1.1.0"
+15:41:55.046 STDOUT terraform:           - "cookiecutter/module/source"                     = "openedx_devops/terraform/stacks/modules/mysql"
+15:41:55.046 STDOUT terraform:           - "cookiecutter/name"                              = "codlp-global-live"
+15:41:55.046 STDOUT terraform:           - "cookiecutter/resource/source"                   = "hashicorp/aws/aws_db_subnet_group"
+15:41:55.047 STDOUT terraform:           - "cookiecutter/resource/version"                  = "4.48"
+15:41:55.047 STDOUT terraform:           - "cookiecutter/stack"                             = "live"
+15:41:55.047 STDOUT terraform:           - "cookiecutter/stack_namespace"                   = "codlp-global-live"
+15:41:55.047 STDOUT terraform:         } -> null
+15:41:55.047 STDOUT terraform:         # (1 unchanged attribute hidden)
+15:41:55.047 STDOUT terraform:     }
+15:41:55.047 STDOUT terraform:   # module.cookiecutter_meta.null_resource.environment will be destroyed
+15:41:55.047 STDOUT terraform:   - resource "null_resource" "environment" {
+15:41:55.048 STDOUT terraform:       - id = "3722635945915137337" -> null
+15:41:55.048 STDOUT terraform:     }
+15:41:55.048 STDOUT terraform:   # module.cookiecutter_meta.null_resource.init will be destroyed
+15:41:55.048 STDOUT terraform:   - resource "null_resource" "init" {
+15:41:55.048 STDOUT terraform:       - id = "3721266660616617142" -> null
+15:41:55.048 STDOUT terraform:     }
+15:41:55.048 STDOUT terraform:   # module.cookiecutter_meta.null_resource.taint will be destroyed
+15:41:55.048 STDOUT terraform:   - resource "null_resource" "taint" {
+15:41:55.048 STDOUT terraform:       - id       = "2094833818315294243" -> null
+15:41:55.048 STDOUT terraform:       - triggers = {
+15:41:55.048 STDOUT terraform:           - "timestamp" = "2023-03-20T13:53:46Z"
+15:41:55.048 STDOUT terraform:         } -> null
+15:41:55.052 STDOUT terraform:     }
+15:41:55.052 STDOUT terraform:   # module.db.random_password.master_password[0] will be destroyed
+15:41:55.052 STDOUT terraform:   - resource "random_password" "master_password" {
+15:41:55.052 STDOUT terraform:       - bcrypt_hash = (sensitive value) -> null
+15:41:55.052 STDOUT terraform:       - id          = "none" -> null
+15:41:55.053 STDOUT terraform:       - length      = 16 -> null
+15:41:55.053 STDOUT terraform:       - lower       = true -> null
+15:41:55.053 STDOUT terraform:       - min_lower   = 0 -> null
+15:41:55.053 STDOUT terraform:       - min_numeric = 0 -> null
+15:41:55.053 STDOUT terraform:       - min_special = 0 -> null
+15:41:55.053 STDOUT terraform:       - min_upper   = 0 -> null
+15:41:55.053 STDOUT terraform:       - number      = true -> null
+15:41:55.054 STDOUT terraform:       - numeric     = true -> null
+15:41:55.054 STDOUT terraform:       - result      = (sensitive value) -> null
+15:41:55.054 STDOUT terraform:       - special     = false -> null
+15:41:55.054 STDOUT terraform:       - upper       = true -> null
+15:41:55.054 STDOUT terraform:     }
+15:41:55.054 STDOUT terraform:   # module.security_group.aws_security_group.this_name_prefix[0] will be destroyed
+15:41:55.054 STDOUT terraform:   - resource "aws_security_group" "this_name_prefix" {
+15:41:55.058 STDOUT terraform:       - arn                    = "arn:aws:ec2:eu-west-2:824885811700:security-group/sg-08eb66342bfe60d17" -> null
+15:41:55.058 STDOUT terraform:       - description            = "cookiecutter: Allow access to MySQL" -> null
+15:41:55.058 STDOUT terraform:       - egress                 = [] -> null
+15:41:55.058 STDOUT terraform:       - id                     = "sg-08eb66342bfe60d17" -> null
+15:41:55.058 STDOUT terraform:       - ingress                = [] -> null
+15:41:55.058 STDOUT terraform:       - name                   = "codlp-global-live-mysql-20230320135346081800000001" -> null
+15:41:55.059 STDOUT terraform:       - name_prefix            = "codlp-global-live-mysql-" -> null
+15:41:55.059 STDOUT terraform:       - owner_id               = "824885811700" -> null
+15:41:55.059 STDOUT terraform:       - revoke_rules_on_delete = false -> null
+15:41:55.059 STDOUT terraform:       - tags                   = {
+15:41:55.059 STDOUT terraform:           - "Name"                                           = "codlp-global-live-mysql"
+15:41:55.059 STDOUT terraform:           - "cookiecutter/global/aws_region"                 = "eu-west-2"
+15:41:55.059 STDOUT terraform:           - "cookiecutter/global/platform_name"              = "codlp"
+15:41:55.059 STDOUT terraform:           - "cookiecutter/global/platform_region"            = "global"
+15:41:55.060 STDOUT terraform:           - "cookiecutter/global/root_domain"                = "global-communications-academy.com"
+15:41:55.060 STDOUT terraform:           - "cookiecutter/global/services_subdomain"         = "service.global-communications-academy.com"
+15:41:55.060 STDOUT terraform:           - "cookiecutter/global/shared_resource_identifier" = "live"
+15:41:55.060 STDOUT terraform:           - "cookiecutter/global/shared_resource_namespace"  = "codlp-global-live"
+15:41:55.060 STDOUT terraform:           - "cookiecutter/meta/aws_iam_user"                 = "arn:aws:iam::824885811700:user/lawrence.mcdaniel"
+15:41:55.062 STDOUT terraform:           - "cookiecutter/meta/awscli_version"               = "2.10.3"
+15:41:55.062 STDOUT terraform:           - "cookiecutter/meta/github_branch"                = "cookiecutter_1.0.25 cookiecutter_1.1.0 main mcdaniel_202301 mcdaniel_202301_upgrade_1.0.19 mcdaniel_edunext_scorm"
+15:41:55.062 STDOUT terraform:           - "cookiecutter/meta/github_commit"                = "8968abd3275d90cd64fd7ec4fe62d5d7ae7de304"
+15:41:55.063 STDOUT terraform:           - "cookiecutter/meta/github_commit_date"           = "20230308T131544"
+15:41:55.063 STDOUT terraform:           - "cookiecutter/meta/github_repository"            = "https://github.com/GCSI/openedx_devops.git"
+15:41:55.064 STDOUT terraform:           - "cookiecutter/meta/kubectl_version"              = "v1.26.1"
+15:41:55.064 STDOUT terraform:           - "cookiecutter/meta/os"                           = "darwin22"
+15:41:55.064 STDOUT terraform:           - "cookiecutter/meta/terraform"                    = "true"
+15:41:55.064 STDOUT terraform:           - "cookiecutter/meta/terraform_version"            = "v1.3.9"
+15:41:55.064 STDOUT terraform:           - "cookiecutter/meta/timestamp"                    = "20230320T075138"
+15:41:55.065 STDOUT terraform:           - "cookiecutter/meta/version"                      = "v1.1.0"
+15:41:55.065 STDOUT terraform:           - "cookiecutter/module/source"                     = "openedx_devops/terraform/stacks/modules/mysql"
+15:41:55.065 STDOUT terraform:           - "cookiecutter/name"                              = "codlp-global-live"
+15:41:55.065 STDOUT terraform:           - "cookiecutter/resource/source"                   = "terraform-aws-modules/security-group/aws"
+15:41:55.066 STDOUT terraform:           - "cookiecutter/resource/version"                  = "4.16"
+15:41:55.067 STDOUT terraform:           - "cookiecutter/stack"                             = "live"
+15:41:55.067 STDOUT terraform:           - "cookiecutter/stack_namespace"                   = "codlp-global-live"
+15:41:55.068 STDOUT terraform:         } -> null
+15:41:55.068 STDOUT terraform:       - tags_all               = {
+15:41:55.068 STDOUT terraform:           - "Name"                                           = "codlp-global-live-mysql"
+15:41:55.068 STDOUT terraform:           - "cookiecutter/global/aws_region"                 = "eu-west-2"
+15:41:55.068 STDOUT terraform:           - "cookiecutter/global/platform_name"              = "codlp"
+15:41:55.069 STDOUT terraform:           - "cookiecutter/global/platform_region"            = "global"
+15:41:55.069 STDOUT terraform:           - "cookiecutter/global/root_domain"                = "global-communications-academy.com"
+15:41:55.069 STDOUT terraform:           - "cookiecutter/global/services_subdomain"         = "service.global-communications-academy.com"
+15:41:55.069 STDOUT terraform:           - "cookiecutter/global/shared_resource_identifier" = "live"
+15:41:55.069 STDOUT terraform:           - "cookiecutter/global/shared_resource_namespace"  = "codlp-global-live"
+15:41:55.069 STDOUT terraform:           - "cookiecutter/meta/aws_iam_user"                 = "arn:aws:iam::824885811700:user/lawrence.mcdaniel"
+15:41:55.070 STDOUT terraform:           - "cookiecutter/meta/awscli_version"               = "2.10.3"
+15:41:55.070 STDOUT terraform:           - "cookiecutter/meta/github_branch"                = "cookiecutter_1.0.25 cookiecutter_1.1.0 main mcdaniel_202301 mcdaniel_202301_upgrade_1.0.19 mcdaniel_edunext_scorm"
+15:41:55.070 STDOUT terraform:           - "cookiecutter/meta/github_commit"                = "8968abd3275d90cd64fd7ec4fe62d5d7ae7de304"
+15:41:55.072 STDOUT terraform:           - "cookiecutter/meta/github_commit_date"           = "20230308T131544"
+15:41:55.072 STDOUT terraform:           - "cookiecutter/meta/github_repository"            = "https://github.com/GCSI/openedx_devops.git"
+15:41:55.072 STDOUT terraform:           - "cookiecutter/meta/kubectl_version"              = "v1.26.1"
+15:41:55.072 STDOUT terraform:           - "cookiecutter/meta/os"                           = "darwin22"
+15:41:55.073 STDOUT terraform:           - "cookiecutter/meta/terraform"                    = "true"
+15:41:55.073 STDOUT terraform:           - "cookiecutter/meta/terraform_version"            = "v1.3.9"
+15:41:55.073 STDOUT terraform:           - "cookiecutter/meta/timestamp"                    = "20230320T075138"
+15:41:55.073 STDOUT terraform:           - "cookiecutter/meta/version"                      = "v1.1.0"
+15:41:55.073 STDOUT terraform:           - "cookiecutter/module/source"                     = "openedx_devops/terraform/stacks/modules/mysql"
+15:41:55.073 STDOUT terraform:           - "cookiecutter/name"                              = "codlp-global-live"
+15:41:55.074 STDOUT terraform:           - "cookiecutter/resource/source"                   = "terraform-aws-modules/security-group/aws"
+15:41:55.074 STDOUT terraform:           - "cookiecutter/resource/version"                  = "4.16"
+15:41:55.074 STDOUT terraform:           - "cookiecutter/stack"                             = "live"
+15:41:55.074 STDOUT terraform:           - "cookiecutter/stack_namespace"                   = "codlp-global-live"
+15:41:55.074 STDOUT terraform:         } -> null
+15:41:55.074 STDOUT terraform:       - vpc_id                 = "vpc-0c764ae678e3a5509" -> null
+15:41:55.075 STDOUT terraform:       - timeouts {
+15:41:55.075 STDOUT terraform:           - create = "10m" -> null
+15:41:55.075 STDOUT terraform:           - delete = "15m" -> null
+15:41:55.075 STDOUT terraform:         }
+15:41:55.075 STDOUT terraform:     }
+15:41:55.075 STDOUT terraform:   # module.db.module.db_instance.aws_db_instance.this[0] will be destroyed
+15:41:55.075 STDOUT terraform:   - resource "aws_db_instance" "this" {
+15:41:55.075 STDOUT terraform:       - address                               = "codlp-global-live.cueotjvguuws.eu-west-2.rds.amazonaws.com" -> null
+15:41:55.075 STDOUT terraform:       - allocated_storage                     = 10 -> null
+15:41:55.075 STDOUT terraform:       - allow_major_version_upgrade           = false -> null
+15:41:55.076 STDOUT terraform:       - apply_immediately                     = false -> null
+15:41:55.076 STDOUT terraform:       - arn                                   = "arn:aws:rds:eu-west-2:824885811700:db:codlp-global-live" -> null
+15:41:55.076 STDOUT terraform:       - auto_minor_version_upgrade            = true -> null
+15:41:55.076 STDOUT terraform:       - availability_zone                     = "eu-west-2a" -> null
+15:41:55.076 STDOUT terraform:       - backup_retention_period               = 7 -> null
+15:41:55.076 STDOUT terraform:       - backup_window                         = "03:00-06:00" -> null
+15:41:55.076 STDOUT terraform:       - ca_cert_identifier                    = "rds-ca-2019" -> null
+15:41:55.077 STDOUT terraform:       - copy_tags_to_snapshot                 = false -> null
+15:41:55.077 STDOUT terraform:       - customer_owned_ip_enabled             = false -> null
+15:41:55.077 STDOUT terraform:       - db_subnet_group_name                  = "mysql_subnet_group" -> null
+15:41:55.077 STDOUT terraform:       - delete_automated_backups              = true -> null
+15:41:55.077 STDOUT terraform:       - deletion_protection                   = false -> null
+15:41:55.078 STDOUT terraform:       - enabled_cloudwatch_logs_exports       = [] -> null
+15:41:55.078 STDOUT terraform:       - endpoint                              = "codlp-global-live.cueotjvguuws.eu-west-2.rds.amazonaws.com:3306" -> null
+15:41:55.078 STDOUT terraform:       - engine                                = "mysql" -> null
+15:41:55.078 STDOUT terraform:       - engine_version                        = "5.7.38" -> null
+15:41:55.078 STDOUT terraform:       - engine_version_actual                 = "5.7.38" -> null
+15:41:55.079 STDOUT terraform:       - hosted_zone_id                        = "Z1TTGA775OQIYO" -> null
+15:41:55.079 STDOUT terraform:       - iam_database_authentication_enabled   = false -> null
+15:41:55.079 STDOUT terraform:       - id                                    = "codlp-global-live" -> null
+15:41:55.079 STDOUT terraform:       - identifier                            = "codlp-global-live" -> null
+15:41:55.079 STDOUT terraform:       - instance_class                        = "db.t2.small" -> null
+15:41:55.079 STDOUT terraform:       - iops                                  = 0 -> null
+15:41:55.080 STDOUT terraform:       - latest_restorable_time                = "2023-03-20T13:50:00Z" -> null
+15:41:55.080 STDOUT terraform:       - license_model                         = "general-public-license" -> null
+15:41:55.080 STDOUT terraform:       - listener_endpoint                     = [] -> null
+15:41:55.080 STDOUT terraform:       - maintenance_window                    = "sun:00:00-sun:03:00" -> null
+15:41:55.080 STDOUT terraform:       - max_allocated_storage                 = 1000 -> null
+15:41:55.080 STDOUT terraform:       - monitoring_interval                   = 0 -> null
+15:41:55.081 STDOUT terraform:       - multi_az                              = false -> null
+15:41:55.081 STDOUT terraform:         name                                  = null
+15:41:55.081 STDOUT terraform:       - network_type                          = "IPV4" -> null
+15:41:55.081 STDOUT terraform:       - option_group_name                     = "codlp-global-live-20220907182144504300000002" -> null
+15:41:55.081 STDOUT terraform:       - parameter_group_name                  = "codlp-global-live-20220907182144504100000001" -> null
+15:41:55.081 STDOUT terraform:       - password                              = (sensitive value) -> null
+15:41:55.082 STDOUT terraform:       - performance_insights_enabled          = false -> null
+15:41:55.082 STDOUT terraform:       - performance_insights_retention_period = 0 -> null
+15:41:55.082 STDOUT terraform:       - port                                  = 3306 -> null
+15:41:55.082 STDOUT terraform:       - publicly_accessible                   = false -> null
+15:41:55.082 STDOUT terraform:       - replicas                              = [] -> null
+15:41:55.082 STDOUT terraform:       - resource_id                           = "db-6E3CHS3NS3DEKMBH3IAPOL6MPQ" -> null
+15:41:55.082 STDOUT terraform:       - security_group_names                  = [] -> null
+15:41:55.082 STDOUT terraform:       - skip_final_snapshot                   = true -> null
+15:41:55.083 STDOUT terraform:       - status                                = "available" -> null
+15:41:55.083 STDOUT terraform:       - storage_encrypted                     = false -> null
+15:41:55.083 STDOUT terraform:       - storage_throughput                    = 0 -> null
+15:41:55.083 STDOUT terraform:       - storage_type                          = "gp2" -> null
+15:41:55.083 STDOUT terraform:       - tags                                  = {
+15:41:55.083 STDOUT terraform:           - "cookiecutter/global/aws_region"                 = "eu-west-2"
+15:41:55.083 STDOUT terraform:           - "cookiecutter/global/platform_name"              = "codlp"
+15:41:55.084 STDOUT terraform:           - "cookiecutter/global/platform_region"            = "global"
+15:41:55.084 STDOUT terraform:           - "cookiecutter/global/root_domain"                = "global-communications-academy.com"
+15:41:55.084 STDOUT terraform:           - "cookiecutter/global/services_subdomain"         = "service.global-communications-academy.com"
+15:41:55.084 STDOUT terraform:           - "cookiecutter/global/shared_resource_identifier" = "live"
+15:41:55.084 STDOUT terraform:           - "cookiecutter/global/shared_resource_namespace"  = "codlp-global-live"
+15:41:55.084 STDOUT terraform:           - "cookiecutter/meta/aws_iam_user"                 = "arn:aws:iam::824885811700:user/lawrence.mcdaniel"
+15:41:55.084 STDOUT terraform:           - "cookiecutter/meta/awscli_version"               = "2.10.3"
+15:41:55.084 STDOUT terraform:           - "cookiecutter/meta/github_branch"                = "cookiecutter_1.0.25 cookiecutter_1.1.0 main mcdaniel_202301 mcdaniel_202301_upgrade_1.0.19 mcdaniel_edunext_scorm"
+15:41:55.085 STDOUT terraform:           - "cookiecutter/meta/github_commit"                = "8968abd3275d90cd64fd7ec4fe62d5d7ae7de304"
+15:41:55.085 STDOUT terraform:           - "cookiecutter/meta/github_commit_date"           = "20230308T131544"
+15:41:55.085 STDOUT terraform:           - "cookiecutter/meta/github_repository"            = "https://github.com/GCSI/openedx_devops.git"
+15:41:55.085 STDOUT terraform:           - "cookiecutter/meta/kubectl_version"              = "v1.26.1"
+15:41:55.085 STDOUT terraform:           - "cookiecutter/meta/os"                           = "darwin22"
+15:41:55.085 STDOUT terraform:           - "cookiecutter/meta/terraform"                    = "true"
+15:41:55.086 STDOUT terraform:           - "cookiecutter/meta/terraform_version"            = "v1.3.9"
+15:41:55.086 STDOUT terraform:           - "cookiecutter/meta/timestamp"                    = "20230320T075138"
+15:41:55.086 STDOUT terraform:           - "cookiecutter/meta/version"                      = "v1.1.0"
+15:41:55.086 STDOUT terraform:           - "cookiecutter/module/source"                     = "openedx_devops/terraform/stacks/modules/mysql"
+15:41:55.086 STDOUT terraform:           - "cookiecutter/name"                              = "codlp-global-live"
+15:41:55.086 STDOUT terraform:           - "cookiecutter/resource/source"                   = "terraform-aws-modules/rds/aws"
+15:41:55.087 STDOUT terraform:           - "cookiecutter/resource/version"                  = "5.2"
+15:41:55.087 STDOUT terraform:           - "cookiecutter/stack"                             = "live"
+15:41:55.087 STDOUT terraform:           - "cookiecutter/stack_namespace"                   = "codlp-global-live"
+15:41:55.087 STDOUT terraform:         } -> null
+15:41:55.087 STDOUT terraform:       - tags_all                              = {
+15:41:55.087 STDOUT terraform:           - "cookiecutter/global/aws_region"                 = "eu-west-2"
+15:41:55.087 STDOUT terraform:           - "cookiecutter/global/platform_name"              = "codlp"
+15:41:55.087 STDOUT terraform:           - "cookiecutter/global/platform_region"            = "global"
+15:41:55.087 STDOUT terraform:           - "cookiecutter/global/root_domain"                = "global-communications-academy.com"
+15:41:55.087 STDOUT terraform:           - "cookiecutter/global/services_subdomain"         = "service.global-communications-academy.com"
+15:41:55.087 STDOUT terraform:           - "cookiecutter/global/shared_resource_identifier" = "live"
+15:41:55.088 STDOUT terraform:           - "cookiecutter/global/shared_resource_namespace"  = "codlp-global-live"
+15:41:55.088 STDOUT terraform:           - "cookiecutter/meta/aws_iam_user"                 = "arn:aws:iam::824885811700:user/lawrence.mcdaniel"
+15:41:55.088 STDOUT terraform:           - "cookiecutter/meta/awscli_version"               = "2.10.3"
+15:41:55.088 STDOUT terraform:           - "cookiecutter/meta/github_branch"                = "cookiecutter_1.0.25 cookiecutter_1.1.0 main mcdaniel_202301 mcdaniel_202301_upgrade_1.0.19 mcdaniel_edunext_scorm"
+15:41:55.088 STDOUT terraform:           - "cookiecutter/meta/github_commit"                = "8968abd3275d90cd64fd7ec4fe62d5d7ae7de304"
+15:41:55.088 STDOUT terraform:           - "cookiecutter/meta/github_commit_date"           = "20230308T131544"
+15:41:55.088 STDOUT terraform:           - "cookiecutter/meta/github_repository"            = "https://github.com/GCSI/openedx_devops.git"
+15:41:55.088 STDOUT terraform:           - "cookiecutter/meta/kubectl_version"              = "v1.26.1"
+15:41:55.089 STDOUT terraform:           - "cookiecutter/meta/os"                           = "darwin22"
+15:41:55.089 STDOUT terraform:           - "cookiecutter/meta/terraform"                    = "true"
+15:41:55.089 STDOUT terraform:           - "cookiecutter/meta/terraform_version"            = "v1.3.9"
+15:41:55.089 STDOUT terraform:           - "cookiecutter/meta/timestamp"                    = "20230320T075138"
+15:41:55.089 STDOUT terraform:           - "cookiecutter/meta/version"                      = "v1.1.0"
+15:41:55.089 STDOUT terraform:           - "cookiecutter/module/source"                     = "openedx_devops/terraform/stacks/modules/mysql"
+15:41:55.089 STDOUT terraform:           - "cookiecutter/name"                              = "codlp-global-live"
+15:41:55.090 STDOUT terraform:           - "cookiecutter/resource/source"                   = "terraform-aws-modules/rds/aws"
+15:41:55.090 STDOUT terraform:           - "cookiecutter/resource/version"                  = "5.2"
+15:41:55.090 STDOUT terraform:           - "cookiecutter/stack"                             = "live"
+15:41:55.090 STDOUT terraform:           - "cookiecutter/stack_namespace"                   = "codlp-global-live"
+15:41:55.090 STDOUT terraform:         } -> null
+15:41:55.090 STDOUT terraform:       - username                              = "root" -> null
+15:41:55.090 STDOUT terraform:       - vpc_security_group_ids                = [
+15:41:55.090 STDOUT terraform:           - "sg-08eb66342bfe60d17",
+15:41:55.090 STDOUT terraform:         ] -> null
+15:41:55.090 STDOUT terraform:         # (13 unchanged attributes hidden)
+15:41:55.090 STDOUT terraform:       - timeouts {}
+15:41:55.090 STDOUT terraform:     }
+15:41:55.090 STDOUT terraform:   # module.db.module.db_option_group.aws_db_option_group.this[0] will be destroyed
+15:41:55.091 STDOUT terraform:   - resource "aws_db_option_group" "this" {
+15:41:55.091 STDOUT terraform:       - arn                      = "arn:aws:rds:eu-west-2:824885811700:og:codlp-global-live-20220907182144504300000002" -> null
+15:41:55.091 STDOUT terraform:       - engine_name              = "mysql" -> null
+15:41:55.091 STDOUT terraform:       - id                       = "codlp-global-live-20220907182144504300000002" -> null
+15:41:55.091 STDOUT terraform:       - major_engine_version     = "5.7" -> null
+15:41:55.091 STDOUT terraform:       - name                     = "codlp-global-live-20220907182144504300000002" -> null
+15:41:55.091 STDOUT terraform:       - name_prefix              = "codlp-global-live-" -> null
+15:41:55.092 STDOUT terraform:       - option_group_description = "codlp-global-live option group" -> null
+15:41:55.092 STDOUT terraform:       - tags                     = {
+15:41:55.092 STDOUT terraform:           - "Name"                                           = "codlp-global-live"
+15:41:55.092 STDOUT terraform:           - "cookiecutter/global/aws_region"                 = "eu-west-2"
+15:41:55.092 STDOUT terraform:           - "cookiecutter/global/platform_name"              = "codlp"
+15:41:55.092 STDOUT terraform:           - "cookiecutter/global/platform_region"            = "global"
+15:41:55.092 STDOUT terraform:           - "cookiecutter/global/root_domain"                = "global-communications-academy.com"
+15:41:55.092 STDOUT terraform:           - "cookiecutter/global/services_subdomain"         = "service.global-communications-academy.com"
+15:41:55.093 STDOUT terraform:           - "cookiecutter/global/shared_resource_identifier" = "live"
+15:41:55.093 STDOUT terraform:           - "cookiecutter/global/shared_resource_namespace"  = "codlp-global-live"
+15:41:55.093 STDOUT terraform:           - "cookiecutter/meta/aws_iam_user"                 = "arn:aws:iam::824885811700:user/lawrence.mcdaniel"
+15:41:55.093 STDOUT terraform:           - "cookiecutter/meta/awscli_version"               = "2.10.3"
+15:41:55.093 STDOUT terraform:           - "cookiecutter/meta/github_branch"                = "cookiecutter_1.0.25 cookiecutter_1.1.0 main mcdaniel_202301 mcdaniel_202301_upgrade_1.0.19 mcdaniel_edunext_scorm"
+15:41:55.094 STDOUT terraform:           - "cookiecutter/meta/github_commit"                = "8968abd3275d90cd64fd7ec4fe62d5d7ae7de304"
+15:41:55.094 STDOUT terraform:           - "cookiecutter/meta/github_commit_date"           = "20230308T131544"
+15:41:55.094 STDOUT terraform:           - "cookiecutter/meta/github_repository"            = "https://github.com/GCSI/openedx_devops.git"
+15:41:55.094 STDOUT terraform:           - "cookiecutter/meta/kubectl_version"              = "v1.26.1"
+15:41:55.094 STDOUT terraform:           - "cookiecutter/meta/os"                           = "darwin22"
+15:41:55.094 STDOUT terraform:           - "cookiecutter/meta/terraform"                    = "true"
+15:41:55.094 STDOUT terraform:           - "cookiecutter/meta/terraform_version"            = "v1.3.9"
+15:41:55.095 STDOUT terraform:           - "cookiecutter/meta/timestamp"                    = "20230320T075138"
+15:41:55.095 STDOUT terraform:           - "cookiecutter/meta/version"                      = "v1.1.0"
+15:41:55.095 STDOUT terraform:           - "cookiecutter/module/source"                     = "openedx_devops/terraform/stacks/modules/mysql"
+15:41:55.095 STDOUT terraform:           - "cookiecutter/name"                              = "codlp-global-live"
+15:41:55.095 STDOUT terraform:           - "cookiecutter/resource/source"                   = "terraform-aws-modules/rds/aws"
+15:41:55.095 STDOUT terraform:           - "cookiecutter/resource/version"                  = "5.2"
+15:41:55.095 STDOUT terraform:           - "cookiecutter/stack"                             = "live"
+15:41:55.096 STDOUT terraform:           - "cookiecutter/stack_namespace"                   = "codlp-global-live"
+15:41:55.096 STDOUT terraform:         } -> null
+15:41:55.096 STDOUT terraform:       - tags_all                 = {
+15:41:55.097 STDOUT terraform:           - "Name"                                           = "codlp-global-live"
+15:41:55.097 STDOUT terraform:           - "cookiecutter/global/aws_region"                 = "eu-west-2"
+15:41:55.097 STDOUT terraform:           - "cookiecutter/global/platform_name"              = "codlp"
+15:41:55.097 STDOUT terraform:           - "cookiecutter/global/platform_region"            = "global"
+15:41:55.098 STDOUT terraform:           - "cookiecutter/global/root_domain"                = "global-communications-academy.com"
+15:41:55.098 STDOUT terraform:           - "cookiecutter/global/services_subdomain"         = "service.global-communications-academy.com"
+15:41:55.098 STDOUT terraform:           - "cookiecutter/global/shared_resource_identifier" = "live"
+15:41:55.098 STDOUT terraform:           - "cookiecutter/global/shared_resource_namespace"  = "codlp-global-live"
+15:41:55.098 STDOUT terraform:           - "cookiecutter/meta/aws_iam_user"                 = "arn:aws:iam::824885811700:user/lawrence.mcdaniel"
+15:41:55.098 STDOUT terraform:           - "cookiecutter/meta/awscli_version"               = "2.10.3"
+15:41:55.099 STDOUT terraform:           - "cookiecutter/meta/github_branch"                = "cookiecutter_1.0.25 cookiecutter_1.1.0 main mcdaniel_202301 mcdaniel_202301_upgrade_1.0.19 mcdaniel_edunext_scorm"
+15:41:55.099 STDOUT terraform:           - "cookiecutter/meta/github_commit"                = "8968abd3275d90cd64fd7ec4fe62d5d7ae7de304"
+15:41:55.099 STDOUT terraform:           - "cookiecutter/meta/github_commit_date"           = "20230308T131544"
+15:41:55.099 STDOUT terraform:           - "cookiecutter/meta/github_repository"            = "https://github.com/GCSI/openedx_devops.git"
+15:41:55.099 STDOUT terraform:           - "cookiecutter/meta/kubectl_version"              = "v1.26.1"
+15:41:55.100 STDOUT terraform:           - "cookiecutter/meta/os"                           = "darwin22"
+15:41:55.100 STDOUT terraform:           - "cookiecutter/meta/terraform"                    = "true"
+15:41:55.100 STDOUT terraform:           - "cookiecutter/meta/terraform_version"            = "v1.3.9"
+15:41:55.100 STDOUT terraform:           - "cookiecutter/meta/timestamp"                    = "20230320T075138"
+15:41:55.100 STDOUT terraform:           - "cookiecutter/meta/version"                      = "v1.1.0"
+15:41:55.100 STDOUT terraform:           - "cookiecutter/module/source"                     = "openedx_devops/terraform/stacks/modules/mysql"
+15:41:55.100 STDOUT terraform:           - "cookiecutter/name"                              = "codlp-global-live"
+15:41:55.101 STDOUT terraform:           - "cookiecutter/resource/source"                   = "terraform-aws-modules/rds/aws"
+15:41:55.101 STDOUT terraform:           - "cookiecutter/resource/version"                  = "5.2"
+15:41:55.101 STDOUT terraform:           - "cookiecutter/stack"                             = "live"
+15:41:55.101 STDOUT terraform:           - "cookiecutter/stack_namespace"                   = "codlp-global-live"
+15:41:55.101 STDOUT terraform:         } -> null
+15:41:55.101 STDOUT terraform:       - timeouts {}
+15:41:55.101 STDOUT terraform:     }
+15:41:55.101 STDOUT terraform:   # module.db.module.db_parameter_group.aws_db_parameter_group.this[0] will be destroyed
+15:41:55.101 STDOUT terraform:   - resource "aws_db_parameter_group" "this" {
+15:41:55.101 STDOUT terraform:       - arn         = "arn:aws:rds:eu-west-2:824885811700:pg:codlp-global-live-20220907182144504100000001" -> null
+15:41:55.101 STDOUT terraform:       - description = "codlp-global-live parameter group" -> null
+15:41:55.102 STDOUT terraform:       - family      = "mysql5.7" -> null
+15:41:55.102 STDOUT terraform:       - id          = "codlp-global-live-20220907182144504100000001" -> null
+15:41:55.102 STDOUT terraform:       - name        = "codlp-global-live-20220907182144504100000001" -> null
+15:41:55.102 STDOUT terraform:       - name_prefix = "codlp-global-live-" -> null
+15:41:55.102 STDOUT terraform:       - tags        = {
+15:41:55.102 STDOUT terraform:           - "Name"                                           = "codlp-global-live"
+15:41:55.102 STDOUT terraform:           - "cookiecutter/global/aws_region"                 = "eu-west-2"
+15:41:55.102 STDOUT terraform:           - "cookiecutter/global/platform_name"              = "codlp"
+15:41:55.102 STDOUT terraform:           - "cookiecutter/global/platform_region"            = "global"
+15:41:55.102 STDOUT terraform:           - "cookiecutter/global/root_domain"                = "global-communications-academy.com"
+15:41:55.103 STDOUT terraform:           - "cookiecutter/global/services_subdomain"         = "service.global-communications-academy.com"
+15:41:55.103 STDOUT terraform:           - "cookiecutter/global/shared_resource_identifier" = "live"
+15:41:55.103 STDOUT terraform:           - "cookiecutter/global/shared_resource_namespace"  = "codlp-global-live"
+15:41:55.103 STDOUT terraform:           - "cookiecutter/meta/aws_iam_user"                 = "arn:aws:iam::824885811700:user/lawrence.mcdaniel"
+15:41:55.103 STDOUT terraform:           - "cookiecutter/meta/awscli_version"               = "2.10.3"
+15:41:55.103 STDOUT terraform:           - "cookiecutter/meta/github_branch"                = "cookiecutter_1.0.25 cookiecutter_1.1.0 main mcdaniel_202301 mcdaniel_202301_upgrade_1.0.19 mcdaniel_edunext_scorm"
+15:41:55.103 STDOUT terraform:           - "cookiecutter/meta/github_commit"                = "8968abd3275d90cd64fd7ec4fe62d5d7ae7de304"
+15:41:55.103 STDOUT terraform:           - "cookiecutter/meta/github_commit_date"           = "20230308T131544"
+15:41:55.103 STDOUT terraform:           - "cookiecutter/meta/github_repository"            = "https://github.com/GCSI/openedx_devops.git"
+15:41:55.104 STDOUT terraform:           - "cookiecutter/meta/kubectl_version"              = "v1.26.1"
+15:41:55.104 STDOUT terraform:           - "cookiecutter/meta/os"                           = "darwin22"
+15:41:55.104 STDOUT terraform:           - "cookiecutter/meta/terraform"                    = "true"
+15:41:55.104 STDOUT terraform:           - "cookiecutter/meta/terraform_version"            = "v1.3.9"
+15:41:55.104 STDOUT terraform:           - "cookiecutter/meta/timestamp"                    = "20230320T075138"
+15:41:55.104 STDOUT terraform:           - "cookiecutter/meta/version"                      = "v1.1.0"
+15:41:55.104 STDOUT terraform:           - "cookiecutter/module/source"                     = "openedx_devops/terraform/stacks/modules/mysql"
+15:41:55.104 STDOUT terraform:           - "cookiecutter/name"                              = "codlp-global-live"
+15:41:55.104 STDOUT terraform:           - "cookiecutter/resource/source"                   = "terraform-aws-modules/rds/aws"
+15:41:55.104 STDOUT terraform:           - "cookiecutter/resource/version"                  = "5.2"
+15:41:55.105 STDOUT terraform:           - "cookiecutter/stack"                             = "live"
+15:41:55.105 STDOUT terraform:           - "cookiecutter/stack_namespace"                   = "codlp-global-live"
+15:41:55.105 STDOUT terraform:         } -> null
+15:41:55.105 STDOUT terraform:       - tags_all    = {
+15:41:55.105 STDOUT terraform:           - "Name"                                           = "codlp-global-live"
+15:41:55.105 STDOUT terraform:           - "cookiecutter/global/aws_region"                 = "eu-west-2"
+15:41:55.105 STDOUT terraform:           - "cookiecutter/global/platform_name"              = "codlp"
+15:41:55.105 STDOUT terraform:           - "cookiecutter/global/platform_region"            = "global"
+15:41:55.105 STDOUT terraform:           - "cookiecutter/global/root_domain"                = "global-communications-academy.com"
+15:41:55.105 STDOUT terraform:           - "cookiecutter/global/services_subdomain"         = "service.global-communications-academy.com"
+15:41:55.106 STDOUT terraform:           - "cookiecutter/global/shared_resource_identifier" = "live"
+15:41:55.106 STDOUT terraform:           - "cookiecutter/global/shared_resource_namespace"  = "codlp-global-live"
+15:41:55.106 STDOUT terraform:           - "cookiecutter/meta/aws_iam_user"                 = "arn:aws:iam::824885811700:user/lawrence.mcdaniel"
+15:41:55.106 STDOUT terraform:           - "cookiecutter/meta/awscli_version"               = "2.10.3"
+15:41:55.106 STDOUT terraform:           - "cookiecutter/meta/github_branch"                = "cookiecutter_1.0.25 cookiecutter_1.1.0 main mcdaniel_202301 mcdaniel_202301_upgrade_1.0.19 mcdaniel_edunext_scorm"
+15:41:55.106 STDOUT terraform:           - "cookiecutter/meta/github_commit"                = "8968abd3275d90cd64fd7ec4fe62d5d7ae7de304"
+15:41:55.106 STDOUT terraform:           - "cookiecutter/meta/github_commit_date"           = "20230308T131544"
+15:41:55.107 STDOUT terraform:           - "cookiecutter/meta/github_repository"            = "https://github.com/GCSI/openedx_devops.git"
+15:41:55.107 STDOUT terraform:           - "cookiecutter/meta/kubectl_version"              = "v1.26.1"
+15:41:55.107 STDOUT terraform:           - "cookiecutter/meta/os"                           = "darwin22"
+15:41:55.107 STDOUT terraform:           - "cookiecutter/meta/terraform"                    = "true"
+15:41:55.107 STDOUT terraform:           - "cookiecutter/meta/terraform_version"            = "v1.3.9"
+15:41:55.107 STDOUT terraform:           - "cookiecutter/meta/timestamp"                    = "20230320T075138"
+15:41:55.107 STDOUT terraform:           - "cookiecutter/meta/version"                      = "v1.1.0"
+15:41:55.107 STDOUT terraform:           - "cookiecutter/module/source"                     = "openedx_devops/terraform/stacks/modules/mysql"
+15:41:55.107 STDOUT terraform:           - "cookiecutter/name"                              = "codlp-global-live"
+15:41:55.108 STDOUT terraform:           - "cookiecutter/resource/source"                   = "terraform-aws-modules/rds/aws"
+15:41:55.108 STDOUT terraform:           - "cookiecutter/resource/version"                  = "5.2"
+15:41:55.108 STDOUT terraform:           - "cookiecutter/stack"                             = "live"
+15:41:55.108 STDOUT terraform:           - "cookiecutter/stack_namespace"                   = "codlp-global-live"
+15:41:55.108 STDOUT terraform:         } -> null
+15:41:55.108 STDOUT terraform:       - parameter {
+15:41:55.108 STDOUT terraform:           - apply_method = "immediate" -> null
+15:41:55.108 STDOUT terraform:           - name         = "character_set_client" -> null
+15:41:55.108 STDOUT terraform:           - value        = "utf8mb4" -> null
+15:41:55.108 STDOUT terraform:         }
+15:41:55.108 STDOUT terraform:       - parameter {
+15:41:55.108 STDOUT terraform:           - apply_method = "immediate" -> null
+15:41:55.108 STDOUT terraform:           - name         = "character_set_server" -> null
+15:41:55.108 STDOUT terraform:           - value        = "utf8mb4" -> null
+15:41:55.108 STDOUT terraform:         }
+15:41:55.108 STDOUT terraform:     }
+15:41:55.108 STDOUT terraform: Plan: 0 to add, 0 to change, 9 to destroy.

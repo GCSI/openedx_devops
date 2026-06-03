@@ -1,0 +1,60 @@
+17:00:47.032 STDOUT terraform: plan. Resource actions are indicated with the following symbols:
+17:00:47.032 STDOUT terraform:   - destroy
+17:00:47.032 STDOUT terraform: Terraform will perform the following actions:
+17:00:47.032 STDOUT terraform:   # aws_route53_record.admin_naked will be destroyed
+17:00:47.032 STDOUT terraform:   - resource "aws_route53_record" "admin_naked" {
+17:00:47.032 STDOUT terraform:       - fqdn                             = "service.global-communications-academy.com" -> null
+17:00:47.032 STDOUT terraform:       - id                               = "Z04816663RS7JSSRH8ZYP_service.global-communications-academy.com_A" -> null
+17:00:47.032 STDOUT terraform:       - multivalue_answer_routing_policy = false -> null
+17:00:47.032 STDOUT terraform:       - name                             = "service.global-communications-academy.com" -> null
+17:00:47.032 STDOUT terraform:       - records                          = [] -> null
+17:00:47.032 STDOUT terraform:       - ttl                              = 0 -> null
+17:00:47.032 STDOUT terraform:       - type                             = "A" -> null
+17:00:47.032 STDOUT terraform:       - zone_id                          = "Z04816663RS7JSSRH8ZYP" -> null
+17:00:47.032 STDOUT terraform:         # (2 unchanged attributes hidden)
+17:00:47.033 STDOUT terraform:       - alias {
+17:00:47.033 STDOUT terraform:           - evaluate_target_health = true -> null
+17:00:47.033 STDOUT terraform:           - name                   = "a8da445cee52346e48efced8946cb54f-558758796.eu-west-2.elb.amazonaws.com" -> null
+17:00:47.033 STDOUT terraform:           - zone_id                = "ZHURV8PSTC4K8" -> null
+17:00:47.033 STDOUT terraform:         }
+17:00:47.033 STDOUT terraform:     }
+17:00:47.033 STDOUT terraform:   # aws_route53_record.admin_wildcard will be destroyed
+17:00:47.033 STDOUT terraform:   - resource "aws_route53_record" "admin_wildcard" {
+17:00:47.033 STDOUT terraform:       - fqdn                             = "*.service.global-communications-academy.com" -> null
+17:00:47.033 STDOUT terraform:       - id                               = "Z04816663RS7JSSRH8ZYP_*.service.global-communications-academy.com_A" -> null
+17:00:47.033 STDOUT terraform:       - multivalue_answer_routing_policy = false -> null
+17:00:47.033 STDOUT terraform:       - name                             = "*.service.global-communications-academy.com" -> null
+17:00:47.033 STDOUT terraform:       - records                          = [] -> null
+17:00:47.033 STDOUT terraform:       - ttl                              = 0 -> null
+17:00:47.033 STDOUT terraform:       - type                             = "A" -> null
+17:00:47.033 STDOUT terraform:       - zone_id                          = "Z04816663RS7JSSRH8ZYP" -> null
+17:00:47.033 STDOUT terraform:         # (2 unchanged attributes hidden)
+17:00:47.033 STDOUT terraform:       - alias {
+17:00:47.033 STDOUT terraform:           - evaluate_target_health = true -> null
+17:00:47.033 STDOUT terraform:           - name                   = "a8da445cee52346e48efced8946cb54f-558758796.eu-west-2.elb.amazonaws.com" -> null
+17:00:47.033 STDOUT terraform:           - zone_id                = "ZHURV8PSTC4K8" -> null
+17:00:47.034 STDOUT terraform:         }
+17:00:47.034 STDOUT terraform:     }
+17:00:47.034 STDOUT terraform:   # module.cookiecutter_meta.null_resource.environment will be destroyed
+17:00:47.034 STDOUT terraform:   - resource "null_resource" "environment" {
+17:00:47.034 STDOUT terraform:       - id = "6621745064569276310" -> null
+17:00:47.034 STDOUT terraform:     }
+17:00:47.034 STDOUT terraform:   # module.cookiecutter_meta.null_resource.init will be destroyed
+17:00:47.034 STDOUT terraform:   - resource "null_resource" "init" {
+17:00:47.034 STDOUT terraform:       - id = "942612328110317458" -> null
+17:00:47.034 STDOUT terraform:     }
+17:00:47.034 STDOUT terraform:   # module.cookiecutter_meta.null_resource.taint will be destroyed
+17:00:47.034 STDOUT terraform:   - resource "null_resource" "taint" {
+17:00:47.034 STDOUT terraform:       - id       = "3060830945649050590" -> null
+17:00:47.034 STDOUT terraform:       - triggers = {
+17:00:47.034 STDOUT terraform:           - "timestamp" = "2023-03-20T13:59:33Z"
+17:00:47.034 STDOUT terraform:         } -> null
+17:00:47.034 STDOUT terraform:     }
+17:00:47.034 STDOUT terraform: Plan: 0 to add, 0 to change, 5 to destroy.
+17:00:47.034 STDOUT terraform: 
+17:00:47.034 STDOUT terraform: Changes to Outputs:
+17:00:47.034 STDOUT terraform:   - helm_release__chart     = "ingress-nginx" -> null
+17:00:47.034 STDOUT terraform:   - helm_release__id        = "common" -> null
+17:00:47.034 STDOUT terraform:   - helm_release_name       = "common" -> null
+17:00:47.034 STDOUT terraform:   - helm_release_namespace  = "kube-system" -> null
+17:00:47.034 STDOUT terraform:   - helm_release_repository = "https://kubernetes.github.io/ingress-nginx" -> null

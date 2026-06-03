@@ -1,0 +1,26 @@
+17:09:23.008 STDOUT terraform: plan. Resource actions are indicated with the following symbols:
+17:09:23.008 STDOUT terraform:   - destroy
+17:09:23.008 STDOUT terraform: Terraform will perform the following actions:
+17:09:23.008 STDOUT terraform:   # module.cookiecutter_meta.null_resource.environment will be destroyed
+17:09:23.008 STDOUT terraform:   - resource "null_resource" "environment" {
+17:09:23.008 STDOUT terraform:       - id = "9222497416929960704" -> null
+17:09:23.008 STDOUT terraform:     }
+17:09:23.008 STDOUT terraform:   # module.cookiecutter_meta.null_resource.init will be destroyed
+17:09:23.008 STDOUT terraform:   - resource "null_resource" "init" {
+17:09:23.008 STDOUT terraform:       - id = "7317069264362184445" -> null
+17:09:23.008 STDOUT terraform:     }
+17:09:23.008 STDOUT terraform:   # module.cookiecutter_meta.null_resource.taint will be destroyed
+17:09:23.008 STDOUT terraform:   - resource "null_resource" "taint" {
+17:09:23.009 STDOUT terraform:       - id       = "2542280176548774278" -> null
+17:09:23.009 STDOUT terraform:       - triggers = {
+17:09:23.009 STDOUT terraform:           - "timestamp" = "2023-03-20T13:57:29Z"
+17:09:23.009 STDOUT terraform:         } -> null
+17:09:23.009 STDOUT terraform:     }
+17:09:23.009 STDOUT terraform: Plan: 0 to add, 0 to change, 3 to destroy.
+17:09:23.009 STDOUT terraform: 
+17:09:23.009 STDOUT terraform: Changes to Outputs:
+17:09:23.009 STDOUT terraform:   - helm_release_chart      = "vertical-pod-autoscaler" -> null
+17:09:23.009 STDOUT terraform:   - helm_release_id         = "vertical-pod-autoscaler" -> null
+17:09:23.009 STDOUT terraform:   - helm_release_name       = "vertical-pod-autoscaler" -> null
+17:09:23.009 STDOUT terraform:   - helm_release_namespace  = "vpa" -> null
+17:09:23.009 STDOUT terraform:   - helm_release_repository = "https://cowboysysop.github.io/charts/" -> null
